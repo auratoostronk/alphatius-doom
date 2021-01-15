@@ -1,0 +1,197 @@
+ACTOR OVR9000 : Weapon replaces BFG9000
+{
+	Radius 32
+	Tag "OVR-9000"
+	Weapon.UpSound "General/WeaponSwitch"
+	Weapon.BobSpeed 1.0
+	Weapon.BobStyle "Smooth"
+	Weapon.AmmoType1 "OVREnergy"
+	Weapon.AmmoType2 "OVRAltCharge"
+	Weapon.AmmoUse1 50
+	Weapon.AmmoUse2 1
+	Weapon.AmmoGive1 100
+	Weapon.AmmoGive2 1
+	+NEVERRESPAWN
+	+WEAPON.NOAUTOAIM
+	Inventory.Icon "OVRPA0"
+	Inventory.RespawnTics 2100
+	Weapon.SlotNumber 7
+	Weapon.SelectionOrder 500
+	Scale 0.6
+	States
+	{
+	Spawn:
+		TNT1 A 0 nodelay ACS_NamedExecuteAlways("OVRSpawn", 0)
+	Spawn1:
+		OVRP A 1 bright
+		Loop
+	Ready:
+		OVRR ABCD 1 bright A_WeaponReady
+		Loop
+	Deselect:
+		TNT1 A 0 ACS_NamedExecuteAlways("WeaponDeselect", 0)
+		OVRR AA 0 A_Lower
+		OVRR A 1 bright A_Lower
+		Loop
+	Select:
+		OVRR AA 0 A_Raise
+		OVRR A 1 bright A_Raise
+		Loop
+	Fire:
+		TNT1 A 0 A_PlaySound("FluxDiscLauncher/AltFire", CHAN_WEAPON)
+		OVRF ABCDEF 5 bright
+		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
+		TNT1 A 0 A_SpawnItemEX("GreenFlashShoot")
+		TNT1 A 0 A_PlaySound("FluxDiscLauncher/Fire", CHAN_WEAPON)
+		TNT1 A 0 A_FireCustomMissile("OVRProjectile", 0.0, true, 0.0, 0.0, 0, 0.0)
+		OVRF GHIJK 3 bright
+		OVRR A 15 bright A_WeaponReady(WRF_NOFIRE|WRF_DISABLESWITCH)
+		Goto CheckEnergy
+	AltFire:
+		TNT1 A 0 A_PlaySound("FluxDiscLauncher/AltFire", CHAN_WEAPON)
+		OVRF ABCDEF 5 bright
+		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
+		TNT1 A 0 A_SpawnItemEX("GreenFlashShoot")
+		TNT1 A 0 A_PlaySound("FluxDiscLauncher/Fire", CHAN_WEAPON)
+		TNT1 A 0 A_FireCustomMissile("OVRAltProjectile", 0.0, true, 0.0, 0.0, 0, 0.0)
+		OVRF GHIJK 3 bright
+		OVRR A 15 bright A_WeaponReady(WRF_NOFIRE|WRF_DISABLESWITCH)
+		Goto CheckEnergy
+	AltFail:
+		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
+		OVRR A 3 A_WeaponReady(WRF_NOSECONDARY)
+		Goto Ready
+	NoEnergy:
+		OVRR A 3 bright ACS_NamedExecuteAlways("WeaponNoEnergy")
+		Goto Ready
+	CheckEnergy:
+		TNT1 A 0 A_JumpIfInventory("OVREnergy", 1, "Ready")
+		TNT1 A 0 A_JumpIfInventory("OVRAltCharge", 1, "Ready")
+		TNT1 A 0 A_TakeInventory("OVR9000", 1)
+		Goto Ready
+		
+  }
+}
+ACTOR OVRProjectile : FastProjectile
+{
+	Radius 10
+	Height 10
+	Scale 0.7
+	Projectile
+	+NOGRAVITY
+	Speed 128
+	Damage (200)
+	DamageType "OVR9000"
+	ProjectileKickBack 240
+	RenderStyle Add
+	MissileType "OVRProjectileTrail"
+	MissileHeight 8
+	Obituary "%o found out %k's power level."
+	States
+	{
+		Spawn:
+		CPBL ABCDEFGHIJKL 1
+		loop
+		Death:
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("OVRBlastFX",0,0,0,frandom(-10,10),frandom(-10,10),frandom(-10,10),0,SXF_NOCHECKPOSITION)
+		TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-2,2),frandom(-2,2),frandom(-2,2))
+		TNT1 AAAAAAAA 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,random(0,360),2,random(0,360))
+		TNT1 A 0 A_Quake(8, 15, 0, 512)
+		TNT1 A 0 A_Explode(200, 256)
+		TNT1 A 35
+		stop
+	}
+}
+ACTOR OVRProjectileTrail
+{
+	+CLIENTSIDEONLY
+	+NOINTERACTION
+	+FORCEXYBILLBOARD
+	RenderStyle Add
+	Scale 0.6
+	States
+	{
+		Spawn:
+		CPTR ABCDEFGHIJKL 1 A_FadeOut(0.05)
+		loop
+	}
+}
+ACTOR OVRBlastFX
+{
+	+FORCEXYBILLBOARD
+	-NOGRAVITY
+	-SOLID
+	+NOCLIP
+	Gravity 0.2
+	RenderStyle Add
+	Scale 0.6
+	States
+	{
+		Spawn:
+		CPBL ABCDEFGHIJKL 1 A_FadeOut(0.05)
+		loop
+	}
+}
+ACTOR OVRBlastFX2 : OVRBlastFX
+{
+	+NOGRAVITY
+	Scale 0.9
+}
+ACTOR OVRAltProjectile
+{
+	Radius 12
+	Height 12
+	Scale 0.9
+	Projectile
+	Speed 52
+	Damage (200)
+	DamageType "OVR9000Alt"
+	ProjectileKickBack 120
+	RenderStyle Add
+	MissileType "OVRProjectileTrail"
+	MissileHeight 8
+	Obituary "%o got cucked by %k's super weapon"
+	States
+	{
+		Spawn:
+		CPBL ABCDEFGHIJKLABCD 1 //A_Explode(100, 256, !XF_HURTSOURCE)
+		Death:
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("OVRBlastFX2",0,0,0,frandom(-20,20),frandom(-20,20),frandom(-20,20),0,SXF_NOCHECKPOSITION)
+		TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-2,2),frandom(-2,2),frandom(-2,2))
+		TNT1 AAAAAAAA 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,random(0,360),2,random(0,360))
+		TNT1 A 0 A_Quake(8, 15, 0, 768)
+		TNT1 A 1 A_Explode(200, 480, XF_HURTSOURCE)
+		stop
+	}
+}
+ACTOR OVRSpawnerFXSource
+{
+	-SOLID
+	States
+	{
+		Spawn:
+		TNT1 A 3 A_SpawnItemEX("OVRSpawnerFX", frandom(-5.0, 5.0),  frandom(-5.0, 5.0), frandom(0.0, 5.0), frandom(-1.0, 1.0), frandom(-1.0, 1.0), frandom(2.0, 5.0))
+		loop
+	}
+}
+ACTOR OVRSpawnerFX
+{
+	+BRIGHT
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	States
+	{
+		Spawn:
+		REGN AB 2 A_FadeOut(0.1)
+		loop
+		Death:
+		TNT1 A 1
+		stop
+	}
+}

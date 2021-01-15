@@ -1,0 +1,38 @@
+Actor AdrenalineBoost : PowerRegeneration
+{
+	Powerup.Duration 70
+	Powerup.Strength 30
+}
+Actor AdrenalineBoostSpeedTics : Inventory
+{
+	Inventory.MaxAmount 105
+}
+Actor AdrenalineBoostShield : BasicArmorPickup
+{
+	Armor.SaveAmount 20
+	Armor.SavePercent 0
+	Armor.MaxFullAbsorb 20
+}
+/*
+Actor ThrustShieldCD : Inventory
+{
+	Inventory.MaxAmount 70
+}
+Actor ThrustShieldActive : CustomInventory
+{
+	Inventory.MaxAmount 1
+	States
+	{
+		Pickup:
+		TNT1 A 0 A_GiveInventory("ThrustShieldCD", 70)
+		TNT1 A 18 A_GiveInventory("ThrustShieldAbsorbtion", 20)
+		TNT1 A 0 A_TakeInventory("ThrustShieldAbsorbtion", 20)
+		stop
+	}
+}
+Actor ThrustShieldAbsorbtion : BasicArmorBonus
+{
+	Armor.SavePercent 0.0
+	Armor.SaveAmount 20
+	Armor.MaxSaveAmount 100
+}*/

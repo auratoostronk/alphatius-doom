@@ -1,0 +1,42 @@
+Actor RegenZone
+{
+	-SOLID
+	+NOGRAVITY
+	+BRIGHT
+	args 0
+	States
+	{
+		Spawn:
+		TNT1 A 0 nodelay A_PlaySound("Actions/RegenZoneStart", CHAN_AUTO, 0.8)
+		TNT1 A 0 A_PlaySound("Actions/RegenZoneLoop", CHAN_7, 0.6, true)
+		Spawn1:
+		TNT1 A 0 A_SpawnItemEx("RegenZoneFX", 256.0, 0.0, 8.0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RegenZoneFX", -256.0, 0.0, 8.0, 0, 0, 0)
+		TNT1 A 0  A_SpawnItemEx("RegenZoneFX", 0.0, 128.0, 8.0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RegenZoneFX", 0.0, -128.0, 8.0, 0, 0, 0)
+		TNT1 A 0 A_RadiusGive("IsHealing", 256.0, RGF_PLAYERS, 1)
+		TNT1 A 0 A_RadiusGive("Health", 256.0, RGF_PLAYERS, 1)
+		TNT1 A 0 A_SetAngle(angle + 8)
+		TNT1 A 0 A_SetArg(0, args[0] + 1)
+		TNT1 A 1 A_JumpIf(args[0] > 140, "Death")
+		loop
+		Death:
+		TNT1 A 1 A_StopSound(CHAN_7)
+		stop
+	}
+}
+Actor RegenZoneFX
+{
+	+BRIGHT
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	States
+	{
+		Spawn:
+		REGN ABCDE 2 A_FadeOut(0.2)
+		loop
+		Death:
+		TNT1 A 0
+		stop
+	}
+}

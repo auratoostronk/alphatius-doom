@@ -1,0 +1,19 @@
+Actor DirtSplash : WaterSplash
+{
+	scale 0.6
+	States
+	{
+	Spawn:
+		DIRP ABCDEF 2 A_SetScale(scalex * 1.1, scaley * 1.1)
+		DIRP G 8
+		Stop
+	Death:
+		DIRP G 8
+		Stop
+	}
+}
+
+Actor DirtSplashSmall : DirtSplash
+{
+	Scale 0.3
+}

@@ -1,0 +1,44 @@
+Actor HealFX
+{
+	+CLIENTSIDEONLY
+	+NOINTERACTION
+	+NOGRAVITY
+	Vspeed 2
+	States
+	{
+		Spawn:
+		TNT1 A 0 A_SetScale(scalex * 0.9, scaley * 0.9)
+		HLFX A 1 A_FadeOut(0.1)
+		loop
+	}
+}
+ACTOR TeleportFogQuiet
+{
+  +NOBLOCKMAP
+  +NOTELEPORT
+  +NOGRAVITY
+  RenderStyle Add
+  States
+  {
+  Spawn:
+	TNT1 A 0 nodelay A_PlaySound("StalkerTeleport", CHAN_AUTO, 1.0)
+    TFOG ABABCDEFGHIJ 6 Bright
+    Stop
+  }
+}
+Actor NoPuff : BulletPuff
+{
+	Projectile
+	Radius 2
+	Height 2
+	+NOINTERACTION
+	+NOTIMEFREEZE
+	+CLIENTSIDEONLY
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 1  
+		Stop
+	}
+}

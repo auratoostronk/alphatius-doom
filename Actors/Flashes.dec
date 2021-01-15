@@ -1,0 +1,125 @@
+//Actors that utilize GLDefs to make colored light Lightes. See GLDEFS for more.
+
+ACTOR RedLight
+{
+  +NOGRAVITY
+  +DONTSPLASH
+  +NOINTERACTION
+  +CLIENTSIDEONLY
+  RenderStyle None
+  States
+	{
+	Spawn:
+	TNT1 A 0 
+	TNT1 A 1
+	Stop
+	}
+}
+ACTOR BlueLight : RedLight
+{}
+ACTOR GreenLight : RedLight
+{}
+ACTOR PurpleLight : RedLight
+{}
+ACTOR YellowLight : RedLight
+{}
+ACTOR OrangeLight : RedLight
+{}
+
+ACTOR BlueLightShoot : RedLight
+{}
+ACTOR GreenLightShoot : RedLight
+{}
+ACTOR PurpleLightShoot : RedLight
+{}
+ACTOR YellowLightShoot : RedLight
+{}
+ACTOR RedLightShoot : RedLight
+{}
+ACTOR OrangeLightShoot : RedLight
+{}
+
+ACTOR BlueGlowSpawner
+{
+	Scale 0.2
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	RenderStyle Add
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		stop
+	}
+}
+ACTOR GreenGlowSpawner : BlueGlowSpawner
+{
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		stop
+	}
+}
+ACTOR PurpleGlowSpawner : BlueGlowSpawner
+{
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		stop
+	}
+}
+ACTOR YellowGlowSpawner : BlueGlowSpawner
+{
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		stop
+	}
+}
+ACTOR RedGlowSpawner : BlueGlowSpawner
+{
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		stop
+	}
+}
+ACTOR OrangeGlowSpawner : BlueGlowSpawner
+{
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		stop
+	}
+}
+ACTOR GrayGlowSpawner : BlueGlowSpawner
+{
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		stop
+	}
+}
+ACTOR LightGreenGlowSpawner : BlueGlowSpawner
+{
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		TNT1 A 1
+		stop
+	}
+}

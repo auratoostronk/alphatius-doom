@@ -1,0 +1,117 @@
+actor SpaceShip 10002
+{
+    Radius 96
+    Height 64
+	Mass 0x7fffffff
+	+NOBLOOD
+	+SHOOTABLE
+    +NOGRAVITY
+	+NODAMAGE
+	+DONTOVERLAP
+	-COUNTKILL
+	+SOLID
+    States
+    {
+    Spawn:
+        3DOB A 1
+        Loop
+    }
+}
+Actor SpaceshipHitboxBackCenter 10003
+{
+    Radius 64
+    Height 64
+	Mass 0x7fffffff
+	+NOBLOOD
+	+SHOOTABLE
+    +NOGRAVITY
+	+NODAMAGE
+	+DONTOVERLAP
+	-COUNTKILL
+	+SOLID
+    States
+    {
+    Spawn:
+        TNT1 A 1
+        Loop
+    }
+}
+Actor SpaceshipHitboxBackWings 10004
+{
+    Radius 48
+    Height 128
+	Mass 0x7fffffff
+	+NOBLOOD
+	+SHOOTABLE
+    +NOGRAVITY
+	+NODAMAGE
+	+DONTOVERLAP
+	-COUNTKILL
+	+SOLID
+    States
+    {
+    Spawn:
+        TNT1 A 1
+        Loop
+    }
+}
+Actor SpaceshipHitboxFrontNose 10005
+{
+    Radius 32
+    Height 64
+	Mass 0x7fffffff
+	+NOBLOOD
+	+SHOOTABLE
+    +NOGRAVITY
+	+NODAMAGE
+	+DONTOVERLAP
+	-COUNTKILL
+	+SOLID
+    States
+    {
+    Spawn:
+        TNT1 A 1
+        Loop
+    }
+}
+Actor SpaceShipSmall : Spaceship
+{
+	Radius 16
+	Height 8
+	-SOLID
+	-NODAMAGE
+}
+
+//Taken from Ozymandias's GORE
+//crystals**************************************************
+actor 3dObject
+{
+	+SOLID
+	+NOBLOCKMAP
+	+NOTAUTOAIMED
+	+ACTLIKEBRIDGE
+	States
+	{
+		Spawn:
+		3DOB A 0
+		3DOB A 4
+		loop
+	}
+}
+actor CrystalBlue : 3dObject 32001
+{
+	Tag "Blue Crystal (Heretic2)"
+	Radius 64
+	Height 96
+	+NOGRAVITY
+}
+
+actor CrystalGreen : CrystalBlue 32002
+{
+	Tag "Green Crystal (Heretic2)"
+}
+
+actor CrystalRed : CrystalBlue 32003
+{
+	Tag "Red Crystal (Heretic2)"
+}

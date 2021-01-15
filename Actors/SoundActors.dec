@@ -1,0 +1,15 @@
+ACTOR SoundActor
+{
+	+NOINTERACTION
+}
+
+ACTOR TeleportHumSpawner : SoundActor 10007
+{
+	States
+	{
+		Spawn:
+		TNT1 A 1 nodelay A_PlaySound("Ambient/TeleportHum", CHAN_7, 1.0, true)
+		TNT1 A 1
+		Goto Spawn+1
+	}
+}

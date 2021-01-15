@@ -1,0 +1,467 @@
+ACTOR PhotonCarbine : Weapon replaces Shotgun
+{
+	Radius 32
+	Tag "Photon Carbine"
+	Obituary "%o was gunned down by %k"
+	Weapon.UpSound "General/WeaponSwitch"
+	Weapon.BobSpeed 2.0
+	Weapon.BobStyle "Smooth"
+	Weapon.AmmoType1 "CarbineEnergy"
+	Weapon.AmmoType2 "CarbineEnergy"
+	Weapon.AmmoUse1 2
+	Weapon.AmmoUse2 20
+	+NEVERRESPAWN
+	+WEAPON.NOAUTOAIM
+	Inventory.Icon "CARPA0"
+	Weapon.SlotNumber 2
+	Weapon.SelectionOrder 500
+	Scale 0.6
+	Inventory.RespawnTics 280 //8 seconds
+	States
+	{
+	Spawn:
+		CARP A 1 bright
+		Loop
+	Ready:
+		CARR A 1 A_WeaponReady
+		Loop
+	Deselect:
+		TNT1 A 0 ACS_NamedExecuteAlways("WeaponDeselect", 0)
+		CARR AA 0 A_Lower
+		CARR A 1 A_Lower
+		Loop
+	Select:
+		CARR AA 0 A_Raise
+		CARR A 1 A_Raise
+		Loop
+	Fire:
+		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
+		TNT1 A 0 A_JumpIfInventory("CarbineStickyMod", 1, "FireSticky")
+		TNT1 A 0 A_SpawnItemEX("BlueLightShoot")
+		TNT1 A 0 A_PlaySound("PhotonCarbine/Fire", CHAN_WEAPON)
+		TNT1 A 0 A_FireCustomMissile("PhotonProjectile", frandom(-0.2, 0.2), true, 0.0, -2.0, 0 , frandom(-0.2, 0.2))
+		CARF AB 2 Bright
+		CARF C 1 A_Refire("Fire")
+		CARR A 1
+		Goto Ready
+	FireSticky:
+		TNT1 A 0 A_SpawnItemEX("BlueLightShoot")
+		TNT1 A 0 A_PlaySound("PhotonCarbine/Fire", CHAN_WEAPON)
+		TNT1 A 0 A_FireCustomMissile("StickyPlasmaProjectile", frandom(-0.2, 0.2), true, 0.0, -2.0, 0 , frandom(-0.2, 0.2))
+		CARF AB 2 Bright
+		CARF C 1 A_Refire("Fire")
+		CARR A 1
+		Goto Ready
+	AltFire:
+		TNT1 A 0 A_JumpIfInventory("CarbineAltCD",1,"AltFail")
+		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
+		TNT1 A 0 A_JumpIfInventory("CarbineMissileMod", 1, "AltFireMissile")
+		TNT1 A 0 A_SpawnItemEX("BlueLightShoot")
+		TNT1 A 0 A_PlaySound("GrenadeLaunch", CHAN_WEAPON)
+		TNT1 A 0 A_Recoil(2)
+		TNT1 A 0 A_FireCustomMissile("PhotonGrenade",0.0,true,0,-2,0,3)
+		TNT1 A 0 A_GiveInventory("CarbineAltCD", 35*7)
+		CARF ABC 2
+		Goto Ready
+	AltFireMissile:
+		TNT1 A 0 A_SpawnItemEX("BlueLightShoot")
+		TNT1 A 0 A_PlaySound("RocketCannon/Fire", CHAN_WEAPON)
+		TNT1 A 0 A_Recoil(2)
+		TNT1 A 0 A_FireCustomMissile("PhotonMissile",0.0,true,0,-2,0,0)
+		TNT1 A 0 A_GiveInventory("CarbineAltCD", 35*7)
+		CARF ABC 2
+		Goto Ready
+	AltFail:
+		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
+		CARR A 3 A_WeaponReady(WRF_NOSECONDARY)
+		Goto Ready
+	NoEnergy:
+		CARR A 3 ACS_NamedExecuteAlways("WeaponNoEnergy")
+		Goto Ready
+  }
+}
+Actor CarbineCombustionStack : Inventory
+{
+	Inventory.MaxAmount 30
+}
+Actor PhotonProjectile
+{
+	Projectile
+	Radius 6
+	Height 6
+	Scale 1.5
+	Speed 160
+	Decal RailScorchLower
+	Damage (16)
+	DamageType "PhotonCarbine"
+	Renderstyle Add
+	Obituary "%o was gunned down by %k"
+	+BRIGHT
+	States
+	{
+	Spawn:
+		BSPK A 1 A_SpawnItemEX("PhotonTrail", 0, 0, 0)
+		loop
+	Death:
+		TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnItemEx("PhotonDeathFX", 0.0, 0.0, 0.0, frandom(-1.0, 1.0), frandom(-1.0, 1.0), frandom (-1.0, 1.0))
+		TNT1 A 1
+		Stop
+	/*XDeath:
+		TNT1 A 0 A_GiveToTarget("HitmarkerInventory", 1)
+		Goto Death*/
+	}
+}
+Actor StickyPlasmaProjectile
+{
+	Projectile
+	Radius 6
+	Height 6
+	Scale 1.5
+	Speed 144
+	Decal RailScorchLower
+	+ADDITIVEPOISONDAMAGE
+	PoisonDamage 1, 12, 2
+	PoisonDamageType "StickyPlasma"
+	Damage (0)
+	DamageType "PhotonCarbine2"
+	Renderstyle Add
+	Obituary "%o was stuck by %k's plasma"
+	+BRIGHT
+	+HITTRACER
+	args 0
+	States
+	{
+	Spawn:
+		BSPK A 1 A_SpawnItemEX("PhotonTrail", 0, 0, 0)
+		loop
+	Death:
+		TNT1 A 0 A_SetScale(scalex * 1.5, scaley * 1.5)
+		BSPK AAAAAAAAAA 3 A_Warp(AAPTR_TRACER, frandom(-8.0, 8.0), frandom(-8.0, 8.0), frandom(24.0, 16.0), 0)
+		BSPK A 1 A_Warp(AAPTR_TRACER, 0, 0, 0, 0)
+		TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnItemEx("PhotonDeathFX", 0.0, 0.0, 0.0, frandom(-1.0, 1.0), frandom(-1.0, 1.0), frandom (-1.0, 1.0))
+		TNT1 A 1
+		Stop
+	}
+}
+Actor CombustionProjectile : PhotonProjectile
+{
+	Damage (12)
+	DamageType "PhotonCarbine2"
+}
+Actor PhotonMachPuff : BulletPuff
+{
+	Scale 1.5
+	Alpha 1.0
+	Renderstyle Add
+	DamageType "PhotonCarbine2"
+	+ALWAYSPUFF
+	+PUFFONACTORS
+	+BRIGHT
+	Vspeed 0
+	States
+	{
+		Spawn:
+		Melee:
+		Crash:
+		TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnItemEx("PhotonMachFX", 0.0, 0.0, 0.0, frandom(-3.0, 3.0), frandom(-3.0, 3.0), frandom (-3.0, 3.0))
+		stop
+	}
+}
+Actor PhotonMachFX
+{
+	RenderStyle Add
+	Scale 0.9
+	-NOGRAVITY
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	+BRIGHT
+	States
+	{
+		Spawn:
+		TNT1 A 0 A_SetScale(scalex * 0.8, scaley * 0.8)
+		BSPK A 1 A_FadeOut(0.2)
+		loop
+	}
+}
+Actor PhotonTrail
+{
+	RenderStyle ADD
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	+BRIGHT
+	Scale 0.6
+	States
+	{
+		Spawn:
+		TNT1 A 0 A_SetScale(scalex * 0.8, scaley * 0.8)
+		BSPK A 1 A_FadeOut(0.1)
+		loop
+	}
+}
+Actor PhotonDeathFX
+{
+	RenderStyle ADD
+	Scale 0.6
+	-NOGRAVITY
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	+BRIGHT
+	States
+	{
+		Spawn:
+		TNT1 A 0 A_SetScale(scalex * 0.8, scaley * 0.8)
+		BSPK A 1 A_FadeOut(0.2)
+		loop
+	}
+}
+const int grenadescale = 8;
+Actor PhotonGrenade
+{
+	Radius 3
+	Height 3
+	Scale 0.3
+	Speed 48
+	Gravity 1.0
+	Damage (10 + args[0])
+	DamageType "PhotonCarbineAlt"
+	Decal BigScorch
+	Projectile
+	ProjectileKickBack 80
+	RenderStyle Add
+	Obituary "%o was noob tubed by %k"
+	-NOGRAVITY
+	+BRIGHT
+	args 0
+	States
+	{
+	Spawn:
+		BGRN AA 2 A_SpawnItemEx("PhotonGrenadeTrailA",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	Spawn1:
+		BGRN A 2 A_SpawnItemEx("PhotonGrenadeTrailA",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (grenadescale / 80.0), scaley + (grenadescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + grenadescale)
+		BGRN B 2 A_SpawnItemEx("PhotonGrenadeTrailB",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (grenadescale / 80.0), scaley + (grenadescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + grenadescale)
+		BGRN C 2 A_SpawnItemEx("PhotonGrenadeTrailC",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (grenadescale / 80.0), scaley + (grenadescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + grenadescale)
+		BGRN D 2 A_SpawnItemEx("PhotonGrenadeTrailD",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (grenadescale / 80.0), scaley + (grenadescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + grenadescale)
+		BGRN E 2 A_SpawnItemEx("PhotonGrenadeTrailE",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (grenadescale / 80.0), scaley + (grenadescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + grenadescale)
+		BGRN F 2 A_SpawnItemEx("PhotonGrenadeTrailF",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (grenadescale / 80.0), scaley + (grenadescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + grenadescale)
+		BGRN G 2 A_SpawnItemEx("PhotonGrenadeTrailG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (grenadescale / 80.0), scaley + (grenadescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + grenadescale)
+		BGRN H 2 A_SpawnItemEx("PhotonGrenadeTrailH",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (grenadescale / 80.0), scaley + (grenadescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + grenadescale)
+	Spawn2:
+		BGRN I 2 A_SpawnItemEx("PhotonGrenadeTrailI",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (grenadescale / 80.0), scaley + (grenadescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + grenadescale)
+		BGRN J 2 A_SpawnItemEx("PhotonGrenadeTrailJ",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (grenadescale / 80.0), scaley + (grenadescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + grenadescale)
+		loop
+	Death:
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")
+		TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-2,2),frandom(-2,2),frandom(-2,2))
+		TNT1 AAAAAAAA 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,random(0,360),2,random(0,360))
+		TNT1 A 0 A_Quake(2,8,0,192 + args[0])
+		TNT1 A 0 A_Explode(20 + args[0], 192 + args[0])
+		//TNT1 A 0 ACS_NamedExecuteAlways("HitmarkerExplodeCheck", 0, 128 + args[0])
+		stop
+	/*XDeath:
+		TNT1 A 0 A_GiveToTarget("HitmarkerInventory", 0)
+		Goto Death*/
+	}
+}
+const int missilescale = 6;
+Actor PhotonMissile : PhotonGrenade
+{
+	+NOGRAVITY
+	+BRIGHT
+	Damage (10 + args[0])
+	DamageType "PhotonCarbineAlt2"
+	Speed 48
+	args 0
+	States
+	{
+	Spawn:
+		BGRN AA 2 A_SpawnItemEx("PhotonGrenadeTrailA",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+	Spawn1:
+		BGRN A 2 A_SpawnItemEx("PhotonGrenadeTrailA",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (missilescale / 80.0), scaley + (missilescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + missilescale)
+		BGRN B 2 A_SpawnItemEx("PhotonGrenadeTrailB",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (missilescale / 80.0), scaley + (missilescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + missilescale)
+		BGRN C 2 A_SpawnItemEx("PhotonGrenadeTrailC",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (missilescale / 80.0), scaley + (missilescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + missilescale)
+		BGRN D 2 A_SpawnItemEx("PhotonGrenadeTrailD",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (missilescale / 80.0), scaley + (missilescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + missilescale)
+		BGRN E 2 A_SpawnItemEx("PhotonGrenadeTrailE",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (missilescale / 80.0), scaley + (missilescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + missilescale)
+		BGRN F 2 A_SpawnItemEx("PhotonGrenadeTrailF",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (missilescale / 80.0), scaley + (missilescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + missilescale)
+		TNT1 A 0 A_JumpIfInventory("AltFirePressed", 1, "Death", AAPTR_TARGET)
+		BGRN G 2 A_SpawnItemEx("PhotonGrenadeTrailG",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (missilescale / 80.0), scaley + (missilescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + missilescale)
+		TNT1 A 0 A_JumpIfInventory("AltFirePressed", 1, "Death", AAPTR_TARGET)
+		BGRN H 2 A_SpawnItemEx("PhotonGrenadeTrailH",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (missilescale / 80.0), scaley + (missilescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + missilescale)
+		TNT1 A 0 A_JumpIfInventory("AltFirePressed", 1, "Death", AAPTR_TARGET)
+	Spawn2:
+		BGRN I 2 A_SpawnItemEx("PhotonGrenadeTrailI",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (missilescale / 80.0), scaley + (missilescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + missilescale)
+		TNT1 A 0 A_JumpIfInventory("AltFirePressed", 1, "Death", AAPTR_TARGET)
+		BGRN J 2 A_SpawnItemEx("PhotonGrenadeTrailJ",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_SetScale(scalex + (missilescale / 80.0), scaley + (missilescale / 80.0))
+		TNT1 A 0 A_SetArg(0, args[0] + missilescale)
+		TNT1 A 0 A_JumpIfInventory("AltFirePressed", 1, "Death", AAPTR_TARGET)
+		loop
+	Death:
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")
+		TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-2,2),frandom(-2,2),frandom(-2,2))
+		TNT1 AAAAAAAA 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,random(0,360),2,random(0,360))
+		TNT1 A 0 A_Quake(2,8,0,192 + args[0])
+		TNT1 A 0 A_Explode(20 + args[0], 192 + args[0])
+		//TNT1 A 0 ACS_NamedExecuteAlways("HitmarkerExplodeCheck", 0, 128 + args[0])
+		stop
+	}	
+}
+
+Actor PhotonGrenadeTrailA
+{
+	Radius 2
+	Height 2
+	+NOINTERACTION
+	+BRIGHT
+	Scale 0.12
+	RenderStyle Add
+	States
+	{
+	Spawn:
+		BGTR A 6
+	Looped:
+		BGTR A 1 A_Fadeout(0.03)
+		loop
+	}
+}
+Actor PhotonGrenadeTrailB : PhotonGrenadeTrailA
+{
+	States
+	{
+	Spawn:
+		BGTR B 6
+	Looped:
+		BGTR B 1 A_Fadeout(0.03)
+		loop
+	}
+}
+
+Actor PhotonGrenadeTrailC : PhotonGrenadeTrailA
+{
+	States
+	{
+	Spawn:
+		BGTR C 6
+	Looped:
+		BGTR C 1 A_Fadeout(0.03)
+		loop
+	}
+}
+Actor PhotonGrenadeTrailD : PhotonGrenadeTrailA
+{
+	States
+	{
+	Spawn:
+		BGTR D 6
+	Looped:
+		BGTR D 1 A_Fadeout(0.03)
+		loop
+	}
+}
+Actor PhotonGrenadeTrailE : PhotonGrenadeTrailA
+{
+	States
+	{
+	Spawn:
+		BGTR E 6
+	Looped:
+		BGTR E 1 A_Fadeout(0.03)
+		loop
+	}
+}
+Actor PhotonGrenadeTrailF : PhotonGrenadeTrailA
+{
+	States
+	{
+	Spawn:
+		BGTR F 6
+	Looped:
+		BGTR F 1 A_Fadeout(0.03)
+		loop
+	}
+}
+Actor PhotonGrenadeTrailG : PhotonGrenadeTrailA
+{
+	States
+	{
+	Spawn:
+		BGTR G 6
+	Looped:
+		BGTR G 1 A_Fadeout(0.03)
+		loop
+	}
+}
+Actor PhotonGrenadeTrailH : PhotonGrenadeTrailA
+{
+	States
+	{
+	Spawn:
+		BGTR H 6
+	Looped:
+		BGTR H 1 A_Fadeout(0.03)
+		loop
+	}
+}
+Actor PhotonGrenadeTrailI : PhotonGrenadeTrailA
+{
+	States
+	{
+	Spawn:
+		BGTR I 6
+	Looped:
+		BGTR I 1 A_Fadeout(0.03)
+		loop
+	}
+}
+Actor PhotonGrenadeTrailJ : PhotonGrenadeTrailA
+{
+	States
+	{
+	Spawn:
+		BGTR J 6
+	Looped:
+		BGTR J 1 A_Fadeout(0.03)
+		loop
+	}
+}

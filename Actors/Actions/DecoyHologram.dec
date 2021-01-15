@@ -1,0 +1,138 @@
+Actor DecoyHologram
+{
+	Speed 28
+	Radius 16
+	Height 56
+	Health 100
+	Monster
+	-SOLID
+	+NODAMAGE
+	+CANPASS
+	+THRUACTORS
+	+SLIDESONWALLS
+	-SHOOTABLE
+	States
+	{
+		Spawn:
+		TNT1 A 0 nodelay ACS_NamedExecuteAlways("DecoyWalk", 0)
+		PLAY ABCDABCDABCDABCDABCDABCD 4 //ThrustThing(angle * 256/360, 4, 1, 0)
+		Goto Death
+		Death:
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("DecoyDeathFX", frandom(-8.0, 8.0), frandom(-8.0, 8.0), frandom(-8.0, 8.0) + 32.0, frandom(-8.0, 8.0), frandom(-8.0, 8.0), frandom(-8.0, 8.0)) 
+		stop
+	}
+}
+//To make the decoys share weapon glows.
+Actor DecoyHologramRed : DecoyHologram {}
+Actor DecoyHologramOrange : DecoyHologram {}
+Actor DecoyHologramYellow : DecoyHologram {}
+Actor DecoyHologramGreen : DecoyHologram {}
+Actor DecoyHologramBlue : DecoyHologram {}
+Actor DecoyHologramPurple : DecoyHologram {}
+Actor DecoyHologramGray : DecoyHologram {}
+Actor DecoyHologramLightGreen : DecoyHologram {}
+
+Actor DecoyDeathFX
+{
+	RenderStyle ADD
+	Scale 2.0
+	-NOGRAVITY
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	+BRIGHT
+	States
+	{
+		Spawn:
+		TNT1 A 0 A_SetScale(scalex * 0.8, scaley * 0.8)
+		BSPK A 1 A_FadeOut(0.2)
+		loop
+	}
+}
+Actor UseDecoyHologramRed : CustomInventory
+{
+	Inventory.MaxAmount 1
+	States
+	{
+		Pickup:
+		Use:
+		TNT1 A 1 A_SpawnItemEx("DecoyHologramRed", 0.0, 0.0, 0.0, 14.0, 0.0, 0.0, 0.0, SXF_TRANSFERTRANSLATION|SXF_SETMASTER)
+		stop
+	}
+}
+Actor UseDecoyHologramOrange : CustomInventory
+{
+	Inventory.MaxAmount 1
+	States
+	{
+		Pickup:
+		Use:
+		TNT1 A 1 A_SpawnItemEx("DecoyHologramOrange", 0.0, 0.0, 0.0, 14.0, 0.0, 0.0, 0.0, SXF_TRANSFERTRANSLATION|SXF_SETMASTER)
+		stop
+	}
+}
+Actor UseDecoyHologramYellow : CustomInventory
+{
+	Inventory.MaxAmount 1
+	States
+	{
+		Pickup:
+		Use:
+		TNT1 A 1 A_SpawnItemEx("DecoyHologramYellow", 0.0, 0.0, 0.0, 14.0, 0.0, 0.0, 0.0, SXF_TRANSFERTRANSLATION|SXF_SETMASTER)
+		stop
+	}
+}
+Actor UseDecoyHologramGreen : CustomInventory
+{
+	Inventory.MaxAmount 1
+	States
+	{
+		Pickup:
+		Use:
+		TNT1 A 1 A_SpawnItemEx("DecoyHologramGreen", 0.0, 0.0, 0.0, 14.0, 0.0, 0.0, 0.0, SXF_TRANSFERTRANSLATION|SXF_SETMASTER)
+		stop
+	}
+}
+Actor UseDecoyHologramBlue : CustomInventory
+{
+	Inventory.MaxAmount 1
+	States
+	{
+		Pickup:
+		Use:
+		TNT1 A 1 A_SpawnItemEx("DecoyHologramBlue", 0.0, 0.0, 0.0, 14.0, 0.0, 0.0, 0.0, SXF_TRANSFERTRANSLATION|SXF_SETMASTER)
+		stop
+	}
+}
+Actor UseDecoyHologramPurple : CustomInventory
+{
+	Inventory.MaxAmount 1
+	States
+	{
+		Pickup:
+		Use:
+		TNT1 A 1 A_SpawnItemEx("DecoyHologramPurple", 0.0, 0.0, 0.0, 14.0, 0.0, 0.0, 0.0, SXF_TRANSFERTRANSLATION|SXF_SETMASTER)
+		stop
+	}
+}
+Actor UseDecoyHologramGray : CustomInventory
+{
+	Inventory.MaxAmount 1
+	States
+	{
+		Pickup:
+		Use:
+		TNT1 A 1 A_SpawnItemEx("DecoyHologramGray", 0.0, 0.0, 0.0, 14.0, 0.0, 0.0, 0.0, SXF_TRANSFERTRANSLATION|SXF_SETMASTER)
+		stop
+	}
+}
+Actor UseDecoyHologramLightGreen : CustomInventory
+{
+	Inventory.MaxAmount 1
+	States
+	{
+		Pickup:
+		Use:
+		TNT1 A 1 A_SpawnItemEx("DecoyHologramLightGreen", 0.0, 0.0, 0.0, 14.0, 0.0, 0.0, 0.0, SXF_TRANSFERTRANSLATION|SXF_SETMASTER)
+		stop
+	}
+}

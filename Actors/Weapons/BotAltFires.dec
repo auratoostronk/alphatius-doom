@@ -1,0 +1,99 @@
+ACTOR SparkCannonAlt : SparkCannon
+{
+	Tag "Spark Cannon (Alt Fire)"
+	States
+	{
+	Fire:
+		TNT1 A 0 A_JumpIfInventory("SparkAltCD", 1, "SwapWeapon")
+		Goto AltFire
+	SwapWeapon:
+		TNT1 A 1 ACS_NamedExecuteAlways("BotChangeWeapon", 0)
+		Goto Ready
+		
+	}
+}
+ACTOR PhotonCarbineAlt : PhotonCarbine
+{
+	Tag "Photon Carbine (Alt Fire)"
+	States
+	{
+	Fire:
+		TNT1 A 0 A_JumpIfInventory("CarbineAltCD", 1, "SwapWeapon")
+		Goto AltFire
+	SwapWeapon:
+		TNT1 A 1 ACS_NamedExecuteAlways("BotChangeWeapon", 0)
+		Goto Ready
+		
+	}
+}
+
+ACTOR TeslaSMGAlt : TeslaSMG
+{
+	Tag "Tesla SMG (Alt Fire)"
+	+WEAPON.MELEEWEAPON
+	States
+	{
+	Fire:
+		TNT1 A 0 A_JumpIfInventory("SMGAltCD", 1, "SwapWeapon")
+		Goto AltFire
+	SwapWeapon:
+		TNT1 A 1 ACS_NamedExecuteAlways("BotChangeWeapon", 0)
+		Goto Ready
+		
+	}
+}
+
+ACTOR ParticleSplitterAlt : ParticleSplitter
+{
+	Tag "Particle Splitter (Alt Fire)"
+	States
+	{
+	Fire:
+		TNT1 A 0 A_JumpIfInventory("PumpSGAltCD", 1, "SwapWeapon")
+		Goto AltFire
+	SwapWeapon:
+		TNT1 A 1 ACS_NamedExecuteAlways("BotChangeWeapon", 0)
+		Goto Ready
+		
+	}
+}
+
+ACTOR C14Alt : C14
+{
+	Tag "C14 (Alt Fire)"
+	States
+	{
+	Fire:
+		TNT1 A 0 A_JumpIfInventory("C14AltCD", 1, "SwapWeapon")
+		Goto AltFire
+	SwapWeapon:
+		TNT1 A 1 ACS_NamedExecuteAlways("BotChangeWeapon", 0)
+		Goto Ready
+	}
+}
+
+ACTOR RocketCannonAlt : RocketCannon
+{
+	Tag "Rocket Cannon (Alt Fire)"
+	States
+	{
+	SwapWeapon:
+		TNT1 A 1 ACS_NamedExecuteAlways("BotChangeWeapon", 0)
+		Goto Ready
+	}
+}
+/*
+ACTOR OVR9000Alt : OVR9000
+{
+	Tag "OVR9000 (Alt Fire)"
+	Weapon.AmmoType "OVRAltCharge"
+	States
+	{
+	Fire:
+		TNT1 A 0 
+		Goto AltFire
+	SwapWeapon:
+		TNT1 A 1 ACS_NamedExecuteAlways("BotChangeWeapon", 0)
+		Goto Ready
+	}
+}*/

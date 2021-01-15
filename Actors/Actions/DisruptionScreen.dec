@@ -1,0 +1,87 @@
+//Thanks to Seidolon for the base code
+Actor UseDisruptionScreen : CustomInventory
+{
+	States
+	{
+		Pickup:
+		TNT1 A 0 A_FireCustomMissile("DisruptionScreenGrenade", 0.0, false, 0, 2,0, 0.0)
+		stop
+	}
+}
+
+ACTOR DisruptionScreenGrenade
+{
+   Speed 48
+   Damage (10)
+   DamageType "DisruptionScreenImpact"
+   Radius 4
+   Height 12
+   PROJECTILE
+   +SKYEXPLODE
+   -NOGRAVITY
+   Obituary "%o was hit by k's smoke can."
+   States
+   {
+   Spawn:
+      GCAN A 1
+      Loop
+   Death:
+	  TNT1 A 0 
+      TNT1 A 0 A_SpawnItemEx("DisruptionScreen",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_TRANSFERPOINTERS)
+      Stop
+   }
+}
+
+ACTOR DisruptionScreen
+{
+	+DONTSPLASH
+	Radius 4
+	Height 12
+	args 60
+	States
+	{
+	Spawn:
+		GCAN A 3 nodelay A_PlaySound("GrenadeHit", CHAN_AUTO)
+		GCAN B 3 bright
+		GCAN A 3
+		GCAN B 3 bright
+		TNT1 A 0 A_PlaySound("Actions/DisruptionScreenActivate", CHAN_6)
+		Goto Spawn2
+	Spawn2:
+		TNT1 A 0 A_SpawnItemEX("DisruptionScreenFX", 160.0, 0.0, 16.0, 0.0, 0, 0)
+		TNT1 A 0 A_SpawnItemEX("DisruptionScreenFX", -160.0, 0.0, 16.0, 0.0, 0, 0)
+		TNT1 A 0 A_SpawnItemEX("DisruptionScreenFX", 0.0, 160.0, 16.0, 0, 0.0, 0)
+		TNT1 A 0 A_SpawnItemEX("DisruptionScreenFX", 0.0, -160.0, 16.0, 0, 0.0, 0)
+		TNT1 A 0 A_SetAngle(angle + 6)
+		TNT1 A 0 A_RadiusGive("DisruptionGrenadeDebuff", 160, RGF_PLAYERS, 50)
+		TNT1 A 0 A_JumpIf(args[0] <= 0, "PreDeath")
+		TNT1 A 0 A_SetArg(0, args[0] - 1)
+		loop
+	PreDeath:
+		TNT1 A 0 A_Explode(10, 160, XF_HURTSOURCE, 0, 160)
+		GCAN A 70
+		Goto Death
+	Death:
+		TNT1 A 1
+		stop
+	
+	}
+}
+Actor DisruptionGrenadeDebuff : Inventory { Inventory.MaxAmount 50}
+
+ACTOR DisruptionScreenFX
+{
+   Radius 2
+   Height 2
+   +BRIGHT
+   +NOINTERACTION
+   Scale 0.2
+   Renderstyle Translucent
+   Alpha 0.7
+   States
+   {
+   Spawn:
+      ZAP9 ABCDE 2 A_FadeOut(0.05)
+      loop
+   }
+}

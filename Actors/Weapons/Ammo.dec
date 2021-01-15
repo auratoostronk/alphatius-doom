@@ -1,0 +1,90 @@
+Actor SparkEnergy : Ammo
+{
+  Inventory.MaxAmount 80
+  Ammo.BackpackMaxAmount 100
+  Inventory.Icon "CELLA0"
+}
+Actor CarbineEnergy : Ammo
+{
+  Inventory.MaxAmount 100
+  Ammo.BackpackMaxAmount 120
+  Inventory.Icon "CELLA0"
+}
+Actor C14Energy : Ammo
+{
+  Inventory.MaxAmount 100
+  Ammo.BackpackMaxAmount 120
+  Inventory.Icon "CELLA0"
+}
+Actor SMGEnergy : Ammo
+{
+  Inventory.MaxAmount 100
+  Ammo.BackpackMaxAmount 120
+  Inventory.Icon "CELLA0"
+}
+Actor PumpSGEnergy : Ammo
+{
+  Inventory.MaxAmount 100
+  Ammo.BackpackMaxAmount 120
+  Inventory.Icon "CELLA0"
+}
+Actor RocketEnergy : Ammo
+{
+  Inventory.MaxAmount 100
+  Ammo.BackpackMaxAmount 120
+  Inventory.Icon "CELLA0"
+}
+Actor OVREnergy : Ammo
+{
+  Inventory.Amount 50
+  Inventory.MaxAmount 100
+  Ammo.BackpackMaxAmount 100
+  Inventory.Icon "CELLA0"
+  States
+  {
+	Spawn:
+	TNT1 A 1
+	loop
+  }
+}
+Actor OVRAltCharge: Ammo
+{
+  Inventory.MaxAmount 1
+  Ammo.BackpackMaxAmount 1
+  States
+  {
+	Spawn:
+	TNT1 A 1
+	loop
+  }
+}
+Actor SparkAltCD : Ammo
+{
+  Inventory.MaxAmount 70
+  Ammo.BackpackMaxAmount 70
+}
+Actor CarbineAltCD : Ammo
+{
+  Inventory.MaxAmount 245
+  Ammo.BackpackMaxAmount 245
+}
+Actor C14AltCD : Ammo
+{
+  Inventory.MaxAmount 350
+  Ammo.BackpackMaxAmount 350
+}
+Actor SMGAltCD : Ammo
+{
+  Inventory.MaxAmount 140
+  Ammo.BackpackMaxAmount 140
+}
+Actor PumpSGAltCD : Ammo
+{
+  Inventory.MaxAmount 140
+  Ammo.BackpackMaxAmount 140
+}
+Actor RocketAltCD : Ammo
+{
+  Inventory.MaxAmount 280
+  Ammo.BackpackMaxAmount 280
+}

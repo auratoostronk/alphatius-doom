@@ -1,0 +1,153 @@
+Actor TeslaSMG : Weapon replaces Chainsaw
+{
+	Radius 32
+	Decal PlasmaScorchLower
+	Obituary "%o was tased by %k."
+	Tag "Tesla SMG"
+	Weapon.UpSound "General/WeaponSwitch"
+	Weapon.BobSpeed 2.0
+	Weapon.BobStyle "Smooth"
+	Weapon.AmmoType1 "SMGEnergy"
+	Weapon.AmmoType2 "SMGEnergy"
+	Weapon.AmmoUse1 1
+	Weapon.AmmoUse2 20
+	+NEVERRESPAWN
+	+WEAPON.NOAUTOAIM
+	Weapon.SlotNumber 1
+	Weapon.SelectionOrder 500
+	Inventory.Icon "SMGPA0"
+	Inventory.RespawnTics 280 //8 seconds
+	States
+	{
+	Spawn:
+		SMGP A 1 bright
+		loop	
+	Ready:
+		SMGR A 1 A_WeaponReady
+		Loop
+	Deselect:
+		TNT1 A 0 ACS_NamedExecuteAlways("WeaponDeselect", 0)
+		SMGR AA 0 A_Lower
+		SMGR A 1 A_Lower
+		Loop
+	Select:
+		SMGR AA 0 A_Raise
+		SMGR A 1 A_Raise
+		Loop
+	Fire:
+		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
+		//TNT1 A 0 A_GiveInventory("TeslaSpeedBoost", 5)
+		TNT1 A 0 A_SpawnItemEX("YellowLightShoot")
+		TNT1 A 0 A_PlaySound("TeslaSMG/Fire", CHAN_WEAPON)
+		SMGF A 1 Bright A_FireCustomMissile("SMGProjectile", frandom(-0.3,0.3), true, 0, -3.0, 0, frandom(-0.3,0.3))
+		SMGF C 1  A_Recoil(-1)
+		TNT1 A 0 A_SpawnItemEX("YellowLightShoot")
+		TNT1 A 0 A_PlaySound("TeslaSMG/Fire", CHAN_WEAPON)
+		SMGF B 1 Bright A_FireCustomMissile("SMGProjectile", frandom(-0.3,0.3), true, 0, -3.0, 0, frandom(-0.3,0.3))
+		SMGF C 1
+		Goto Ready
+    AltFire:
+		SMGM ABC 1
+        TNT1 A 0 A_JumpIfInventory("SMGAltCD",1,"AltFail")
+        TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
+        TNT1 A 0 A_GiveInventory("SMGAltCD", 140)
+        TNT1 A 0 A_SpawnItemEX("YellowLightShoot")
+		TNT1 A 0 A_TakeInventory("SMGEnergy", 20) 			//For some reason this is neccessary even with the A_CustomPunch flags changed
+		TNT1 A 0 A_Recoil(-12)
+        SMGM D 1 Bright A_CustomPunch(70, true, !CPF_USEAMMO, "TeslaPuff", 128) 
+        SMGM EFDEFDEFDEF 1 Bright A_CustomPunch(70, true, !CPF_USEAMMO, "TeslaNoPuff", 128) 
+        Goto Ready
+	AltFail:
+		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
+		SMGR A 3 A_WeaponReady(WRF_NOSECONDARY)
+		Goto Ready
+	NoEnergy:
+		SMGR A 3 ACS_NamedExecuteAlways("WeaponNoEnergy")
+		Goto Ready
+	}
+}
+
+//Used to increase the user's speed while the user is firing.
+Actor TeslaSpeedBoost : Inventory { Inventory.MaxAmount 5 }
+
+Actor TaserProtection : PowerProtection
+{
+	DamageFactor "TeslaTaser", 0.0
+	Powerup.Duration 35
+}
+Actor SMGProjectile
+{
+	Projectile
+	Speed 32
+	Damage (10)
+	DamageType "TeslaSMG"
+	Radius 3
+	Height 4
+	Decal PlasmaScorchLower
+	Scale 0.2
+	+DONTSPLASH
+	+BRIGHT
+	Obituary "%o was zapped by %k"
+	States
+	{
+	Spawn:
+		ZAP7 ABCDE 1
+		loop
+	Death:
+		TNT1 AAAA 0 A_SpawnItemEX("SMGDeathFX", 0, 0, 0, frandom(4.0, -4.0), frandom(4.0, -4.0), frandom(4.0, -4.0), 0, SXF_NOCHECKPOSITION)
+		TNT1 A 1
+		Stop
+	}
+}
+Actor SMGDeathFX
+{
+	RenderStyle ADD
+	Scale 0.15
+	-NOGRAVITY
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	States
+	{
+		Spawn:
+		ZAP7 ABCDE 1 A_FadeOut(0.1)
+		loop
+	}
+}
+Actor TeslaPuff : BulletPuff
+{
+	Scale 0.3
+	+ALWAYSPUFF
+	+PUFFONACTORS
+	+BRIGHT
+	+NOBLOCKMAP
+	DamageType "TeslaTaser"
+	ActiveSound "TeslaSMG/AltFire"
+	AttackSound "TeslaSMG/AltFire"
+	SeeSound "TeslaSMG/AltFireHit"
+	Obituary "%o was tased by %k."
+	States
+	{
+	Spawn:
+		ZAP7 ABCDE 4
+		Stop
+	Melee:
+		ZAP7 ABCDE 4
+		Stop
+	}
+}
+Actor TeslaNoPuff : TeslaPuff
+{
+	ActiveSound ""
+	AttackSound ""
+	SeeSound "TeslaSMG/AltFireHit"
+	Obituary "%o was tased by %k."
+	States
+	{
+	Spawn:
+		TNT1 A 4
+		Stop
+	Melee:
+		TNT1 A 4
+		Stop
+	}
+}

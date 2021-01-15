@@ -1,0 +1,116 @@
+ACTOR ExplodeHitFlash
+{
+
+  RenderStyle Add
+  +NOGRAVITY
+  +FORCEXYBILLBOARD
+  Alpha 1.0
+  Radius 1
+  Height 1
+  States
+  {
+  Spawn:
+    TNT1 A 0 
+    BFSH B 1 Bright A_SetScale(0.04,0.04)
+	BFSH B 1 Bright A_SetScale(0.08,0.08)
+	BFSH B 0 A_PlaySound("CompactExplosion",CHAN_AUTO)
+	BFSH B 0 A_PlaySound("DistantExplosion",CHAN_AUTO)
+	BFSH B 1 Bright A_SetScale(0.19,0.19)
+	BFSH BBBBBBBBB 1 Bright A_FadeOut(0.1)
+	TNT1 A 20
+    Stop
+  }
+}
+ACTOR ExplodeHitFlash2
+{
+
+  RenderStyle Add
+  +NOGRAVITY
+  +FORCEXYBILLBOARD
+  Alpha 0.7
+  Radius 1
+  Height 1
+  States
+  {
+  Spawn:
+    TNT1 A 0 
+    BFSH B 1 Bright A_SetScale(0.08,0.08)
+	BFSH B 1 Bright A_SetScale(0.16,0.16)
+	BFSH B 1 Bright A_SetScale(0.38,0.38)
+	BFSH BBBBBBBBB 1 Bright A_FadeOut(0.07)
+	TNT1 A 20
+    Stop
+  }
+}
+ACTOR ExplodeSmokeRing
+{
+
+  RenderStyle Add
+  +NOGRAVITY
+  +FORCEXYBILLBOARD
+  Alpha 1
+  Radius 1
+  Height 1
+  Scale 0.1
+  States
+  {
+  Spawn:
+    BSW1 A 1 
+	BSW1 A 0 Bright A_FadeOut
+	BSW1 A 0 Bright A_SetScale(scalex+0.3,scaley+0.3)
+    Loop
+  }
+}
+ACTOR ExplodeSmokeSpawner
+{
+    Speed 1
+	Radius 1
+	Height 1
+    +NOBLOCKMAP
+	+MISSILE
+    +CLIENTSIDEONLY
+    +NOINTERACTION
+	+NOCLIP
+	+NOGRAVITY
+	States
+	{
+    Spawn:
+        TNT1 A 0 
+		TNT1 AAAAAAAAAAAAAAAAAA random(2,8) A_CustomMissile("ExplodeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+        Stop
+	}
+}
+ACTOR ExplodeSmoke
+{
+	Alpha 0.1
+	RenderStyle Add
+	Scale 0.45
+	Speed 1
+	VSpeed 7
+	+NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+	+MISSILE
+	+FORCEXYBILLBOARD
+    +CLIENTSIDEONLY
+    +NOINTERACTION
+	+NOGRAVITY
+	+BOUNCEONCEILINGS
+	+BOUNCEONWALLS
+	+BOUNCEONFLOORS
+	+THRUACTORS
+    States
+    {
+    Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIf(waterlevel > 1,"Death")
+		SMK3 BBB 2 A_FadeIn(0.1)
+		SMK3 B 20
+		TNT1 A 0 A_JumpIf(waterlevel > 1,"Death")
+		SMK3 CDEFGHIJKLM 3
+		Goto Death
+	Death:
+	    TNT1 A 0
+		Stop
+    }
+}

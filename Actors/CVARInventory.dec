@@ -1,0 +1,22 @@
+//When the player respawns, they get one of these based on what cvar they have
+//selected, so that even if the cvar changes, the inventory item won't. The ability
+//scripts use these inventory items instead of the cvar, so that your travel
+//abilities and such change only after dying.
+
+Actor TravelThrusterBoots : Inventory { Inventory.MaxAmount 1 }
+Actor TravelJumpThrust : Inventory { Inventory.MaxAmount 1 }
+Actor TravelWarpDrive : Inventory { Inventory.MaxAmount 1 }
+Actor TravelHyperdrive : Inventory { Inventory.MaxAmount 1 }
+
+/*Actor PerkBandolier : BackpackItem { Inventory.MaxAmount 1 }
+Actor PerkAdrenaline : Inventory { Inventory.MaxAmount 1 }
+Actor PerkSpeedDemon : Inventory { Inventory.MaxAmount 1 }
+Actor PerkRapidAlt : Inventory { Inventory.MaxAmount 1 }
+Actor PerkOverclocked : Inventory { Inventory.MaxAmount 1 }
+Actor PerkStalker : Inventory { Inventory.MaxAmount 1 }*/
+
+Actor ActionRegenZone : Inventory { Inventory.MaxAmount 1 }
+Actor ActionDisruptionScreen : Inventory { Inventory.MaxAmount 1 }
+Actor ActionPowerBrace : Inventory { Inventory.MaxAmount 1 }
+Actor ActionDecoyHologram : Inventory { Inventory.MaxAmount 1 }
+Actor ActionAutoDrone : Inventory { Inventory.MaxAmount 1 }

@@ -1,0 +1,25 @@
+DamageType TeslaSMG{}
+DamageType TeslaTaser{}
+
+DamageType ParticleSplitter{}
+DamageType ParticleSplitterAlt{}
+DamageType SGDecay{} 			//ParticleSplitterAlt2
+
+DamageType RocketCannon{}
+DamageType RocketCannonAlt{}	//Detonated
+
+DamageType C14{}
+DamageType ToxicGas{} 			 //C14Alt
+DamageType GammaBeam{}			 //C14Alt2
+
+DamageType SparkCannon{}
+DamageType SparkCannonAlt{} 	 //Explosive
+DamageType SparkCannonAlt2{}	 //Ripper
+
+DamageType PhotonCarbine{}		 //Auto
+DamageType PhotonCarbine2{}		 //Burst
+DamageType PhotonCarbineAlt{}	 //Grenade
+DamageType PhotonCarbineAlt2{}	 //Missile
+
+DamageType FluxDiscLauncher{}
+DamageType FluxDiscLauncherAlt{}

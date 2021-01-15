@@ -1,0 +1,97 @@
+//Used for dead stuff
+Actor IsDead : Inventory
+{
+	Inventory.MaxAmount 1
+}
+//Used to keep track of how many charges Thruster Boots has
+Actor ThrusterBootsCharge : Ammo
+{
+	Inventory.MaxAmount 2
+}
+//Used for Energy Regen
+Actor EnergyRechargeCD : Ammo
+{
+	Inventory.MaxAmount 70
+}
+//Travel ability cooldowns
+Actor TBootsCD : Ammo
+{
+	Inventory.MaxAmount 105
+}
+Actor WDriveCD : Ammo
+{
+	Inventory.MaxAmount 105
+}
+Actor JThrustCD : Ammo
+{
+	Inventory.MaxAmount 140
+}
+Actor HDriveCD : Ammo
+{
+	Inventory.MaxAmount 140
+}
+//Used for detonating missiles and Particle Cones etc.
+Actor AltFirePressed : Inventory
+{
+	Inventory.MaxAmount 1
+}
+Actor AltFireReleased : Inventory
+{
+	Inventory.MaxAmount 1
+}
+//Used to keep track of how long before the Alt Fire Fail message will appear next time the alt fire is used.
+Actor AltFireFailCD : Ammo
+{
+	Inventory.MaxAmount 18
+}
+//Used to prevent Low Energy sound from spamming. See ALPHLIB.acs
+Actor NoLowEnergySound : Inventory
+{
+	Inventory.MaxAmount 1
+}
+//To make recharge bars appear filled when they should be
+Actor FastActionCharge : Ammo
+{
+	Inventory.MaxAmount 350
+}
+//To make recharge bars appear filled when they should be
+Actor MediumActionCharge : Ammo
+{
+	Inventory.MaxAmount 525
+}
+//Action Ability 1's cooldown
+Actor Action1Charge : Ammo
+{
+	Inventory.MaxAmount 700
+}
+
+//For gas grenade. Tics before the player can travel again.
+//Given by gas grenade to nearby players every 4 tics. OLD
+Actor TicsNoTravel : Inventory
+{
+	Inventory.MaxAmount 5
+}
+//For gas grenade. Tics the player is slowed for.
+//Given by gas grenade to nearby players every 4 tics. OLD
+Actor TicsGasSlow : Inventory
+{
+	Inventory.MaxAmount 5
+}
+Actor HyperdriveSpeed : Inventory
+{
+	Inventory.MaxAmount 1
+}
+//For Warp Drive
+Actor PowerWarpInvisibility : PowerInvisibility
+{
+	Powerup.Strength 100
+	Powerup.Mode "Translucent"
+	Powerup.Duration 5
+}
+//For Warp Drive
+Actor PowerWarpInvulnerability : PowerInvulnerable
+{
+	Powerup.Duration 5
+}
+//Used by certain healing items to spawn HealFX particles
+Actor IsHealing : Inventory { Inventory.MaxAmount 1 }

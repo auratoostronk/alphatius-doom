@@ -1,0 +1,11 @@
+Actor DefaultMod : Inventory { Inventory.MaxAmount 1}
+Actor DefaultMod2 : Inventory { Inventory.MaxAmount 1}
+
+Actor CarbineStickyMod : Inventory { Inventory.MaxAmount 1}
+Actor CarbineMissileMod : Inventory { Inventory.MaxAmount 1}
+Actor ThrustTaserMod : Inventory { Inventory.MaxAmount 1}
+Actor C14BeamMod : Inventory { Inventory.MaxAmount 1}
+Actor PSGFlameMod : Inventory { Inventory.MaxAmount 1}
+Actor PSGDecayMod : Inventory { Inventory.MaxAmount 1}
+Actor SparkRipperMod : Inventory { Inventory.MaxAmount 1}
+Actor SparkSiphonMod : Inventory { Inventory.MaxAmount 1}
