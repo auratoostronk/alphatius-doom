@@ -1,0 +1,591 @@
+#library "DETHTYPE"
+#include "zcommon.acs"
+
+#import "ALPHLIB.acs"
+
+int totalKills[MAX_PLAYERS];
+int psgKills[MAX_PLAYERS];
+int psg2Kills[MAX_PLAYERS];
+int psgAltKills[MAX_PLAYERS];
+int psgAlt2Kills[MAX_PLAYERS];
+int tsmgKills[MAX_PLAYERS];
+int tsmgAltKills[MAX_PLAYERS];
+int	pcarbKills[MAX_PLAYERS];
+int	pcarb2Kills[MAX_PLAYERS];
+int	pcarbAltKills[MAX_PLAYERS];
+int	pcarbAlt2Kills[MAX_PLAYERS];
+int c14Kills[MAX_PLAYERS];
+int c14AltKills[MAX_PLAYERS];
+int c14Alt2Kills[MAX_PLAYERS];
+int sparkKills[MAX_PLAYERS];
+int spark2Kills[MAX_PLAYERS];
+int sparkAltKills[MAX_PLAYERS];
+int sparkAlt2Kills[MAX_PLAYERS];
+int rocketKills[MAX_PLAYERS];
+int rocketAltKills[MAX_PLAYERS];
+int ovrKills[MAX_PLAYERS];
+int ovrAltKills[MAX_PLAYERS];
+
+//Display Stats offset from the left of the screen.
+#define TEXT_LEFT_OFFSET 0.05
+//Display Stats offset from the right of the screen.
+#define TEXT_RIGHT_OFFSET 0.95
+//Offsets between each weapon stat when displayed.
+#define TEXT_YSPACING 0.03
+//Offset from teh top of the screen.
+#define TEXT_YOFFSET 4
+
+function void weapstats(str name, str db, int posY, str playerName, str color)
+{
+	int screenScale = GetCVAR("alph_textscale");
+	int screenw = GetScreenWidth() / 2;
+	int screenh = GetScreenHeight() / 2;
+	int scaledScreenW = FixedDiv(screenw, screenScale);
+	int scaledScreenH = FixedDiv(screenh, screenScale);
+	int textRX = ((scaledScreenW * TEXT_LEFT_OFFSET) >> 16);
+	int textLX = ((scaledScreenW * TEXT_RIGHT_OFFSET) >> 16);
+	int textY = ((scaledScreenH * TEXT_YSPACING * (posY + TEXT_YOFFSET)) >> 16);
+	SetHUDSize(scaledScreenW, scaledScreenH, false);
+	SetFont("SMALLFNT");
+	HUDMessage(s:"Kills with ", s:color, s:name, s:": "; HUDMSG_PLAIN, 1200 + posY, CR_UNTRANSLATED, (textRX << 16) + 0.1, (textY << 16), 15.0);
+	HUDMessage(s:color, i:getDBEntry(db, playerName) + totalKills[PlayerNumber()]; HUDMSG_PLAIN, 1250 + posY, CR_UNTRANSLATED, (textLX << 16) + 0.1, (textY << 16), 15.0);
+}
+
+script "DatabaseOpen" OPEN
+{
+
+	while(GetGameModeState() != 3)
+	{
+		delay(1);
+	}
+
+	BeginDBTransaction();
+	for(int i = 0; i < MAX_PLAYERS; i++)
+	{
+		//skip this instance of the loop if the player is not logged in or in game; check for next player.
+		if(!PlayerIsLoggedIn(i) || !PlayerInGame(i)) continue;
+		//increment stats
+		IncrementDBEntry("alph.kills", GetPlayerAccountName(i), totalKills[i]);
+		IncrementDBEntry("alph.psg.main1.kills", GetPlayerAccountName(i), psgKills[i]);
+		IncrementDBEntry("alph.psg.alt1.kills", GetPlayerAccountName(i), psgAltKills[i]);
+		IncrementDBEntry("alph.psg.alt2.kills", GetPlayerAccountName(i), psgAlt2Kills[i]);
+		IncrementDBEntry("alph.tsmg.main1.kills", GetPlayerAccountName(i), tsmgKills[i]);
+		IncrementDBEntry("alph.tsmg.main2.kills", GetPlayerAccountName(i), tsmgAltKills[i]);
+		IncrementDBEntry("alph.pcarb.main1.kills", GetPlayerAccountName(i), pcarbKills[i]);
+		IncrementDBEntry("alph.pcarb.main2.kills", GetPlayerAccountName(i), pcarb2Kills[i]);
+		IncrementDBEntry("alph.pcarb.alt1.kills", GetPlayerAccountName(i), pcarbAltKills[i]);
+		IncrementDBEntry("alph.pcarb.alt2.kills", GetPlayerAccountName(i), pcarbAlt2Kills[i]);
+		IncrementDBEntry("alph.c14.main1.kills", GetPlayerAccountName(i), c14Kills[i]);
+		IncrementDBEntry("alph.c14.alt1.kills", GetPlayerAccountName(i), c14AltKills[i]);
+		IncrementDBEntry("alph.c14.alt2.kills", GetPlayerAccountName(i), c14Alt2Kills[i]);
+		IncrementDBEntry("alph.spark.main1.kills", GetPlayerAccountName(i), sparkKills[i]);
+		IncrementDBEntry("alph.spark.main2.kills", GetPlayerAccountName(i), spark2Kills[i]);
+		IncrementDBEntry("alph.spark.alt1.kills", GetPlayerAccountName(i), sparkAltKills[i]);
+		IncrementDBEntry("alph.spark.alt2.kills", GetPlayerAccountName(i), sparkAlt2Kills[i]);
+		IncrementDBEntry("alph.rocket.main1.kills", GetPlayerAccountName(i), rocketKills[i]);
+		IncrementDBEntry("alph.rocket.alt1.kills", GetPlayerAccountName(i), rocketAltKills[i]);
+		IncrementDBEntry("alph.ovr.main1.kills", GetPlayerAccountName(i), ovrKills[i]);
+		IncrementDBEntry("alph.ovr.alt1.kills", GetPlayerAccountName(i), ovrAltKills[i]);
+	}
+	EndDBTransaction();
+}
+
+Script "DType_TeslaSMG" (void)
+{
+	//log(n:0, s:" died to Plasma Projectiles");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		tsmgKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Plasma Projectiles: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.tsmg.main1.kills", getPlayerAccountName(killerNum)) + tsmgKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_TeslaTaser" (void)
+{
+	//log(n:0, s:" died to Tesla Taser");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		tsmgAltKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Tesla Taser: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.tsmg.alt1.kills", getPlayerAccountName(killerNum)) + tsmgAltKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_ParticleSplitter" (void)
+{
+	//log(n:0, s:" died to Particle Spread");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		psgKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Particle Spread: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.psg.main1.kills", getPlayerAccountName(killerNum)) + psgKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_ParticleSplitter2" (void)
+{
+	//log(n:0, s:" died to Particle Spread");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		psg2Kills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using FluxThrower: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.psg.main2.kills", getPlayerAccountName(killerNum)) + psg2Kills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_ParticleSplitterAlt" (void)
+{
+	//log(n:0, s:" died to Particle Cone");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		psgAltKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Particle Cone: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.psg.alt1.kills", getPlayerAccountName(killerNum)) + psgAltKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_SGDecay" (void)
+{
+	//log(n:0, s:" died to Half-Life Slug");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		psgAlt2Kills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Half-Life Slug: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.psg.alt2.kills", getPlayerAccountName(killerNum)) + psgAlt2Kills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_RocketCannon" (void)
+{
+	//log(n:0, s:" died to Velocity Rocket");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		rocketKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Velocity Rocket: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.rocket.main1.kills", getPlayerAccountName(killerNum)) + rocketKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_RocketCannonAlt" (void)
+{
+	//log(n:0, s:" died to Rocket Detonator");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		rocketAltKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Rocket Detonator: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.rocket.alt1.kills", getPlayerAccountName(killerNum)) + rocketAltKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_C14" (void)
+{
+	//log(n:0, s:" died to Mini Cannon");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		c14Kills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Mini Cannon: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.c14.main1.kills", getPlayerAccountName(killerNum)) + c14Kills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_ToxicGas" (void)
+{
+	//log(n:0, s:" died to GAS-id Canister");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		c14AltKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Gas-id Canister: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.c14.alt1.kills", getPlayerAccountName(killerNum)) + c14AltKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_GammaBeam" (void)
+{
+	//log(n:0, s:" died to Gamma Beam");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		c14Alt2Kills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Gamma Beam: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.c14.alt2.kills", getPlayerAccountName(killerNum)) + c14Alt2Kills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_SparkCannon" (void)
+{
+	//log(n:0, s:" died to Spark Beam");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		sparkKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Spark Beam: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.spark.main1.kills", getPlayerAccountName(killerNum)) + sparkKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_SparkCannon2" (void)
+{
+	//log(n:0, s:" died to Siphon Beam");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		spark2Kills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Siphon Beam: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.spark.main2.kills", getPlayerAccountName(killerNum)) + spark2Kills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_SparkCannonAlt" (void)
+{
+	//log(n:0, s:" died to Explosive Railgun");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		sparkAltKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Explosive Railgun: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.spark.alt1.kills", getPlayerAccountName(killerNum)) + sparkAltKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_SparkCannonAlt2" (void)
+{
+	//log(n:0, s:" died to Piercing Railgun");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		sparkAlt2Kills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Piercing Railgun: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.spark.alt2.kills", getPlayerAccountName(killerNum)) + sparkAlt2Kills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_PhotonCarbine" (void)
+{
+	//log(n:0, s:" died to Auto Blast");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		pcarbKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Auto Blast: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.pcarb.main1.kills", getPlayerAccountName(killerNum)) + pcarbKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_PhotonCarbine2" (void)
+{
+	//log(n:0, s:" died to Mach Rounds");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		pcarb2Kills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Mach Rounds: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.pcarb.main2.kills", getPlayerAccountName(killerNum)) + pcarb2Kills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_PhotonCarbineAlt" (void)
+{
+	//log(n:0, s:" died to Energy Grenade");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		pcarbAltKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Energy Grenade: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.pcarb.alt1.kills", getPlayerAccountName(killerNum)) + pcarbAltKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_PhotonCarbineAlt2" (void)
+{
+	//log(n:0, s:" died to Energy Missile");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		pcarbAlt2Kills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using Energy Missile: "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.pcarb.alt2.kills", getPlayerAccountName(killerNum)) + pcarbAlt2Kills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_OVR9000" (void)
+{
+	//log(n:0, s:" died to Flux Discs");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		ovrKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using OVR-9000 (Primary): "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.ovr.main1.kills", getPlayerAccountName(killerNum)) + ovrKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_OVR9000Alt" (void)
+{
+	//log(n:0, s:" died to Flux Surged Discs");
+	if(PlayerIsBot(PlayerNumber())) terminate;
+	int initid = ActivatorTID();
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		int killerNum = PlayerNumber();
+		ovrAltKills[PlayerNumber()]++;
+		totalKills[PlayerNumber()]++;
+		bool killerIsLoggedIn = PlayerIsLoggedIn(PlayerNumber());
+		SetActivator(initid);
+		if(killerIsLoggedIn)
+		{
+			SetHUDSize(640, 400, false);
+			HUDMessage(s:GetPlayerAccountName(killerNum), s:"'s kills using OVR-9000 (Alt-Fire) "; HUDMSG_PLAIN, 0, CR_RED, 320.0, 220.0, 3.0);
+			HUDMessage(i:getDBEntry("alph.ovr.alt1.kills", getPlayerAccountName(killerNum)) + ovrAltKills[killerNum]; HUDMSG_PLAIN, 0, CR_RED, 320.0, 230.0, 3.0);
+		}
+	}
+}
+Script "DType_Unknown" (void)
+{
+	int initid = ActivatorTID();
+	log(n:0, s:" had an untrackable cause of death. Please report this bug.");
+	if(!IsPointerEqual(AAPTR_DEFAULT, AAPTR_TARGET))
+	{
+		SetActivator(0, AAPTR_TARGET);
+		totalKills[PlayerNumber()]++;
+		SetActivator(initid);
+	}
+}
+
+Script "DBDisplayKills" (void) net
+{
+	if(!PlayerIsLoggedIn(PlayerNumber()))
+	{
+		displayHUDText("You are either not logged in, not in a net game, or server settings are not correct.", 0.4, 5.0);
+		terminate;
+	}
+	//HUDMessage(s:"Total kills: ", i:getDBEntry("alph.kills", getPlayerAccountName(PlayerNumber())) + totalKills[PlayerNumber()]; HUDMSG_PLAIN, 0, CR_UNTRANSLATED, 640.0, 200.0, 5.0);
+	
+	weapstats("All Weapons", "alph.kills", 0, getPlayerAccountName(PlayerNumber()), "\cg");
+	
+	weapstats("Particle Spread", "alph.psg.main1.kills", 1, getPlayerAccountName(PlayerNumber()), "\ct");
+	weapstats("Particle Cone",	 "alph.psg.alt1.kills", 2, getPlayerAccountName(PlayerNumber()), "\ct");
+	weapstats("Half Life Slug",	 "alph.psg.alt2.kills", 3, getPlayerAccountName(PlayerNumber()), "\ct");
+	
+	weapstats("Plasma Projectiles", "alph.tsmg.main1.kills", 4, getPlayerAccountName(PlayerNumber()), "\cf");
+	weapstats("Tesla Taser", 		"alph.tsmg.alt1.kills", 5, getPlayerAccountName(PlayerNumber()), "\cf");
+	
+	weapstats("Auto Blast", 		"alph.pcarb.main1.kills", 6, getPlayerAccountName(PlayerNumber()), "\cv");
+	weapstats("Mach Rounds", 		"alph.pcarb.main2.kills", 7, getPlayerAccountName(PlayerNumber()), "\cv");
+	weapstats("Energy Grenade",		"alph.pcarb.alt1.kills", 8, getPlayerAccountName(PlayerNumber()), "\cv");
+	weapstats("Energy Missile",		"alph.pcarb.alt2.kills", 9, getPlayerAccountName(PlayerNumber()), "\cv");
+	
+	weapstats("Mini Cannon", 		"alph.c14.main1.kills", 10, getPlayerAccountName(PlayerNumber()), "\cd");
+	weapstats("Gas-id Canister", 	"alph.c14.alt1.kills", 11, getPlayerAccountName(PlayerNumber()), "\cd");
+	weapstats("Gamma Beam", 		"alph.c14.alt2.kills", 12, getPlayerAccountName(PlayerNumber()), "\cd");
+	
+	weapstats("Spark Beam", 		"alph.spark.main1.kills", 13, getPlayerAccountName(PlayerNumber()), "\cg");
+	weapstats("Siphon Beam", 		"alph.spark.main2.kills", 14, getPlayerAccountName(PlayerNumber()), "\cg");
+	weapstats("Explosive Railgun", 	"alph.spark.alt1.kills", 15, getPlayerAccountName(PlayerNumber()), "\cg");
+	weapstats("Piercing Railgun", 	"alph.spark.alt1.kills", 16, getPlayerAccountName(PlayerNumber()), "\cg");
+	
+	weapstats("Velocity Rocket", 	"alph.rocket.main1.kills", 17, getPlayerAccountName(PlayerNumber()), "\cc");
+	weapstats("Remote Detonation", 	"alph.rocket.alt1.kills", 18, getPlayerAccountName(PlayerNumber()), "\cc");
+	
+	weapstats("OVR-9000 Primary", 	"alph.ovr.main1.kills", 19, getPlayerAccountName(PlayerNumber()), "\cd");
+	weapstats("OVR-9000 Alt", 		"alph.ovr.alt1.kills", 20, getPlayerAccountName(PlayerNumber()), "\cd");
+}
+
+Script "DBStopDisplayKills" (void) net
+{
+	for(int i = 1200; i < 1300; i++)
+	{
+		HUDMessage(s:""; HUDMSG_PLAIN, i, CR_UNTRANSLATED, 0.0, 0.0, 1.0);
+	}
+}

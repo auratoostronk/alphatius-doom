@@ -1,0 +1,68 @@
+#library "PASSIVES"
+#include "zcommon.acs"
+#import "ALPHLIB.acs"
+
+Script "PassiveAbiltyTimer" ENTER
+{
+	while(true)
+	{
+		if(CheckInventory("PerkSpeedDemon") > 0)
+		{	
+			if(CheckInventory("ThrusterBootsCharge") < 2)
+			{
+				TakeInventory("TBootsCD", 1);
+			}	
+			TakeInventory("JThrustCD", 1);
+			TakeInventory("HDriveCD", 1);
+			TakeInventory("WDriveCD", 1);
+		}
+		if(CheckInventory("PerkRapidAlt") > 0)
+		{
+			TakeInventory("CarbineAltCD", 1);
+			TakeInventory("C14AltCD", 1);
+			TakeInventory("SMGAltCD", 1);
+			TakeInventory("PumpSGAltCD", 1);
+			TakeInventory("SparkAltCD", 1);
+		}
+		if(CheckInventory("PerkOverclocked") > 0)
+		{
+			GiveInventory("Action1Charge", 1);
+		}
+		delay(4);
+	}
+}
+Script "AdrenalineBoost" DEATH
+{
+	int inittid = ActivatorTID();
+	SetActivator(0, AAPTR_TARGET);
+	if(inittid == ActivatorTID())
+	{
+		terminate;
+	}
+	if(CheckInventory("PerkAdrenaline") > 0)
+	{
+		//displayHUDText("Adrenaline Boost! +20 HP! Speed boost!", 0.725, 3.5);
+		LocalAmbientSound("Passives/AdrenalineBoost", 127);
+		GiveInventory("AdrenalineBoostSpeedTics", 105);
+		ACS_NamedExecuteAlways("AdrenalineBoostHeal", 0);
+		//GiveInventory("AdrenalineBoost", 1);
+		//spawnHealFX(8);
+	}
+}
+Script "AdrenalineBoostHeal" (void)
+{
+	int healamount = 15;
+	for(int i = 0; i < healamount; i++)
+	{
+		if(ClassifyActor(0) & ACTOR_DEAD)
+		{
+			terminate;
+		}
+		if(GetActorProperty(0, APROP_HEALTH) < GetActorProperty(0, APROP_SPAWNHEALTH))
+		{
+			GiveInventory("Health", 1);
+			spawnHealFX(1);
+		}
+		delay(2);
+	}
+}

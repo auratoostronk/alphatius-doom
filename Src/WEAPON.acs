@@ -1,0 +1,68 @@
+#library "WEAPON"
+#include "zcommon.acs"
+
+Script "TeslaStaticPulse" (void)
+{
+	
+}
+Script "WeaponGlow" ENTER
+{
+	while(true)
+	{
+		if(GetWeapon() == "C14" || GetWeapon() == "C14Alt")
+		{
+			SpawnForced("GreenGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
+		}
+		if(GetWeapon() == "PhotonCarbine" || GetWeapon() == "PhotonCarbineAlt")
+		{
+			SpawnForced("BlueGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
+		}
+		if(GetWeapon() == "TeslaSMG" || GetWeapon() == "TeslaSMGAlt")
+		{
+			SpawnForced("YellowGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
+		}
+		if(GetWeapon() == "ParticleSplitter" || GetWeapon() == "ParticleSplitterAlt")
+		{
+			SpawnForced("PurpleGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
+		}
+		if(GetWeapon() == "SparkCannon" || GetWeapon() == "SparkCannonAlt")
+		{
+			SpawnForced("RedGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
+		}
+		if(GetWeapon() == "RocketCannon" || GetWeapon() == "RocketCannonAlt")
+		{
+			SpawnForced("GrayGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
+		}
+		if(GetWeapon() == "Flamespitter" || GetWeapon() == "FlamespitterAlt")
+		{
+			SpawnForced("OrangeGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
+		}
+		if(GetWeapon() == "OVR9000" || GetWeapon() == "OVR9000Alt")
+		{
+			SpawnForced("LightGreenGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
+		}
+		delay(1);
+	}
+}
+Script "OVRSpawn" (void)
+{
+	if(GetCVAR("alph_allowsuperweapons") == false)
+	{
+		Thing_Remove(0);
+	}
+}
+//For the Particle splitter's Decay mod. Flings decay pellets in multiple lateral directions when a player dies to a decay pellet.
+Script "PlayerDeathByThermite" (void)
+{
+	int initid = ActivatorTID();
+	SetActivator(0, AAPTR_TARGET);
+	int blastid = UniqueTID(1, 0);
+	SpawnProjectile(0, "ThermiteChainReact", 0, 0, 0, 0, blastid);
+	SetActorPosition(blastid, GetActorX(initid), GetActorY(initid), GetActorZ(initid) + 16.0, false);
+	/*for(int i = 0; i < 256; i += 8)
+	{
+		int projid = UniqueTID(1, 0);
+		SpawnSpot("ThermiteChainReactFX", 0, initid, i);
+		SetActorPosition(projid, GetActorX(initid), GetActorY(initid), GetActorZ(initid) + 16.0, false);
+	}*/
+}

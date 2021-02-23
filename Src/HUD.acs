@@ -1,0 +1,176 @@
+#library "HUD"
+#include "zcommon.acs"
+
+#import "ALPHLIB.acs"
+
+//A hud script that is called when the user tries to Alt-Fire while it's on cooldown.
+Script "AltFireFail" (void) 
+{
+	if(!(ClassifyActor(0) & ACTOR_BOT))
+	{
+		if(CheckInventory("AltFireFailCD") < 1)
+		{
+			displayHUDText("Alt-Fire on cooldown.", 0.6, 3.5, 1301);
+			LocalAmbientSound("General/Fail",96);
+			GiveInventory("AltFireFailCD", GetAmmoCapacity("AltFireFailCD"));
+		}
+	}
+}
+/*
+Script "CrosshairUpdater" ENTER CLIENTSIDE
+{
+	while(true)
+	{
+		str weap = GetWeapon();
+		if(weap == "PhotonCarbine")
+			DisplayCrosshair(0);
+		if(weap == "C14")
+			DisplayCrosshair(1);
+		if(weap == "ParticleSplitter")
+			DisplayCrosshair(2);
+		if(weap == "TeslaSMG")
+			DisplayCrosshair(3);
+		if(weap == "SparkCannon")
+			DisplayCrosshair(4);
+		if(weap == "RocketCannon")
+			DisplayCrosshair(5);
+		if(weap == "OVR9000")
+			DisplayCrosshair(6);
+		delay(1);
+	}
+}
+//Font Lumps
+str xhairs[7] = {"XH_CARB","XH_C14","XH_PSG","XH_TSMG", "XH_SPRK", "XH_RCKT","XH_OVR"};
+function void DisplayCrosshair (int xhairnum)
+{
+	//If the user wants to enable the custom crosshairs, draw it here.
+	if(GetCVAR("alph_enablexhair"))
+	{
+		//Scales crosshair according to user's CVAR set in the menu.
+		int xhairscale = GetCVAR("alph_xhairscale");
+		int screenw = GetScreenWidth();
+		int screenh = GetScreenHeight();
+        int scaledScreenW = FixedDiv(screenw, xhairscale);
+		//Since HUDMessage always uses a 4:3 ratio, we need to reverse that here. Hence the 0.75
+        int scaledScreenH = FixedDiv(FixedDiv(screenh, xhairscale), 0.75);
+		//0.5 is the center of the screen.
+		int xhairX = ((scaledScreenW * 0.5) >> 16);
+		int xhairY = ((scaledScreenH * 0.5) >> 16);
+		SetHUDSize(scaledScreenW, scaledScreenH, true);
+		SetFont(xhairs[xhairnum]);
+		HUDMessage(s:"A";HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP,0,CR_UNTRANSLATED, xhairX << 16, xhairY << 16, (1.0 / 35) + 1);
+	}
+	//otherwise, remove it.
+	else
+	{
+		HUDMessage(s:"";HUDMSG_PLAIN,0,CR_UNTRANSLATED,0.5,0.5, (1.0 / 35) + 1);
+	}
+}*/
+
+Script "StatusEffectHUD" ENTER CLIENTSIDE
+{
+	while(true)
+	{
+		str letters = "";
+		if(CheckInventory("IsHealing") > 0)
+		{
+			letters = StrParam(s:letters, s:"\cdHealing ");
+		}
+		if(CheckInventory("PowerBrace") > 0)
+		{
+			letters = StrParam(s:letters, s:"\chShielded ");
+		}
+		if(CheckInventory("DisruptionGrenadeDebuff") > 0)
+		{
+			letters = StrParam(s:letters, s:"\cfDemobilized ");
+		}
+		if(	CheckInventory("HyperdriveSpeed") > 0 || 
+			CheckInventory("SparkSpeedBoost") > 0 ||
+			CheckInventory("TeslaSpeedBoost") > 0)
+		{
+			letters = StrParam(s:letters, s:"\ckSpeed Boost ");
+		}
+		//log(s:letters);
+		displayHUDText(letters, 0.95, 1.0, 1308);
+		delay(1);
+	}
+}
+
+function void DisplayStatusEffect (str letters)
+{
+	//If the user wants to enable the custom crosshairs, draw it here.
+	if(true)
+	{
+		//Scales crosshair according to user's CVAR set in the menu.
+		int xhairscale = GetCVAR("alph_textscale");
+		int screenw = GetScreenWidth() / 2;
+		int screenh = GetScreenHeight() / 2;
+        int scaledScreenW = FixedDiv(screenw, xhairscale);
+		//Since HUDMessage always uses a 4:3 ratio, we need to reverse that here. Hence the 0.75
+        int scaledScreenH = FixedDiv(FixedDiv(screenh, xhairscale), 0.75);
+		//0.5 is the center of the screen.
+		int xhairX = ((scaledScreenW * 0.5) >> 16);
+		int xhairY = ((scaledScreenH * 0.9) >> 16);
+		SetHUDSize(scaledScreenW, scaledScreenH, true);
+		//SetFont("STATUSFX");
+		SetFont("BIGFONT");
+		HUDMessage(s:letters;HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP,0,CR_UNTRANSLATED, xhairX << 16, xhairY << 16, (1.0 / 35) + 1);
+	}
+	//otherwise, remove it.
+	else
+	{
+		HUDMessage(s:"";HUDMSG_PLAIN,0,CR_UNTRANSLATED,0.5,0.5, (1.0 / 35) + 1);
+	}
+}
+/*
+Script "DrawDiscGunBar" (void) CLIENTSIDE
+{
+	int maxCharge = 35;
+	int emergencyTimer = 0;
+	int screenw = GetScreenWidth() / 2;
+	int screenh = GetScreenHeight() / 2;
+	int screenScale = GetCVAR("alph_textscale");
+	int scaledScreenW = FixedDiv(screenw, screenScale);
+	int scaledScreenH = FixedDiv(screenh, screenScale);
+	int barSegmentX = ((scaledScreenW * 0.5) >> 16);
+	int barSegmentY = ((scaledScreenH * 0.575) >> 16);
+	int helperTextY = ((scaledScreenH * 0.55) >> 16);
+	SetHUDSize(scaledScreenW, scaledScreenH, false);
+	SetFont("SMALLFNT");
+	HUDMessage(s:"\cgPress \cf", k:"+attack";HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP, 0, CR_UNTRANSLATED, (barSegmentX << 16), (helperTextY << 16), 1.0, 0);
+	while(CheckInventory("DiscGunEmpoweredTics") > 0 && emergencyTimer < maxCharge)
+	{
+		SetFont("CHARGEND");
+		HUDMessage(s:"A";HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP,0,CR_UNTRANSLATED, (barSegmentX << 16) + ((maxCharge + 2) * 2.0), (barSegmentY << 16), (1.0 / 35) + 1);
+		HUDMessage(s:"A";HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP,0,CR_UNTRANSLATED, (barSegmentX << 16) - ((maxCharge + 2) * 2.0), (barSegmentY << 16), (1.0 / 35) + 1);
+		SetFont("CHARGBAR");
+		for(int j = 0; j < CheckInventory("DiscGunEmpoweredTics"); j++)
+		{	
+			HUDMessage(s:"A";HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP,0,CR_UNTRANSLATED, (barSegmentX << 16) + (j * 2.0), (barSegmentY << 16), (1.0 / 35) + 1);
+			HUDMessage(s:"A";HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP,0,CR_UNTRANSLATED, (barSegmentX << 16) - (j * 2.0), (barSegmentY << 16), (1.0 / 35) + 1);
+		}
+		emergencyTimer++;
+		delay(1);
+	}
+}*/
+/*
+Script "DisplayRocketDetonatableMessage" ENTER CLIENTSIDE
+{
+	while(true)
+	{
+		if((CheckInventory("RocketCounter") > 0 || CheckInventory("EnergyMissileCounter")) && (ClassifyActor(0) & ACTOR_ALIVE))
+		{
+			int screenScale = GetCVAR("alph_textscale");
+			int screenw = GetScreenWidth() / 2;
+			int screenh = GetScreenHeight() / 2;
+			int scaledScreenW = FixedDiv(screenw, screenScale);
+			int scaledScreenH = FixedDiv(screenh, screenScale);
+			int textX = ((scaledScreenW * 0.5) >> 16);
+			int textY = ((scaledScreenH * 0.7) >> 16);
+			SetHUDSize(scaledScreenW, scaledScreenH, false);
+			SetFont("SMALLFNT");
+			HUDMessage(s:"detonate with \cf", k:"+altattack";HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP, 0, CR_UNTRANSLATED, (textX << 16), (textY << 16), (1.0 / 35) + 1);
+		}
+		delay(1);
+	}
+}*/

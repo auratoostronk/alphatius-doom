@@ -1,0 +1,51 @@
+#library "STRAFJMP"
+#include "zcommon.acs"
+
+#import "ALPHLIB.acs"
+
+//The maximum floating-point angle per tic your mouse can turn before your movement speed boost stops increasing and starts decreasing. i.e. the "cap". 0.0 to 1.0
+//Keep in mind that your mouse speed is usually very low compared to the cap.
+#define MAX_TURN 0.015
+//The minimum floating-point angle per tic your mouse can turn to gain maximum increase in speed.
+//Unused
+#define MIN_TURN 0.0
+//Multiplier for how much speed turning produces. Applied after MAX_TURN is processed.
+#define SPEED_MULT 1.2
+
+script "StrafeJumpDisplayStats" (int turn, int speed, int boost) CLIENTSIDE
+{
+	SetHudSize(640, 400, true);
+	if(GetCVAR("alph_showups"))
+	{
+		HUDMessage(s:"speed"; HUDMSG_PLAIN, 				1302, CR_UNTRANSLATED, 320.0, 310.0, 1.0, 0);
+		HUDMessage(i:(speed >> 16); HUDMSG_PLAIN, 			1303, CR_UNTRANSLATED, 320.0, 320.0, 1.0, 0);
+		HUDMessage(s:"turning"; HUDMSG_PLAIN, 				1304, CR_UNTRANSLATED, 320.0, 330.0, 1.0, 0);
+		HUDMessage(i:turn; HUDMSG_PLAIN, 					1305, CR_UNTRANSLATED, 320.0, 340.0, 1.0, 0);
+		HUDMessage(s:"speed boost amount"; HUDMSG_PLAIN, 	1306, CR_UNTRANSLATED, 320.0, 350.0, 1.0, 0);
+		HUDMessage(i:boost; HUDMSG_PLAIN, 					1307, CR_UNTRANSLATED, 320.0, 360.0, 1.0, 0);
+	}
+}
+script "StrafeJumpEnter" ENTER
+{
+	while(true)
+	{
+		int velx = GetActorVelX(0);
+		int vely = GetActorVelY(0);
+		int velz = GetActorVelZ(0);
+		int turnamt = abs(GetPlayerInput(-1, INPUT_YAW));
+		int oldturn = turnamt;
+		int latspeed = FixedMul(velx, velx) + FixedMul(vely, vely);
+		if(turnamt > MAX_TURN)
+		{
+			turnamt = MAX_TURN - turnamt;
+			if(turnamt < 0)
+			{
+				turnamt = 0;
+			}
+		}
+		turnamt = FixedMul(turnamt, SPEED_MULT);
+		SetActorVelocity(0, velx + FixedMul(velx, turnamt), vely + FixedMul(vely, turnamt), velz, false, true);
+		ACS_NamedExecuteAlways("StrafeJumpDisplayStats", 0, oldturn, latspeed, turnamt); 
+		delay(1);
+	}
+}
