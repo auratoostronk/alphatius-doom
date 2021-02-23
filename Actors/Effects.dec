@@ -12,20 +12,6 @@ Actor HealFX
 		loop
 	}
 }
-ACTOR TeleportFogQuiet
-{
-  +NOBLOCKMAP
-  +NOTELEPORT
-  +NOGRAVITY
-  RenderStyle Add
-  States
-  {
-  Spawn:
-	TNT1 A 0 nodelay A_PlaySound("StalkerTeleport", CHAN_AUTO, 1.0)
-    TFOG ABABCDEFGHIJ 6 Bright
-    Stop
-  }
-}
 Actor NoPuff : BulletPuff
 {
 	Projectile

@@ -25,6 +25,8 @@ ACTOR YellowLight : RedLight
 {}
 ACTOR OrangeLight : RedLight
 {}
+ACTOR GreyLight : RedLight
+{}
 
 ACTOR BlueLightShoot : RedLight
 {}
@@ -37,6 +39,8 @@ ACTOR YellowLightShoot : RedLight
 ACTOR RedLightShoot : RedLight
 {}
 ACTOR OrangeLightShoot : RedLight
+{}
+ACTOR GreyLightShoot : RedLight
 {}
 
 ACTOR BlueGlowSpawner

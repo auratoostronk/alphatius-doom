@@ -1,14 +1,14 @@
 Actor PowerBrace : PowerProtection
 {
-	DamageFactor "Normal", 0.25
+	DamageFactor "Normal", 0.0
 	//DamageFactor "OVR9000", 1.0
 	//DamageFactor "OVR9000Alt", 1.0
-	Powerup.Duration 35
+	Powerup.Duration 25
 	SeeSound "Actions/PowerBraceOn"
 	ActiveSound "Actions/PowerBraceHit"
 	DeathSound "Actions/PowerBraceOff"
 }
-Actor PowerBraceGiver : CustomInventory
+/*Actor PowerBraceGiver : CustomInventory
 {
 	States
 	{
@@ -17,7 +17,7 @@ Actor PowerBraceGiver : CustomInventory
 		TNT1 A 0 ACS_NamedExecuteAlways("PowerBraceBubbleFX", 0)
 		Stop
 	}
-}
+}*/
 
 Actor PowerBraceBubble
 {

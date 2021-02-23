@@ -1,5 +1,6 @@
 actor SpaceShip 10002
 {
+	//$Category Alphatius Decorations
     Radius 96
     Height 64
 	Mass 0x7fffffff
@@ -17,65 +18,9 @@ actor SpaceShip 10002
         Loop
     }
 }
-Actor SpaceshipHitboxBackCenter 10003
-{
-    Radius 64
-    Height 64
-	Mass 0x7fffffff
-	+NOBLOOD
-	+SHOOTABLE
-    +NOGRAVITY
-	+NODAMAGE
-	+DONTOVERLAP
-	-COUNTKILL
-	+SOLID
-    States
-    {
-    Spawn:
-        TNT1 A 1
-        Loop
-    }
-}
-Actor SpaceshipHitboxBackWings 10004
-{
-    Radius 48
-    Height 128
-	Mass 0x7fffffff
-	+NOBLOOD
-	+SHOOTABLE
-    +NOGRAVITY
-	+NODAMAGE
-	+DONTOVERLAP
-	-COUNTKILL
-	+SOLID
-    States
-    {
-    Spawn:
-        TNT1 A 1
-        Loop
-    }
-}
-Actor SpaceshipHitboxFrontNose 10005
-{
-    Radius 32
-    Height 64
-	Mass 0x7fffffff
-	+NOBLOOD
-	+SHOOTABLE
-    +NOGRAVITY
-	+NODAMAGE
-	+DONTOVERLAP
-	-COUNTKILL
-	+SOLID
-    States
-    {
-    Spawn:
-        TNT1 A 1
-        Loop
-    }
-}
 Actor SpaceShipSmall : Spaceship
 {
+	//$Category Alphatius Decorations
 	Radius 16
 	Height 8
 	-SOLID
@@ -86,6 +31,7 @@ Actor SpaceShipSmall : Spaceship
 //crystals**************************************************
 actor 3dObject
 {
+	//$Category Alphatius Decorations
 	+SOLID
 	+NOBLOCKMAP
 	+NOTAUTOAIMED

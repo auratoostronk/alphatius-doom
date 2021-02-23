@@ -1,5 +1,6 @@
 Actor NewMedikit : Medikit replaces Medikit
 {
+	//$Category Alphatius Pickups
 	Radius 24
 	Height 16
 	Inventory.Amount 40
@@ -12,6 +13,7 @@ Actor NewMedikit : Medikit replaces Medikit
 }
 Actor NewStimpack : Stimpack replaces Stimpack
 {
+	//$Category Alphatius Pickups
 	Radius 16
 	Height 16
 	Inventory.Amount 10

@@ -20,3 +20,7 @@ Actor ActionDisruptionScreen : Inventory { Inventory.MaxAmount 1 }
 Actor ActionPowerBrace : Inventory { Inventory.MaxAmount 1 }
 Actor ActionDecoyHologram : Inventory { Inventory.MaxAmount 1 }
 Actor ActionAutoDrone : Inventory { Inventory.MaxAmount 1 }
+
+Actor GrenadeTypeIncendiary : Inventory { Inventory.MaxAmount 1 }
+Actor GrenadeTypeBounce : Inventory { Inventory.MaxAmount 1 }
+Actor GrenadeTypeDisc : Inventory { Inventory.MaxAmount 1 }

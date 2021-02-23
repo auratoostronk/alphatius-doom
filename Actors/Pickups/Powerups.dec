@@ -1,5 +1,7 @@
+//This allows players to use their action ability an extra time. See "TRAVEL.acs" for implementation.
 Actor ExtraTravelCharge : Ammo 12000
 { 
+	//$Category Alphatius Pickups
 	Radius 24
 	Height 48
 	Inventory.Amount 1
@@ -16,22 +18,10 @@ Actor ExtraTravelCharge : Ammo 12000
 		loop
 	}
 }
-Actor TravelPickupFX
-{
-	+CLIENTSIDEONLY
-	+NOINTERACTION
-	+BRIGHT
-	Scale 0.5
-	States
-	{
-		Spawn:
-		TRES ABCDEFGHIJ 3
-		TNT1 A 3
-		stop
-	}
-}
-Actor ActionResetter : CustomInventory 12001
+//NYI.
+Actor ActionResetter : Ammo 12001
 { 
+	//$Category Alphatius Pickups
 	Radius 24
 	Height 48
 	Inventory.Amount 1
@@ -50,17 +40,29 @@ Actor ActionResetter : CustomInventory 12001
 		stop
 	}
 }
-Actor ActionPickupFX
+
+Actor AlphatiusPowerup : CustomInventory 12012
 {
-	+CLIENTSIDEONLY
-	+NOINTERACTION
+	Radius 24
+	Height 48
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+	Inventory.RespawnTics 2100 //60 seconds
+	+FLOATBOB
 	+BRIGHT
-	Scale 0.5
 	States
 	{
 		Spawn:
-		ARES ABCDEFGHIJ 3
-		TNT1 A 3
+		SOUL ABCDCBABCD 4
+		loop
+		Pickup:
+		TNT1 A 0 ACS_NamedExecuteAlways("PowerupPickup", 0)
 		stop
 	}
+}
+
+Actor PowerRapidAlt : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
 }

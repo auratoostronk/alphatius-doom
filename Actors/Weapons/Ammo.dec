@@ -1,7 +1,7 @@
 Actor SparkEnergy : Ammo
 {
-  Inventory.MaxAmount 80
-  Ammo.BackpackMaxAmount 100
+  Inventory.MaxAmount 100
+  Ammo.BackpackMaxAmount 120
   Inventory.Icon "CELLA0"
 }
 Actor CarbineEnergy : Ammo
@@ -34,6 +34,12 @@ Actor RocketEnergy : Ammo
   Ammo.BackpackMaxAmount 120
   Inventory.Icon "CELLA0"
 }
+Actor FlameEnergy : Ammo
+{
+  Inventory.MaxAmount 100
+  Ammo.BackpackMaxAmount 120
+  Inventory.Icon "CELLA0"
+}
 Actor OVREnergy : Ammo
 {
   Inventory.Amount 50
@@ -60,13 +66,13 @@ Actor OVRAltCharge: Ammo
 }
 Actor SparkAltCD : Ammo
 {
-  Inventory.MaxAmount 70
-  Ammo.BackpackMaxAmount 70
+  Inventory.MaxAmount 50
+  Ammo.BackpackMaxAmount 50
 }
 Actor CarbineAltCD : Ammo
 {
-  Inventory.MaxAmount 245
-  Ammo.BackpackMaxAmount 245
+  Inventory.MaxAmount 175
+  Ammo.BackpackMaxAmount 175
 }
 Actor C14AltCD : Ammo
 {
@@ -75,8 +81,8 @@ Actor C14AltCD : Ammo
 }
 Actor SMGAltCD : Ammo
 {
-  Inventory.MaxAmount 140
-  Ammo.BackpackMaxAmount 140
+  Inventory.MaxAmount 105
+  Ammo.BackpackMaxAmount 105
 }
 Actor PumpSGAltCD : Ammo
 {
@@ -87,4 +93,9 @@ Actor RocketAltCD : Ammo
 {
   Inventory.MaxAmount 280
   Ammo.BackpackMaxAmount 280
+}
+Actor FlameAltCD : Ammo
+{
+  Inventory.MaxAmount 140
+  Ammo.BackpackMaxAmount 140
 }

@@ -1,10 +1,12 @@
 ACTOR SoundActor
 {
+	//$Category Alphatius Sounds
 	+NOINTERACTION
 }
 
-ACTOR TeleportHumSpawner : SoundActor 10007
+ACTOR TeleportHumSpawner : SoundActor 10003
 {
+	//$Category Alphatius Sounds
 	States
 	{
 		Spawn:

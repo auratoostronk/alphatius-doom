@@ -12,8 +12,8 @@ actor DigitBase
 	States
 	{
 		Spawn:
-			TNT1 A 1
-			stop
+		TNT1 A 1
+		stop
 	}
 }
 

@@ -1,17 +1,14 @@
-ACTOR SparkCannon : Weapon replaces Chaingun
+ACTOR SparkCannon : Weapon 10009
 {
+	//$Category Alphatius Weapons
 	Radius 32
 	Decal RailScorchLower
 	Obituary "%o was killed by %k's \"laser beam\""
 	Tag "Spark Cannon"
-	Weapon.UpSound "General/WeaponSwitch"
-	Weapon.BobSpeed 2.0
-	Weapon.BobStyle "Smooth"
 	Weapon.AmmoType1 "SparkEnergy"
 	Weapon.AmmoType2 "SparkEnergy"
 	Weapon.AmmoUse1 1
 	Weapon.AmmoUse2 20
-	+NEVERRESPAWN
 	+WEAPON.NOAUTOAIM
 	+BLOODLESSIMPACT
 	Weapon.SlotNumber 4
@@ -38,52 +35,32 @@ ACTOR SparkCannon : Weapon replaces Chaingun
 		SPKR C 1 A_Lower
 		Loop
 	Select:
-		TNT1 AA 0 A_Lower
-		SPKR A 1 A_Lower
-		TNT1 AA 0 A_Lower
-		SPKR B 1 A_Lower
-		TNT1 AA 0 A_Lower
-		SPKR C 1 A_Lower
+		TNT1 AA 0 A_Raise
+		SPKR A 1 A_Raise
+		TNT1 AA 0 A_Raise
+		SPKR B 1 A_Raise
+		TNT1 AA 0 A_Raise
+		SPKR C 1 A_Raise
 		Loop
 	Fire:
+		//TNT1 A 0 A_JumpIf(CallACS("HoldingGrenadeSphere") == 1, "GrenadeCooloff")
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
-		//TNT1 A 0 A_JumpIfInventory("SparkSiphonMod", 1, "FireSiphon")
 		TNT1 A 0 A_SpawnItemEX("RedLightShoot")
 		TNT1 A 0 A_PlaySound("SparkCannon/Fire", CHAN_WEAPON, 1.0, true)
-		SPKF A 1 Bright A_RailAttack(4,0,true,"none","none",RGF_SILENT,0,"LaserSparkDot",0,0,600.0,1,8.0,0,"LaserSpark", -2)
+		SPKF A 1 Bright A_RailAttack(4,0,true,"none","none",RGF_SILENT,0,"LaserSparkDot",0,0,640.0,1,8.0,0,"LaserSpark", -2)
 		TNT1 A 0 A_Refire("Fire")
 		SPKF E 1 A_PlaySound("SparkCannon/FireStop", CHAN_WEAPON, 1.0, false)
 		Goto Ready
-	/*FireSiphon:
-		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
-		TNT1 A 0 A_SpawnItemEX("RedLightShoot")
-		TNT1 A 0 A_PlaySound("SparkCannon/Fire", CHAN_WEAPON, 1.0, true)
-		SPKF A 1 Bright A_RailAttack(4,0,true,"none","none",RGF_SILENT,0,"SparkSiphonPuff",0,0,440.0,1,8.0,0,"LaserSpark", -2)
-		TNT1 A 0 A_Refire("Fire")
-		SPKF E 1 A_PlaySound("SparkCannon/FireStop", CHAN_WEAPON, 1.0, false)
-		Goto Ready*/
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("SparkAltCD", 1, "AltFail")
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
-		TNT1 A 0 A_JumpIfInventory("SparkRipperMod", 1, "AltFireRipper")
-		SPKF ABCD 1 Bright //A_PlayWeaponSound("SparkCannon/Charge")
-		TNT1 A 0 A_SpawnItemEX("RedLightShoot")
-		TNT1 A 0 A_PlaySound("SparkCannon/AltFire", CHAN_WEAPON)
-		TNT1 A 0 A_Recoil(8)
-		TNT1 A 0 A_FireBullets(0.0, 0.0, 1, 0, "SparkExplodeSpot", !FBF_USEAMMO)
-			//Damage is in the SparkExplodeSpot puff
-		SPKF E 1 Bright A_RailAttack(0,0,true,"none","none",RGF_SILENT|RGF_NOPIERCING,0,"LaserSparkDot2",0,0,16384.0,2,8.0,0,"LaserSpark2", -2)
-		TNT1 A 0 A_GiveInventory("SparkAltCD", 70)
-		SPKR EABCABC 2
-		Goto Ready
-	AltFireRipper:
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		SPKF ABCD 1 Bright //A_PlayWeaponSound("SparkCannon/Charge")
 		TNT1 A 0 A_SpawnItemEX("RedLightShoot")
 		TNT1 A 0 A_PlaySound("SparkCannon/AltFire", CHAN_WEAPON)
 		TNT1 A 0 A_Recoil(8)
-		SPKF E 1 Bright A_RailAttack(60,0,true,"none","none",RGF_SILENT,0,"LaserSparkDot3",0,0,16384.0,2,8.0,0,"LaserSpark2", -2)
-		TNT1 A 0 A_GiveInventory("SparkAltCD", 70)
+		SPKF E 1 Bright A_RailAttack(55,0,true,"none","none",RGF_SILENT,0,"LaserSparkDot2",0,0,16384.0,2,8.0,0,"LaserSpark2", -2)
+		TNT1 A 0 A_GiveInventory("SparkAltCD", 50)
 		SPKR EABCABC 2
 		Goto Ready
 	AltFail:
@@ -95,6 +72,10 @@ ACTOR SparkCannon : Weapon replaces Chaingun
 		TNT1 A 0 A_PlaySound("SparkCannon/FireStop", CHAN_WEAPON, 1.0, false)
 		TNT1 A 0 A_StopSound(CHAN_WEAPON)
 		SPKR ABC 1
+		Goto Ready
+	GrenadeCooloff:
+		SPKR A 1
+		TNT1 A 0 A_Refire("GrenadeCooloff")
 		Goto Ready
   }
 }
@@ -121,7 +102,7 @@ Actor LaserSpark2 : LaserSpark
 		RSPK A 3
 		Goto Spawn1
 	Spawn1:
-	    RSPK A 1 Bright A_FadeOut(0.1)
+	    RSPK A 1 Bright A_FadeOut(0.05)
 		Loop
 	}
 }
@@ -144,10 +125,11 @@ Actor LaserSparkDot : BulletPuff
 	Spawn:
 	Melee:
 	Crash:
-	    ZAP8 ABCDE 1 A_FadeOut(0.20)
+	    ZAP8 ABCDE 1 A_FadeOut(0.2)
 		Stop
 	}
 }
+/*
 Actor SparkSiphonPuff : BulletPuff
 {
 	+PUFFONACTORS
@@ -176,13 +158,14 @@ Actor SparkSiphonPuff : BulletPuff
 	    ZAP8 ABCDE 1 A_FadeOut(0.20)
 		Stop
 	}
-}
+}*/
 Actor LaserSparkDot2 : LaserSparkDot
 {
 	DamageType "SparkCannonAlt"
 	Obituary "%o was railed by %k"
 	ProjectileKickback 0
 }
+/*
 Actor LaserSparkDot3 : LaserSparkDot
 {
 	DamageType "SparkCannonAlt2"
@@ -213,4 +196,4 @@ Actor SparkExplodeSpot : BulletPuff
 		TNT1 A 1
 		stop
 	}
-}
+}*/

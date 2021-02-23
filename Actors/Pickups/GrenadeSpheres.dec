@@ -1,0 +1,154 @@
+Actor GrenadeSpherePickup : CustomInventory 12015
+{
+	//$Category Alphatius Pickups
+	Radius 16
+	Height 56
+	+FLOATBOB
+	+BRIGHT
+	Inventory.RespawnTics 700 //20 seconds
+	States
+	{
+		Spawn:
+		BNCG ABCD 6
+		DISG ABCD 6
+		INFG ABCD 6
+		loop
+		Pickup:
+		TNT1 A 0 A_JumpIfInventory("GrenadeTypeIncendiary", 1, "PickupIncendiary")
+		TNT1 A 0 A_JumpIfInventory("GrenadeTypeBounce", 1, "PickupBounce")
+		TNT1 A 0 A_JumpIfInventory("GrenadeTypeDisc", 1, "PickupDisc")
+		Goto PickupIncendiary
+		PickupIncendiary:
+		TNT1 A 0 A_GiveInventory("IncendiaryGrenadeReady", 1)
+		Stop
+		PickupBounce:
+		TNT1 A 0 A_GiveInventory("BounceGrenadeReady", 1)
+		Stop
+		PickupDisc:
+		TNT1 A 0 A_GiveInventory("DiscGrenadeReady", 1)
+		Stop
+	}
+}
+
+Actor IncendiaryGrenadeReady : Inventory { Inventory.MaxAmount 1 }
+Actor BounceGrenadeReady : Inventory { Inventory.MaxAmount 1 }
+Actor DiscGrenadeReady : Inventory { Inventory.MaxAmount 1 }
+
+Actor FireIncendiaryGrenade : CustomInventory
+{
+	States
+	{
+		Pickup:
+		TNT1 A 0 A_PlaySound("Grenades/IncendiaryShoot", CHAN_AUTO)
+		TNT1 A 0 A_FireCustomMissile("IncendiaryGrenadeThrown", 0, false, 0, -1.0)
+		Stop
+	}
+}
+Actor FireBounceGrenade : CustomInventory
+{
+	States
+	{
+		Pickup:
+		TNT1 A 0 //A_FireCustomMissile("IncendiaryGrenadeThrown", 0, false, 0, -1.0)
+		Stop
+	}
+}
+Actor FireDiscGrenade : CustomInventory
+{
+	States
+	{
+		Pickup:
+		TNT1 A 0 //A_FireCustomMissile("IncendiaryGrenadeThrown", 0, false, 0, -1.0)
+		Stop
+	}
+}
+
+Actor HeldIncendiaryGrenade
+{
+	+NOGRAVITY
+	+DONTSPLASH
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	+BRIGHT
+	Alpha 0.7
+	States
+	{
+		Spawn:
+		INFS A 2
+		Goto Death
+	}
+}
+
+
+Actor IncendiaryGrenadeThrown
+{
+	Height 24
+	Radius 12
+	Projectile
+	Speed 48
+	-NOGRAVITY
+	Damage (30)
+	States
+	{
+		Spawn:
+		INFS ABCD 2
+		loop
+		Death:
+		TNT1 A 0 A_PlaySound("CompactExplosion", CHAN_6, 1.0, true)
+		TNT1 A 0 A_PlaySound("Grenades/IncendiaryBurn", CHAN_7, 1.0, true)
+		TNT1 A 0 A_SpawnItemEX("IncendiaryGrenadeDamage", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+		//TNT1 A 0 A_SpawnItemEX("C14GasSlow", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+		//TNT1 A 0 A_SpawnItemEX("C14GasTravelStopper", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_SpawnItemEX("IncendiaryGrenadeFX", 0.0, 0.1, 16.0, frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(0.0, 4.0))
+		TNT1 A 1 A_StopSound(CHAN_7)
+		stop
+	}
+}
+Actor IncendiaryGrenadeFX
+{
+	Alpha 0.6
+	RenderStyle Add
+	Radius 2
+	Height 2
+	+NOBLOCKMAP
+    +NOTELEPORT
+    +DONTSPLASH
+	+MISSILE
+    +NOINTERACTION
+	+NOGRAVITY
+	+BOUNCEONCEILINGS
+	+BOUNCEONWALLS
+	+BOUNCEONFLOORS
+	+THRUACTORS
+	Speed 10
+	Scale 1.2
+	States
+	{
+	Spawn:
+		OFLM ABCDEFG 4 
+	Death:
+		TNT1 A 1
+		stop
+			
+	}
+}
+Actor IncendiaryGrenadeDamage
+{
+	+THRUACTORS
+	+NOGRAVITY
+	+NODAMAGETHRUST
+	+DONTSPLASH
+	Obituary "%o jumped into %k's little campfire."
+	args 0, 0
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_Explode(10, 192, XF_HURTSOURCE, true, 192)
+		TNT1 A 0 A_SetArg(1, args[1] + 1)
+		TNT1 A 4 A_JumpIf(args[1] > 35, "Death")
+		loop
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}

@@ -20,7 +20,7 @@ Actor TBootsCD : Ammo
 }
 Actor WDriveCD : Ammo
 {
-	Inventory.MaxAmount 105
+	Inventory.MaxAmount 140
 }
 Actor JThrustCD : Ammo
 {

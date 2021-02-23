@@ -10,8 +10,8 @@ Actor AlphatiusPlayer : PlayerPawn
 	Player.CrouchSprite "PLYC"
 	Player.MaxHealth 100
 	Player.MugshotMaxHealth -1
-	Player.ForwardMove 1.5, 0.75
-	Player.SideMove 1.7, 0.85
+	Player.ForwardMove 1.8, 0.9
+	Player.SideMove 2.0, 1.0
 	Player.DisplayName "Alphatius Player"
 	Player.ColorRange 112, 127
 	Player.JumpZ 8.0
@@ -19,7 +19,6 @@ Actor AlphatiusPlayer : PlayerPawn
 	Player.StartItem "C14RespawnProtection1"
 	Player.StartItem "C14RespawnProtection2"
 	Species "PlayerRelated"
-	DamageFactor "StickyPlasma", 0.5
 	+TELESTOMP
 	States
 	{
@@ -44,12 +43,24 @@ Actor AlphatiusPlayer : PlayerPawn
 	Pain.TeslaTaser:
 		TNT1 A 0 A_GiveInventory("TaserProtection", 1)
 		Goto Pain
-	Death.SGDecay:
+	Pain.FlamespitterThermite:
+		TNT1 A 0 A_GiveInventory("ThermiteDebuff", 105)
+		Goto Pain
+	/*Death.SGDecay:
 		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByDecayPellet",0)
 		Goto Death
 	XDeath.SGDecay:
 		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByDecayPellet",0)
+		Goto XDeath*/
+	Death.FlamespitterThermite:
+		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByThermite",0)
+		Goto Death
+	XDeath.FlamespitterThermite:
+		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByThermite",0)
 		Goto XDeath
+	Death.FlamespitterFlames:
+		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "Death.FlamespitterThermite")
+		Goto Death
 	Death:
 		TNT1 A 0 ACS_NamedExecuteAlways("DamagePlayerPain", 0)
 		TNT1 AAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
@@ -58,6 +69,9 @@ Actor AlphatiusPlayer : PlayerPawn
 		PLAY IJKLM 3
 		PLAY N -1
 		stop
+	XDeath.FlamespitterFlames:
+		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "XDeath.FlamespitterThermite")
+		Goto XDeath
 	XDeath:
 		TNT1 A 0 ACS_NamedExecuteAlways("DamagePlayerPain", 0)
 		TNT1 AAAAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 

@@ -1,7 +1,7 @@
-Actor TargetDummy 10006
+Actor TargetDummy 10015
 {
 	Speed 0
-	Health 100
+	Health 1
 	Radius 16
 	Height 56
 	Mass 100
@@ -11,7 +11,6 @@ Actor TargetDummy 10006
 	States
 	{
 	Spawn:
-		TNT1 A 0 nodelay ACS_NamedExecuteAlways("TargetDummySpawn", 0)
 		PLAY A 2
 		Goto See
 	See:
@@ -21,15 +20,6 @@ Actor TargetDummy 10006
 		PLAY G 3 Bright 
 		PLAY G 3 Bright A_Pain
 		Goto Spawn
-	Pain.TeslaTaser:
-		TNT1 A 0 A_GiveInventory("TaserProtection", 1)
-		Goto Pain
-	Death.SGDecay:
-		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByDecayPellet",0)
-		Goto Death
-	XDeath.SGDecay:
-		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByDecayPellet",0)
-		Goto XDeath
 	Death:
 		TNT1 AAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
 		PLAY G 2
