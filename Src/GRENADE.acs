@@ -1,0 +1,48 @@
+#library "GRENADE"
+#include "zcommon.acs"
+
+Script "HoldingGrenadeSphere" (void)
+{
+	if(CheckInventory("IncendiaryGrenadeReady") > 0)
+	{
+		GiveInventory("FireIncendiaryGrenade", 1);
+		TakeInventory("IncendiaryGrenadeReady", 1);
+		SetResultValue(1);
+		terminate;
+	}
+	else if(CheckInventory("BounceGrenadeReady") > 0)
+	{
+		GiveInventory("FireBounceGrenade", 1);
+		TakeInventory("BounceGrenadeReady", 1);
+		SetResultValue(1);
+		terminate;
+	}
+	else if(CheckInventory("DiscGrenadeReady") > 0)
+	{
+		GiveInventory("FireDiscGrenade", 1);
+		TakeInventory("DiscGrenadeReady", 1);
+		SetResultValue(1);
+		terminate;
+	}
+	SetResultValue(0);
+}
+
+Script "ShowHeldGrenade" ENTER
+{
+	while(true)
+	{
+		if(CheckInventory("IncendiaryGrenadeReady") > 0)
+		{
+			SpawnForced("HeldIncendiaryGrenade", GetActorX(0) +  (32 * cos(GetActorAngle(0))), GetActorY(0) + (32 * sin(GetActorAngle(0))), GetActorZ(0) + 28.0);
+		}
+		else if(CheckInventory("BounceGrenadeReady") > 0)
+		{
+			//SpawnForced("HeldIncendiaryGrenade", GetActorX(0) + 32.0, GetActorY(0), GetActorZ(0) + 40.0);
+		}
+		else if(CheckInventory("DiscGrenadeReady") > 0)
+		{
+			//SpawnForced("HeldIncendiaryGrenade", GetActorX(0) + 32.0, GetActorY(0), GetActorZ(0) + 40.0);
+		}
+		delay(1);
+	}
+}

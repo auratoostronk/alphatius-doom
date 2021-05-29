@@ -79,6 +79,21 @@ Script "SetupPlayer" (void)
 			GiveInventory("TBootsCD", GetAmmoCapacity("TBootsCD"));
 			break;
 		}
+		switch(GetCVAR("alph_grenadetype"))
+		{
+			case 0:
+			GiveInventory("GrenadeTypeIncendiary", 1);
+			break;
+			case 1:
+			GiveInventory("GrenadeTypeBounce", 1);
+			break;
+			case 2:
+			GiveInventory("GrenadeTypeDisc", 1);
+			break;
+			default:
+			GiveInventory("GrenadeTypeIncendiary", 1);
+			break;
+		}
 		/*
 		switch(GetCVAR("alph_passive1"))
 		{
@@ -116,7 +131,7 @@ Script "SetupPlayer" (void)
 			GiveInventory("ActionRegenZone", 1);
 			break;
 			case 1:
-			GiveInventory("ActionDisruptionScreen", 1);
+			GiveInventory("ActionAutoDrone", 1);
 			break;
 			case 2:
 			GiveInventory("ActionPowerBrace", 1);
@@ -125,7 +140,7 @@ Script "SetupPlayer" (void)
 			GiveInventory("ActionDecoyHologram", 1);
 			break;
 			case 4:
-			GiveInventory("ActionAutoDrone", 1);
+			GiveInventory("ActionEnergyZone", 1);
 			break;
 			default:
 			GiveInventory("ActionRegenZone", 1);

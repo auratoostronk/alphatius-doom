@@ -8,41 +8,46 @@
 //#libdefine TRAV_WARPD_CD 105
 //#libdefine TRAV_JTHRUST_CD 140
 //#libdefine TRAV_HYPERD_CD 175
-#libdefine TRAV_HYPERD_DUR 70
-#libdefine TRAV_WARPD_STRENGTH 1.4
+#libdefine TRAV_HYPERD_DUR 105
+#libdefine TRAV_WARPD_STRENGTH 1.6
 
 Script "TravelAbility" (void) net
 {
 	//SetFont("ALPHFONT");
-	if(!CheckInventory("IsDead"))
+	if(ClassifyActor(0) & ACTOR_DEAD)
 	{
-		if (CheckInventory("DisruptionGrenadeDebuff") > 0)
+	
+	}
+	else if (!(ClassifyActor(0) & ACTOR_PLAYER))
+	{
+	
+	}
+	else if(PlayerIsSpectator(PlayerNumber()) != 0)
+	{
+	
+	}
+	else
+	{
+		if(CheckInventory("TravelThrusterBoots") == 1)
 		{
-			displayHUDText("Travel device disrupted.", 0.6, 3.5, 1301);
-			LocalAmbientSound("General/Fail",96);
+			ACS_NamedExecuteAlways("ThrusterBoots", 0);
+		}
+		else if(CheckInventory("TravelJumpThrust") == 1)
+		{
+			ACS_NamedExecuteAlways("JumpThrust", 0);
+		}
+		else if(CheckInventory("TravelWarpDrive") == 1)
+		{
+			ACS_NamedExecuteAlways("WarpDrive", 0);
+		}
+		else if(CheckInventory("TravelHyperdrive") == 1)
+		{
+			ACS_NamedExecuteAlways("Hyperdrive", 0);
 		}
 		else
 		{
-			if(CheckInventory("TravelThrusterBoots") == 1)
-			{
-				ACS_NamedExecuteAlways("ThrusterBoots", 0);
-			}
-			else if(CheckInventory("TravelJumpThrust") == 1)
-			{
-				ACS_NamedExecuteAlways("JumpThrust", 0);
-			}
-			else if(CheckInventory("TravelWarpDrive") == 1)
-			{
-				ACS_NamedExecuteAlways("WarpDrive", 0);
-			}
-			else if(CheckInventory("TravelHyperdrive") == 1)
-			{
-				ACS_NamedExecuteAlways("Hyperdrive", 0);
-			}
-			else
-			{
-				displayHUDText("Error in processing your travel ability. Reset it in the loadout menu.", 0.6, 3.5, 1301);
-			}
+			displayHUDText("Error in processing your travel ability. Reset it in the loadout menu.", 0.6, 2.0, 1301);
+			LocalAmbientSound("General/Fail",96);
 		}
 	}
 }
@@ -57,7 +62,7 @@ Script "ThrusterBoots" (void)
 	}
 	else
 	{
-		int thrust = 20;
+		int thrust = 24;
 		if(isAirborne())
 		{
 			thrust = 12;
@@ -277,7 +282,7 @@ Script "TravelFail" (void)
 {
 	if(!(ClassifyActor(0) & ACTOR_BOT))
 	{
-		displayHUDText("Travel ability on cooldown.", 0.6, 3.5, 1301);
+		displayHUDText("Travel ability on cooldown.", 0.6, 2.0, 1301);
 		LocalAmbientSound("General/Fail",96);
 		terminate;
 	}

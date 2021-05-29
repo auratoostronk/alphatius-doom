@@ -51,7 +51,7 @@ Script "OVRSpawn" (void)
 		Thing_Remove(0);
 	}
 }
-//For the Particle splitter's Decay mod. Flings decay pellets in multiple lateral directions when a player dies to a decay pellet.
+//For the Thermite Spitter's alt-fire.
 Script "PlayerDeathByThermite" (void)
 {
 	int initid = ActivatorTID();
@@ -65,4 +65,8 @@ Script "PlayerDeathByThermite" (void)
 		SpawnSpot("ThermiteChainReactFX", 0, initid, i);
 		SetActorPosition(projid, GetActorX(initid), GetActorY(initid), GetActorZ(initid) + 16.0, false);
 	}*/
+}
+Script "RocketExplodeFX" (int radius)
+{
+	
 }

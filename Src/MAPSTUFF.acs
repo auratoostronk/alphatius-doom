@@ -16,6 +16,10 @@ Script "DoorUse2" (void)
 
 Script "JumpPad" (int force)
 {
-	PlaySound(0, "Ambient/JumppadHit", CHAN_AUTO, 1.0);
-	ThrustThingZ(0, force, 0, true);
+	if(ClassifyActor(0) & ACTOR_PLAYER || ClassifyActor(0) & ACTOR_MONSTER)
+	{
+		PlaySound(0, "Ambient/JumppadHit", CHAN_AUTO, 1.0);
+		Thing_Stop(0);
+		ThrustThingZ(0, force, 0, true);
+	}
 }

@@ -3,7 +3,7 @@ Actor NewMedikit : Medikit replaces Medikit
 	//$Category Alphatius Pickups
 	Radius 24
 	Height 16
-	Inventory.Amount 40
+	Inventory.Amount 35
 	States
 	{
 		Spawn:

@@ -37,6 +37,7 @@ Actor AlphatiusPlayer : PlayerPawn
 	Pain:
 		TNT1 A 0 ACS_NamedExecuteAlways("DamagePlayerPain", 0)
 		TNT1 A 0 ACS_NamedExecuteAlways("PlayerPain", 0)
+		TNT1 AA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
 		PLAY G 3 Bright 
 		PLAY G 3 Bright A_Pain
 		Goto Spawn
@@ -46,12 +47,6 @@ Actor AlphatiusPlayer : PlayerPawn
 	Pain.FlamespitterThermite:
 		TNT1 A 0 A_GiveInventory("ThermiteDebuff", 105)
 		Goto Pain
-	/*Death.SGDecay:
-		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByDecayPellet",0)
-		Goto Death
-	XDeath.SGDecay:
-		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByDecayPellet",0)
-		Goto XDeath*/
 	Death.FlamespitterThermite:
 		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByThermite",0)
 		Goto Death
@@ -64,10 +59,10 @@ Actor AlphatiusPlayer : PlayerPawn
 	Death:
 		TNT1 A 0 ACS_NamedExecuteAlways("DamagePlayerPain", 0)
 		TNT1 AAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
-		PLAY G 2
-		PLAY H 4 A_PlayerScream
-		PLAY IJKLM 3
-		PLAY N -1
+		PLYD A 4 
+		PLYD B 4 A_PlayerScream
+		PLYD DEF 4
+		PLYD G -1
 		stop
 	XDeath.FlamespitterFlames:
 		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "XDeath.FlamespitterThermite")
@@ -75,16 +70,16 @@ Actor AlphatiusPlayer : PlayerPawn
 	XDeath:
 		TNT1 A 0 ACS_NamedExecuteAlways("DamagePlayerPain", 0)
 		TNT1 AAAAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
-		PLAY O 5
-		PLAY P 5 A_XScream
-		PLAY Q 5 A_NoBlocking
-		PLAY RSTUV 5
-		PLAY W -1
+		PLYD H 4 
+		PLYD I 4 A_PlayerScream
+		PLYD JKL 4
+		PLYD M -1
 		stop
 	}
 }
 Actor NewBlood : Blood replaces Blood
 {
+	Scale 0.6
 	Mass 6
 	-ALLOWPARTICLES
 	States

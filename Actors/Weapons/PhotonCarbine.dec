@@ -12,7 +12,6 @@ ACTOR PhotonCarbine : Weapon 10004
 	Inventory.Icon "CARPA0"
 	Weapon.SlotNumber 2
 	Weapon.SelectionOrder 500
-	Scale 0.6
 	Inventory.RespawnTics 280 //8 seconds
 	States
 	{
@@ -72,7 +71,7 @@ Actor PhotonProjectile : FastProjectile
 	Scale 1.5
 	Speed 160
 	Decal RailScorchLower
-	Damage (14)
+	Damage (15)
 	Renderstyle Add
 	Obituary "%o was gunned down by %k"
 	+BRIGHT

@@ -65,18 +65,6 @@ Actor Action1Charge : Ammo
 	Inventory.MaxAmount 700
 }
 
-//For gas grenade. Tics before the player can travel again.
-//Given by gas grenade to nearby players every 4 tics. OLD
-Actor TicsNoTravel : Inventory
-{
-	Inventory.MaxAmount 5
-}
-//For gas grenade. Tics the player is slowed for.
-//Given by gas grenade to nearby players every 4 tics. OLD
-Actor TicsGasSlow : Inventory
-{
-	Inventory.MaxAmount 5
-}
 Actor HyperdriveSpeed : Inventory
 {
 	Inventory.MaxAmount 1

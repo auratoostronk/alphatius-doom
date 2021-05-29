@@ -1,2 +1,15 @@
 #library "POWERUPS"
 #include "zcommon.acs"
+
+Script "PowerupPickup" (void)
+{
+	switch(GetCVAR("alph_powerup"))
+	{
+		case 0:
+		GiveInventory("PowerRapidAlt", 1);
+		break;
+		default:
+		GiveInventory("PowerRapidAlt", 1);
+		break;
+	}
+}

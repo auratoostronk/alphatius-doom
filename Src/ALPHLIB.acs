@@ -154,6 +154,16 @@ Script "RechargeTimers" ENTER
 				spawnThermiteFX();
 			}
 			TakeInventory("ThermiteDebuff", 1);
+			if(CheckInventory("PowerRapidAlt") > 0)
+			{
+				TakeInventory("SparkAltCD",1); 
+				TakeInventory("C14AltCD",1); 
+				TakeInventory("PumpSGAltCD",1); 
+				TakeInventory("SMGAltCD",1); 
+				TakeInventory("CarbineAltCD",1); 
+				TakeInventory("RocketAltCD",1);
+				TakeInventory("FlameAltCD",1);
+			}
 		}
 		delay(1);
 	}
