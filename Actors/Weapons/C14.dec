@@ -74,7 +74,7 @@ Actor C14Projectile
 	-NOGRAVITY
 	+BRIGHT
 	Gravity 0.6
-	Damage (8)
+	Damage (12)
 	RenderStyle Add
 	ProjectileKickback 80
 	Decal BigScorch
@@ -86,8 +86,8 @@ Actor C14Projectile
 	Death:
 	    TNT1 A 0 A_PlaySound("LaserHit",CHAN_AUTO,1.0)
 		TNT1 A 0 A_SpawnItemEx("C14Blast1")
-		TNT1 A 0 A_Quake(2, 4, 0, 160)
-		TNT1 A 0 A_Explode(16, 96)
+		TNT1 A 0 A_Quake(2, 4, 0, 128)
+		TNT1 A 0 A_Explode(13, 96)
 		TNT1 A 35 A_PlaySound("C14/Hit", CHAN_AUTO)
 		Stop
 	}
@@ -136,7 +136,8 @@ Actor C14Trail
 }
 
 Actor C14Blast1 
-	{
+{
+	Scale 0.8
 	Alpha 1.0
 	Renderstyle Add
 	Projectile
@@ -147,7 +148,7 @@ Actor C14Blast1
 	{
 	Spawn:
 		CPEW A 1
-		TNT1 A 0 A_SetScale(((((1-scalex)+(scalex*0.9))-((1-scalex)*0.8))+(scalex-0.2)/3.3),((((1-scaley)+(scaley*0.9))-((1-scaley)*0.8))+(scaley-0.2)/3.3))
+		TNT1 A 0 A_SetScale(scalex * 1.15, scaley * 1.15)
 		TNT1 A 0 A_FadeOut(0.1)
 		Loop
 	Death:
@@ -176,8 +177,8 @@ Actor C14Blast2 : C14Blast1
 }
 Actor C14Blast3 : C14Blast1 
 {
-	XScale 0.2
-	YScale 0.2
+	XScale 0.15
+	YScale 0.15
 	Alpha 0.7
 	+VISIBILITYPULSE
 	+BRIGHT
@@ -189,6 +190,7 @@ Actor C14Blast3 : C14Blast1
 		Goto Death
 	}
 }
+/*
 Actor C14BeamProjectile : FastProjectile
 {
 	Projectile
@@ -242,7 +244,7 @@ Actor C14BeamTrail
 		
 	}
 	
-}
+}*/
 Actor C14GasGrenade
 {
 	Height 8

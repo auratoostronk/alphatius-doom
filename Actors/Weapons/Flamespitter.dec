@@ -10,7 +10,7 @@ Actor Flamespitter : Weapon 10010
 	Weapon.AmmoUse2 20
 	+WEAPON.NOAUTOAIM
 	Inventory.Icon "FLMPA0"
-	Weapon.SlotNumber 4
+	Weapon.SlotNumber 7
 	Weapon.SelectionOrder 500
 	Inventory.RespawnTics 280 //8 seconds
 	States
@@ -74,7 +74,7 @@ Actor FlamespitterProjectile
 {
 	Projectile
 	+RIPPER
-	Speed 32
+	Speed 36
 	Radius 16
 	Height 32
 	Damage (3)

@@ -1,46 +1,31 @@
-Actor EfficiencyAdaptor
-{
-	-SOLID
-	+NOGRAVITY
-	+BRIGHT
-	args 0
-	States
-	{
-		Spawn:
-		TNT1 A 0 nodelay A_PlaySound("Actions/EnergyZoneStart", CHAN_AUTO, 1.0)
-		TNT1 A 0 A_PlaySound("Actions/EnergyZoneLoop", CHAN_7, 1.0, true)
-		Spawn1:
-		TNT1 A 0 A_SpawnItemEx("EnergyZoneFX", 192.0, 0.0, 8.0, 0, 0, 0)
-		TNT1 A 0 A_SpawnItemEx("EnergyZoneFX", -192.0, 0.0, 8.0, 0, 0, 0)
-		TNT1 A 0  A_SpawnItemEx("EnergyZoneFX", 0.0, 96.0, 8.0, 0, 0, 0)
-		TNT1 A 0 A_SpawnItemEx("EnergyZoneFX", 0.0, -96.0, 8.0, 0, 0, 0)
-		TNT1 A 0 A_RadiusGive("PowerEfficiencyAdaptor", 192.0, RGF_PLAYERS, 1)
-		TNT1 A 0 A_SetAngle(angle + 8)
-		TNT1 A 0 A_SetArg(0, args[0] + 1)
-		TNT1 A 1 A_JumpIf(args[0] > 140, "Death")
-		loop
-		Death:
-		TNT1 A 1 A_StopSound(CHAN_7)
-		stop
-	}
-}
-
 Actor PowerEfficiencyAdaptor : PowerInfiniteAmmo
 {
-	Powerup.Duration 2
+	Powerup.Duration -3
 }
 Actor EnergyZoneFX
 {
 	+BRIGHT
-	+NOINTERACTION
 	+CLIENTSIDEONLY
+	+NOINTERACTION
+	Gravity 0.7
 	States
 	{
 		Spawn:
-		EZON ABCDEF 1 A_FadeOut(0.1)
+		EZON ABCDEF 1 A_FadeOut(0.05)
 		loop
 		Death:
 		TNT1 A 0
+		stop
+	}
+}
+Actor EfficiencyAdaptorFXSpawner : CustomInventory
+{
+	+INVENTORY.AUTOACTIVATE
+	States
+	{	
+		Pickup:
+		Use:
+		TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnItemEX("EnergyZoneFX", 0, 0, 48.0, frandom(-8.0, 8.0), frandom(-8.0, 8.0), frandom(-8.0, 8.0))
 		stop
 	}
 }

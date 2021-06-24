@@ -129,10 +129,10 @@ Actor PhotonGrenade
 	Scale 0.6
 	Speed 48
 	Gravity 1.0
-	Damage (0)
+	Damage (20)
 	Decal BigScorch
 	Projectile
-	ProjectileKickBack 80
+	ProjectileKickBack 120
 	RenderStyle Add
 	Obituary "%o was noob tubed by %k"
 	-NOGRAVITY

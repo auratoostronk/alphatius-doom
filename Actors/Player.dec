@@ -29,7 +29,7 @@ Actor AlphatiusPlayer : PlayerPawn
 		PLAY AABBCCDD 2
 		Loop
 	Missile:
-		PLAY EF 6 
+		PLAY EF 6 Bright
 		Goto Spawn
 	Melee:
 		PLAY EF 3 BRIGHT
