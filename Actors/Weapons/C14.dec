@@ -35,7 +35,7 @@ ACTOR C14 : Weapon 10005
 		TNT1 A 0 A_PlaySound("C14/Fire", CHAN_WEAPON)
 		TNT1 A 0 A_SpawnItemEX("GreenLightShoot")
 		TNT1 A 0 A_Recoil(1)
-		C14F A 2 A_FireCustomMissile("C14Projectile", 0.0, true, 0, -4.0, 0, 0.0)
+		C14F A 2 A_FireCustomMissile("C14Projectile", 0.0, true, 0, -5.0, 0, 0.0)
 		C14F BC 2
 		C14R A 2
 		Goto Ready
@@ -70,11 +70,11 @@ Actor C14Projectile
 	Scale 0.5
 	Obituary "%o was mutated by %k"
 	Projectile
-	Speed 96
+	Speed 128
 	-NOGRAVITY
 	+BRIGHT
 	Gravity 0.6
-	Damage (12)
+	Damage (0)
 	RenderStyle Add
 	ProjectileKickback 80
 	Decal BigScorch
@@ -86,8 +86,10 @@ Actor C14Projectile
 	Death:
 	    TNT1 A 0 A_PlaySound("LaserHit",CHAN_AUTO,1.0)
 		TNT1 A 0 A_SpawnItemEx("C14Blast1")
+		TNT1 AAAAAA 0 A_SpawnItemEx("C14Blast2", 0, 0, 0, frandom(-4, 4), frandom(-4, 4), frandom(2, 8))
 		TNT1 A 0 A_Quake(2, 4, 0, 128)
-		TNT1 A 0 A_Explode(13, 96)
+		TNT1 A 0 A_Explode(10, 96)
+		TNT1 A 0 A_Explode(12, 96, XF_HURTSOURCE, true, 96)
 		TNT1 A 35 A_PlaySound("C14/Hit", CHAN_AUTO)
 		Stop
 	}
@@ -101,46 +103,22 @@ Actor C14Trail
 	+CLIENTSIDEONLY
 	+NOGRAVITY
 	+FORCEXYBILLBOARD
-	+NODAMAGETHRUST
 	+BRIGHT
 		
 	States 
 	{
 	Spawn:
-		TNT1 A 0 
-		TNT1 A 0 A_SpawnItem("C14Blast2")
-		CPTR A 1 A_SpawnItem("C14Blast3")
-		TNT1 A 0 A_SetScale((scalex/5)*4,(scaley/5)*4)
-		CPTR B 1 A_FadeOut(0.1)
-		TNT1 A 0 A_SetScale((scalex/5)*4,(scaley/5)*4)
-		CPTR C 1 A_FadeOut(0.1)
-		TNT1 A 0 A_SetScale((scalex/5)*4,(scaley/5)*4)
-		CPTR D 1 A_FadeOut(frandom(0.1,0.05))
-		TNT1 A 0 A_SetScale((scalex/5)*4,(scaley/5)*4)
-		CPTR E 1 A_FadeOut(frandom(0.1,0.05))
-		TNT1 A 0 A_SetScale((scalex/5)*4,(scaley/5)*4)
-		CPTR F 1 A_FadeOut(frandom(0.1,0.05))
-		TNT1 A 0 A_SetScale((scalex/5)*4,(scaley/5)*4)
-		CPTR G 1 A_FadeOut(frandom(0.1,0.05))
-		TNT1 A 0 A_SetScale((scalex/5)*4,(scaley/5)*4)
-		CPTR H 1 A_FadeOut(frandom(0.1,0.05))
-		TNT1 A 0 A_SetScale((scalex/5)*4,(scaley/5)*4)
-		CPTR I 1 A_FadeOut(frandom(0.1,0.05))
-		TNT1 A 0 A_SetScale((scalex/5)*4,(scaley/5)*4)
-		CPTR J 1 A_FadeOut(frandom(0.1,0.05))
-		TNT1 A 0 A_SetScale((scalex/5)*4,(scaley/5)*4)
-		CPTR K 1 A_FadeOut(frandom(0.1,0.05))
-		TNT1 A 0 A_SetScale((scalex/5)*4,(scaley/5)*4)
-		stop
+		TNT1 A 0 A_SetScale(scalex + 0.01, scaley + 0.01)
+		CPEW A 1 A_FadeOut(0.05)
+		loop
 	}
 }
-
 Actor C14Blast1 
 {
 	Scale 0.8
 	Alpha 1.0
 	Renderstyle Add
-	Projectile
+	+CLIENTSIDEONLY
 	+NOINTERACTION
 	+FORCEXYBILLBOARD
 	+BRIGHT
@@ -148,33 +126,38 @@ Actor C14Blast1
 	{
 	Spawn:
 		CPEW A 1
-		TNT1 A 0 A_SetScale(scalex * 1.15, scaley * 1.15)
+		TNT1 A 0 A_SetScale(scalex * 1.1, scaley * 1.1)
 		TNT1 A 0 A_FadeOut(0.1)
 		Loop
-	Death:
-		CPEW A 1 A_FadeOut(0.1)
-		wait
 			
 	}
 }
-Actor C14Blast2 : C14Blast1
-	{
-	XScale 0.05
-	YScale 0.05
-	Alpha 0.7
+Actor C14Blast2
+{
+	RenderStyle ADD
+	Scale 0.1
+	Projectile
+	+BOUNCEONFLOORS
+	+BOUNCEONCEILINGS
+	+BOUNCEONWALLS
+	+BOUNCEONACTORS
+	BounceType Doom
+	BounceFactor 0.5
+	BounceCount 2
 	+BRIGHT
+	-NOGRAVITY
+	Gravity 1.5
 	States
 	{
 	Spawn:
-		CPEW A 1
-		TNT1 A 0 A_SetScale(scalex+0.002,scaley+0.002)
-		TNT1 A 0 A_FadeOut(0.05)
+		CPBL ABCDEFGHIJKL 1
 		Loop
 	Death:
-		CPEW A 1 A_FadeOut(0.1)
-		wait	
+		CPBL ABCDEFGHIJKL 1 A_FadeOut(0.1)
+		stop	
 	}
 }
+/*
 Actor C14Blast3 : C14Blast1 
 {
 	XScale 0.15
@@ -189,7 +172,7 @@ Actor C14Blast3 : C14Blast1
 		CPEW A 1 A_SetTranslucent(frandom(0.3,0.8),1)
 		Goto Death
 	}
-}
+}*/
 /*
 Actor C14BeamProjectile : FastProjectile
 {

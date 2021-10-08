@@ -66,8 +66,8 @@ Actor OVRAltCharge: Ammo
 }
 Actor SparkAltCD : Ammo
 {
-  Inventory.MaxAmount 50
-  Ammo.BackpackMaxAmount 50
+  Inventory.MaxAmount 70
+  Ammo.BackpackMaxAmount 70
 }
 Actor CarbineAltCD : Ammo
 {

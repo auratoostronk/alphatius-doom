@@ -69,7 +69,7 @@ Actor PhotonProjectile : FastProjectile
 	Radius 6
 	Height 6
 	Scale 1.5
-	Speed 160
+	Speed 224
 	Decal RailScorchLower
 	Damage (15)
 	Renderstyle Add
@@ -148,10 +148,11 @@ Actor PhotonGrenade
 		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
 		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")
 		TNT1 A 0 A_SpawnItem("PhotonGrenadeDeathFX")
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("PhotonGrenadeDeathDots",0,0,0,frandom(-8,8),frandom(-8,8),frandom(4,16))
 		TNT1 AAAAAAAAAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-2,2),frandom(-2,2),frandom(-2,2))
 		TNT1 AAAAAAAA 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,random(0,360),2,random(0,360))
 		TNT1 A 0 A_Quake(2,8,0, 384)
-		TNT1 A 0 A_Explode(65, 256)
+		TNT1 A 0 A_Explode(65, 320)
 		stop
 	}
 }
@@ -186,5 +187,32 @@ Actor PhotonGrenadeDeathFX
 		TNT1 A 0 A_SetScale(scalex * 1.2, scaley  * 1.2)
 		BGTR A 1 A_FadeOut(0.1)
 		loop
+	}
+}
+Actor PhotonGrenadeDeathDots
+{
+	RenderStyle ADD
+	Scale 1.0
+	Projectile
+	+BOUNCEONFLOORS
+	+BOUNCEONCEILINGS
+	+BOUNCEONWALLS
+	+BOUNCEONACTORS
+	BounceType Doom
+	BounceFactor 0.6
+	BounceCount 3
+	+BRIGHT
+	-NOGRAVITY
+	Gravity 1.0
+	States
+	{
+		Spawn:
+		BSPK A 1
+		loop
+		Death:
+		BSPK A 35
+		BSPK AAAAAAAAAAAAAAAAAAAA 1 A_FadeOut(0.05)
+		TNT1 A 1 
+		stop
 	}
 }

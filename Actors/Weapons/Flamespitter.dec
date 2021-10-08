@@ -74,7 +74,7 @@ Actor FlamespitterProjectile
 {
 	Projectile
 	+RIPPER
-	Speed 36
+	Speed 40
 	Radius 16
 	Height 32
 	Damage (3)
@@ -89,7 +89,7 @@ Actor FlamespitterProjectile
 	States
 	{
 		Spawn:
-		OFLM A 4
+		OFLM A 4 A_SetScale(scalex + frandom(-0.1, 0.1), scaley + frandom(-0.1, 0.1))
 		TNT1 A 0 A_SetScale(scalex + 0.1, scaley + 0.1)
 		OFLM B 4 A_ChangeVelocity(-5, 0.0, 0.0, CVF_RELATIVE)
 		TNT1 A 0 A_SetScale(scalex + 0.1, scaley + 0.1)

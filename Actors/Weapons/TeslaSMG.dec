@@ -81,8 +81,8 @@ Actor TaserProtection : PowerProtection
 Actor SMGProjectile
 {
 	Projectile
-	Speed 32
-	Damage (8)
+	Speed 36
+	Damage (10)
 	Radius 6
 	Height 12
 	Decal PlasmaScorchLower
