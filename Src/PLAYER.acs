@@ -3,7 +3,6 @@
 #import "ACTIONS.acs"
 #import "ALPHLIB.acs"
 #import "TRAVEL.acs"
-#import "PASSIVES.acs"
 #import "HUD.acs"
 
 int targetdummyid = 900;
@@ -79,6 +78,7 @@ Script "SetupPlayer" (void)
 			GiveInventory("TBootsCD", GetAmmoCapacity("TBootsCD"));
 			break;
 		}
+		/*
 		switch(GetCVAR("alph_grenadetype"))
 		{
 			case 0:
@@ -94,7 +94,6 @@ Script "SetupPlayer" (void)
 			GiveInventory("GrenadeTypeIncendiary", 1);
 			break;
 		}
-		/*
 		switch(GetCVAR("alph_passive1"))
 		{
 			case 0:
@@ -139,18 +138,11 @@ Script "SetupPlayer" (void)
 			case 3:
 			GiveInventory("ActionDecoyHologram", 1);
 			break;
-			case 4:
-			GiveInventory("ActionEnergyZone", 1);
-			break;
 			default:
 			GiveInventory("ActionRegenZone", 1);
 			break;
 		}
 	}
-}
-Script "PlayerPain" (void)
-{
-	
 }
 Script "PlayerDeath" DEATH
 {

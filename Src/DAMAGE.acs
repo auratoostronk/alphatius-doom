@@ -1,121 +1,76 @@
-//Taken from StrikerMan780's Show Damage mod.
-
 #library "DAMAGE"
 #include "zcommon.acs"
 
 #import "ALPHLIB.acs"
 
-int OldHealth[MAX_PLAYERS];
-bool HasTicked[MAX_PLAYERS];
+int prev_hp[MAX_PLAYERS];
 
-function int pow (int x, int n)
+Script "AlphatiusDamageOpen" OPEN
 {
-	int y = 1;
-	while (n-- > 0) y *= x;
-	return y;
+	CreateTranslation(6400, 176:191=112:127, 32:47=120:127);
 }
-
-function int GetDigit(int Num, int Digit)
+Script "AlphatiusDamageEnter" ENTER
 {
-	return (Num / pow(10, Digit)) % 10 ;
-}
-
-script "DamageRespawn" RESPAWN
-{
-	if(CheckInventory("Health") > 0)
+	while(true)
 	{
-		OldHealth[PlayerNumber()] = CheckInventory("Health");
-		HasTicked[PlayerNumber()] = false;
+		prev_hp[PlayerNumber()] = GetActorProperty(0, APROP_HEALTH);
 		delay(1);
-		restart;
+		int damage = prev_hp[PlayerNumber()] - GetActorProperty(0, APROP_HEALTH);
+		if(damage != 0)
+		{
+			ACS_NamedExecuteAlways("AlphatiusPain", 0, damage);
+		}
 	}
 }
 
-script "DamageEnter" ENTER
+Script "AlphatiusPain" (int damage)
 {
-	if(CheckInventory("Health") > 0)
+	
+	int utid = UniqueTID(0, 0);
+
+	int posx = GetActorX(0);
+	int posy = GetActorY(0);
+	int posz = GetActorZ(0);
+	
+	int digit1 = damage % 10;
+	int digit2 = (damage / 10) % 10;
+	int digit3 = (damage / 100) % 10;
+	int digit4 = (damage / 1000) % 10;
+	
+	if(digit4 == 0)
 	{
-		OldHealth[PlayerNumber()] = CheckInventory("Health");
-		HasTicked[PlayerNumber()] = false;
-		delay(1);
-		restart;
+		digit4 = 10;
+		if(digit3 == 0)
+		{
+			digit3 = 10;
+			if(digit2 == 0)
+			{
+				digit2 = 10;
+			}
+		}
 	}
-}
-
-
-script "DamagePlayerPain" (void)
-{
-	if(HasTicked[PlayerNumber()] == false)
+	
+	for(int j = 0; j < 10; j++)
 	{
-		int NewHealth = OldHealth[PlayerNumber()] - CheckInventory("Health");
-	
-		
-		int Digit1 = GetDigit(NewHealth, 0);
-		int Digit2 = GetDigit(NewHealth, 1);
-		int Digit3 = GetDigit(NewHealth, 2);
-		int Digit4 = GetDigit(NewHealth, 3);
-	
-		int x = GetActorX(0) + Random(-10.0, 10.0);
-		int y = GetActorY(0) + Random(-10.0, 10.0);
-		int z = GetActorZ(0) + Random(56.0, 62.0);
-	
-	
-		int NumberID = UniqueTID(6000);
-		
-		if(Digit1 == 0) { Spawn("Digit1Num0", x, y, z, NumberID, 0); }
-		else if(Digit1 == 1) { Spawn("Digit1Num1", x, y, z, NumberID, 0); }
-		else if(Digit1 == 2) { Spawn("Digit1Num2", x, y, z, NumberID, 0); }
-		else if(Digit1 == 3) { Spawn("Digit1Num3", x, y, z, NumberID, 0); }
-		else if(Digit1 == 4) { Spawn("Digit1Num4", x, y, z, NumberID, 0); }
-		else if(Digit1 == 5) { Spawn("Digit1Num5", x, y, z, NumberID, 0); }
-		else if(Digit1 == 6) { Spawn("Digit1Num6", x, y, z, NumberID, 0); }
-		else if(Digit1 == 7) { Spawn("Digit1Num7", x, y, z, NumberID, 0); }
-		else if(Digit1 == 8) { Spawn("Digit1Num8", x, y, z, NumberID, 0); }
-		else if(Digit1 == 9) { Spawn("Digit1Num9", x, y, z, NumberID, 0); }
-	
-		if(NewHealth >= 10)
+		if(digit1 == j || digit1 == -j)
 		{
-			if(Digit2 == 0) { Spawn("Digit2Num0", x, y, z, NumberID, 0); }
-			else if(Digit2 == 1) { Spawn("Digit2Num1", x, y, z, NumberID, 0); }
-			else if(Digit2 == 2) { Spawn("Digit2Num2", x, y, z, NumberID, 0); }
-			else if(Digit2 == 3) { Spawn("Digit2Num3", x, y, z, NumberID, 0); }
-			else if(Digit2 == 4) { Spawn("Digit2Num4", x, y, z, NumberID, 0); }
-			else if(Digit2 == 5) { Spawn("Digit2Num5", x, y, z, NumberID, 0); }
-			else if(Digit2 == 6) { Spawn("Digit2Num6", x, y, z, NumberID, 0); }
-			else if(Digit2 == 7) { Spawn("Digit2Num7", x, y, z, NumberID, 0); }
-			else if(Digit2 == 8) { Spawn("Digit2Num8", x, y, z, NumberID, 0); }
-			else if(Digit2 == 9) { Spawn("Digit2Num9", x, y, z, NumberID, 0); }
+			Spawn(strParam(s:"Digit1Num", i:j), posx, posy, posz + 48.0, utid);
 		}
-	
-		if(NewHealth >= 100)
+		if(digit2 == j || digit2 == -j)
 		{
-			if(Digit3 == 0) { Spawn("Digit3Num0", x, y, z, NumberID, 0); }
-			else if(Digit3 == 1) { Spawn("Digit3Num1", x, y, z, NumberID, 0); }
-			else if(Digit3 == 2) { Spawn("Digit3Num2", x, y, z, NumberID, 0); }
-			else if(Digit3 == 3) { Spawn("Digit3Num3", x, y, z, NumberID, 0); }
-			else if(Digit3 == 4) { Spawn("Digit3Num4", x, y, z, NumberID, 0); }
-			else if(Digit3 == 5) { Spawn("Digit3Num5", x, y, z, NumberID, 0); }
-			else if(Digit3 == 6) { Spawn("Digit3Num6", x, y, z, NumberID, 0); }
-			else if(Digit3 == 7) { Spawn("Digit3Num7", x, y, z, NumberID, 0); }
-			else if(Digit3 == 8) { Spawn("Digit3Num8", x, y, z, NumberID, 0); }
-			else if(Digit3 == 9) { Spawn("Digit3Num9", x, y, z, NumberID, 0); }
+			Spawn(strParam(s:"Digit2Num", i:j), posx, posy, posz + 48.0, utid);
 		}
-	
-		if(NewHealth >= 1000)
+		if(digit3 == j || digit3 == -j)
 		{
-			if(Digit4 == 0) { Spawn("Digit4Num0", x, y, z, NumberID, 0); }
-			else if(Digit4 == 1) { Spawn("Digit4Num1", x, y, z, NumberID, 0); }
-			else if(Digit4 == 2) { Spawn("Digit4Num2", x, y, z, NumberID, 0); }
-			else if(Digit4 == 3) { Spawn("Digit4Num3", x, y, z, NumberID, 0); }
-			else if(Digit4 == 4) { Spawn("Digit4Num4", x, y, z, NumberID, 0); }
-			else if(Digit4 == 5) { Spawn("Digit4Num5", x, y, z, NumberID, 0); }
-			else if(Digit4 == 6) { Spawn("Digit4Num6", x, y, z, NumberID, 0); }
-			else if(Digit4 == 7) { Spawn("Digit4Num7", x, y, z, NumberID, 0); }
-			else if(Digit4 == 8) { Spawn("Digit4Num8", x, y, z, NumberID, 0); }
-			else if(Digit4 == 9) { Spawn("Digit4Num9", x, y, z, NumberID, 0); }
+			Spawn(strParam(s:"Digit3Num", i:j), posx, posy, posz + 48.0, utid);
 		}
-	
-		SetActorVelocity(NumberID, 0, 0, 0.25, 0, 0);
-		HasTicked[PlayerNumber()] = true;
+		if(digit4 == j || digit4 == -j)
+		{
+			Spawn(strParam(s:"Digit4Num", i:j), posx, posy, posz + 48.0, utid);
+		}
+	}
+	if(damage < 0)
+	{
+		Thing_SetTranslation(utid, 6400); //Turns red to green.
 	}
 }

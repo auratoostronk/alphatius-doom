@@ -1,13 +1,14 @@
-const float spread1 = 1.0;
-const float spread2 = 2.0;
-const float spread3 = 3.0;
-const float spread4 = 4.0;
+const float spread1 = 1.2;
+const float spread2 = 2.4;
+const float spread3 = 3.6;
+//const float spread4 = 4.0;
 
 Actor ParticleSplitter : Weapon 10007
 {
 	//$Category Alphatius Weapons
 	Radius 32
 	Tag "Particle Splitter"
+	Weapon.BobStyle "Smooth"
 	Weapon.AmmoType1 "PumpSGEnergy"
 	Weapon.AmmoType2 "PumpSGEnergy"
 	Weapon.AmmoUse1 20
@@ -125,21 +126,21 @@ Actor SGPellet
 {
 	Projectile
 	RenderStyle add
-	Speed 80
+	Speed 96
 	Radius 2
 	Height 2
 	Damage (5)  
 	DamageType "ParticleSplitter"
 	Decal RailScorchLower
 	Scale 0.5
-	Obituary "%o became %k's clay pidgeon."
+	Obituary "%k > Particle Splitter > %o"
 	+DONTSPLASH
 	+BRIGHT
 	args 0, 0, 0, 0
 	States
 	{
 	Spawn:
-		PSPK AAAAAA 2 A_SetScale(scalex * 0.8, scaley * 0.8)
+		PSPK AAAAA 2 A_SetScale(scalex * 0.8, scaley * 0.8)
 		Goto Death
 	Death:
 		//TNT1 AAAA 0 A_SpawnItemEx("SGPelletFX", 0.0, 0.0, 0.0, frandom(-2.0, 2.0), frandom(-2.0, 2.0), frandom(-2.0, 2.0))
@@ -150,7 +151,7 @@ Actor SGPellet
 Actor SGAltPellet : SGPellet
 {
 	DamageType "ParticleSplitterAlt"
-	Obituary "%k didn't even detonate that, but still killed %o"
+	Obituary "%k > Particle Splitter (Alt Pre-detonation) > %o"
 	States
 	{
 	Spawn:
@@ -219,7 +220,7 @@ Actor SGAltPellet2 : SGPellet
 {
 	Damage (5)
 	DamageType "ParticleSplitterAlt"
-	Obituary "%o became %k's clay pidgeon... from really far away."
+	Obituary "%k > Particle Splitter (Alt) > %o"
 	States
 	{
 	Spawn:

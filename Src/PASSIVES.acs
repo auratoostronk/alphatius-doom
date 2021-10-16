@@ -2,6 +2,7 @@
 #include "zcommon.acs"
 #import "ALPHLIB.acs"
 
+/*
 Script "PassiveAbiltyTimer" ENTER
 {
 	while(true)

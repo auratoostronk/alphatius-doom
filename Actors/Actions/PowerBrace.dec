@@ -2,6 +2,7 @@ Actor PowerBrace : PowerProtection
 {
 	DamageFactor "Normal", 0.25
 	Powerup.Duration 35
+	Powerup.Color Greenmap
 	SeeSound "Actions/PowerBraceOn"
 	ActiveSound "Actions/PowerBraceHit"
 	DeathSound "Actions/PowerBraceOff"

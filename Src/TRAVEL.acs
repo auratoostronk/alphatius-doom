@@ -8,7 +8,7 @@
 //#libdefine TRAV_WARPD_CD 105
 //#libdefine TRAV_JTHRUST_CD 140
 //#libdefine TRAV_HYPERD_CD 175
-#libdefine TRAV_HYPERD_DUR 105
+#libdefine TRAV_HYPERD_DUR 70
 #libdefine TRAV_WARPD_STRENGTH 1.6
 
 Script "TravelAbility" (void) net
@@ -151,7 +151,7 @@ Script "JumpThrust" (void)
 			PlaySound(0,"Travel/JumpThrust");
 		}
 		int angle = GetActorAngle(0);
-		int pitch = -GetActorPitch(0); //Up is positive now
+		int pitch = -GetActorPitch(0) + 0.05; //Up is positive now
 		int upordown;
 		if(pitch > 0)
 			upordown = 0;

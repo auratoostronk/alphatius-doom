@@ -39,8 +39,7 @@ actor 3dObject
 	States
 	{
 		Spawn:
-		3DOB A 0
-		3DOB A 4
+		3DOB A 1
 		loop
 	}
 }
@@ -50,14 +49,32 @@ actor CrystalBlue : 3dObject 32001
 	Radius 64
 	Height 96
 	+NOGRAVITY
+	States
+	{
+		Spawn:
+		CRYS A 1
+		loop
+	}
 }
 
 actor CrystalGreen : CrystalBlue 32002
 {
 	Tag "Green Crystal (Heretic2)"
+	States
+	{
+		Spawn:
+		CRYS B 1
+		loop
+	}
 }
 
 actor CrystalRed : CrystalBlue 32003
 {
 	Tag "Red Crystal (Heretic2)"
+	States
+	{
+		Spawn:
+		CRYS C 1
+		loop
+	}
 }

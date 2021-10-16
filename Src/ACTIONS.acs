@@ -104,6 +104,7 @@ Script "PowerBraceBubbleFX" (void)
 	Thing_Remove(utid);
 }
 
+/*
 Script "EfficiencyAdaptor" (void)
 {
 	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("MediumActionCharge"))
@@ -118,7 +119,6 @@ Script "EfficiencyAdaptor" (void)
 		ACS_NamedExecuteAlways("Action1Fail", 0);
 	}
 }
-/*
 Script "DisruptionScreen" (void)
 {
 	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("MediumActionCharge"))

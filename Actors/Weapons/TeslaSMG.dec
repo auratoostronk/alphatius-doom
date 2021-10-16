@@ -3,9 +3,7 @@ Actor TeslaSMG : Weapon 10006
 	//$Category Alphatius Weapons
 	Radius 32
 	Decal PlasmaScorchLower
-	Obituary "%o was tased by %k."
 	Tag "Tesla SMG"
-	Weapon.BobSpeed 2.0
 	Weapon.BobStyle "Smooth"
 	Weapon.AmmoType1 "SMGEnergy"
 	Weapon.AmmoType2 "SMGEnergy"
@@ -40,11 +38,8 @@ Actor TeslaSMG : Weapon 10006
 		TNT1 A 0 A_SpawnItemEX("YellowLightShoot")
 		TNT1 A 0 A_PlaySound("TeslaSMG/Fire", CHAN_WEAPON)
 		SMGF A 1 Bright A_FireCustomMissile("SMGProjectile", frandom(-0.3,0.3), true, 0.0, -3.0, 0, frandom(-0.3,0.3))
+		SMGF B 1 Bright
 		SMGF C 1 Bright A_Recoil(-1)
-		TNT1 A 0 A_SpawnItemEX("YellowLightShoot")
-		TNT1 A 0 A_PlaySound("TeslaSMG/Fire", CHAN_WEAPON)
-		SMGF B 1 Bright A_FireCustomMissile("SMGProjectile", frandom(-0.3,0.3), true, 0.0, -3.0, 0, frandom(-0.3,0.3))
-		SMGF C 1 Bright
 		Goto Ready
     AltFire:
         TNT1 A 0 A_JumpIfInventory("SMGAltCD",1,"AltFail")
@@ -52,7 +47,7 @@ Actor TeslaSMG : Weapon 10006
         TNT1 A 0 A_GiveInventory("SMGAltCD", 105)
         TNT1 A 0 A_SpawnItemEX("YellowLightShoot")
 		TNT1 A 0 A_TakeInventory("SMGEnergy", 20) 			//For some reason this is neccessary even with the A_CustomPunch flags changed
-		TNT1 A 0 A_Recoil(-12)
+		TNT1 A 0 A_Recoil(-16)
         SMGF A 1 Bright A_CustomPunch(80, true, !CPF_USEAMMO, "TeslaPuff", 144) 
         SMGF BCABCABCABC 1 Bright A_CustomPunch(80, true, !CPF_USEAMMO, "TeslaNoPuff", 144) 
         Goto Ready
@@ -81,8 +76,8 @@ Actor TaserProtection : PowerProtection
 Actor SMGProjectile
 {
 	Projectile
-	Speed 36
-	Damage (10)
+	Speed 48
+	Damage (12)
 	Radius 6
 	Height 12
 	Decal PlasmaScorchLower
@@ -91,7 +86,7 @@ Actor SMGProjectile
 	+BRIGHT
 	+RANDOMIZE
 	//SeeSound "TeslaSMG/Fire"
-	Obituary "%o was zapped by %k"
+	Obituary "%k > Tesla SMG > %o"
 	States
 	{
 	Spawn:
@@ -114,7 +109,7 @@ Actor TeslaPuff : BulletPuff
 	ActiveSound "TeslaSMG/AltFire"
 	AttackSound "TeslaSMG/AltFire"
 	SeeSound "TeslaSMG/AltFireHit"
-	Obituary "%o was tased by %k."
+	Obituary "%k > Tesla SMG (Alt) > %o"
 	States
 	{
 	Spawn:
@@ -130,7 +125,7 @@ Actor TeslaNoPuff : TeslaPuff
 	ActiveSound ""
 	AttackSound ""
 	SeeSound "TeslaSMG/AltFireHit"
-	Obituary "%o was tased by %k."
+	Obituary "%k > Tesla SMG (Alt) > %o"
 	States
 	{
 	Spawn:

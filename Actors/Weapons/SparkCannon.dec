@@ -3,8 +3,8 @@ ACTOR SparkCannon : Weapon 10009
 	//$Category Alphatius Weapons
 	Radius 32
 	Decal RailScorchLower
-	Obituary "%o was killed by %k's \"laser beam\""
 	Tag "Spark Cannon"
+	Weapon.BobStyle "Smooth"
 	Weapon.AmmoType1 "SparkEnergy"
 	Weapon.AmmoType2 "SparkEnergy"
 	Weapon.AmmoUse1 1
@@ -85,7 +85,7 @@ Actor LaserSpark
 	+NOINTERACTION
 	+CLIENTSIDEONLY
 	+BRIGHT
-	Obituary "%o was killed by %k's \"laser beam\""
+	Obituary "%k > Spark Cannon > %o"
 	States
 	{
 	Spawn:
@@ -161,7 +161,7 @@ Actor SparkSiphonPuff : BulletPuff
 Actor LaserSparkDot2 : LaserSparkDot
 {
 	DamageType "SparkCannonAlt"
-	Obituary "%o was railed by %k"
+	Obituary "%k > Spark Cannon (Alt) > %o"
 	ProjectileKickback 0
 }
 /*
