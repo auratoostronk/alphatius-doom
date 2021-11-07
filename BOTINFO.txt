@@ -1,0 +1,83 @@
+// -2 = VERYPOOR
+// -1 = POOR
+// 0 = LOW
+// 1 = MEDIUM
+// 2 = HIGH
+// 3 = EXCELLENT
+// 4 = SUPREME
+// 5 = GODLIKE
+// 6 = PERFECT
+
+// HUMANS ----------------------------------------------------------------------
+
+{
+	name = "\chhi\cnim\cvaura"
+	accuracy = 2
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "ParticleSplitter"
+	color = "00 55 88"
+	gender = "male"
+	class = "mage"
+	railcolor = rainbow
+	chatfrequency = 50
+	revealed = true
+	script = "humanbot"
+}
+
+{
+	name = "\ct[RG]\cgSeidolon"
+	accuracy = 2
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 1
+	perception = 1
+	favoriteweapon = "C14"
+	color = "FF FF 00"
+	gender = "male"
+	class = "cleric"
+	railcolor = red
+	chatfrequency = 20
+	revealed = true
+	script = "humanbot"
+}
+
+{
+	name = "\cgSummer's Exile"
+	accuracy = 2
+	intellect = 4
+	evade = 2
+	anticipation = 1
+	reactiontime = 1
+	perception = 1
+	favoriteweapon = "RocketCannon"
+	color = "FF 00 00"
+	gender = "male"
+	class = "fighter"
+	railcolor = red
+	chatfrequency = 75
+	revealed = true
+	script = "humanbot"
+}
+
+{
+	name = "\c[q6][NE]\c[q5]Blush\c[y1]Berry"
+	accuracy = 2
+	intellect = 2
+	evade = 3
+	anticipation = 1
+	reactiontime = 1
+	perception = 1
+	favoriteweapon = "PhotonCarbine"
+	color = "FF 88 FF"
+	gender = "male"
+	class = "mage"
+	railcolor = rainbow
+	chatfrequency = 60
+	revealed = true
+	script = "humanbot"
+}

@@ -1,0 +1,17 @@
+Object NewMedikit
+{
+	Frame MEDI { light MEDILIGHTBIG }
+}
+Object NewStimpack
+{
+	Frame STIM { light MEDILIGHTSMALL }
+}
+Object NanoArmor
+{
+	Frame ARM3 { light REDLIGHT }
+}
+
+object ExtraTravelCharge
+{
+	frame TCHG { light REDORANGELIGHT }
+}

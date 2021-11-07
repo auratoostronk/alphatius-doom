@@ -1,0 +1,4 @@
+texture HOTFALL1 range HOTFALL4 tics 8
+
+warp2 texture ENERGY_1
+warp2 texture ENERGY_4

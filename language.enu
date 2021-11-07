@@ -1,0 +1,28 @@
+/* U.S. English. Sorry it's not jolly ol' Britspeak */
+
+[enu default]
+
+OB_SUICIDE = "%o took the moron's way out.";
+OB_FALLING = "%o failed to disprove gravity.";
+OB_CRUSH = "%o got squished like a spider mastermind.";
+OB_EXIT = "%o wanted out.";
+OB_WATER = "%o can't swim.";
+OB_SLIME = "%o doesn't know why the nukage glows.";
+OB_LAVA = "%o couldn't handle the heat. %o shoulda left the kitchen.";
+OB_BARREL = "%o stood too close to a barrel.";
+OB_KILLEDSELF = "%o took the idiot's way out.";
+
+OB_DEFAULT = "%o had a stroke.";
+OB_MPDEFAULT = "%o was slain by %k.";
+OB_FRIENDLY1 = "%k got in a fight with his best friend.";
+OB_FRIENDLY2 = "%k isn't getting along with his team.";
+OB_FRIENDLY3 = "%k works better alone.";
+OB_FRIENDLY4 = "%k is team griefing.";
+
+SPREEKILLSELF = "%o was feeling high until %g forgot %p antidepressants.";
+SPREEOVER = "%o was finally slain by %k.";
+SPREE5 = "%k is out of bubblegum.";
+SPREE10 = "%k is kicking ass.";
+SPREE15 = "%k is unstoppable.";
+SPREE20 = "%k is godlike.";
+SPREE25 = "%k is probably using AIM X.";

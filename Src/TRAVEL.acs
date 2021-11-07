@@ -180,6 +180,14 @@ Script "WarpDrive" (void)
 	}
 	else
 	{
+		if(!hasTravelPickup)
+		{
+			GiveInventory("WDriveCD",GetAmmoCapacity("WDriveCD"));
+		}
+		else
+		{
+			TakeInventory("ExtraTravelCharge", 1);
+		}
 		int angle = GetActorAngle(0);
 		int pitch = -GetActorPitch(0); //Up is positive now
 		int upordown;
@@ -224,14 +232,6 @@ Script "WarpDrive" (void)
 		}
 		SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
 		
-		if(!hasTravelPickup)
-		{
-			GiveInventory("WDriveCD",GetAmmoCapacity("WDriveCD"));
-		}
-		else
-		{
-			TakeInventory("ExtraTravelCharge", 1);
-		}
 	
 	}
 }

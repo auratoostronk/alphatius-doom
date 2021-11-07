@@ -141,6 +141,7 @@ Script "RechargeTimers" ENTER
 					GiveInventory("PumpSGEnergy",  GetAmmoCapacity("PumpSGEnergy"));
 					GiveInventory("RocketEnergy",  GetAmmoCapacity("RocketEnergy"));
 					GiveInventory("FlameEnergy",  GetAmmoCapacity("FlameEnergy"));
+					GiveInventory("BeamEnergy",  GetAmmoCapacity("BeamEnergy"));
 					TakeInventory("NoLowEnergySound", 1);
 			}
 			if(CheckInventory("IsHealing") && GetActorProperty(0, APROP_HEALTH) < 100)

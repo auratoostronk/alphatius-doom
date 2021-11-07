@@ -16,7 +16,7 @@ Actor PerkOverclocked : Inventory { Inventory.MaxAmount 1 }
 Actor PerkStalker : Inventory { Inventory.MaxAmount 1 }*/
 
 Actor ActionRegenZone : Inventory { Inventory.MaxAmount 1 }
-Actor ActionDisruptionScreen : Inventory { Inventory.MaxAmount 1 }
+Actor ActionSonicShockwave : Inventory { Inventory.MaxAmount 1 }
 Actor ActionPowerBrace : Inventory { Inventory.MaxAmount 1 }
 Actor ActionDecoyHologram : Inventory { Inventory.MaxAmount 1 }
 Actor ActionAutoDrone : Inventory { Inventory.MaxAmount 1 }

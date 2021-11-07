@@ -1,0 +1,326 @@
+object RedLightShoot
+{
+	frame TNT1 { light REDLIGHTSHOOT }
+}
+object GreenLightShoot
+{
+	frame TNT1 { light GREENLIGHTSHOOT }
+}
+object BlueLightShoot
+{
+	frame TNT1 { light BLUELIGHTSHOOT }
+}
+object YellowLightShoot
+{
+	frame TNT1 { light YELLOWLIGHTSHOOT }
+}
+object PurpleLightShoot
+{
+	frame TNT1 { light PURPLELIGHTSHOOT }
+}
+object OrangeLightShoot
+{
+	frame TNT1 { light ORANGELIGHTSHOOT }
+}
+object LightBlueLightShoot
+{
+	frame TNT1 { light LIGHTBLUELIGHTSHOOT }
+}
+
+object RedLight
+{
+	frame TNT1 { light REDLIGHT }
+}
+object GreenLight
+{
+	frame TNT1 { light GREENLIGHT }
+}
+object BlueLight
+{
+	frame TNT1 { light BLUELIGHT }
+}
+object YellowLight
+{
+	frame TNT1 { light YELLOWLIGHT }
+}
+object PurpleLight
+{
+	frame TNT1 { light PURPLELIGHT }
+}
+object OrangeLight
+{
+	frame TNT1 { light ORANGELIGHT }
+}
+object GreyLight
+{
+	frame TNT1 { light GREYLIGHT }
+}
+object LightBlueLight
+{
+	frame TNT1 { light LIGHTBLUELIGHT }
+}
+
+object RedGlowSpawner
+{
+	frame TNT1 { light REDWEAPONGLOW }
+}
+object GreenGlowSpawner
+{
+	frame TNT1 { light GREENWEAPONGLOW }
+}
+object BlueGlowSpawner
+{
+	frame TNT1 { light BLUEWEAPONGLOW }
+}
+object YellowGlowSpawner
+{
+	frame TNT1 { light YELLOWWEAPONGLOW }
+}
+object PurpleGlowSpawner
+{
+	frame TNT1 { light PURPLEWEAPONGLOW }
+}
+object OrangeGlowSpawner
+{
+	frame TNT1 { light ORANGEWEAPONGLOW }
+}
+object GrayGlowSpawner
+{
+	frame TNT1 { light GRAYWEAPONGLOW }
+}
+object LightGreenGlowSpawner
+{
+	frame TNT1 { light LIGHTGREENWEAPONGLOW }
+}
+object LightBlueGlowSpawner
+{
+	frame TNT1 { light LIGHTBLUEWEAPONGLOW }
+}
+
+object DecoyHologramRed
+{
+	frame PLAY { light REDWEAPONGLOW }
+}
+object DecoyHologramGreen
+{
+	frame PLAY { light GREENWEAPONGLOW }
+}
+object DecoyHologramBlue
+{
+	frame PLAY { light BLUEWEAPONGLOW }
+}
+object DecoyHologramYellow
+{
+	frame PLAY { light YELLOWWEAPONGLOW }
+}
+object DecoyHologramPurple
+{
+	frame PLAY { light PURPLEWEAPONGLOW }
+}
+object DecoyHologramOrange
+{
+	frame PLAY { light ORANGEWEAPONGLOW }
+}
+object DecoyHologramGray
+{
+	frame PLAY { light GRAYWEAPONGLOW }
+}
+object DecoyHologramLightGreen
+{
+	frame PLAY { light LIGHTGREENWEAPONGLOW }
+}
+object DecoyHologramLightBlue
+{
+	frame PLAY { light LIGHTBLUEWEAPONGLOW }
+}
+
+pulselight REDLIGHTSHOOT
+{
+    color 1.0 0.0 0.0
+    size 80
+	secondarysize 144
+	interval 0.06
+    offset 0 36 0
+} 
+pulselight GREENLIGHTSHOOT
+{
+    color 0.0 1.0 0.0
+    size 80
+	secondarysize 144
+	interval 0.06
+    offset 0 36 0
+} 
+pulselight BLUELIGHTSHOOT
+{
+    color 0.0 0.0 1.0
+    size 80
+	secondarysize 144
+	interval 0.06
+    offset 0 36 0
+} 
+pulselight YELLOWLIGHTSHOOT
+{
+    color 1.0 1.0 0.0
+    size 80
+	secondarysize 144
+	interval 0.06
+    offset 0 36 0
+} 
+pulselight PURPLELIGHTSHOOT
+{
+    color 0.2 0.0 0.8
+    size 80
+	secondarysize 144
+	interval 0.06
+    offset 0 36 0
+}
+pulselight MAGENTALIGHTSHOOT
+{
+    color 0.6 0.0 0.7
+    size 80
+	secondarysize 144
+	interval 0.06
+    offset 0 36 0
+}
+pulselight ORANGELIGHTSHOOT
+{
+    color 1.0 0.5 0.0
+    size 80
+	secondarysize 144
+	interval 0.06
+    offset 0 36 0
+}
+pulselight LIGHTBLUELIGHTSHOOT
+{
+    color 0.5 0.5 1.0
+    size 80
+	secondarysize 144
+	interval 0.06
+    offset 0 36 0
+} 
+
+pointlight REDLIGHT
+{
+    color 1.0 0.0 0.0
+    size 32
+}
+pointlight GREENLIGHT
+{
+    color 0.0 1.0 0.0
+    size 32
+}
+pointlight PURPLELIGHT
+{
+    color 0.2 0.0 0.8
+    size 32
+}
+pointlight MAGENTALIGHT
+{
+    color 0.6 0.0 0.7
+    size 32
+}
+pointlight YELLOWLIGHT
+{
+    color 1.0 1.0 0.0
+    size 32
+}
+pointlight BIGYELLOWLIGHT
+{
+    color 1.0 1.0 0.0
+    size 128
+}
+pointlight BLUELIGHT
+{
+    color 0.0 0.0 1.0
+    size 32
+}
+pointlight LIGHTBLUELIGHT
+{
+    color 0.5 0.5 1.0
+    size 32
+}
+pointlight ORANGELIGHT
+{
+    color 1.0 0.5 0.0
+    size 32
+}
+pointlight GREYLIGHT
+{
+    color 0.8 0.8 0.8
+    size 32
+}
+pointlight REDORANGELIGHT
+{
+	color 1.0 0.2 0.0
+    offset 0 48 0
+	size 32
+}
+pointlight GREENLIGHTSMALL
+{
+    color 0.0 0.2 0.0
+	offset 0 32 0
+    size 32
+}
+pointlight REDLIGHTSMALL
+{
+    color 1.0 0.0 0.0
+    size 16
+}
+pointlight MEDILIGHTSMALL
+{
+    color 1.0 1.0 1.0
+    size 16
+}
+pointlight MEDILIGHTBIG
+{
+    color 1.0 1.0 1.0
+    size 24
+}
+
+
+pointlight REDWEAPONGLOW
+{
+    color 1.0 0.0 0.0
+    size 8
+} 
+pointlight GREENWEAPONGLOW
+{
+    color 0.0 1.0 0.0
+    size 8
+} 
+pointlight BLUEWEAPONGLOW
+{
+    color 0.0 0.0 1.0
+    size 8
+} 
+pointlight YELLOWWEAPONGLOW
+{
+    color 1.0 1.0 0.0
+    size 8
+} 
+pointlight PURPLEWEAPONGLOW
+{
+    color 0.2 0.0 0.8
+    size 8
+}
+pointlight ORANGEWEAPONGLOW
+{
+    color 1.0 0.5 0.0
+    size 8
+}
+pointlight LIGHTGREENWEAPONGLOW
+{
+    color 0.5 1.0 0.5
+    size 16
+} 
+pointlight LIGHTBLUEWEAPONGLOW
+{
+    color 0.5 0.5 1.0
+    size 8
+
+} 
+pointlight GRAYWEAPONGLOW
+{
+    color 0.5 0.5 0.5
+    size 8
+} 

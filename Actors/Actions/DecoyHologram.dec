@@ -31,6 +31,7 @@ Actor DecoyHologramBlue : DecoyHologram {}
 Actor DecoyHologramPurple : DecoyHologram {}
 Actor DecoyHologramGray : DecoyHologram {}
 Actor DecoyHologramLightGreen : DecoyHologram {}
+Actor DecoyHologramLightBlue : DecoyHologram {}
 
 Actor DecoyDeathFX
 {
@@ -133,6 +134,17 @@ Actor UseDecoyHologramLightGreen : CustomInventory
 		Pickup:
 		Use:
 		TNT1 A 1 A_SpawnItemEx("DecoyHologramLightGreen", 0.0, 0.0, 0.0, 14.0, 0.0, 0.0, 0.0, SXF_TRANSFERTRANSLATION|SXF_SETMASTER)
+		stop
+	}
+}
+Actor UseDecoyHologramLightBlue : CustomInventory
+{
+	Inventory.MaxAmount 1
+	States
+	{
+		Pickup:
+		Use:
+		TNT1 A 1 A_SpawnItemEx("DecoyHologramLightBlue", 0.0, 0.0, 0.0, 14.0, 0.0, 0.0, 0.0, SXF_TRANSFERTRANSLATION|SXF_SETMASTER)
 		stop
 	}
 }

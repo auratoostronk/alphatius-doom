@@ -54,13 +54,6 @@ ACTOR PhotonCarbine : Weapon 10004
 		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
 		CARR A 3 A_WeaponReady(WRF_NOSECONDARY)
 		Goto Ready
-	NoEnergy:
-		CARR A 3 ACS_NamedExecuteAlways("WeaponNoEnergy")
-		Goto Ready
-	GrenadeCooloff:
-		CARR A 1
-		TNT1 A 0 A_Refire("GrenadeCooloff")
-		Goto Ready
   }
 }
 Actor PhotonProjectile : FastProjectile

@@ -1,0 +1,191 @@
+File updated for 1.12 release 3 (10/8/2021)
+
+CONCEPT
+Alphatius was only an idea in late 2016, during a dark time in my life where I was placed in a pseudo-boarding school
+for "troublemaking children". I had no internet, no electronics, and not much else to do besides daydream about
+what I wanted to do when I came home. One of these things I thought about was a DOOM mod. It had no name, but the
+initial concept took inspiration from Seidolon's DULA, Call of Duty, and Borderlands. I thought of weapon ideas,
+action abilites, travel abilites, maps, and drew all this stuff out on paper. I started putting it together the moment
+I returned home in the Summer of 2017. Although many of the original concepts for the mod were scrapped (like reloading, weapon voxels, etc.),
+Alphatius evolved into something unique and special. While it still has work to do, it became one of the first creations
+that I've felt sufficiently proud of myself for making. It helped me regain confidence in myself, and in my game design skills.
+Going nearly four years strong, developing Alphatius has been my favorite passion, (alongside playing it of course),
+and something many people also enjoy. 
+	-hiimaura
+
+SPECIAL THANKS
+-Shoutouts to Henry and Charles from my "pseudo-boarding school" for letting me bounce my ideas off of you. You two are real G's.
+-Thanks to Seidolon for the inspiration, for being the only one to respond to my letters there, and for sticking with me as a friend since 2nd grade.
+-Thanks to all the people who helped playtest this mod, making sure it's as polished as it is now.
+-Thanks to all the people who made the resources that are being used in this mod.
+-Thanks to The Sentinel's Playground for letting me host my mod on your servers for free, and help build it's community.
+-Thanks to BlushBerry and Nuclear Empire for letting me host an official server for the mod, and help build it's community.
+-Thanks to me, for making this. I honestly couldn't of done it without you. Hehe...
+
+SPECIAL THANKS TO THESE REGULAR BETA TESTERS / FREQUENT PLAYERS
+-Seidolon
+-BlushBerry
+-Summer's Exile
+-liljeck
+-Asriel
+-Aku (a.k.a CUNT)
+-Infernis
+-Armorum Adamantium
+
+
+BACK TO OUR REGULARLY SCHEDULED CREDITS
+
+CODE
+Damage Numbers: Taken from StrikerMan780's Damage Number mod. Editted by hiimaura to keep numbers red and not randomly colored.
+Everything Else: While the mod was based on Seidolon's DULA, very little code is still left.
+	Probably 98% at least (likely more) has been removed/rewritten and replaced with code by hiimaura.
+	I still think it's neccessary to credit Seidolon for this, because not only did DULA inspire the mod,
+	but it jump-started the beginning of this mod. Also, do note that Seidolon doesn't really mind that I used his
+	code as a base.
+
+SOUNDS
+
+C14 Fire: Taken from All Out War by jdagenet https://zandronum.com/forum/viewtopic.php?t=8320
+C14 Alt Charge:	Ripped from DOOM 3's BFG9000. Unused.
+C14 Gas Hiss: Taken from this Youtube Video:  https://www.youtube.com/watch?v=WNveatekvd0 
+C14 Grenade Hit: Ripped from Quake 3 Arena (Grenade Launcher)
+Tesla SMG: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ 
+Tesla SMG Alt-Fire: Found a taser sound on Youtube somewhere. Apparently I did not document this, but I think I just found it: https://www.youtube.com/watch?v=8yZpCPtmYJI
+Particle Splitter Fire: Ripped from Call of Duty Zombies Thundergun (Black Ops 1)
+Particle Splitter Pump: Came from this video https://www.youtube.com/watch?v=B2Gz-A-XO8w which apparently was made private since I documented it. What can ya do?
+Photon Carbine Fire: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ 
+Spark Cannon Fire: Taken from the Channeler on Realm667.com Credits go to "Epic Games and id software"
+Spark Cannon Alt Fire: Came from a mod for XCom called Xcom Files. Link here: https://openxcom.org/forum/index.php?topic=4595.0
+Rocket Cannon Fire: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ 
+Rocket Cannon Detonate: Taken from Call of Duty Zombies Thundergun (Black Ops 1)
+Flux Disc Launcher Charge: Ripped from DOOM 3's BFG9000. Currently Unused.
+Flux Disc Launcher Fire: Taken from Eon Weapons's Plasma Gun, the weapon pack to go with Aeon DM https://www.doomworld.com/forum/topic/86050-aeondm-finished/ Currently Unused.
+OVR9000 Fire: Ripped from City of Heroes.
+
+Weapon Swap: Taken from Quake 3 Arena.
+Grenade Launch: Used for Photon Carbine, C14, and Flux Disc Launcher. from M79 on Realm667. Credits go to "valve"
+Explosion Sounds: Far Explode taken from Brutal Doom. Closer ones taken from Particle Fire Enhancer mod https://forum.zdoom.org/viewtopic.php?f=19&t=28547
+
+Jump Boost: Came from Project MSX by MagSigmaX  https://forum.zdoom.org/viewtopic.php?t=25836
+Rocket Jump: Ripped from League of Legends's Lux Ultimate.
+Warp Drive: Ripped from League of Legends's Ezreal.
+Hyperdrive: Ripped from Call of Duty Zombies Thundergun (Black Ops 1)
+
+Regen Zone: Activation sound and loop sound ripped from an old MMO called City of Heroes. If you didn't know, the game is back ;)
+Power Brace: Activation sound and hit sound ripped from an old MMO called City of Heroes. If you didn't know, the game is back ;)
+Auto Laser: Sound Taken from Terminator on Realm667.
+
+Out of Energy: Sound taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
+Jet Flybys: taken from a youtube video https://www.youtube.com/watch?v=L0G4Hwi88cc
+Water Flow: Recorded and editted by hiimaura. Unused.
+Jump Pad: Ripped from Diabotical
+Teleporter Ambience: Ripped from Diabotical.
+Travel Ready: Made by hiimaura using Ableton.
+Alt Ready: Unknown. Unused. It might be the Particle Splitter pump sound editted by me, but no guarantees.
+
+Grenade Sphere Sounds: Unused. Taken from Starbound.
+
+
+SPRITES
+
+C14 Weapon: Taken from Realm667.com under Pulse Rifle. Credits go to "id software", "JoeyTD", and "ShadesMaster"
+C14 Fire Projectile: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
+C14 Grenade: Taken from Ben2k9's Cyberbaron from Realm667.com . Credits go to him and id software.
+C14 Gamma Beam Projectile: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
+C14 Gas Sprites: Taken from Sgt. Mark IV's Brutal Doom, and recolored by Seidolon.
+Photon Carbine Weapon: Made by Craneo. Recolored by hiimaura.
+Photon Carbine Projectile: Taken from Heretic 2 and recolored by hiimaura
+Photon Carbine Alt Fires (including trails): Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836 Recolored by hiimaura.
+Tesla SMG Weapon: Made by TypicalSF. hiimaura made some edits to the lightning effects. Credits also go to Hexen as a base resource for the lightning effects.
+Tesla SMG Projectiles: Taken from Strife. Recolored by hiimaura.
+Particle Splitter Weapon: Taken from Realm667.com under UAC Plasmatic Rifle, recolored by hiimaura. Credits for original sprite goes to Fuzzyblade, id software, Freedoom Team, and Infirnex
+Particle Splitter Pickup: Made from scratch by hiimaura.
+Particle Splitter Projectiles: Taken from Heretic 2 and recolored by hiimaura.
+Particle Splitter Slug: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836 Recolored by hiimaura. Unused
+Spark Cannon Weapon: Taken from Realm667.com as Stunner Rifle. Recolored by hiimaura.
+Spark Cannon Beam Particles: Taken from Heretic 2.
+Spark Cannon Puff: Taken from Strife. Recolored by hiimaura.
+Rocket Cannon Weapon: Taken from Realm667 as the Hellstorm Cannon. Credits go to Eriance, Ghastly_dragon, Infernus, Xaser.
+Rockt Launcher Rockets: Taken from All Out War by jdagenet https://zandronum.com/forum/viewtopic.php?t=8320
+Flux Disc Launcher Weapon: Taken from Realm667 under BFG2704, recolored by hiimaura. Credits go to zrrion the insect, id software for base sprite. Unused.
+Flux Disc Launcher Projectiles: Taken from Realm667 under BFG2704, recolored by hiimaura. Credits go to zrrion the insect, id software for base sprite. Unused.
+Flux Disc Launcher Portal: Made by Seidolon. Used Hexen sprites as base. Recolored by hiimaura. Unused.
+
+Explosions: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
+Teleport Fog: Taken from Sgt Mark IV's Brutal Doom
+Regeneration Zone: Taken from Hexen, recolored by hiimaura.
+Power Brace: Taken from Hexen, recolored by hiimaura. This is NOT refering to the 3D model. See 3D model section
+Auto Laser: See 3D model section.
+Efficiency Adaptor: Taken from Strife.
+
+Armor Shards: Taken from Seidolon's Project Horror. Recolored by hiimaura.
+Nano Armor: Taken from Doom 2. recolored by hiimaura.
+Travel Sphere: Taken from Realm667 under Deflection Sphere. Recolored by hiimaura.
+Grenade Spheres: Unused. Taken from Realm667 under various powerups and recolored by hiimaura.
+
+Heal Effects: Made by hiimaura.
+Blood Sprites: Taken from Nashgore.pk3
+Dirt Particles: Taken from Sgt Mark IV's Brutal Doom.
+3D Object Placeholder: Taken from Ozymandias's GORE. 
+Damage Numbers: Doom font. id software.
+
+GRAPHICS
+
+Title Pictures: Taken and editted by hiimaura.
+Intermisison picture: Taken and editted by hiimaura.
+Help Pic: Made by hiimaura using id software as base sprite
+End Tutorial pic: Made by hiimaura using id software as base sprite
+Alphatius Font: Currently not implemented. Made by hiimaura.
+Icons: Currently not implemented. Made by hiimaura.
+Weapon Crosshairs: Made by hiimaura. Unused.
+Health bar: Taken from Wrath of Chronos. Editted by hiimaura.
+Energy Bars: Taken from Wrath of Chronos. Editted by hiimaura.
+Armor bar: Taken from Wrath of Chronos. Editted by hiimaura.
+Radar Sprite: Unused. Made by hiimaura.
+
+MAPS
+ALPH01 Quarry: Created by hiimaura. 
+ALPH02 Sediment: Created by hiimaura. Initially inspired by a map from Call of Duty: Infinite Warfare, although it bears little resemblence now.
+ALPH03 Magma: Created by hiimaura. 
+ALPH04 Stronghold: Created by hiimaura.
+ALPH05 Frostbite: Created by hiimaura.
+ALPH06 Asteroid: Created by hiimaura. Concept inspired by a map from Borderlands 3, although it bears little resemblence.
+ALPH07 Torrent: Created by hiimaura. Inspired by Seidolon's idea to add a nature-themed map.
+ALPH08 Waste: Created by hiimaura. Inspired by a map by Seidolon from his mod DULA, although it bears little resemblence now.
+
+ALPHDL01 Cagefight: Created by hiimaura.
+ALPHDL02 Outpost: Created by hiimaura.
+ALPHDL03 Flood: Created by hiimaura.
+ALPHDL04 High Ground: Created by hiimaura.
+ALPHDL05 Cold Sludge: Created by hiimaura.
+
+MUSIC:
+Title Screen: Lighthouse - Composed by Chronogaster. His soundcloud can be found here: https://soundcloud.com/chronogaster
+	Note that this music is not on his soundcloud. He does plan on making more tracks for this mod, however.
+ALPH01 Quarry: Music taken from Quake 3 Arena.
+ALPH02 Sediment: Music taken from Quake 3 Arena.
+ALPH03 Magma: Dreadmaze - Composed by Chronogaster. His soundcloud can be found here: https://soundcloud.com/chronogaster
+ALPH04 Stronghold: Music taken from Quake 3 Arena.
+ALPH05 Frostbite: Music taken from Quake 3 Arena.
+ALPH06 Asteroid: Music taken from Quake 3 Arena.
+ALPH07 Torrent: Music taken from Quake 3 Arena.
+ALPH08 Waste: Music made by hiimaura.
+
+ALPHDL01 Cagefight:  Music taken from Quake 3 Arena.
+ALPHDL02 Outpost: Subterfuge - Composed by Chronogaster. His soundcloud can be found here: https://soundcloud.com/chronogaster
+ALPHDL03 Flood: Music taken from Quake 3 Arena.
+ALPHDL04 High Ground: Dreadmaze - Composed by Chronogaster. His soundcloud can be found here: https://soundcloud.com/chronogaster
+ALPHDL05 Cold Sludge: Music taken from Quake 3 Arena.
+
+BRIGHTMAPS:
+All brightmaps used the original sprites as a base, and were modified by hiimaura to become the brightmaps.
+
+3D MODELS:
+Spaceship: Taken from a mod called Stronghold on the edge of Chaos
+Power Brace: Created by hiimaura.
+Auto Laser: Taken from SgtMarkIV's Brutal Doom, recolored by hiimaura.
+
+TEXTURES:
+Textures are seperated into separate folders based on source. i.e. textures in the UDMX folder came from a mod called UDMX.
+Textures were taken from UDMX mostly. A few (i.e yellow tractor metal and tractor wheels) were made by hiimaura.
+Skyboxes were taken from this cool website under the name "Kothic Skies" https://www.quaddicted.com/webarchive/kell.quaddicted.com/skyboxes.html

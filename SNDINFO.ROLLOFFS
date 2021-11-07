@@ -1,0 +1,91 @@
+//WEAPONS
+$rolloff SparkCannon/Fire 400 3200
+$rolloff SparkCannon/AltFire 800 6400
+
+$rolloff C14/Fire 400 3200
+$rolloff C14/GasHiss 200 1200
+$rolloff C14/AltCharge 800 6400
+$rolloff C14/Hit 400 800
+
+$rolloff PhotonCarbine/Fire 400 3200
+$rolloff PhotonCarbine/Hit 400 800
+
+$rolloff TeslaSMG/Fire 400 3200
+$rolloff TeslaSMG/AltFire 400 3200
+$rolloff TeslaSMG/AltFireHit 400 3200
+
+$rolloff ParticleSplitter/Fire 400 3200
+$rolloff ParticleSplitter/FlameStart 400 3200
+$rolloff ParticleSplitter/FlameLoop 400 3200
+$rolloff ParticleSplitter/FlameStop 400 3200
+$rolloff ParticleSplitter/Pump 200 1200
+
+$rolloff RocketCannon/Fire 800 6400
+$rolloff RocketCannon/Flyby 800 3200
+
+$rolloff BeamRifle/Fire 400 3200
+$rolloff BeamRifle/AltFire 800 6400
+
+//WEAPON EFFECTS
+$rolloff GrenadeHit 400 3200
+$rolloff ItemThrow 400 1600
+$rolloff GrenadeLaunch 1600 6400
+
+$rolloff DistantExplosion 3200 5600
+$rolloff Explosion1 400 3200
+$rolloff Explosion2 400 3200
+$rolloff Explosion3 400 3200
+
+$rolloff EXPLOS1 800 4800
+$rolloff EXPLOS2 800 4800
+$rolloff EXPLOS3 800 4800
+
+//GENERAL
+$rolloff General/WeaponSwap 30 50
+
+//TRAVELS
+$rolloff Travel/ThrusterBoots 400 2400
+$rolloff Travel/JumpThrust 400 2400
+$rolloff Travel/WarpStart 400 2400
+$rolloff Travel/WarpDone 400 2400
+$rolloff Travel/HyperdriveStart 400 2400
+$rolloff Travel/HyperdriveEnd 400 1600
+
+$rolloff Actions/RegenZoneStart 800 1600
+$rolloff Actions/RegenZoneLoop 400 800
+$rolloff Actions/PowerBraceOn 400 800
+$rolloff Actions/PowerBraceHit 400 800
+$rolloff Actions/PowerBraceOff 400 800
+$rolloff Actions/DisruptionScreenActivate 800 1600
+$rolloff Actions/DisruptionScreenLoop 600 1200
+$rolloff Actions/AutoLaser 400 3200
+$rolloff Actions/SonicShockwave 800 2400
+
+//AMBIENT
+$rolloff Ambient/TeleportHum 100 800
+$rolloff Ambient/JumppadHit  800 1600
+
+//GRENADES
+$rolloff Grenades/IncendiaryShoot 800 3200
+$rolloff Grenades/IncendiaryBurn 300 1200
+
+
+//VOLUMES
+$volume Actions/AutoLaser 0.7
+$volume DistantExplosion 0.8
+$volume Explosion1 0.7
+$volume Explosion2 0.7
+$volume Explosion3 0.7
+
+$musicvolume SONIC1 0.5
+$musicvolume SONIC2 0.5
+$musicvolume SONIC3 0.5
+$musicvolume SONIC4 0.5
+$musicvolume QUAKE3_1 0.5
+$musicvolume QUAKE3_3 0.5
+$musicvolume DREADMAZ 0.5
+$musicvolume LITEHOUS 0.5
+$musicvolume LOWBLOW 0.5
+$musicvolume SUBTERFU 0.5
+$musicvolume SEWERS 0.6
+$musicvolume INTERMUS 0.5

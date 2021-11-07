@@ -1,0 +1,114 @@
+ACTOR BeamRifle : Weapon 10011
+{
+	//$Category Alphatius Weapons
+	Radius 32
+	Decal RailScorchLower
+	Tag "Beam Rifle"
+	Weapon.BobStyle "Smooth"
+	Weapon.AmmoType1 "BeamEnergy"
+	Weapon.AmmoType2 "BeamEnergy"
+	Weapon.AmmoUse1 1
+	Weapon.AmmoUse2 2
+	+WEAPON.NOAUTOAIM
+	+BLOODLESSIMPACT
+	Weapon.SlotNumber 4
+	Weapon.SelectionOrder 500
+	Inventory.Icon "BRFPA0"
+	Inventory.RespawnTics 280 //8 seconds
+	States
+	{
+	Spawn:
+		BRFP A 1 bright
+		Loop
+	Ready:
+		BRFR A 1 A_WeaponReady
+		Loop
+	Deselect:
+		TNT1 A 0 ACS_NamedExecuteAlways("WeaponDeselect", 0)
+		TNT1 A 0 A_PlaySound("BeamRifle/FireStop", CHAN_WEAPON, 1.0, false)
+		TNT1 A 0 A_StopSound(CHAN_WEAPON)
+		BRFR A 1 A_Lower
+		TNT1 AA 0 A_Lower
+		Loop
+	Select:
+		BRFR A 1 A_Raise
+		TNT1 AA 0 A_Raise
+		Loop
+	Fire:
+		//TNT1 A 0 A_JumpIf(CallACS("HoldingGrenadeSphere") == 1, "GrenadeCooloff")
+		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
+		TNT1 A 0 A_SpawnItemEX("LightBlueLightShoot")
+		TNT1 A 0 A_PlaySound("BeamRifle/Fire", CHAN_WEAPON, 1.0, true)
+		BRFF AB 1 Bright A_RailAttack(6, 0, true, "none", "none", RGF_SILENT, 0, "BeamRailHit", 0, 0, 640.0, 1.0, 8.0, 0, "BeamRailPuff", -2)
+		TNT1 A 0 A_Refire("Fire")
+		BRFF E 1 A_PlaySound("BeamRifle/FireStop", CHAN_WEAPON, 1.0, false)
+		Goto Ready
+	AltFire:
+		TNT1 A 0 A_JumpIfInventory("SparkAltCD", 1, "AltFail")
+		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
+		TNT1 A 0 A_SpawnItemEX("LightBlueLightShoot")
+		TNT1 A 0 A_PlaySound("BeamRifle/AltFire", CHAN_WEAPON)
+		BRFF A 1 Bright A_RailAttack(18, 0, true, "none", "none", RGF_SILENT, 0, "BeamRailHit2", 0, 0, 16384.0, 1.0, 32.0, 0, "BeamRailPuff2", -2)
+		BRFF BC 2
+		BRFR A 1
+		Goto Ready
+	AltFail:
+		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
+		BRFR A 3 A_WeaponReady(WRF_NOSECONDARY)
+		Goto Ready
+  }
+}
+Actor BeamRailPuff
+{
+	Scale 0.3
+	Renderstyle Add
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	+BRIGHT
+	States
+	{
+	Spawn:
+	    LSPK A 1 Bright A_FadeOut(0.5)
+		Loop
+	}
+}
+Actor BeamRailPuff2 : BeamRailPuff
+{
+	States
+	{
+	Spawn:
+		LSPK A 1
+		Goto Spawn1
+	Spawn1:
+	    LSPK A 1 Bright A_FadeOut(0.2)
+		Loop
+	}
+}
+Actor BeamRailHit : BulletPuff
+{
+	+PUFFONACTORS
+	+AlWAYSPUFF
+	//-RANDOMIZE
+	-ALLOWPARTICLES
+	+DONTSPLASH
+	+NOCLIP
+	Alpha 1.0
+	Vspeed 0
+	Scale 0.4
+	DamageType "BeamRifle"
+	ProjectileKickback 100
+	Obituary "%k > Beam Rifle > %o"
+	+BRIGHT
+	States
+	{
+	Spawn:
+	Melee:
+	Crash:
+	    ZAP6 ABCDE 1 A_FadeOut(0.2)
+		Stop
+	}
+}
+Actor BeamRailHit2 : BeamRailHit
+{
+	Obituary "%k > Beam Rifle (Alt) > %o"
+}

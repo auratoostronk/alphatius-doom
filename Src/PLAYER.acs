@@ -36,25 +36,12 @@ Script "SetupPlayer" (void)
 			!CheckInventory("C14") &&
 			!CheckInventory("SparkCannon") &&
 			!CheckInventory("RocketCannon") && 
-			!CheckInventory("Flamespitter"))
+			!CheckInventory("Flamespitter") && 
+			!CheckInventory("BeamRifle"))
 			{
 				GiveInventory("PhotonCarbine", 1);
 			}
 			
-		/*
-		GiveInventory(GetCVARString("alph_tsmgmod"), 1);
-		GiveInventory(GetCVARString("alph_tsmgaltmod"), 1);
-		GiveInventory(GetCVARString("alph_psgmod"), 1);
-		GiveInventory(GetCVARString("alph_psgaltmod"), 1);
-		GiveInventory(GetCVARString("alph_c14mod"), 1);
-		GiveInventory(GetCVARString("alph_c14altmod"), 1);
-		GiveInventory(GetCVARString("alph_pcarbmod"), 1);
-		GiveInventory(GetCVARString("alph_pcarbaltmod"), 1);
-		GiveInventory(GetCVARString("alph_sparkmod"), 1);
-		GiveInventory(GetCVARString("alph_sparkaltmod"), 1);
-		GiveInventory(GetCVARString("alph_rocketmod"), 1);
-		GiveInventory(GetCVARString("alph_rocketaltmod"), 1);
-		*/
 		ACS_NamedExecuteAlways("RestoreActionTimers", 0);
 		switch(GetCVAR("alph_travel"))
 		{
@@ -78,52 +65,6 @@ Script "SetupPlayer" (void)
 			GiveInventory("TBootsCD", GetAmmoCapacity("TBootsCD"));
 			break;
 		}
-		/*
-		switch(GetCVAR("alph_grenadetype"))
-		{
-			case 0:
-			GiveInventory("GrenadeTypeIncendiary", 1);
-			break;
-			case 1:
-			GiveInventory("GrenadeTypeBounce", 1);
-			break;
-			case 2:
-			GiveInventory("GrenadeTypeDisc", 1);
-			break;
-			default:
-			GiveInventory("GrenadeTypeIncendiary", 1);
-			break;
-		}
-		switch(GetCVAR("alph_passive1"))
-		{
-			case 0:
-			GiveInventory("PerkAdrenaline", 1);
-			break;
-			case 1:
-			GiveInventory("PerkSpeedDemon", 1);
-			break;
-			case 2:
-			GiveInventory("PerkOverclocked", 1);
-			break;
-			default:
-			GiveInventory("PerkAdrenaline", 1);
-			break;
-		}
-		switch(GetCVAR("alph_passive2"))
-		{
-			case 0:
-			GiveInventory("PerkRapidAlt", 1);
-			break;
-			case 1:
-			GiveInventory("PerkBandolier", 1);
-			break;
-			case 2:
-			GiveInventory("PerkStalker", 1);
-			break;
-			default:
-			GiveInventory("PerkRapidAlt", 1);
-			break;
-		}*/
 		switch(GetCVAR("alph_action"))
 		{
 			case 0:
@@ -137,6 +78,9 @@ Script "SetupPlayer" (void)
 			break;
 			case 3:
 			GiveInventory("ActionDecoyHologram", 1);
+			break;
+			case 4:
+			GiveInventory("ActionSonicShockwave", 1);
 			break;
 			default:
 			GiveInventory("ActionRegenZone", 1);

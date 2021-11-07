@@ -98,6 +98,16 @@ ACTOR FlamespitterAlt : Flamespitter
 		
 	}
 }
+ACTOR BeamRifleAlt : BeamRifle
+{
+	Tag "C14 (Bot's Alt Fire)"
+	States
+	{
+	Fire:
+		TNT1 A 0
+		Goto AltFire
+	}
+}
 /*
 ACTOR OVR9000Alt : OVR9000
 {

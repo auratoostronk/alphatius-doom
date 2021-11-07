@@ -40,6 +40,12 @@ Actor FlameEnergy : Ammo
   Ammo.BackpackMaxAmount 120
   Inventory.Icon "CELLA0"
 }
+Actor BeamEnergy : Ammo
+{
+  Inventory.MaxAmount 100
+  Ammo.BackpackMaxAmount 120
+  Inventory.Icon "CELLA0"
+}
 Actor OVREnergy : Ammo
 {
   Inventory.Amount 50
@@ -66,8 +72,8 @@ Actor OVRAltCharge: Ammo
 }
 Actor SparkAltCD : Ammo
 {
-  Inventory.MaxAmount 70
-  Ammo.BackpackMaxAmount 70
+  Inventory.MaxAmount 140
+  Ammo.BackpackMaxAmount 140
 }
 Actor CarbineAltCD : Ammo
 {

@@ -1,0 +1,135 @@
+Gameinfo
+{
+	PlayerClasses = "AlphatiusPlayer"
+	TitleMusic = "LITEHOUS"
+	TitleTime = 6
+	TitlePage = "TITLE1"
+	CreditPage = "TITLE2"
+	AddCreditPage = "TITLE3"
+	AddCreditPage = "TITLE4"
+	IntermissionMusic = "INTERMUS"
+	MenuFontColor_Title = "Gold"
+	MenuFontColor_Action = "Gold"
+	MenuFontColor_Label =  "Red"
+	MenuFontColor_Selection = "White"
+	MenuFontColor_Value= "White"
+	MenuFontColor_Header = "Gold"
+}
+
+map ALPH01 lookup "Quarry"
+{
+   levelnum = 1
+   sky1 = "DUSTSKY", 0
+   music = "SONIC1"
+   next = "ALPH02"
+   AllowRespawn
+}
+map ALPH02 lookup "Sediment"
+{
+   levelnum = 2
+   sky1 = "DFIRESKY", 0
+   music = "SONIC4"
+   next = "ALPH03"
+   AllowRespawn
+}
+map ALPH03 lookup "Magma"
+{
+   levelnum = 3
+   sky1 = "REDSKY", 0
+   music = "DREADMAZ"
+   next = "ALPH04"
+   AllowRespawn
+}
+map ALPH04 lookup "Stronghold"
+{
+   levelnum = 4
+   sky1 = "REDSKY", 0
+   music = "SONIC2"
+   next = "ALPH05"
+   AllowRespawn
+}
+map ALPH05 lookup "Frostbite"
+{
+   levelnum = 5
+   sky1 = "SNOWSKY", 0
+   music = "SONIC3"
+   next = "ALPH06"
+   AllowRespawn
+}
+map ALPH06 lookup "Asteroid"
+{
+	levelnum = 6
+	sky1 = "SPACESKY", 0
+	music = "QUAKE3_3"
+	next = "ALPH07"
+	AllowRespawn
+}
+map ALPH07 lookup "Torrent"
+{
+	levelnum = 7
+	sky1 = "OLOSSKY", 0
+	music = "QUAKE3_1"
+	next = "ALPH08"
+	AllowRespawn
+}
+map ALPH08 lookup "Waste"
+{
+	levelnum = 8
+	sky1 = "REDSKY", 0
+	music = "SONIC2"
+	next = "ALPH01"
+	AllowRespawn
+}
+
+map ALPHDL01 lookup "Cagefight"
+{
+	levelnum = 201
+	sky1 = "SPACSKY2", 0
+	music = "SONIC2"
+	next = "ALPHDL02"
+	AllowRespawn
+}
+map ALPHDL02 lookup "Outpost"
+{
+	levelnum = 202
+	sky1 = "SNOWSKY", 0
+	music = "SUBTERFU"
+	next = "ALPHDL03"
+	AllowRespawn
+}
+map ALPHDL03 lookup "Flood"
+{
+	levelnum = 203
+	sky1 = "OLOSSKY", 0
+	music = "SONIC4"
+	next = "ALPHDL04"
+	AllowRespawn
+}
+map ALPHDL04 lookup "Cold Sludge"
+{
+	levelnum = 204
+	sky1 = "SNOWSKY", 0
+	music = "SONIC3"
+	next = "ALPHDL01"
+	AllowRespawn
+}
+map ALPHTUT1 lookup "Tutorial"
+{
+   levelnum = 0
+   sky1 = "DUSTSKY", 0
+   music = "SONIC1"
+   next = "ALPH01"
+   AllowRespawn
+}
+clearskills
+skill Alphatius
+{
+	DoubleAmmoFactor = 1.0
+	SpawnFilter = 3
+}
+clearepisodes
+episode ALPHTUT1
+{
+	name = "Part 1: Basics"
+	key = "1"
+}

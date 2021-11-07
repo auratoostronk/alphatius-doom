@@ -1,0 +1,3 @@
+The weapon sprites were made by TypicalSF and editted by hiimaura. Pickup sprite taken from Realm667 under NailgunMG. Also, credits to Raven software for base resources used in editing
+
+The projectiles were taken from Strife and recolored by hiimaura.

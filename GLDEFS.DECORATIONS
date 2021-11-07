@@ -1,0 +1,33 @@
+glow
+{
+	flats
+	{
+		LAVA1
+		LAVA2
+		LAVA3
+		LAVA4
+	}
+}
+
+object CrystalGreen { frame CRYS { light GREENCRYSTAL } }
+object CrystalBlue { frame CRYS { light BLUECRYSTAL } }
+object CrystalRed {	frame CRYS { light REDCRYSTAL } }
+
+pointlight REDCRYSTAL
+{
+    color 1.0 0.0 0.0
+    size 64
+	offset 0 32 0
+}
+pointlight GREENCRYSTAL
+{
+    color 0.0 1.0 0.0
+    size 64
+	offset 0 32 0
+}
+pointlight BLUECRYSTAL
+{
+    color 0.0 0.0 1.0
+    size 64
+	offset 0 32 0
+}

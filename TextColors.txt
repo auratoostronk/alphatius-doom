@@ -1,0 +1,26 @@
+//Stolen from NewTextColours_260.pk3 by Fuzzball
+//For use with BlushBerry Bot
+
+
+// BABY BOY //
+Q5 {
+                #2887e4  #abe7ff 0 139
+                #abe7ff  #d7ffff 140 256
+       Console:
+                #2887e4  #abe7ff 0 139
+                #abe7ff  #d7ffff 140 256
+}
+
+// NUCLEAR FUMES //
+Q6 {
+                #b2eb1c  #4a8a15 0 124
+                #4a8a15  #1a0d23 125 256
+       Console:
+                #1a0d23  #b2eb1c 0 256
+}
+// COTTON CANDY //
+Y1 {
+                #cb4c6d  #ffffff 0 256
+       Console:
+                #cb4c6d  #ffffff 0 256
+}

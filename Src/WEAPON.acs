@@ -37,6 +37,10 @@ Script "WeaponGlow" ENTER
 		{
 			SpawnForced("OrangeGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
 		}
+		if(GetWeapon() == "BeamRifle" || GetWeapon() == "BeamRifleAlt")
+		{
+			SpawnForced("LightBlueGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
+		}
 		if(GetWeapon() == "OVR9000" || GetWeapon() == "OVR9000Alt")
 		{
 			SpawnForced("LightGreenGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));

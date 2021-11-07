@@ -44,9 +44,9 @@ Script "ActionAbility1" (void) net
 		{
 			ACS_NamedExecuteAlways("AutoDrone", 0);
 		}
-		else if(CheckInventory("ActionEnergyZone") > 0)
+		else if(CheckInventory("ActionSonicShockwave") > 0)
 		{
-			ACS_NamedExecuteAlways("EfficiencyAdaptor", 0);
+			ACS_NamedExecuteAlways("SonicShockwave", 0);
 		}
 		else
 		{
@@ -166,6 +166,10 @@ Script "DecoyHologram" (void)
 		{
 			GiveInventory("UseDecoyHologramOrange", 1);
 		}
+		if(GetWeapon() == "BeamRifle" || GetWeapon() == "BeamRifleAlt")
+		{
+			GiveInventory("UseDecoyHologramLightBlue", 1);
+		}
 		if(GetWeapon() == "OVR9000" || GetWeapon() == "OVR9000Alt")
 		{
 			GiveInventory("UseDecoyHologramLightGreen", 1);
@@ -212,6 +216,23 @@ Script "AutoDrone" (void)
 			delay(3);
 			TakeInventory("FireAutoDrone", 1);
 		}
+	}
+	else
+	{
+		ACS_NamedExecuteAlways("Action1Fail", 0);
+	}
+}
+Script "SonicShockwave" (void)
+{
+	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("MediumActionCharge"))
+	{
+		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
+		Thing_Stop(0);
+		SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
+		SpawnSpotFacingForced("SonicShockwaveWarning", 0, 0);
+		delay(15);
+		SpawnProjectile(0, "SonicShockwaveMissile", 0, 0, 0, 0, 0);
+		SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
 	}
 	else
 	{

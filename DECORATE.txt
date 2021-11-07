@@ -1,0 +1,32 @@
+#include Actors/Flashes.dec
+#include Actors/DummyActors.dec
+#include Actors/Player.dec
+#include Actors/Explosions.dec
+#include Actors/CVARInventory.dec
+#include Actors/Decorations.dec
+#include Actors/Effects.dec
+#include Actors/DamageNumbers.dec
+#include Actors/SoundActors.dec
+
+#include Actors/Weapons/PhotonCarbine.dec
+#include Actors/Weapons/C14.dec
+#include Actors/Weapons/TeslaSMG.dec
+#include Actors/Weapons/ParticleSplitter.dec
+#include Actors/Weapons/RocketCannon.dec
+#include Actors/Weapons/SparkCannon.dec
+#include Actors/Weapons/BeamRifle.dec
+#include Actors/Weapons/Flamespitter.dec
+#include Actors/Weapons/Ammo.dec
+#include Actors/Weapons/BotAltFires.dec
+#include Actors/Tutorial/TargetPractice.dec
+
+#include Actors/Actions/DecoyHologram.dec
+#include Actors/Actions/PowerBrace.dec
+#include Actors/Actions/RegenZone.dec
+#include Actors/Actions/AutoDrone.dec
+#include Actors/Actions/SonicShockwave.dec
+
+#include Actors/Pickups/Powerups.dec
+#include Actors/Pickups/Health.dec
+#include Actors/Pickups/Armor.dec
+//#include Actors/Pickups/GrenadeSpheres.dec

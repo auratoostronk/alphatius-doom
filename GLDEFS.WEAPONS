@@ -1,0 +1,100 @@
+//WEAPON PICKUPS
+Object SparkCannon
+{
+	Frame SPKP { light REDLIGHT }
+}
+Object C14
+{
+	Frame C14P { light GREENLIGHT }
+}
+Object TeslaSMG
+{
+	Frame SMGP { light YELLOWLIGHT }
+}
+Object ParticleSplitter
+{
+	Frame PSGP { light PURPLELIGHT }
+}
+Object PhotonCarbine
+{
+	Frame CARP { light BLUELIGHT }
+}
+Object RocketCannon
+{
+	Frame CRCP { light GREYLIGHT }
+}
+Object Flamespitter
+{
+	Frame FLMP { light ORANGELIGHT }
+}
+Object BeamRifle
+{
+	Frame BRFP { light LIGHTBLUELIGHT }
+}
+
+//PROJECTILES
+object PhotonProjectile
+{
+	frame BSPK { light BLUELIGHT }
+}
+object PhotonGrenade
+{
+	frame BGRN { light BLUELIGHTSHOOT }
+}
+
+object C14Projectile
+{
+	frame CPBL { light GREENLIGHT }
+}
+Object C14Blast1
+{
+	frame CPEW { light GREENLIGHT }
+}
+
+Object SMGProjectile
+{
+	frame ZAP7 { light YELLOWLIGHT }
+}
+Object FlamespitterProjectile
+{
+	frame OFLM { Light ORANGELIGHT }
+}
+Object FlamespitterThermite
+{
+	frame DMFX { Light ORANGELIGHT }
+}
+
+Object SGPellet
+{
+	Frame PSPK { light PURPLELIGHT }
+}
+Object SGAltPellet
+{
+	Frame PSPK { light PURPLELIGHT }
+}
+
+Object LaserSparkDot
+{
+	Frame ZAP8 { light REDLIGHTSMALL }
+}
+
+Object BeamRailHit
+{
+	Frame ZAP6 { light LIGHTBLUELIGHTSMALL }
+}
+
+Object RocketCannonProjectile
+{
+	Frame RCKT { light GREYLIGHT }
+	Frame BFSH { light GREYLIGHTSHOOT }
+}
+
+//OTHER WEAPON ATTACKS/EFFECTS
+object ExplodeHitFlash
+{
+	frame BFSH { light ORANGELIGHTSHOOT }
+}
+object ExplodeHitFlash2
+{
+	frame BFSH { light ORANGELIGHTSHOOT }
+}

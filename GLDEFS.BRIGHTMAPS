@@ -1,0 +1,136 @@
+brightmap texture C14FA0
+{
+	map "Brightmaps/Weapons/C14/C14FA0.png"
+}
+brightmap texture C14FB0
+{
+	map "Brightmaps/Weapons/C14/C14FB0.png"
+}
+
+brightmap texture SPKFA0
+{
+	map "Brightmaps/Weapons/SparkCannon/SPKFA0.png"
+}
+brightmap texture SPKFB0
+{
+	map "Brightmaps/Weapons/SparkCannon/SPKFB0.png"
+}
+brightmap texture SPKFC0
+{
+	map "Brightmaps/Weapons/SparkCannon/SPKFC0.png"
+}
+brightmap texture SPKFD0
+{
+	map "Brightmaps/Weapons/SparkCannon/SPKFD0.png"
+}
+brightmap texture SPKPA0
+{
+	map "Brightmaps/Weapons/SparkCannon/SPKPA0.png"
+}
+brightmap texture SPKRA0
+{
+	map "Brightmaps/Weapons/SparkCannon/SPKRA0.png"
+}
+brightmap texture SPKRB0
+{
+	map "Brightmaps/Weapons/SparkCannon/SPKRB0.png"
+}
+brightmap texture SPKRC0
+{
+	map "Brightmaps/Weapons/SparkCannon/SPKRC0.png"
+}
+
+brightmap texture CARFA0
+{
+	map "Brightmaps/Weapons/PhotonCarbine/CARFA0.png"
+}
+brightmap texture CARFB0
+{
+	map "Brightmaps/Weapons/PhotonCarbine/CARFB0.png"
+}
+
+brightmap texture PSGRA0
+{
+	map "Brightmaps/Weapons/ParticleSplitter/PSGRA0.png"
+}
+brightmap texture PSGFA0
+{
+	map "Brightmaps/Weapons/ParticleSplitter/PSGFA0.png"
+}
+brightmap texture PSGFB0
+{
+	map "Brightmaps/Weapons/ParticleSplitter/PSGFB0.png"
+}
+brightmap texture PSGFC0
+{
+	map "Brightmaps/Weapons/ParticleSplitter/PSGFC0.png"
+}
+brightmap texture PSGPA0
+{
+	map "Brightmaps/Weapons/ParticleSplitter/PSGPA0.png"
+}
+
+
+brightmap texture CRCFA0
+{
+	map "Brightmaps/Weapons/RocketCannon/CRCFA0.png"
+}
+brightmap texture CRCFB0
+{
+	map "Brightmaps/Weapons/RocketCannon/CRCFB0.png"
+}
+brightmap texture CRCFC0
+{
+	map "Brightmaps/Weapons/RocketCannon/CRCFC0.png"
+}
+brightmap texture CRCFD0
+{
+	map "Brightmaps/Weapons/RocketCannon/CRCFD0.png"
+}
+
+brightmap texture FLMRA0
+{
+	map "Brightmaps/Weapons/Flamespitter/FLMRA0.png"
+}
+brightmap texture FLMRB0
+{
+	map "Brightmaps/Weapons/Flamespitter/FLMRB0.png"
+}
+brightmap texture FLMRC0
+{
+	map "Brightmaps/Weapons/Flamespitter/FLMRC0.png"
+}
+brightmap texture FLMRD0
+{
+	map "Brightmaps/Weapons/Flamespitter/FLMRD0.png"
+}
+brightmap texture FLMFA0
+{
+	map "Brightmaps/Weapons/Flamespitter/FLMFA0.png"
+}
+brightmap texture FLMFB0
+{
+	map "Brightmaps/Weapons/Flamespitter/FLMFB0.png"
+}
+brightmap texture FLMFC0
+{
+	map "Brightmaps/Weapons/Flamespitter/FLMFC0.png"
+}
+brightmap texture FLMFD0
+{
+	map "Brightmaps/Weapons/Flamespitter/FLMFD0.png"
+}
+
+brightmap texture SMGFA0
+{
+	map "Brightmaps/Weapons/TeslaSMG/SMGFA0.png"
+}
+brightmap texture SMGFB0
+{
+	map "Brightmaps/Weapons/TeslaSMG/SMGFB0.png"
+}
+brightmap texture SMGFC0
+{
+	map "Brightmaps/Weapons/TeslaSMG/SMGFC0.png"
+}
+
