@@ -1,0 +1,42 @@
+Actor SparkAltCD : Ammo
+{
+  Inventory.MaxAmount 140
+  Ammo.BackpackMaxAmount 140
+}
+Actor CarbineAltCD : Ammo
+{
+  Inventory.MaxAmount 175
+  Ammo.BackpackMaxAmount 175
+}
+Actor C14AltCD : Ammo
+{
+  Inventory.MaxAmount 350
+  Ammo.BackpackMaxAmount 350
+}
+Actor SMGAltCD : Ammo
+{
+  Inventory.MaxAmount 105
+  Ammo.BackpackMaxAmount 105
+}
+Actor PumpSGAltCD : Ammo
+{
+  Inventory.MaxAmount 140
+  Ammo.BackpackMaxAmount 140
+}
+//Placeholder. Does nothing.
+Actor RocketAltCD : Ammo
+{
+  Inventory.MaxAmount 35
+  Ammo.BackpackMaxAmount 35
+}
+Actor FlameAltCD : Ammo
+{
+  Inventory.MaxAmount 140
+  Ammo.BackpackMaxAmount 140
+}
+//Placeholder. Does nothing.
+Actor BeamAltCD : Ammo
+{
+  Inventory.MaxAmount 35
+  Ammo.BackpackMaxAmount 35
+}

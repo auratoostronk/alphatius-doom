@@ -19,7 +19,7 @@ Actor AutoDroneLaser
 	Damage (6)
 	DamageType "AutoDrone"
 	Renderstyle Add
-	Obituary "%o was gunned down by %k's Auto Laser"
+	Obituary "%k > \cgAuto Laser\c- > %o"
 	SeeSound "Actions/AutoLaser"
 	+BRIGHT
 	States

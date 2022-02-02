@@ -63,10 +63,6 @@ Script "ThrusterBoots" (void)
 	else
 	{
 		int thrust = 24;
-		if(isAirborne())
-		{
-			thrust = 12;
-		}
 		if(!(GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK)
 		&& !(GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD)
 		&& !(GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVELEFT)
@@ -119,14 +115,7 @@ Script "ThrusterBoots" (void)
 		{
 			TakeInventory("ExtraTravelCharge", 1);
 		}
-		if(CheckInventory("PerkStalker") > 0)
-		{
-			PlaySound(0,"Travel/Stalker/ThrusterBoots", CHAN_AUTO, 0.5);
-		}
-		else
-		{
-			PlaySound(0,"Travel/ThrusterBoots");
-		}
+		PlaySound(0, "Travel/ThrusterBoots", CHAN_AUTO, 1.0, false, ATTN_NORM, false, true);
 		//delay(6);
 		//SetActorVelocity(0, GetActorVelX(0) / 2, GetActorVelY(0) / 2, 0.0, false, false);
 		
@@ -142,14 +131,7 @@ Script "JumpThrust" (void)
 	}
 	else
 	{
-		if(CheckInventory("PerkStalker") > 0)
-		{
-			PlaySound(0,"Travel/Stalker/JumpThrust", CHAN_AUTO, 0.5);
-		}
-		else
-		{
-			PlaySound(0,"Travel/JumpThrust");
-		}
+		PlaySound(0, "Travel/JumpThrust", CHAN_AUTO, 1.0, false, ATTN_NORM, false, true);
 		int angle = GetActorAngle(0);
 		int pitch = -GetActorPitch(0) + 0.05; //Up is positive now
 		int upordown;
@@ -195,16 +177,8 @@ Script "WarpDrive" (void)
 			upordown = 0;
 		else
 			upordown = 1;
-		if(CheckInventory("PerkStalker") > 0)
-		{
-			SpawnSpotFacingForced("TeleportFogQuiet", 0, 0);
-			PlaySound(0,"Travel/Stalker/WarpStart", CHAN_AUTO, 0.5);
-		}
-		else
-		{
-			SpawnSpotFacingForced("TeleportFog", 0, 0);
-			PlaySound(0,"Travel/WarpStart");
-		}
+		SpawnSpotFacingForced("TeleportFog", 0, 0);
+		PlaySound(0, "Travel/WarpStart", CHAN_AUTO, 1.0, false, ATTN_NORM, false, true);
 		GiveInventory("PowerWarpInvisibility", 1);
 		GiveInventory("PowerWarpInvulnerability", 1);
 		int velx, vely, velz;
@@ -220,16 +194,8 @@ Script "WarpDrive" (void)
 		SetActorVelocity(0, velx, vely, velz, false, false);
 		TakeInventory("PowerWarpInvisibility", 1);
 		TakeInventory("PowerWarpInvulnerability", 1);
-		if(CheckInventory("PerkStalker") > 0)
-		{
-			SpawnSpotFacingForced("TeleportFogQuiet", 0, 0);
-			PlaySound(0,"Travel/Stalker/WarpDone", CHAN_AUTO, 0.5);
-		}
-		else
-		{
-			SpawnSpotFacingForced("TeleportFog", 0, 0);
-			PlaySound(0,"Travel/WarpDone");
-		}
+		SpawnSpotFacingForced("TeleportFog", 0, 0);
+		PlaySound(0, "Travel/WarpDone", CHAN_AUTO, 1.0, false, ATTN_NORM, false, true);
 		SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
 		
 	
@@ -245,14 +211,7 @@ Script "Hyperdrive" (void)
 	else
 	{
 		GiveInventory("HyperdriveSpeed", 1);
-		if(CheckInventory("PerkStalker") > 0)
-		{
-			PlaySound(0,"Travel/Stalker/HyperdriveStart", CHAN_AUTO, 0.5);
-		}
-		else
-		{
-			PlaySound(0,"Travel/HyperdriveStart");
-		}
+		PlaySound(0, "Travel/HyperdriveStart", CHAN_AUTO, 1.0, false, ATTN_NORM, false, true);
 		int counter = 0;
 		while((ClassifyActor(0) & ACTOR_ALIVE) && counter < TRAV_HYPERD_DUR)
 		{
@@ -260,14 +219,7 @@ Script "Hyperdrive" (void)
 			counter++;
 		}
 		TakeInventory("HyperdriveSpeed", 1);
-		if(CheckInventory("PerkStalker") > 0)
-		{
-			PlaySound(0,"Travel/Stalker/HyperdriveEnd", CHAN_AUTO, 0.5);
-		}
-		else
-		{
-			PlaySound(0,"Travel/HyperdriveEnd");
-		}
+		PlaySound(0, "Travel/HyperdriveEnd", CHAN_AUTO, 1.0, false, ATTN_NORM, false, true);
 		if(!hasTravelPickup)
 		{
 			GiveInventory("HDriveCD",GetAmmoCapacity("HDriveCD"));

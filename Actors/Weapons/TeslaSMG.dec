@@ -23,7 +23,6 @@ Actor TeslaSMG : Weapon 10006
 		SMGR A 1 A_WeaponReady
 		Loop
 	Deselect:
-		TNT1 A 0 ACS_NamedExecuteAlways("WeaponDeselect", 0)
 		SMGR AA 0 A_Lower
 		SMGR A 1 A_Lower
 		Loop
@@ -69,7 +68,7 @@ Actor TaserProtection : PowerProtection
 Actor SMGProjectile
 {
 	Projectile
-	Speed 48
+	Speed 32
 	Damage (12)
 	Radius 6
 	Height 12
@@ -79,7 +78,7 @@ Actor SMGProjectile
 	+BRIGHT
 	+RANDOMIZE
 	//SeeSound "TeslaSMG/Fire"
-	Obituary "%k > Tesla SMG > %o"
+	Obituary "%k > \ckTesla SMG\c- > %o"
 	States
 	{
 	Spawn:
@@ -102,7 +101,7 @@ Actor TeslaPuff : BulletPuff
 	ActiveSound "TeslaSMG/AltFire"
 	AttackSound "TeslaSMG/AltFire"
 	SeeSound "TeslaSMG/AltFireHit"
-	Obituary "%k > Tesla SMG (Alt) > %o"
+	Obituary "%k > \ckTesla SMG (Alt)\c- > %o"
 	States
 	{
 	Spawn:
@@ -118,7 +117,7 @@ Actor TeslaNoPuff : TeslaPuff
 	ActiveSound ""
 	AttackSound ""
 	SeeSound "TeslaSMG/AltFireHit"
-	Obituary "%k > Tesla SMG (Alt) > %o"
+	Obituary "%k > \ckTesla SMG (Alt)\c- > %o"
 	States
 	{
 	Spawn:

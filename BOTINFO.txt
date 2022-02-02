@@ -29,24 +29,6 @@
 }
 
 {
-	name = "\ct[RG]\cgSeidolon"
-	accuracy = 2
-	intellect = 2
-	evade = 1
-	anticipation = 2
-	reactiontime = 1
-	perception = 1
-	favoriteweapon = "C14"
-	color = "FF FF 00"
-	gender = "male"
-	class = "cleric"
-	railcolor = red
-	chatfrequency = 20
-	revealed = true
-	script = "humanbot"
-}
-
-{
 	name = "\cgSummer's Exile"
 	accuracy = 2
 	intellect = 4
@@ -54,7 +36,7 @@
 	anticipation = 1
 	reactiontime = 1
 	perception = 1
-	favoriteweapon = "RocketCannon"
+	favoriteweapon = "PhotonCarbine"
 	color = "FF 00 00"
 	gender = "male"
 	class = "fighter"
@@ -72,7 +54,7 @@
 	anticipation = 1
 	reactiontime = 1
 	perception = 1
-	favoriteweapon = "PhotonCarbine"
+	favoriteweapon = "TeslaSMG"
 	color = "FF 88 FF"
 	gender = "male"
 	class = "mage"

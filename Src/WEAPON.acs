@@ -1,58 +1,20 @@
 #library "WEAPON"
 #include "zcommon.acs"
+#import "ALPHLIB.acs"
 
-Script "TeslaStaticPulse" (void)
-{
-	
-}
 Script "WeaponGlow" ENTER
 {
 	while(true)
 	{
-		if(GetWeapon() == "C14" || GetWeapon() == "C14Alt")
+		for(int i = 0; i < NUM_WEAPS; i++)
 		{
-			SpawnForced("GreenGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
-		}
-		if(GetWeapon() == "PhotonCarbine" || GetWeapon() == "PhotonCarbineAlt")
-		{
-			SpawnForced("BlueGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
-		}
-		if(GetWeapon() == "TeslaSMG" || GetWeapon() == "TeslaSMGAlt")
-		{
-			SpawnForced("YellowGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
-		}
-		if(GetWeapon() == "ParticleSplitter" || GetWeapon() == "ParticleSplitterAlt")
-		{
-			SpawnForced("PurpleGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
-		}
-		if(GetWeapon() == "SparkCannon" || GetWeapon() == "SparkCannonAlt")
-		{
-			SpawnForced("RedGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
-		}
-		if(GetWeapon() == "RocketCannon" || GetWeapon() == "RocketCannonAlt")
-		{
-			SpawnForced("GrayGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
-		}
-		if(GetWeapon() == "Flamespitter" || GetWeapon() == "FlamespitterAlt")
-		{
-			SpawnForced("OrangeGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
-		}
-		if(GetWeapon() == "BeamRifle" || GetWeapon() == "BeamRifleAlt")
-		{
-			SpawnForced("LightBlueGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
-		}
-		if(GetWeapon() == "OVR9000" || GetWeapon() == "OVR9000Alt")
-		{
-			SpawnForced("LightGreenGlowSpawner", GetActorX(0), GetActorY(0), GetActorZ(0));
+			if(GetWeapon() == WEAP_CLASSNAMES[i] || GetWeapon() == WEAP_ALTCLASSNAMES[i])
+			{
+				str glowclass = StrParam(s:WEAP_COLORS[i], s:"GlowSpawner");
+				SpawnForced(glowclass, GetActorX(0), GetActorY(0), GetActorZ(0) + 2.0);
+			}
 		}
 		delay(1);
-	}
-}
-Script "OVRSpawn" (void)
-{
-	if(GetCVAR("alph_allowsuperweapons") == false)
-	{
-		Thing_Remove(0);
 	}
 }
 //For the Thermite Spitter's alt-fire.
@@ -69,8 +31,4 @@ Script "PlayerDeathByThermite" (void)
 		SpawnSpot("ThermiteChainReactFX", 0, initid, i);
 		SetActorPosition(projid, GetActorX(initid), GetActorY(initid), GetActorZ(initid) + 16.0, false);
 	}*/
-}
-Script "RocketExplodeFX" (int radius)
-{
-	
 }

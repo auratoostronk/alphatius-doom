@@ -1,5 +1,5 @@
 //WEAPONS
-SparkCannon/Fire			SPARKALT
+SparkCannon/Fire			SPARKFIR
 SparkCannon/AltFire			SPARKALT
 
 C14/Fire					C14FIRE
@@ -26,8 +26,8 @@ ParticleSplitter/FlameLoop 	SGFLAME2
 ParticleSplitter/FlameStop	SGFLAME3
 ParticleSplitter/Pump		PSSGPUMP
 
-RocketCannon/Load 	CRCLOAD1
-RocketCannon/Fire 	CRCFIRE1 
+RocketCannon/Load 		CRCLOAD1
+RocketCannon/Fire 		CRCFIRE1 
 RocketCannon/Detonate 	CRCDET
 RocketCannon/Flyby		CRCFLYBY
 
@@ -43,25 +43,19 @@ GRENHIT1 GRENHIT1
 GRENHIT2 GRENHIT2
 $random GrenadeHit 			{ GRENHIT1 GRENHIT2 }
 
-ItemThrow					ITEMTHRO
-
 DistantExplosion			FAREXPL
 Explosion1 					MSLEXPL1
 Explosion2 					MSLEXPL2
 Explosion3 					MSLEXPL3
 $random CompactExplosion { Explosion1 Explosion2 Explosion3 }
 
-EXPLOS1 EXPLOS1
-EXPLOS2 EXPLOS2
-EXPLOS3 EXPLOS3
-$random BF4Explosion { EXPLOS1 EXPLOS2 EXPLOS3 }
 
 //GENERAL
 General/Fail				NOENRGY
 General/LowEnergy			LOENRGY
 General/WeaponSwitch		WEAPSWAP
 General/AltReady			ALTREADY
-General/TravelReady			TRAVREDY	
+General/TravelReady		TRAVREDY	
 
 //TRAVELS
 Travel/ThrusterBoots 		JMPBOOST
@@ -82,6 +76,11 @@ Actions/EnergyZoneLoop		DSCRNLOP
 Actions/AutoLaser			AUTOFIRE
 Actions/SonicShockwave		SONICSWA
 
+EXPLOS1 EXPLOS1
+EXPLOS2 EXPLOS2
+EXPLOS3 EXPLOS3
+$random BF4Explosion { EXPLOS1 EXPLOS2 EXPLOS3 }
+
 //GRENADES
 Grenades/IncendiaryShoot 	FIREGREN
 Grenades/IncendiaryBurn		FIREBURN
@@ -91,6 +90,20 @@ SpaceShipFlyby				FLYBY
 Ambient/TeleportHum 		TELEAMB
 Ambient/JumppadHit			JUMPPAD
 Ambient/WaterFlow 			WATERFLO
+
+//PICKUPS
+
+//MENU
+$alias menu/activate 				PhotonCarbine/Fire
+$alias menu/choose 					PhotonCarbine/Fire
+$alias menu/prompt 					PhotonCarbine/Fire
+$alias menu/backup			 		General/AltReady
+$alias menu/clear			 		General/AltReady
+$alias menu/dismiss		 			General/AltReady
+$alias menu/cursor					General/AltReady
+$alias menu/change					General/AltReady
+$alias menu/quit1					General/Fail
+$alias menu/quit2					General/Fail
 
 //LIMIT
 $limit * 0

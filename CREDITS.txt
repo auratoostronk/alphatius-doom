@@ -4,7 +4,7 @@ CONCEPT
 Alphatius was only an idea in late 2016, during a dark time in my life where I was placed in a pseudo-boarding school
 for "troublemaking children". I had no internet, no electronics, and not much else to do besides daydream about
 what I wanted to do when I came home. One of these things I thought about was a DOOM mod. It had no name, but the
-initial concept took inspiration from Seidolon's DULA, Call of Duty, and Borderlands. I thought of weapon ideas,
+initial concept took inspiration from a few different mods and video games. I thought of weapon ideas,
 action abilites, travel abilites, maps, and drew all this stuff out on paper. I started putting it together the moment
 I returned home in the Summer of 2017. Although many of the original concepts for the mod were scrapped (like reloading, weapon voxels, etc.),
 Alphatius evolved into something unique and special. While it still has work to do, it became one of the first creations
@@ -15,7 +15,6 @@ and something many people also enjoy.
 
 SPECIAL THANKS
 -Shoutouts to Henry and Charles from my "pseudo-boarding school" for letting me bounce my ideas off of you. You two are real G's.
--Thanks to Seidolon for the inspiration, for being the only one to respond to my letters there, and for sticking with me as a friend since 2nd grade.
 -Thanks to all the people who helped playtest this mod, making sure it's as polished as it is now.
 -Thanks to all the people who made the resources that are being used in this mod.
 -Thanks to The Sentinel's Playground for letting me host my mod on your servers for free, and help build it's community.
@@ -23,7 +22,6 @@ SPECIAL THANKS
 -Thanks to me, for making this. I honestly couldn't of done it without you. Hehe...
 
 SPECIAL THANKS TO THESE REGULAR BETA TESTERS / FREQUENT PLAYERS
--Seidolon
 -BlushBerry
 -Summer's Exile
 -liljeck
@@ -36,12 +34,7 @@ SPECIAL THANKS TO THESE REGULAR BETA TESTERS / FREQUENT PLAYERS
 BACK TO OUR REGULARLY SCHEDULED CREDITS
 
 CODE
-Damage Numbers: Taken from StrikerMan780's Damage Number mod. Editted by hiimaura to keep numbers red and not randomly colored.
-Everything Else: While the mod was based on Seidolon's DULA, very little code is still left.
-	Probably 98% at least (likely more) has been removed/rewritten and replaced with code by hiimaura.
-	I still think it's neccessary to credit Seidolon for this, because not only did DULA inspire the mod,
-	but it jump-started the beginning of this mod. Also, do note that Seidolon doesn't really mind that I used his
-	code as a base.
+All code has been written by hiimaura.
 
 SOUNDS
 
@@ -142,6 +135,8 @@ Health bar: Taken from Wrath of Chronos. Editted by hiimaura.
 Energy Bars: Taken from Wrath of Chronos. Editted by hiimaura.
 Armor bar: Taken from Wrath of Chronos. Editted by hiimaura.
 Radar Sprite: Unused. Made by hiimaura.
+DBIGFONT Jimmy's Status Report font based on the Doom STBAR. Found on Realm667
+SMALLFNT Jimmy's Status Report SMALL font based on the Doom STBAR. Found on Realm667
 
 MAPS
 ALPH01 Quarry: Created by hiimaura. 

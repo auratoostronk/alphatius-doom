@@ -49,86 +49,19 @@ ACTOR LightBlueLightShoot : RedLight
 
 ACTOR BlueGlowSpawner
 {
-	Scale 0.2
-	+NOINTERACTION
-	+CLIENTSIDEONLY
-	RenderStyle Add
 	States
 	{
 		Spawn:
+		TNT1 A 0 
 		TNT1 A 1
 		stop
 	}
 }
-ACTOR GreenGlowSpawner : BlueGlowSpawner
-{
-	States
-	{
-		Spawn:
-		TNT1 A 1
-		stop
-	}
-}
-ACTOR PurpleGlowSpawner : BlueGlowSpawner
-{
-	States
-	{
-		Spawn:
-		TNT1 A 1
-		stop
-	}
-}
-ACTOR YellowGlowSpawner : BlueGlowSpawner
-{
-	States
-	{
-		Spawn:
-		TNT1 A 1
-		stop
-	}
-}
-ACTOR RedGlowSpawner : BlueGlowSpawner
-{
-	States
-	{
-		Spawn:
-		TNT1 A 1
-		stop
-	}
-}
-ACTOR OrangeGlowSpawner : BlueGlowSpawner
-{
-	States
-	{
-		Spawn:
-		TNT1 A 1
-		stop
-	}
-}
-ACTOR GrayGlowSpawner : BlueGlowSpawner
-{
-	States
-	{
-		Spawn:
-		TNT1 A 1
-		stop
-	}
-}
-ACTOR LightBlueGlowSpawner : BlueGlowSpawner
-{
-	States
-	{
-		Spawn:
-		TNT1 A 1
-		stop
-	}
-}
-ACTOR LightGreenGlowSpawner : BlueGlowSpawner
-{
-	States
-	{
-		Spawn:
-		TNT1 A 1
-		stop
-	}
-}
+ACTOR GreenGlowSpawner : BlueGlowSpawner {}
+ACTOR PurpleGlowSpawner : BlueGlowSpawner {}
+ACTOR YellowGlowSpawner : BlueGlowSpawner {}
+ACTOR RedGlowSpawner : BlueGlowSpawner {}
+ACTOR OrangeGlowSpawner : BlueGlowSpawner {}
+ACTOR GrayGlowSpawner : BlueGlowSpawner {}
+ACTOR LightBlueGlowSpawner : BlueGlowSpawner {}
+ACTOR LightGreenGlowSpawner : BlueGlowSpawner {}

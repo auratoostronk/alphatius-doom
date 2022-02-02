@@ -11,7 +11,7 @@ Actor ThrusterBootsCharge : Ammo
 //Used for Energy Regen
 Actor EnergyRechargeCD : Ammo
 {
-	Inventory.MaxAmount 70
+	Inventory.MaxAmount 105
 }
 //Travel ability cooldowns
 Actor TBootsCD : Ammo
@@ -69,6 +69,11 @@ Actor HyperdriveSpeed : Inventory
 {
 	Inventory.MaxAmount 1
 }
+//If skill is set to 0, all weapons are replaced with this actor, making no weapons spawn.
+/*Actor NoWeapon
+{
+	+NOINTERACTION
+}*/
 //For Warp Drive
 Actor PowerWarpInvisibility : PowerInvisibility
 {

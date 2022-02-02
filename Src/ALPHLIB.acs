@@ -6,10 +6,13 @@
 #import "HUD.acs"
 
 #libdefine MAX_PLAYERS 64
-#libdefine NUM_WEAPS 6
-str WEAP_CLASSNAMES[NUM_WEAPS] = {"TeslaSMG", "ParticleSplitter", "PhotonCarbine", "C14", "SparkCannon", "RocketCannon"};
-str WEAP_ENERGYNAMES[NUM_WEAPS] = {"SMGEnergy", "PumpSGEnergy", "CarbineEnergy", "C14Energy", "SparkEnergy", "RocketEnergy"};
-str WEAP_COOLDOWNNAMES[NUM_WEAPS] = {"SMGAltCD", "PumpSGAltCD", "CarbineAltCD", "C14AltCD", "SparkAltCD", "RocketAltCD"};
+#libdefine NUM_WEAPS 8
+#libdefine NUM_TRAVELS 4
+str WEAP_CLASSNAMES[NUM_WEAPS] = 	{"TeslaSMG", 	"ParticleSplitter", 	"PhotonCarbine", 	"C14", 			"SparkCannon", 		"RocketCannon", 	"Flamespitter", 	"BeamRifle"};
+str WEAP_ALTCLASSNAMES[NUM_WEAPS] = {"TeslaSMGAlt", "ParticleSplitterAlt", 	"PhotonCarbineAlt", "C14Alt", 		"SparkCannonAlt", 	"RocketCannonAlt",	"FlamespitterAlt", 	"BeamRifleAlt"};
+str WEAP_ENERGYNAMES[NUM_WEAPS] = 	{"SMGEnergy", 	"PumpSGEnergy", 		"CarbineEnergy", 	"C14Energy", 	"SparkEnergy", 		"RocketEnergy", 	"FlameEnergy", 		"BeamEnergy"};
+str WEAP_COOLDOWNNAMES[NUM_WEAPS] = {"SMGAltCD", 	"PumpSGAltCD", 			"CarbineAltCD",	 	"C14AltCD", 	"SparkAltCD", 		"RocketAltCD", 		"FlameAltCD", 		"BeamAltCD"};
+str WEAP_COLORS[NUM_WEAPS] = 		{"Yellow", 		"Purple", 				"Blue", 			"Green", 		"Red", 				"Gray", 			"Orange", 			"LightBlue"};
 
 function int abs (int x)
 {
@@ -24,14 +27,6 @@ function bool isAirborne(void)
 	return (GetActorZ(0) > GetActorFloorZ(0));
 }
 
-function void spawnHealFX(int amount)
-{
-	int latspread = 12.0;
-	for(int i = 0; i < amount; i++)
-	{
-		SpawnForced("HealFX", GetActorX(0) + Random(-latspread, latspread), GetActorY(0) + Random(-latspread, latspread), GetActorZ(0) + 48.0, 0, 0);
-	}
-}
 function void spawnThermiteFX(void)
 {
 	int latspread = 12.0;
@@ -58,15 +53,16 @@ Script "RechargeTimers" ENTER
 {
 	while (true)
 	{
-		if(CheckInventory("IsDead") == 0)
+		if(ClassifyActor(ActivatorTID()) & ACTOR_ALIVE)
 		{	
-			TakeInventory("SparkAltCD",1); 
-			TakeInventory("C14AltCD",1); 
-			TakeInventory("PumpSGAltCD",1); 
-			TakeInventory("SMGAltCD",1); 
-			TakeInventory("CarbineAltCD",1); 
-			TakeInventory("RocketAltCD",1);
-			TakeInventory("FlameAltCD",1);
+			for(int i = 0; i < NUM_WEAPS; i++)
+			{
+				TakeInventory(WEAP_COOLDOWNNAMES[i], 1);
+				if(CheckInventory(WEAP_COOLDOWNNAMES[i]) == 4 && GetWeapon() == WEAP_CLASSNAMES[i])
+				{
+					LocalAmbientSound("General/AltReady", 0.5);
+				}
+			}
 
 			TakeInventory("WDriveCD",1);
 			TakeInventory("HDriveCD",1);
@@ -95,11 +91,15 @@ Script "RechargeTimers" ENTER
 				LocalAmbientSound("General/TravelReady", 0.5);
 			}
 			
+			if(CheckInventory("ThermiteDebuff") > 0)
+			{
+				spawnThermiteFX();
+			}
+			TakeInventory("ThermiteDebuff", 1);
+			
 			GiveInventory("Action1Charge", 1);
-			
-
-			
 			TakeInventory("EnergyRechargeCD",1);
+			TakeInventory("AltFireFailCD", 1);
 			
 			int movespeed = 1.0;
 			if(CheckInventory("TravelHyperdrive") >= 1)
@@ -110,91 +110,25 @@ Script "RechargeTimers" ENTER
 			{
 				movespeed += 0.4;
 			}
-			if(CheckInventory("AdrenalineBoostSpeedTics") >= 1)
-			{
-				movespeed += 0.3;
-			}
-			if(CheckInventory("SparkSpeedBoost") >= 1)
-			{
-				movespeed += 0.2;
-			}
-			if(CheckInventory("TeslaSpeedBoost") >= 1)
-			{
-				movespeed += 0.2;
-			}
-			if(CheckInventory("DisruptionGrenadeDebuff") >= 1)
-			{
-				movespeed -= 0.7;
-			}
 			SetActorProperty(0, APROP_SPEED, movespeed);
-			TakeInventory("TicsGasSlow", 1);
-			TakeInventory("DisruptionGrenadeDebuff", 1);
-			TakeInventory("AdrenalineBoostSpeedTics", 1);
-			TakeInventory("TeslaSpeedBoost", 1);
 			
 			if(!CheckInventory("EnergyRechargeCD"))
 			{
-					GiveInventory("SMGEnergy",  GetAmmoCapacity("SMGEnergy"));
-					GiveInventory("SparkEnergy",  GetAmmoCapacity("SparkEnergy"));
-					GiveInventory("C14Energy",  GetAmmoCapacity("C14Energy"));
-					GiveInventory("CarbineEnergy",  GetAmmoCapacity("CarbineEnergy"));
-					GiveInventory("PumpSGEnergy",  GetAmmoCapacity("PumpSGEnergy"));
-					GiveInventory("RocketEnergy",  GetAmmoCapacity("RocketEnergy"));
-					GiveInventory("FlameEnergy",  GetAmmoCapacity("FlameEnergy"));
-					GiveInventory("BeamEnergy",  GetAmmoCapacity("BeamEnergy"));
-					TakeInventory("NoLowEnergySound", 1);
+				for(int j = 0; j < NUM_WEAPS; j++)
+				{
+					GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
+				}
+				TakeInventory("NoLowEnergySound", 1);
 			}
-			if(CheckInventory("IsHealing") && GetActorProperty(0, APROP_HEALTH) < 100)
-			{
-				spawnHealFX(1);
-			}
-			TakeInventory("IsHealing", 1);
-			TakeInventory("AltFireFailCD", 1);
-			if(CheckInventory("ThermiteDebuff") > 0)
-			{
-				spawnThermiteFX();
-			}
-			TakeInventory("ThermiteDebuff", 1);
-			if(CheckInventory("PowerRapidAlt") > 0)
-			{
-				TakeInventory("SparkAltCD",1); 
-				TakeInventory("C14AltCD",1); 
-				TakeInventory("PumpSGAltCD",1); 
-				TakeInventory("SMGAltCD",1); 
-				TakeInventory("CarbineAltCD",1); 
-				TakeInventory("RocketAltCD",1);
-				TakeInventory("FlameAltCD",1);
-			}
+			
 		}
 		delay(1);
 	}
 }
-//Slowly charges weapons that aren't selected.
-/*Script "EnergyRegen" ENTER
-{
-	while(true)
-	{
-		if(GetWeapon() != "SparkCannon")
-			GiveInventory("SparkEnergy", 1);
-		if(GetWeapon() != "PhotonCarbine")
-			GiveInventory("CarbineEnergy", 1);
-		if(GetWeapon() != "C14")
-			GiveInventory("C14Energy", 1);
-		if(GetWeapon() != "TeslaSMG")
-			GiveInventory("SMGEnergy", 1);
-		if(GetWeapon() != "ParticleSplitter")
-			GiveInventory("PumpSGEnergy", 1);
-		if(GetWeapon() != "RocketCannon")
-			GiveInventory("RocketEnergy", 1);
-		if(GetWeapon() != "Flamespitter")
-			GiveInventory("FlameEnergy", 1);
-		delay(2);
-	}
-}*/
 //Every weapon should execute this script when fired.
 Script "OnWeaponFired" (void) 
 {
-	GiveInventory("EnergyRechargeCD", 70);
+	GiveInventory("EnergyRechargeCD", 105);
 	for(int i = 0; i < NUM_WEAPS; i++)
 	{
 		if(GetWeapon() == WEAP_CLASSNAMES[i] && CheckInventory(WEAP_ENERGYNAMES[i]) <= 20 && CheckInventory("NoLowEnergySound") == 0)
@@ -203,13 +137,6 @@ Script "OnWeaponFired" (void)
 			GiveInventory("NoLowEnergySound", 1);
 		}
 	}
-}
-//Unused.
-Script "AltFireTimer" (int arg1) 
-{
-	GiveInventory("CantAltFire",1);
-	Delay(35*arg1);
-	TakeInventory("CantAltFire",1);
 }
 
 //Checks for detonating mid-air rockets and energy grenades.
@@ -235,11 +162,7 @@ Script "CheckAltFirePressed" ENTER
 		}
 	}
 }
-Script "WeaponDeselect" (void)
-{
-	//TakeInventory("NoLowEnergySound", 1);
-}
-
+/*
 //For the Particle splitter's Decay mod. Flings decay pellets in multiple lateral directions when a player dies to a decay pellet.
 Script "PlayerDeathByDecayPellet" (void)
 {
@@ -251,4 +174,4 @@ Script "PlayerDeathByDecayPellet" (void)
 		SpawnProjectile(0, "SGDecayPellet2", i, 144, 0, 0, projid);
 		SetActorPosition(projid, GetActorX(initid), GetActorY(initid), GetActorZ(initid) + 32.0, false);
 	}
-}
+}*/

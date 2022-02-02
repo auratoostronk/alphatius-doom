@@ -17,7 +17,9 @@
 #include Actors/Weapons/BeamRifle.dec
 #include Actors/Weapons/Flamespitter.dec
 #include Actors/Weapons/Ammo.dec
+#include Actors/Weapons/AltCooldowns.dec
 #include Actors/Weapons/BotAltFires.dec
+
 #include Actors/Tutorial/TargetPractice.dec
 
 #include Actors/Actions/DecoyHologram.dec

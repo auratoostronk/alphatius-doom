@@ -1,7 +1,10 @@
 DefaultListMenu
 {
 	Position 70, 68
-	Font "mismas11", "Red", "Red"
+	Font "BIGFONT", "Red", "Red"
+	LineSpacing 20
+	Selector "graphics/cursor.png", -32, -5
+	LineSpacing 18
 }
 ListMenu "MainMenu"
 {
@@ -78,16 +81,20 @@ OptionMenu "I_Weapons"
 	StaticText "shoots a toxic gas canister."
 	StaticText " "
 	StaticText "SPARK CANNON"
-	StaticText "Mid-range laser beam. Alt-fire"
-	StaticText "for a long-ranged railgun attack."
+	StaticText "Long-ranged railgun. Alt-fire"
+	StaticText "for an explosive orb with knockback."
 	StaticText " "
 	StaticText "ROCKET CANNON"
-	StaticText "Fires rockets that gain power"
-	StaticText "with range. Alt-fire to detonate."
+	StaticText "Fires multiple rockets in quick"
+	StaticText "succession. Alt-fire to detonate."
 	StaticText " "
 	StaticText "FLAMESPITTER"
 	StaticText "Flamethrower. Targets hit by alt-fire"
 	StaticText "explode when killed by this weapon."
+	StaticText " "
+	StaticText "BEAM RIFLE"
+	StaticText "Continuous mid-ranged beam. Alt-fire"
+	StaticText "for low-powered rapid-fire hitscans."
 	StaticText " "
 }
 OptionMenu "I_Travels"
@@ -121,8 +128,8 @@ OptionMenu "I_Actions"
 	StaticText "DECOY HOLOGRAM"
 	StaticText "Create a fake hologram of yourself to run forward."
 	StaticText " "
-	StaticText "EFFICIENCY ADAPTOR"
-	StaticText "Prevents weapon energy consumption for a few seconds."
+	StaticText "SONIC SHOCKWAVE"
+	StaticText "Creates a blast at your location after a short delay."
 	StaticText " "
 }
 

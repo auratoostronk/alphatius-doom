@@ -48,6 +48,11 @@ statusbar fullscreen, fullscreenoffsets
 	{
 		drawBar "REDFULL", "REDEMPTY", Ammo  FlameAltCD, horizontal, Interpolate(20)|reverse, -210, -60;
 	}
+	IsSelected BeamRifle
+	{
+		drawBar "REDFULL", "REDEMPTY", Ammo  BeamAltCD, horizontal, Interpolate(20)|reverse, -210, -60;
+	}
+	
 	
 	//TRAVEL COOLDOWN
 	InInventory TravelThrusterBoots
@@ -137,6 +142,10 @@ statusbar normal, fullscreenoffsets
 	IsSelected Flamespitter
 	{
 		drawBar "REDFULL", "REDEMPTY", Ammo  FlameAltCD, horizontal, Interpolate(20)|reverse, -210, -60;
+	}
+	IsSelected BeamRifle
+	{
+		drawBar "REDFULL", "REDEMPTY", Ammo  BeamAltCD, horizontal, Interpolate(20)|reverse, -210, -60;
 	}
 	
 	//TRAVEL COOLDOWN

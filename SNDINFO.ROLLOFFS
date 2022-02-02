@@ -83,9 +83,10 @@ $musicvolume SONIC3 0.5
 $musicvolume SONIC4 0.5
 $musicvolume QUAKE3_1 0.5
 $musicvolume QUAKE3_3 0.5
-$musicvolume DREADMAZ 0.5
-$musicvolume LITEHOUS 0.5
-$musicvolume LOWBLOW 0.5
-$musicvolume SUBTERFU 0.5
+$musicvolume QUAKE3_4 0.5
+$musicvolume SWALLOWD 0.5
+$musicvolume DREADMAZ 0.4
+$musicvolume LITEHOUS 0.4
+$musicvolume SUBTERFU 0.4
 $musicvolume SEWERS 0.6
 $musicvolume INTERMUS 0.5

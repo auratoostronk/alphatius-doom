@@ -56,22 +56,22 @@ Actor AlphatiusPlayer : PlayerPawn
 		Goto Death
 	Death:
 		TNT1 AAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
-		PLAY H 10
-		PLAY I 10 A_PlayerScream
-		PLAY J 10 A_NoBlocking
-		PLAY KLM 10
-		PLAY N -1
+		PLAY H 12
+		PLAY I 12 A_PlayerScream
+		PLAY J 12 A_NoBlocking
+		PLAY KL 12
+		PLAY M -1
 		stop
 	XDeath.FlamespitterFlames:
 		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "XDeath.FlamespitterThermite")
 		Goto XDeath
 	XDeath:
 		TNT1 AAAAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
-		PLAY O 5
-		PLAY P 5 A_PlayerScream
-		PLAY Q 5 A_NoBlocking
-		PLAY RSTUV 5
-		PLAY W -1
+		PLAY N 5
+		PLAY O 5 A_PlayerScream
+		PLAY P 5 A_NoBlocking
+		PLAY QRST 5
+		PLAY U -1
 		stop
 	}
 }

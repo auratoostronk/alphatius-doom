@@ -22,7 +22,6 @@ ACTOR RocketCannon : Weapon 10008
 		CRCR A 1 A_WeaponReady
 		Loop
 	Deselect:
-		TNT1 A 0 ACS_NamedExecuteAlways("WeaponDeselect", 0)
 		CRCR AA 0 A_Lower
 		CRCR A 1 A_Lower
 		Loop
@@ -38,6 +37,7 @@ ACTOR RocketCannon : Weapon 10008
 		TNT1 A 0 A_Recoil(6)
 		TNT1 A 0 A_FireCustomMissile("RocketCannonProjectile", 0.0, true, 0, -2.0, 0, 0.0)
 		CRCF ABCD 2
+		CRCR A 4
 		Goto Ready
 	AltFail:
 		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
@@ -45,20 +45,20 @@ ACTOR RocketCannon : Weapon 10008
 		Goto Ready
   }
 }
-const int rocket_blastradius = 192;
+const int rocket_blastradius = 128;
 ACTOR RocketCannonProjectile : FastProjectile
 {
-	Radius 8
-	Height 12
-	Speed 64
-	Damage (10)
+	Radius 6
+	Height 6
+	Speed 48
+	Damage (0)
 	Projectile
 	+BRIGHT
 	ProjectileKickback 40
-	Obituary "%k > Rocket Cannon > %o"
+	Obituary "%k > \ccRocket Cannon\c- > %o"
 	DamageType "RocketCannon"
 	Decal BigScorch
-	args 0, 0
+	Scale 0.5
 	States
 	{
 	Spawn:
@@ -72,28 +72,57 @@ ACTOR RocketCannonProjectile : FastProjectile
 		TNT1 A 0 A_Die
 		Goto Death
 	Death:
+		/*TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", rocket_blastradius, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", -rocket_blastradius, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, rocket_blastradius, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, -rocket_blastradius, 0, 0, 0, 0)
+		TNT1 A 0 A_SetAngle(angle + 10)
 		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", rocket_blastradius, 0, 0, 0, 0, 0)
 		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", -rocket_blastradius, 0, 0, 0, 0, 0)
 		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, rocket_blastradius, 0, 0, 0, 0)
 		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, -rocket_blastradius, 0, 0, 0, 0)
-		TNT1 A 0 A_SetAngle(angle + 30)
+		TNT1 A 0 A_SetAngle(angle + 10)
 		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", rocket_blastradius, 0, 0, 0, 0, 0)
 		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", -rocket_blastradius, 0, 0, 0, 0, 0)
 		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, rocket_blastradius, 0, 0, 0, 0)
 		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, -rocket_blastradius, 0, 0, 0, 0)
-		TNT1 A 0 A_SetAngle(angle + 30)
+		TNT1 A 0 A_SetAngle(angle + 10)
 		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", rocket_blastradius, 0, 0, 0, 0, 0)
 		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", -rocket_blastradius, 0, 0, 0, 0, 0)
 		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, rocket_blastradius, 0, 0, 0, 0)
 		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, -rocket_blastradius, 0, 0, 0, 0)
-		TNT1 A 0 A_SetAngle(angle + 30)
-		TNT1 A 0 A_StopSound(CHAN_5)
+		TNT1 A 0 A_SetAngle(angle + 10)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", rocket_blastradius, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", -rocket_blastradius, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, rocket_blastradius, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, -rocket_blastradius, 0, 0, 0, 0)
+		TNT1 A 0 A_SetAngle(angle + 10)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", rocket_blastradius, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", -rocket_blastradius, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, rocket_blastradius, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, -rocket_blastradius, 0, 0, 0, 0)
+		TNT1 A 0 A_SetAngle(angle + 10)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", rocket_blastradius, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", -rocket_blastradius, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, rocket_blastradius, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, -rocket_blastradius, 0, 0, 0, 0)
+		TNT1 A 0 A_SetAngle(angle + 10)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", rocket_blastradius, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", -rocket_blastradius, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, rocket_blastradius, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, -rocket_blastradius, 0, 0, 0, 0)
+		TNT1 A 0 A_SetAngle(angle + 10)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", rocket_blastradius, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", -rocket_blastradius, 0, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, rocket_blastradius, 0, 0, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("RocketCannonRadiusFX", 0, -rocket_blastradius, 0, 0, 0, 0)
+		TNT1 A 0 A_SetAngle(angle + 10)*/
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_SetTranslucent(1.0, 1)
 		TNT1 A 0 A_Explode(40, rocket_blastradius, XF_HURTSOURCE, false, 0) 
 		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")
-		TNT1 AAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-2,2),frandom(-2,2),frandom(-2,2))
-		TNT1 AA 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,random(0,360),2,random(0,360))
+		TNT1 AA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-2,2),frandom(-2,2),frandom(-2,2))
+		TNT1 A 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,random(0,360),2,random(0,360))
 		BFSH B 1 A_SetScale(0.02, 0.02)
 		BFSH B 1 A_SetScale(0.04, 0.04)
 		TNT1 A 0 A_PlaySound("CompactExplosion",CHAN_BODY)

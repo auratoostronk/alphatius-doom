@@ -104,35 +104,6 @@ Script "PowerBraceBubbleFX" (void)
 	Thing_Remove(utid);
 }
 
-/*
-Script "EfficiencyAdaptor" (void)
-{
-	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("MediumActionCharge"))
-	{
-		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
-		PlaySound(0, "Actions/EnergyZoneStart", CHAN_AUTO, 1.0);
-		GiveInventory("PowerEfficiencyAdaptor", 1);
-		GiveInventory("EfficiencyAdaptorFXSpawner", 1);
-	}
-	else
-	{
-		ACS_NamedExecuteAlways("Action1Fail", 0);
-	}
-}
-Script "DisruptionScreen" (void)
-{
-	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("MediumActionCharge"))
-	{
-		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
-		PlaySound(0, "ItemThrow", CHAN_AUTO, 1.0);
-		GiveInventory("UseDisruptionScreen", 1);
-		//checkActionSurge();
-	}
-	else
-	{
-		ACS_NamedExecuteAlways("Action1Fail", 0);
-	}
-}*/
 Script "DecoyHologram" (void)
 {
 	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("FastActionCharge"))
@@ -189,20 +160,6 @@ Script "DecoyWalk" (void)
 		delay(1);
 	}
 }
-Script "DistortionMissile" (void)
-{
-	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("FastActionCharge"))
-	{
-		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
-		PlaySound(0, "ItemThrow", CHAN_AUTO, 1.0);
-		GiveInventory("UseDistortionMissile", 1);
-		//checkActionSurge();
-	}
-	else
-	{
-		ACS_NamedExecuteAlways("Action1Fail", 0);
-	}
-}
 Script "AutoDrone" (void)
 {
 	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("MediumActionCharge"))
@@ -229,8 +186,8 @@ Script "SonicShockwave" (void)
 		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
 		Thing_Stop(0);
 		SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
-		SpawnSpotFacingForced("SonicShockwaveWarning", 0, 0);
-		delay(15);
+		SpawnSpotFacingForced("SonicShockwaveSpawner", 0, 0);
+		delay(12);
 		SpawnProjectile(0, "SonicShockwaveMissile", 0, 0, 0, 0, 0);
 		SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
 	}
