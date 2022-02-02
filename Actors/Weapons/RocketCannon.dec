@@ -58,7 +58,6 @@ ACTOR RocketCannonProjectile : FastProjectile
 	Obituary "%k > \ccRocket Cannon\c- > %o"
 	DamageType "RocketCannon"
 	Decal BigScorch
-	Scale 0.5
 	States
 	{
 	Spawn:
