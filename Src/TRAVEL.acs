@@ -11,6 +11,10 @@
 #libdefine TRAV_HYPERD_DUR 70
 #libdefine TRAV_WARPD_STRENGTH 1.6
 
+function void travelSucceed(void)
+{
+	
+}
 Script "TravelAbility" (void) net
 {
 	//SetFont("ALPHFONT");
@@ -62,6 +66,7 @@ Script "ThrusterBoots" (void)
 	}
 	else
 	{
+		travelSucceed();
 		int thrust = 24;
 		if(!(GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK)
 		&& !(GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD)
@@ -115,7 +120,7 @@ Script "ThrusterBoots" (void)
 		{
 			TakeInventory("ExtraTravelCharge", 1);
 		}
-		PlaySound(0, "Travel/ThrusterBoots", CHAN_AUTO, 1.0, false, ATTN_NORM, false, true);
+		PlaySound(0, "Travel/ThrusterBoots", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
 		//delay(6);
 		//SetActorVelocity(0, GetActorVelX(0) / 2, GetActorVelY(0) / 2, 0.0, false, false);
 		
@@ -131,7 +136,8 @@ Script "JumpThrust" (void)
 	}
 	else
 	{
-		PlaySound(0, "Travel/JumpThrust", CHAN_AUTO, 1.0, false, ATTN_NORM, false, true);
+		travelSucceed();
+		PlaySound(0, "Travel/JumpThrust", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
 		int angle = GetActorAngle(0);
 		int pitch = -GetActorPitch(0) + 0.05; //Up is positive now
 		int upordown;
@@ -162,6 +168,7 @@ Script "WarpDrive" (void)
 	}
 	else
 	{
+		travelSucceed();
 		if(!hasTravelPickup)
 		{
 			GiveInventory("WDriveCD",GetAmmoCapacity("WDriveCD"));
@@ -178,7 +185,7 @@ Script "WarpDrive" (void)
 		else
 			upordown = 1;
 		SpawnSpotFacingForced("TeleportFog", 0, 0);
-		PlaySound(0, "Travel/WarpStart", CHAN_AUTO, 1.0, false, ATTN_NORM, false, true);
+		PlaySound(0, "Travel/WarpStart", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
 		GiveInventory("PowerWarpInvisibility", 1);
 		GiveInventory("PowerWarpInvulnerability", 1);
 		int velx, vely, velz;
@@ -195,7 +202,7 @@ Script "WarpDrive" (void)
 		TakeInventory("PowerWarpInvisibility", 1);
 		TakeInventory("PowerWarpInvulnerability", 1);
 		SpawnSpotFacingForced("TeleportFog", 0, 0);
-		PlaySound(0, "Travel/WarpDone", CHAN_AUTO, 1.0, false, ATTN_NORM, false, true);
+		PlaySound(0, "Travel/WarpDone", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
 		SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
 		
 	
@@ -210,8 +217,9 @@ Script "Hyperdrive" (void)
 	}
 	else
 	{
+		travelSucceed();
 		GiveInventory("HyperdriveSpeed", 1);
-		PlaySound(0, "Travel/HyperdriveStart", CHAN_AUTO, 1.0, false, ATTN_NORM, false, true);
+		PlaySound(0, "Travel/HyperdriveStart", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
 		int counter = 0;
 		while((ClassifyActor(0) & ACTOR_ALIVE) && counter < TRAV_HYPERD_DUR)
 		{
@@ -219,7 +227,7 @@ Script "Hyperdrive" (void)
 			counter++;
 		}
 		TakeInventory("HyperdriveSpeed", 1);
-		PlaySound(0, "Travel/HyperdriveEnd", CHAN_AUTO, 1.0, false, ATTN_NORM, false, true);
+		PlaySound(0, "Travel/HyperdriveEnd", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
 		if(!hasTravelPickup)
 		{
 			GiveInventory("HDriveCD",GetAmmoCapacity("HDriveCD"));

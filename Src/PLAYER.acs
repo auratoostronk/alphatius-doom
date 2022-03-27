@@ -91,7 +91,6 @@ Script "SetupPlayer" (void)
 Script "PlayerDeath" DEATH
 {
 	Thing_ChangeTID(0, 0);
-	GiveInventory("IsDead", 1);
 }
 Script "PlayerDisconnect" (int playerwholeft) DISCONNECT
 {

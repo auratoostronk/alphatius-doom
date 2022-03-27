@@ -102,10 +102,10 @@ Script "RechargeTimers" ENTER
 			TakeInventory("AltFireFailCD", 1);
 			
 			int movespeed = 1.0;
-			if(CheckInventory("TravelHyperdrive") >= 1)
+			/*if(CheckInventory("TravelHyperdrive") >= 1)
 			{
 				movespeed += 0.2;
-			}
+			}*/
 			if(CheckInventory("HyperdriveSpeed") >= 1)
 			{
 				movespeed += 0.4;

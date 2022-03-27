@@ -10,8 +10,8 @@ Actor AlphatiusPlayer : PlayerPawn
 	Player.CrouchSprite "PLYC"
 	Player.MaxHealth 100
 	Player.MugshotMaxHealth -1
-	Player.ForwardMove 1.8, 0.9
-	Player.SideMove 2.0, 1.0
+	Player.ForwardMove 1.6, 0.8
+	Player.SideMove 1.6, 0.8
 	Player.DisplayName "Alphatius Player"
 	Player.ColorRange 112, 127
 	Player.JumpZ 8.0

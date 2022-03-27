@@ -1,0 +1,12 @@
+#library "PASSIVES"
+#include "zcommon.acs"
+
+Script "PassiveTEST" ENTER
+{
+	
+}
+
+Script "CountDamageStacks" (void)
+{
+	//SetResultValue(1.0);
+}	

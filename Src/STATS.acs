@@ -1,0 +1,10 @@
+#library "STATS.acs"
+#include "zcommon.acs"
+
+Script "OnFragPlayer" (int type, int arg1, int arg2) EVENT
+{
+	if(type == GAMEEVENT_PLAYERFRAGS)
+	{
+		
+	}
+}

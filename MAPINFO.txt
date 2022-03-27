@@ -14,6 +14,7 @@ Gameinfo
 	MenuFontColor_Selection = "White"
 	MenuFontColor_Value= "White"
 	MenuFontColor_Header = "Gold"
+	//ForceDamageEventScripts = true
 }
 map ALPHDM01 lookup "Quarry"
 {
@@ -67,7 +68,7 @@ map ALPHDM07 lookup "Torrent"
 {
 	levelnum = 7
 	sky1 = "OLOSSKY", 0
-	music = "SONIC1"
+	music = "QUAKE3_1"
 	next = "ALPHDM08"
 	AllowRespawn
 }
@@ -116,8 +117,16 @@ map ALPHDL04 lookup "Cold Sludge"
 {
 	levelnum = 204
 	sky1 = "SNOWSKY", 0
-	music = "SONIC3"
+	music = "QUAKE2_2"
 	next = "ALPHDL01"
+	AllowRespawn
+}
+map ALPHFL01 lookup "Damnati"
+{
+	levelnum = 301
+	sky1 = "SPACESKY", 0
+	music = "ONSLAUGH"
+	next = "ALPHFL01"
 	AllowRespawn
 }
 map ALPHTUT1 lookup "Tutorial"

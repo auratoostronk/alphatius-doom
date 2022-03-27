@@ -3,7 +3,7 @@ DefaultListMenu
 	Position 70, 68
 	Font "BIGFONT", "Red", "Red"
 	LineSpacing 20
-	Selector "graphics/cursor.png", -32, -5
+	//Selector "graphics/cursor.png", -32, -5
 	LineSpacing 18
 }
 ListMenu "MainMenu"

@@ -1,6 +1,6 @@
 Model SpaceShip
 { 
-   Path "Models" 
+   Path "Models/Decorations" 
    Model 0 "bviper.md2" 
    Skin 0 "bviper.png"
    Scale 1.0 1.0 1.0
@@ -12,7 +12,7 @@ Model SpaceShip
 }
 Model PowerBraceBubble
 {
-	Path "Models" 
+   Path "Models/Decorations" 
 	Model 0 "shield.md2"
 	Skin 0 "forcefield2.png"
 	Scale 25.0 25.0 25.0
@@ -24,7 +24,7 @@ Model PowerBraceBubble
 }
 Model SpaceShipSmall
 { 
-   Path "Models" 
+   Path "Models/Decorations" 
    Model 0 "bviper.md2" 
    Skin 0 "bviper.png"
    Scale 0.2 0.2 0.2
@@ -37,7 +37,7 @@ Model SpaceShipSmall
 
 Model AutoDroneLaser 
 { 
-   Path "Models"
+   Path "Models/Decorations" 
    SKIN 0 "tracer.png"
    MODEL 0 "tracer.md3"
    Scale 1.0 1.0 1.0
@@ -50,7 +50,7 @@ Model AutoDroneLaser
 //crystals**************************************************
 Model CrystalBlue
 {
-   Path "Models" 
+   Path "Models/Decorations" 
 	Model 0 "crystal.md2"
 	Skin 0 "crystal1a.png"
 	Scale 1.0 1.0 1.0
@@ -60,7 +60,7 @@ Model CrystalBlue
 
 Model CrystalGreen
 {
-   Path "Models" 
+   Path "Models/Decorations" 
 	Model 0 "crystal.md2"
 	Skin 0 "crystal1b.png"
 	Scale 1.0 1.0 1.0
@@ -70,7 +70,7 @@ Model CrystalGreen
 
 Model CrystalRed
 {
-   Path "Models" 
+   Path "Models/Decorations" 
 	Model 0 "crystal.md2"
 	Skin 0 "crystal1c.png"
 	Scale 1.0 1.0 1.0

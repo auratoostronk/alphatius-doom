@@ -1,8 +1,3 @@
-//Used for dead stuff
-Actor IsDead : Inventory
-{
-	Inventory.MaxAmount 1
-}
 //Used to keep track of how many charges Thruster Boots has
 Actor ThrusterBootsCharge : Ammo
 {
@@ -11,7 +6,7 @@ Actor ThrusterBootsCharge : Ammo
 //Used for Energy Regen
 Actor EnergyRechargeCD : Ammo
 {
-	Inventory.MaxAmount 105
+	Inventory.MaxAmount 70
 }
 //Travel ability cooldowns
 Actor TBootsCD : Ammo
@@ -69,11 +64,6 @@ Actor HyperdriveSpeed : Inventory
 {
 	Inventory.MaxAmount 1
 }
-//If skill is set to 0, all weapons are replaced with this actor, making no weapons spawn.
-/*Actor NoWeapon
-{
-	+NOINTERACTION
-}*/
 //For Warp Drive
 Actor PowerWarpInvisibility : PowerInvisibility
 {
