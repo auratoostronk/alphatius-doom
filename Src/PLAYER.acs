@@ -35,7 +35,7 @@ Script "SetupPlayer" (void)
 			!CheckInventory("TeslaSMG") &&
 			!CheckInventory("C14") &&
 			!CheckInventory("SparkCannon") &&
-			!CheckInventory("RocketCannon") && 
+			/*!CheckInventory("RocketCannon") && */
 			!CheckInventory("Flamespitter") && 
 			!CheckInventory("BeamRifle"))
 			{

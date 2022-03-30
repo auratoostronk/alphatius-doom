@@ -70,7 +70,7 @@ brightmap texture PSGPA0
 	map "Brightmaps/Weapons/ParticleSplitter/PSGPA0.png"
 }
 
-
+/*
 brightmap texture CRCFA0
 {
 	map "Brightmaps/Weapons/RocketCannon/CRCFA0.png"
@@ -86,7 +86,7 @@ brightmap texture CRCFC0
 brightmap texture CRCFD0
 {
 	map "Brightmaps/Weapons/RocketCannon/CRCFD0.png"
-}
+}*/
 
 brightmap texture FLMRA0
 {

@@ -102,9 +102,9 @@ Actor ParticleSplitter : Weapon 10007
 		Goto FireAnim
 	FireAnim:
 		PSGF ABC 2 bright
-		PSGR A 14 A_WeaponReady(WRF_NOFIRE|WRF_DISABLESWITCH)
-		TNT1 A 0 A_PlaySound("ParticleSplitter/Pump", CHAN_WEAPON)
 		PSGR A 20 A_WeaponReady(WRF_NOFIRE|WRF_DISABLESWITCH)
+		TNT1 A 0 A_PlaySound("ParticleSplitter/Pump", CHAN_WEAPON)
+		PSGR A 22 A_WeaponReady(WRF_NOFIRE|WRF_DISABLESWITCH)
 		Goto Ready
 	AltFail:
 		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")

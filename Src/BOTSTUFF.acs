@@ -118,10 +118,6 @@ Script "StartBotAliveTimer" (void)
 		{
 			GiveInventory("SparkCannonAlt", 1);
 		}
-		if(CheckInventory("RocketCannon") && !CheckInventory("RocketCannonAlt"))
-		{
-			GiveInventory("RocketCannonAlt", 1);
-		}
 		if(CheckInventory("Flamespitter") && !CheckInventory("FlamespitterAlt"))
 		{
 			GiveInventory("FlamespitterAlt", 1);
@@ -137,7 +133,7 @@ Script "StartBotAliveTimer" (void)
 Script "BotChangeWeapon" (void)
 {
 	bool swapSuccess;
-	switch(random(1, 8))
+	switch(random(1, 7))
 	{
 		case 1:
 		swapSuccess = SetWeapon("ParticleSplitter");
@@ -152,15 +148,12 @@ Script "BotChangeWeapon" (void)
 		swapSuccess = SetWeapon("C14");
 		break;
 		case 5:
-		swapSuccess = SetWeapon("RocketCannon");
-		break;
-		case 6:
 		swapSuccess = SetWeapon("SparkCannon");
 		break;
-		case 7:
+		case 6:
 		swapSuccess = SetWeapon("Flamespitter");
 		break;
-		case 8:
+		case 7:
 		swapSuccess = SetWeapon("BeamRifle");
 		break;
 	}
@@ -169,7 +162,7 @@ Script "BotChangeWeapon" (void)
 //Required for the bots to use their alt-fire.
 Script "BotChangeToAltWeapon" (void)
 {
-	int rand = random(1, 8);
+	int rand = random(1, 7);
 	if(rand == 1 && CheckInventory("PSGAltCD") == 0)
 	{
 		SetWeapon("ParticleSplitterAlt");
@@ -186,19 +179,15 @@ Script "BotChangeToAltWeapon" (void)
 	{
 		SetWeapon("C14Alt");
 	}
-	if(rand == 5 && CheckInventory("RocketAltCD") == 0)
-	{
-		SetWeapon("RocketCannonAlt");
-	}
-	if(rand == 6 && CheckInventory("SparkAltCD") == 0)
+	if(rand == 5 && CheckInventory("SparkAltCD") == 0)
 	{
 		SetWeapon("SparkCannonAlt");
 	}
-	if(rand == 7 && CheckInventory("FlamespitterAltCD") == 0)
+	if(rand == 6 && CheckInventory("FlamespitterAltCD") == 0)
 	{
 		SetWeapon("FlamespitterAlt");
 	}
-	if(rand == 8)
+	if(rand == 7)
 	{
 		SetWeapon("BeamRifleAlt");
 	}

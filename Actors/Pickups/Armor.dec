@@ -7,7 +7,7 @@ Actor NanoArmor : BasicArmorPickup replaces BlueArmor
 	Inventory.PickupSound "misc/p_pkup"
 	Inventory.Icon "ARM3A0"
 	Armor.SavePercent 25
-	Armor.SaveAmount 25
+	Armor.SaveAmount 50
 	Inventory.RespawnTics 825 //25 seconds
 	States
 	{
@@ -26,8 +26,8 @@ Actor NanoShard : BasicArmorBonus replaces ArmorBonus
 	Inventory.PickupMessage "Picked up a Nano-Shard."
 	Inventory.Icon "NANSD0"
 	Armor.SavePercent 25
-	Armor.SaveAmount 1
-	Armor.MaxSaveAmount 30
+	Armor.SaveAmount 5
+	Armor.MaxSaveAmount 50
 	Inventory.RespawnTics 350 //10 seconds
 	-INVENTORY.ALWAYSPICKUP
 	States

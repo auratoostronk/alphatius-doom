@@ -6,13 +6,13 @@
 #import "HUD.acs"
 
 #libdefine MAX_PLAYERS 64
-#libdefine NUM_WEAPS 8
+#libdefine NUM_WEAPS 7
 #libdefine NUM_TRAVELS 4
-str WEAP_CLASSNAMES[NUM_WEAPS] = 	{"TeslaSMG", 	"ParticleSplitter", 	"PhotonCarbine", 	"C14", 			"SparkCannon", 		"RocketCannon", 	"Flamespitter", 	"BeamRifle"};
-str WEAP_ALTCLASSNAMES[NUM_WEAPS] = {"TeslaSMGAlt", "ParticleSplitterAlt", 	"PhotonCarbineAlt", "C14Alt", 		"SparkCannonAlt", 	"RocketCannonAlt",	"FlamespitterAlt", 	"BeamRifleAlt"};
-str WEAP_ENERGYNAMES[NUM_WEAPS] = 	{"SMGEnergy", 	"PumpSGEnergy", 		"CarbineEnergy", 	"C14Energy", 	"SparkEnergy", 		"RocketEnergy", 	"FlameEnergy", 		"BeamEnergy"};
-str WEAP_COOLDOWNNAMES[NUM_WEAPS] = {"SMGAltCD", 	"PumpSGAltCD", 			"CarbineAltCD",	 	"C14AltCD", 	"SparkAltCD", 		"RocketAltCD", 		"FlameAltCD", 		"BeamAltCD"};
-str WEAP_COLORS[NUM_WEAPS] = 		{"Yellow", 		"Purple", 				"Blue", 			"Green", 		"Red", 				"Gray", 			"Orange", 			"LightBlue"};
+str WEAP_CLASSNAMES[NUM_WEAPS] = 	{"TeslaSMG", 	"ParticleSplitter", 	"PhotonCarbine", 	"C14", 			"SparkCannon", 		/*"RocketCannon",*/ 	"Flamespitter", 	"BeamRifle"};
+str WEAP_ALTCLASSNAMES[NUM_WEAPS] = {"TeslaSMGAlt", "ParticleSplitterAlt", 	"PhotonCarbineAlt", "C14Alt", 		"SparkCannonAlt", 	/*"RocketCannonAlt",*/ 	"FlamespitterAlt", 	"BeamRifleAlt"};
+str WEAP_ENERGYNAMES[NUM_WEAPS] = 	{"SMGEnergy", 	"PumpSGEnergy", 		"CarbineEnergy", 	"C14Energy", 	"SparkEnergy", 		/*"RocketEnergy",*/  	"FlameEnergy", 		"BeamEnergy"};
+str WEAP_COOLDOWNNAMES[NUM_WEAPS] = {"SMGAltCD", 	"PumpSGAltCD", 			"CarbineAltCD",	 	"C14AltCD", 	"SparkAltCD", 		/*"RocketAltCD",*/ 		"FlameAltCD", 		"BeamAltCD"};
+str WEAP_COLORS[NUM_WEAPS] = 		{"Yellow", 		"Purple", 				"Blue", 			"Green", 		"Red", 				/*"Gray",*/ 			"Orange", 			"LightBlue"};
 
 function int abs (int x)
 {
@@ -30,7 +30,7 @@ function bool isAirborne(void)
 function void spawnThermiteFX(void)
 {
 	int latspread = 12.0;
-	SpawnForced("ThermiteFX", GetActorX(0) + Random(-latspread, latspread), GetActorY(0) + Random(-latspread, latspread), GetActorZ(0) + 48.0, 0, 0);
+	SpawnForced("ThermiteFX", GetActorX(0) + Random(-latspread, latspread), GetActorY(0) + Random(-latspread, latspread), GetActorZ(0) + 32.0, 0, 0);
 
 }
 

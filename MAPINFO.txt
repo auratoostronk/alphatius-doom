@@ -83,7 +83,7 @@ map ALPHDM08 lookup "Waste"
 map ALPHDM09 lookup "Sinkhole"
 {
 	levelnum = 9
-	sky1 = "REDSKY", 0
+	sky1 = "OLOSSKY", 0
 	music = "QUAKE3_1"
 	next = "ALPHDM01"
 	AllowRespawn

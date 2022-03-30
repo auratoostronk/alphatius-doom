@@ -246,19 +246,18 @@ Actor ThermiteDebuff : Inventory
 Actor ThermiteFX
 {
 	RenderStyle add
-	VSpeed 3
+	VSpeed -3
 	+CLIENTSIDEONLY
 	+NOINTERACTION
-	Scale 0.2
+	Scale 0.8
 	Alpha 0.4
 	+BRIGHT
 	States
 	{
 	Spawn:
 	Death:
-		OFLM ABCDEFG 2
-		TNT1 A 1
-		stop
+		FSDB ABC 2 A_FadeOut(0.025)
+		loop
 		
 	}
 }

@@ -18,11 +18,11 @@ Object ParticleSplitter
 Object PhotonCarbine
 {
 	Frame CARP { light BLUELIGHT }
-}
+}/*
 Object RocketCannon
 {
 	Frame CRCP { light GREYLIGHT }
-}
+}*/
 Object Flamespitter
 {
 	Frame FLMP { light ORANGELIGHT }
@@ -82,12 +82,12 @@ Object BeamRailHit
 {
 	Frame ZAP6 { light LIGHTBLUELIGHTSMALL }
 }
-
+/*
 Object RocketCannonProjectile
 {
 	Frame RCKT { light GREYLIGHT }
 	Frame BFSH { light GREYLIGHTSHOOT }
-}
+}*/
 
 //OTHER WEAPON ATTACKS/EFFECTS
 object ExplodeHitFlash
