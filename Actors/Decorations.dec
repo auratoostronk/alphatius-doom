@@ -7,9 +7,7 @@ actor SpaceShip 10002
 	+NOBLOOD
 	+SHOOTABLE
     +NOGRAVITY
-	+NODAMAGE
 	+DONTOVERLAP
-	-COUNTKILL
 	+SOLID
     States
     {
@@ -23,8 +21,6 @@ Actor SpaceShipSmall : Spaceship
 	//$Category Alphatius Decorations
 	Radius 16
 	Height 8
-	-SOLID
-	-NODAMAGE
 }
 
 //Taken from Ozymandias's GORE
@@ -34,7 +30,6 @@ actor 3dObject
 	//$Category Alphatius Decorations
 	+SOLID
 	+NOBLOCKMAP
-	+NOTAUTOAIMED
 	+ACTLIKEBRIDGE
 	States
 	{

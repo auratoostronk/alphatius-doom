@@ -1,4 +1,5 @@
 #include Actors/Flashes.dec
+#include Actors/Cooldowns.dec
 #include Actors/DummyActors.dec
 #include Actors/Player.dec
 #include Actors/Explosions.dec
