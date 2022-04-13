@@ -41,14 +41,11 @@ Zandronum Flags:
 ZA Compat. flags:
 -Players can't use 'land' CCMD
 
-
 KNOWN ISSUES
 -None known yet.
 
-
 DISCORD SERVER:
 https://discord.gg/MqXv8FkCmX
-
 
 CONTACT:
 The best way to reach me is through the above discord server. It has everything you need

@@ -1,0 +1,7 @@
+user int alph_travel = 0;
+user int alph_grenadetype = 0;
+user string alph_action = 0;
+user string alph_startweapon = "PhotonCarbine";
+user float alph_textscale = 1.0;
+
+server bool alph_allowsuperweapons = false;

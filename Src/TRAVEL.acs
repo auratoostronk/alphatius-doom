@@ -9,7 +9,7 @@
 //#libdefine TRAV_JTHRUST_CD 140
 //#libdefine TRAV_HYPERD_CD 175
 #libdefine TRAV_HYPERD_DUR 70
-#libdefine TRAV_WARPD_STRENGTH 1.6
+#libdefine TRAV_WARPD_STRENGTH 1.4
 
 function void travelSucceed(void)
 {
@@ -78,10 +78,15 @@ Script "ThrusterBoots" (void)
 			{
 				ThrustThing(GetActorAngle(0) >> 8, thrust, 1, 0);
 			}
+			//Check Controller input
 			else
 			{
 				int fmove = GetPlayerInput(-1, INPUT_FORWARDMOVE);
 				int smove = GetPlayerInput(-1, INPUT_SIDEMOVE);
+				if(smove != 0 && fmove != 0)
+				{
+					thrust = 18;
+				}
 				if(smove < 0)
 				{
 					ThrustThing((GetActorAngle(0)>>8) + 64, thrust, 1, 0);
@@ -102,6 +107,13 @@ Script "ThrusterBoots" (void)
 		}
 		else
 		{
+			bool movefront = (GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK) || (GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD);
+			bool moveside = (GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVELEFT) || (GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVERIGHT);
+			
+			if(movefront && moveside)
+			{
+				thrust = 18;
+			}
 			if(GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK)
 				ThrustThing((GetActorAngle(0) >> 8) + 128, thrust, 1, 0);
 			if(GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD)

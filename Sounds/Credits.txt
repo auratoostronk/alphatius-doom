@@ -1,5 +1,5 @@
 No Energy Sound sound came from Project MSX by MagSigmaX
 Low Energy Sound sound came from Project MSX by MagSigmaX and modified by hiimaura
-Flyby was taken from a youtube video https://www.youtube.com/watch?v=L0G4Hwi88cc
 Hitmarker was taken from an ableton sample and pitch shifted up.
 ItemThrow was ripped from Quake 3 Arena
+Item Pickup from Quake Champions (?) (id Software)

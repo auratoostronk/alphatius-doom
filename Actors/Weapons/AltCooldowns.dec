@@ -5,8 +5,8 @@ Actor SparkAltCD : Ammo
 }
 Actor CarbineAltCD : Ammo
 {
-  Inventory.MaxAmount 175
-  Ammo.BackpackMaxAmount 175
+  Inventory.MaxAmount 210
+  Ammo.BackpackMaxAmount 210
 }
 Actor C14AltCD : Ammo
 {
@@ -31,8 +31,8 @@ Actor RocketAltCD : Ammo
 }
 Actor FlameAltCD : Ammo
 {
-  Inventory.MaxAmount 140
-  Ammo.BackpackMaxAmount 140
+  Inventory.MaxAmount 210
+  Ammo.BackpackMaxAmount 210
 }
 //Placeholder. Does nothing.
 Actor BeamAltCD : Ammo

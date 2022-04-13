@@ -11,6 +11,7 @@
 // HUMANS ----------------------------------------------------------------------
 
 {
+	//hiimaura
 	name = "\chhi\cnim\cvaura"
 	accuracy = 2
 	intellect = 2
@@ -21,7 +22,6 @@
 	favoriteweapon = "ParticleSplitter"
 	color = "00 55 88"
 	gender = "male"
-	class = "mage"
 	railcolor = rainbow
 	chatfrequency = 50
 	revealed = true
@@ -39,7 +39,6 @@
 	favoriteweapon = "PhotonCarbine"
 	color = "FF 00 00"
 	gender = "male"
-	class = "fighter"
 	railcolor = red
 	chatfrequency = 75
 	revealed = true
@@ -47,6 +46,7 @@
 }
 
 {
+	//[NE]BlushBerry (rest in peace NUCLEAR EMPIRE!!!)
 	name = "\c[q6][NE]\c[q5]Blush\c[y1]Berry"
 	accuracy = 2
 	intellect = 2
@@ -57,9 +57,43 @@
 	favoriteweapon = "TeslaSMG"
 	color = "FF 88 FF"
 	gender = "male"
-	class = "mage"
 	railcolor = rainbow
 	chatfrequency = 60
+	revealed = true
+	script = "humanbot"
+}
+
+{
+	name = "geNia"
+	accuracy = 4
+	intellect = 5
+	evade = 4
+	anticipation = 1
+	reactiontime = 3
+	perception = 3
+	favoriteweapon = "PhotonCarbine"
+	color = "00 FF 00"
+	gender = "male"
+	railcolor = green
+	chatfrequency = 40
+	revealed = true
+	script = "humanbot"
+}
+
+{
+	//[CR]yler
+	name = "\cm[\cgCR\cm]\cgy\cmler"
+	accuracy = 4
+	intellect = 3
+	evade = 4
+	anticipation = 3
+	reactiontime = 2
+	perception = 5
+	favoriteweapon = "SparkCannon"
+	color = "DD 00 00"
+	gender = "male"
+	railcolor = red
+	chatfrequency = 50
 	revealed = true
 	script = "humanbot"
 }

@@ -54,6 +54,12 @@ Actor AlphatiusPlayer : PlayerPawn
 	Death.FlamespitterFlames:
 		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "Death.FlamespitterThermite")
 		Goto Death
+	/*Death.BeamRifle:
+		TNT1 A 0 A_GiveToTarget("BeamEnergy", 50)
+		Goto Death
+	XDeath.BeamRifle:
+		TNT1 A 0 A_GiveToTarget("BeamEnergy", 50)
+		Goto XDeath*/
 	Death:
 		TNT1 AAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
 		PLAY H 12
@@ -80,6 +86,7 @@ Actor NewBlood : Blood replaces Blood
 	Scale 0.6
 	Mass 6
 	-ALLOWPARTICLES
+	-NONETID
 	States
 	{
 	Spawn:

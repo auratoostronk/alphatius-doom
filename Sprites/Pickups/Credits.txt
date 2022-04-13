@@ -1,0 +1,5 @@
+Stim Sprites: id Software
+Stim Sprite Edit: BloodyAcid, aura
+
+Medikit Sprites: id Software
+Medikit Sprite Edit: BloodyAcid

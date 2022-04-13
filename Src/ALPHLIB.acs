@@ -108,17 +108,27 @@ Script "RechargeTimers" ENTER
 			}*/
 			if(CheckInventory("HyperdriveSpeed") >= 1)
 			{
-				movespeed += 0.4;
+				movespeed += 0.5;
 			}
 			SetActorProperty(0, APROP_SPEED, movespeed);
 			
-			if(!CheckInventory("EnergyRechargeCD"))
+			/*if(!CheckInventory("EnergyRechargeCD"))
 			{
 				for(int j = 0; j < NUM_WEAPS; j++)
 				{
 					GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
 				}
 				TakeInventory("NoLowEnergySound", 1);
+			}*/
+			int energy_sound_delay = 1;
+			if(CheckInventory("EnergyRechargeCD") == energy_sound_delay)
+			{
+				for(int j = 0; j < NUM_WEAPS; j++)
+				{
+					GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
+				}
+				TakeInventory("NoLowEnergySound", 1);
+				LocalAmbientSound("General/WeaponReady", 0.8);
 			}
 			
 		}

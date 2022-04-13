@@ -70,23 +70,6 @@ brightmap texture PSGPA0
 	map "Brightmaps/Weapons/ParticleSplitter/PSGPA0.png"
 }
 
-/*
-brightmap texture CRCFA0
-{
-	map "Brightmaps/Weapons/RocketCannon/CRCFA0.png"
-}
-brightmap texture CRCFB0
-{
-	map "Brightmaps/Weapons/RocketCannon/CRCFB0.png"
-}
-brightmap texture CRCFC0
-{
-	map "Brightmaps/Weapons/RocketCannon/CRCFC0.png"
-}
-brightmap texture CRCFD0
-{
-	map "Brightmaps/Weapons/RocketCannon/CRCFD0.png"
-}*/
 
 brightmap texture FLMRA0
 {
@@ -134,3 +117,24 @@ brightmap texture SMGFC0
 	map "Brightmaps/Weapons/TeslaSMG/SMGFC0.png"
 }
 
+
+brightmap texture BRFRA0
+{
+	map "Brightmaps/Weapons/BeamRifle/BRFRA0.png"
+}
+brightmap texture BRFFA0
+{
+	map "Brightmaps/Weapons/BeamRifle/BRFFA0.png"
+}
+brightmap texture BRFFB0
+{
+	map "Brightmaps/Weapons/BeamRifle/BRFFB0.png"
+}
+brightmap texture BRFFC0
+{
+	map "Brightmaps/Weapons/BeamRifle/BRFFC0.png"
+}
+brightmap texture BRFPA0
+{
+	map "Brightmaps/Weapons/BeamRifle/BRFPA0.png"
+}

@@ -25,10 +25,5 @@ Script "PlayerDeathByThermite" (void)
 	int blastid = UniqueTID(1, 0);
 	SpawnProjectile(0, "ThermiteChainReact", 0, 0, 0, 0, blastid);
 	SetActorPosition(blastid, GetActorX(initid), GetActorY(initid), GetActorZ(initid) + 16.0, false);
-	/*for(int i = 0; i < 256; i += 8)
-	{
-		int projid = UniqueTID(1, 0);
-		SpawnSpot("ThermiteChainReactFX", 0, initid, i);
-		SetActorPosition(projid, GetActorX(initid), GetActorY(initid), GetActorZ(initid) + 16.0, false);
-	}*/
+	GiveInventory("FlameEnergy", 25);
 }

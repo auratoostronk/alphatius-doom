@@ -53,6 +53,7 @@ $random CompactExplosion { Explosion1 Explosion2 Explosion3 }
 //GENERAL
 General/Fail				NOENRGY
 General/LowEnergy			LOENRGY
+General/WeaponReady 				ENRGYRDY
 General/WeaponSwitch		WEAPSWAP
 General/AltReady			ALTREADY
 General/TravelReady		TRAVREDY	

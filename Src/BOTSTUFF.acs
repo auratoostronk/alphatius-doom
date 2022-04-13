@@ -24,6 +24,10 @@ Script "BotRespawn" RESPAWN
 Script "SetupBot" (void)
 {
 	GiveInventory(WEAP_CLASSNAMES[random(0, NUM_WEAPS - 1)], 1);
+	for(int j = 0; j < NUM_WEAPS; j++)
+	{
+		GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
+	}
 	
 	switch(random(0,3))
 	{

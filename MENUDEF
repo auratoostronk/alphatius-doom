@@ -1,0 +1,229 @@
+DefaultListMenu
+{
+	Position 70, 68
+	Font "BIGFONT", "Red", "Red"
+	LineSpacing 20
+	LineSpacing 18
+}
+ListMenu "MainMenu"
+{
+	StaticPatch 40, 30, "ALPHTITL"
+	TextItem "Tutorial", "t", "TutorialMenu"
+	TextItem "Play Offline", "p", "ZA_SkirmishMenu"
+	TextItem "Mod Options", "m", "ModOptions"
+	TextItem "Options", "o", "OptionsMenu"
+	TextItem "Quit", "q", "QuitMenu"
+}
+ListMenu "TutorialMenu"
+{
+	Position 70, 68
+	TextItem "Start", "s", "EpisodeMenu"
+}
+OptionMenu "ModOptions"
+{
+	Title "Alphatius Options"
+	StaticText " "
+	StaticText "Keybinds for Alphatius"
+	StaticText " "
+	Control "Alt-Fire", "+altattack"
+	Control "Travel Ability", "travelability"
+	Control "Action Ability", "actionability"
+	StaticText " "
+	StaticText	"Loadout Options"
+	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
+	Option "Travel Ability", "alph_travel", "TravelAbility"
+	Option "Action Ability", "alph_action", "Action1Ability"
+	StaticText " "
+	StaticText	"Graphical Options"
+	StaticText " "
+	Option "Stretch Fullscreen HUD",	"hud_scale", "OnOff"
+	StaticText "Scales the Heads-Up Display"
+	StaticText " "
+	Slider "ACS HUD Scale", "alph_textscale", 0.5, 2.0, 0.1, 1
+	StaticText "Scales ACS-related HUD Elements"
+	StaticText " "
+	StaticText "Info"
+	SubMenu "Weapon Info", "I_Weapons"
+	SubMenu "Travel Ability Info", "I_Travels"
+	SubMenu "Action Ability Info", "I_Actions"
+	StaticText " "
+	StaticText " "
+}
+OptionMenu "CustomizeLoadout"
+{
+	Title "Customize Loadout"
+	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
+	Option "Travel Ability", "alph_travel", "TravelAbility"
+	Option "Action Ability", "alph_action", "Action1Ability"
+	StaticText " "
+	StaticText "Learn More!"
+	SubMenu "Weapon Info", "I_Weapons"
+	SubMenu "Travel Ability Info", "I_Travels"
+	SubMenu "Action Ability Info", "I_Actions"
+}
+OptionMenu "I_Weapons"
+{
+	Title "Weapon Info"
+	StaticText "PHOTON CARBINE"
+	StaticText "Automatic projectile rifle. Alt-fire"
+	StaticText "for a strong arcing grenade."
+	StaticText " "
+	StaticText "PARTICLE SPLITTER"
+	StaticText "Projectile shotgun. Alt-fire launches"
+	StaticText "a single pellet that splits into many."
+	StaticText " "
+	StaticText "TESLA SMG"
+	StaticText "Fires slow projectiles. Alt-fire"
+	StaticText "for a powerful melee attack."
+	StaticText " "
+	StaticText "C14"
+	StaticText "Explosive auto cannon. Alt-fire"
+	StaticText "shoots a toxic gas canister."
+	StaticText " "
+	StaticText "SPARK CANNON"
+	StaticText "Long-ranged railgun. Alt-fire"
+	StaticText "for an explosive shootable orb."
+	StaticText " "
+	//StaticText "ROCKET CANNON"
+	//StaticText "Fires multiple rockets in quick"
+	//StaticText "succession. Alt-fire to detonate."
+	StaticText " "
+	StaticText "FLAMESPITTER"
+	StaticText "Flamethrower. Targets hit by alt-fire"
+	StaticText "explode when killed by this weapon."
+	StaticText " "
+	StaticText "BEAM RIFLE"
+	StaticText "Continuous mid-ranged beam. Alt-fire"
+	StaticText "for low-powered rapid-fire hitscans."
+	StaticText " "
+}
+OptionMenu "I_Travels"
+{
+	Title "Travel Ability Info"
+	StaticText "THRUSTER BOOTS"
+	StaticText "Dash laterally. Stores up to 2 uses."
+	StaticText " "
+	StaticText "WARP DRIVE"
+	StaticText "Short teleport towards your crosshair."
+	StaticText " "
+	StaticText "HYPERDRIVE"
+	StaticText "Passively run faster. Activate for a quick sprint."
+	StaticText " "
+	StaticText "JUMP THRUST"
+	StaticText "Powerful leap. Aim upwards for best results."
+	StaticText " "
+}
+OptionMenu "I_Actions"
+{
+	Title "Action Ability Info"
+	StaticText "REGENERATION ZONE"
+	StaticText "Creates a healing zone at your feet. Heals ALL Players."
+	StaticText " "
+	StaticText "AUTO LASER"
+	StaticText "Rapid-fire projectiles shoot alongside your weapon."
+	StaticText " "
+	StaticText "POWER BRACE"
+	StaticText "Briefly reduces incoming damage."
+	StaticText " "
+	StaticText "DECOY HOLOGRAM"
+	StaticText "Create a fake hologram of yourself to run forward."
+	StaticText " "
+	StaticText "SONIC SHOCKWAVE"
+	StaticText "Creates a blast at your location after a short delay."
+	StaticText " "
+}
+
+//OPTION VALUES 
+
+OptionString "StartingWeapon"
+{
+	"TeslaSMG", "Tesla SMG"
+	"ParticleSplitter", "Particle Splitter"
+	"C14", "C-14 Energy Blaster"
+	"PhotonCarbine", "Photon Carbine"
+	"SparkCannon", "Spark Cannon"
+	//"RocketCannon", "Rocket Cannon"
+	"Flamespitter", "Flamespitter"
+	"BeamRifle", "Beam Rifle"
+}
+
+OptionValue "TravelAbility"
+{
+	0, "Thruster Boots"
+	1, "Warp Drive"
+	2, "Hyperdrive"
+	3, "Jump Thrust"
+}
+
+OptionValue "Action1Ability"
+{
+	0, "Regeneration Zone"
+	1, "Auto Laser"
+	2, "Power Brace"
+	3, "Decoy Hologram"
+	4, "Sonic Shockwave"
+}
+
+//ZANDRONUM MENU REPLACEMENTS
+
+OptionMenu ZA_JoinMenu
+{
+	Title		"JOIN GAME"
+
+	StaticText	"You are spectating."
+	StaticText	" "
+	StaticText	" "
+	StaticText	" "
+	StaticText	" "
+	StaticText	" "
+	StaticText	" "
+	SubMenu		"Alphatius Options",			"ModOptions"
+	StaticText	" "
+	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
+	Option "Travel Ability", "alph_travel", "TravelAbility"
+	Option "Action Ability", "alph_action", "Action1Ability"
+	StaticText	" "
+	Command		"Join game",			"menu_joingame"
+}
+
+OptionMenu ZA_JoinTeamMenu
+{
+	Title		"JOIN TEAM"
+
+	StaticText	"Please select a team."
+	StaticText	" "
+	StaticText	" "
+	StaticText	" "
+	StaticText	" "
+	SubMenu		"Alphatius Options",			"ModOptions"
+	StaticText	" "
+	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
+	Option "Travel Ability", "alph_travel", "TravelAbility"
+	Option "Action Ability", "alph_action", "Action1Ability"
+	StaticText  " "
+	Command		"Auto-select",			"menu_autoselect"
+	StaticText  " "
+	JoinMenuTeamOption
+	Command		"Join game",			"menu_joingame"
+}
+
+OptionMenu ZA_SelectClassMenu
+{
+	Title		"PLAYER CLASS SELECTION"
+
+	StaticText	" "
+	StaticText	" "
+	StaticText	" "
+	StaticText	" "
+	StaticText	" "
+	StaticText	" "
+	SubMenu		"Alphatius Options",			"ModOptions"
+	StaticText	" "
+	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
+	Option "Travel Ability", "alph_travel", "TravelAbility"
+	Option "Action Ability", "alph_action", "Action1Ability"
+	StaticText	" "
+	JoinMenuPlayerClassOption
+	StaticText	" "
+	Command		"Join game",			"menu_joingamewithclass"
+}

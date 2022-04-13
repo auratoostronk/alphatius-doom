@@ -42,6 +42,10 @@ Script "SetupPlayer" (void)
 				GiveInventory("PhotonCarbine", 1);
 			}
 			
+		for(int j = 0; j < NUM_WEAPS; j++)
+		{
+			GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
+		}
 		ACS_NamedExecuteAlways("RestoreActionTimers", 0);
 		switch(GetCVAR("alph_travel"))
 		{

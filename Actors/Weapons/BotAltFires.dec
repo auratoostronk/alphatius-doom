@@ -100,7 +100,7 @@ ACTOR FlamespitterAlt : Flamespitter
 }
 ACTOR BeamRifleAlt : BeamRifle
 {
-	Tag "C14 (Bot's Alt Fire)"
+	Tag "Beam Rifle (Bot's Alt Fire)"
 	States
 	{
 	Fire:

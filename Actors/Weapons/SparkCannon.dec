@@ -4,6 +4,8 @@ ACTOR SparkCannon : Weapon 10009
 	Radius 32
 	Decal RailScorchLower
 	Tag "Spark Cannon"
+	//For some reason this is needed :c
+	Obituary "%k > \cgSpark Cannon\c- > %o"
 	Weapon.BobStyle "Smooth"
 	Weapon.AmmoType1 "SparkEnergy"
 	Weapon.AmmoType2 "SparkEnergy"
@@ -44,21 +46,22 @@ ACTOR SparkCannon : Weapon 10009
 		TNT1 A 0 A_SpawnItemEX("RedLightShoot")
 		TNT1 A 0 A_PlaySound("SparkCannon/Fire", CHAN_WEAPON)
 		TNT1 A 0 A_Recoil(8)
-		SPKF E 2 Bright A_RailAttack(70,0,true,"none","none",RGF_SILENT,0,"LaserSparkDot",0,0,16384.0,2,8.0,0,"LaserSpark2", -2)
-		SPKR ABCABCABCABCABCABCABCABCABC 2 //54 tics 
+		SPKF D 4 A_RailAttack(70,0,true,"none","none",RGF_SILENT,0,"LaserSparkDot",0,0,16384.0,2,8.0,0,"LaserSpark2", -2)
+		SPKF E 50
 		Goto Ready
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("SparkAltCD", 1, "AltFail")
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		TNT1 A 0 A_SpawnItemEX("RedLightShoot")
 		TNT1 A 0 A_PlaySound("SparkCannon/AltFire", CHAN_WEAPON)
-		SPKF E 1 Bright A_FireCustomMissile("FluxOrbMissile", 0, true, 0, -2.0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("FluxOrbMissile", 0, true, 0, -2.0, 0, 0)
 		TNT1 A 0 A_GiveInventory("SparkAltCD", 140)
-		SPKR ABCABC 2
+		SPKF D 4
+		SPKF E 8
 		Goto Ready
 	AltFail:
 		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
-		SPKR ABC 1 A_WeaponReady(WRF_NOSECONDARY)
+		SPKR AABBCC 1 A_WeaponReady(WRF_NOSECONDARY)
 		Goto Ready
   }
 }
@@ -112,15 +115,16 @@ Actor LaserSparkDot : BulletPuff
 		Stop
 	}
 }
-Actor FluxOrbMissile : FastProjectile
+Actor FluxOrbMissile
 {
 	RenderStyle add
-	Speed 64
+	Speed 48
 	Radius 8
 	Height 16
 	Damage (0)  
 	Scale 1.6
 	Health 10000
+	Projectile
 	ProjectileKickback 160
 	Obituary "%k > \cgSpark Cannon (Alt)\c- > %o"
 	+DONTSPLASH
