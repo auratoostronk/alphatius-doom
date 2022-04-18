@@ -81,6 +81,23 @@
 }
 
 {
+	name = "liljeck"
+	accuracy = 3
+	intellect = 5
+	evade = 3
+	anticipation = 3
+	reactiontime = 2
+	perception = 4
+	favoriteweapon = "ParticleSplitter"
+	color = "00 FF 00"
+	gender = "male"
+	railcolor = green
+	chatfrequency = 20
+	revealed = true
+	script = "humanbot"
+}
+
+{
 	//[CR]yler
 	name = "\cm[\cgCR\cm]\cgy\cmler"
 	accuracy = 4
@@ -94,6 +111,24 @@
 	gender = "male"
 	railcolor = red
 	chatfrequency = 50
+	revealed = true
+	script = "humanbot"
+}
+
+{
+	//[CR]abio
+	name = "\cm[\cgCR\cm]\cga\cmbio"
+	accuracy = 6
+	intellect = 2
+	evade = 5
+	anticipation = 4
+	reactiontime = 4
+	perception = 5
+	favoriteweapon = "BeamRifle"
+	color = "DD 00 00"
+	gender = "male"
+	railcolor = red
+	chatfrequency = 70
 	revealed = true
 	script = "humanbot"
 }

@@ -8,12 +8,13 @@ Actor TravelJumpThrust : Inventory { Inventory.MaxAmount 1 }
 Actor TravelWarpDrive : Inventory { Inventory.MaxAmount 1 }
 Actor TravelHyperdrive : Inventory { Inventory.MaxAmount 1 }
 
-/*Actor PerkBandolier : BackpackItem { Inventory.MaxAmount 1 }
-Actor PerkAdrenaline : Inventory { Inventory.MaxAmount 1 }
-Actor PerkSpeedDemon : Inventory { Inventory.MaxAmount 1 }
-Actor PerkRapidAlt : Inventory { Inventory.MaxAmount 1 }
-Actor PerkOverclocked : Inventory { Inventory.MaxAmount 1 }
-Actor PerkStalker : Inventory { Inventory.MaxAmount 1 }*/
+Actor PassiveAdrenalineRush : Inventory { Inventory.MaxAmount 1 }
+Actor PassiveRapidAlt : Inventory { Inventory.MaxAmount 1 }
+Actor PassiveOverclocked : Inventory { Inventory.MaxAmount 1 }
+Actor PassiveBandolier : Inventory { Inventory.MaxAmount 1 }
+Actor PassiveSpeedDemon : Inventory { Inventory.MaxAmount 1 }
+Actor PassiveNanoPlating : Inventory { Inventory.MaxAmount 1 }
+Actor PassiveNegaBarrier: Inventory { Inventory.MaxAmount 1 }
 
 Actor ActionRegenZone : Inventory { Inventory.MaxAmount 1 }
 Actor ActionSonicShockwave : Inventory { Inventory.MaxAmount 1 }

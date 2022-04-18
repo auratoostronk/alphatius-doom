@@ -23,12 +23,6 @@ Actor PumpSGAltCD : Ammo
   Inventory.MaxAmount 140
   Ammo.BackpackMaxAmount 140
 }
-//Placeholder. Does nothing.
-Actor RocketAltCD : Ammo
-{
-  Inventory.MaxAmount 35
-  Ammo.BackpackMaxAmount 35
-}
 Actor FlameAltCD : Ammo
 {
   Inventory.MaxAmount 210

@@ -28,12 +28,6 @@ Actor PumpSGEnergy : Ammo
   Ammo.BackpackMaxAmount 120
   Inventory.Icon "CELLA0"
 }
-Actor RocketEnergy : Ammo
-{
-  Inventory.MaxAmount 100
-  Ammo.BackpackMaxAmount 120
-  Inventory.Icon "CELLA0"
-}
 Actor FlameEnergy : Ammo
 {
   Inventory.MaxAmount 100

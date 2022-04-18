@@ -4,6 +4,7 @@
 #import "ACTIONS.acs"
 #import "TRAVEL.acs"
 #import "HUD.acs"
+#import "PASSIVES.acs"
 
 #libdefine MAX_PLAYERS 64
 #libdefine NUM_WEAPS 7

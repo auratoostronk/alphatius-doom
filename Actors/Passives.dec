@@ -1,0 +1,23 @@
+//Passive Ability related stuff.
+
+Actor NegaBarrier : PowerProtection
+{
+	DamageFactor "Normal", 0.35
+	Powerup.Duration -69000000
+	//Powerup.Color Bluemap
+}
+
+Actor NegaBarrierBubble
+{
+	+CLIENTSIDEONLY
+	+NOINTERACTION
+	Alpha 0.3
+	Scale 2.0
+	+BRIGHT
+	States
+	{
+		Spawn:
+		BRNG A 1
+		loop
+	}
+}

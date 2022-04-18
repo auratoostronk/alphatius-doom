@@ -137,7 +137,7 @@ SMALLFNT Jimmy's Status Report SMALL font based on the Doom STBAR. Found on Real
 MAPS
 ALPH01 Quarry: Created by hiimaura. 
 ALPH02 Sediment: Created by hiimaura.
-ALPH03 Magma: Created by hiimaura. 
+ALPH03 Igneous: Created by hiimaura. 
 ALPH04 Stronghold: Created by hiimaura.
 ALPH05 Frostbite: Created by hiimaura.
 ALPH06 Asteroid: Created by hiimaura.
@@ -147,8 +147,9 @@ ALPH09 Sinkhole: Created by hiimaura.
 
 ALPHDL01 Cagefight: Created by hiimaura.
 ALPHDL02 Outpost: Created by hiimaura.
-ALPHDL03 Flood: Created by hiimaura.
+ALPHDL03 Deluge: Created by hiimaura.
 ALPHDL04 Cold Sludge: Created by hiimaura.
+ALPHDL05 Sandstone: Created by hiimaura.
 
 MUSIC:
 SONIC1-SONIC4: Ripped from Quake 3 Arena
@@ -158,7 +159,6 @@ SWALLOWD: Ripped from Quake 3 Arena by Sonic Mayhem
 
 QUAKE2_1 to QUAKE2_4: Ripped from Quake 2
 
-SEWERS.ogg: made by hiimaura.
 ONSLAUGHT: made by hiimaura and RandVGM
 
 Lighthouse:By RandVGM

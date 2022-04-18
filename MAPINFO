@@ -32,7 +32,7 @@ map ALPHDM02 lookup "Sediment"
 	next = "ALPHDM03"
 	AllowRespawn
 }
-map ALPHDM03 lookup "Magma"
+map ALPHDM03 lookup "Igneous"
 {
 	levelnum = 3
 	sky1 = "REDSKY", 0
@@ -85,10 +85,17 @@ map ALPHDM09 lookup "Sinkhole"
 	levelnum = 9
 	sky1 = "OLOSSKY", 0
 	music = "QUAKE3_1"
+	next = "ALPHDM09"
+	AllowRespawn
+}
+map ALPHDM10 lookup "Andesite"
+{
+	levelnum = 9
+	sky1 = "REDSKY", 0
+	music = "DREADMAZ"
 	next = "ALPHDM01"
 	AllowRespawn
 }
-
 map ALPHDL01 lookup "Cagefight"
 {
 	levelnum = 201
@@ -105,7 +112,7 @@ map ALPHDL02 lookup "Outpost"
 	next = "ALPHDL03"
 	AllowRespawn
 }
-map ALPHDL03 lookup "Flood"
+map ALPHDL03 lookup "Deluge"
 {
 	levelnum = 203
 	sky1 = "OLOSSKY", 0

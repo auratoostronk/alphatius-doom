@@ -73,17 +73,6 @@ ACTOR C14Alt : C14
 		Goto Ready
 	}
 }
-/*
-ACTOR RocketCannonAlt : RocketCannon
-{
-	Tag "Rocket Cannon (Bot's Alt Fire)"
-	States
-	{
-	SwapWeapon:
-		TNT1 A 1 ACS_NamedExecuteAlways("BotChangeWeapon", 0)
-		Goto Ready
-	}
-}*/
 ACTOR FlamespitterAlt : Flamespitter
 {
 	Tag "Flamespitter (Bot's Alt Fire)"

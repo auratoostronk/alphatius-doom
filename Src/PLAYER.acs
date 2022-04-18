@@ -1,29 +1,31 @@
 #library "player"
 #include "zcommon.acs"
-#import "ACTIONS.acs"
 #import "ALPHLIB.acs"
+#import "ACTIONS.acs"
 #import "TRAVEL.acs"
 #import "HUD.acs"
+#import "PASSIVES.acs"
 
 int targetdummyid = 900;
 
-Script "PlayerEnter" ENTER
+Script "CheckPlayerEnter" ENTER
 {
-	ACS_NamedExecuteAlways("SetupPlayer", 0);
 	Thing_ChangeTID(0, 1000 + PlayerNumber());
+	ACS_NamedExecuteAlways("SetupPlayer", 0);
 	ACS_NamedExecuteAlways("SBARActionFixer", 0);
 	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0);
 	delay(1); //Why is this needed? I don't know.
 	GiveInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
 }
 
-script "PlayerRespawn" RESPAWN
+script "CheckPlayerRespawn" RESPAWN
 {
-	ACS_NamedExecuteAlways("SetupPlayer", 0);
 	Thing_ChangeTID(0, 1000 + PlayerNumber());
+	ACS_NamedExecuteAlways("SetupPlayer", 0);
 	ACS_NamedExecuteAlways("SBARActionFixer", 0);
 	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0 );
 }
+
 Script "SetupPlayer" (void)
 {
 	if(!(ClassifyActor(0) & ACTOR_BOT))
@@ -89,6 +91,50 @@ Script "SetupPlayer" (void)
 			default:
 			GiveInventory("ActionRegenZone", 1);
 			break;
+		}
+		switch(GetCVAR("alph_passive1"))
+		{
+			case 0:
+			GiveInventory("PassiveAdrenalineRush", 1);
+			break;
+			case 1:
+			GiveInventory("PassiveRapidAlt", 1);
+			break;
+		}
+		switch(GetCVAR("alph_passive2"))
+		{
+			case 0:
+			GiveInventory("PassiveOverclocked", 1);
+			break;
+			case 1:
+			GiveInventory("PassiveBandolier", 1);
+			break;
+			case 2:
+			GiveInventory("PassiveSpeedDemon", 1);
+			break;
+		}
+		switch(GetCVAR("alph_passive3"))
+		{
+			case 0:
+			GiveInventory("PassiveNanoPlating", 1);
+			break;
+			case 1:
+			GiveInventory("PassiveNegaBarrier", 1);
+			break;
+		}
+			
+		if(CheckInventory("PassiveSpeedDemon") > 0)
+		{
+			GiveInventory("ExtraTravelCharge", 1);
+		}
+		if(CheckInventory("PassiveNanoPlating") > 0)
+		{
+			GiveInventory("NanoShard", 2);
+		}
+		if(CheckInventory("PassiveNegaBarrier") > 0)
+		{
+			GiveInventory("NegaBarrier", 1);
+			ACS_NamedExecuteAlways("NegaBarrierBubbleFX", 0);
 		}
 	}
 }

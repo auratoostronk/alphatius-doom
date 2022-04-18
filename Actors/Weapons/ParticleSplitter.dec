@@ -117,7 +117,7 @@ Actor SGPellet
 {
 	Projectile
 	RenderStyle add
-	Speed 72
+	Speed 80
 	Radius 2
 	Height 2
 	Damage (5)  
@@ -141,7 +141,7 @@ Actor SGPellet
 }
 Actor SGAltPellet : SGPellet
 {
-	Speed 48
+	Speed 40
 	DamageType "ParticleSplitterAlt"
 	Obituary "%k > \ctParticle Splitter (Alt Pre-detonation)\c- > %o"
 	States

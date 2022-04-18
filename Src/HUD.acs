@@ -2,6 +2,7 @@
 #include "zcommon.acs"
 
 #import "ALPHLIB.acs"
+#import "PLAYER.acs"
 
 //A hud script that is called when the user tries to Alt-Fire while it's on cooldown.
 Script "AltFireFail" (void) 

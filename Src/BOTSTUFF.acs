@@ -4,6 +4,7 @@
 #import "ACTIONS.acs"
 #import "ALPHLIB.acs"
 #import "TRAVEL.acs"
+#import "PASSIVES.acs"
 
 
 Script "CheckBotEnter" ENTER
@@ -66,6 +67,50 @@ Script "SetupBot" (void)
 		GiveInventory("ActionRegenZone", 1);
 		break;
 		
+	}
+	switch(random(0, 1))
+	{
+		case 0:
+		GiveInventory("PassiveAdrenalineRush", 1);
+		break;
+		case 1:
+		GiveInventory("PassiveRapidAlt", 1);
+		break;
+	}
+	switch(random(0, 2))
+	{
+		case 0:
+		GiveInventory("PassiveOverclocked", 1);
+		break;
+		case 1:
+		GiveInventory("PassiveBandolier", 1);
+		break;
+		case 2:
+		GiveInventory("PassiveSpeedDemon", 1);
+		break;
+	}
+	switch(random(0, 1))
+	{
+		case 0:
+		GiveInventory("PassiveNanoPlating", 1);
+		break;
+		case 1:
+		GiveInventory("PassiveNegaBarrier", 1);
+		break;
+	}
+		
+	if(CheckInventory("PassiveSpeedDemon") > 0)
+	{
+		GiveInventory("ExtraTravelCharge", 1);
+	}
+	if(CheckInventory("PassiveNanoPlating") > 0)
+	{
+		GiveInventory("NanoShard", 5);
+	}
+	if(CheckInventory("PassiveNegaBarrier") > 0)
+	{
+		GiveInventory("NegaBarrier", 1);
+		ACS_NamedExecuteAlways("NegaBarrierBubbleFX", 0);
 	}
 	SetActorProperty(0, APROP_SPEED, GetActorProperty(0, APROP_SPEED) * 0.9);
 	ACS_NamedExecuteAlways("StartBotAliveTimer", 0);

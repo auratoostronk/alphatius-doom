@@ -34,6 +34,10 @@ OptionMenu "ModOptions"
 	Option "Travel Ability", "alph_travel", "TravelAbility"
 	Option "Action Ability", "alph_action", "Action1Ability"
 	StaticText " "
+	Option "Lethality Passive", "alph_passive1", "Passive1"
+	Option "Utility Passive", "alph_passive2", "Passive2"
+	Option "Safeguard Passive", "alph_passive3", "Passive3"
+	StaticText  " "
 	StaticText	"Graphical Options"
 	StaticText " "
 	Option "Stretch Fullscreen HUD",	"hud_scale", "OnOff"
@@ -83,10 +87,6 @@ OptionMenu "I_Weapons"
 	StaticText "SPARK CANNON"
 	StaticText "Long-ranged railgun. Alt-fire"
 	StaticText "for an explosive shootable orb."
-	StaticText " "
-	//StaticText "ROCKET CANNON"
-	//StaticText "Fires multiple rockets in quick"
-	//StaticText "succession. Alt-fire to detonate."
 	StaticText " "
 	StaticText "FLAMESPITTER"
 	StaticText "Flamethrower. Targets hit by alt-fire"
@@ -163,6 +163,23 @@ OptionValue "Action1Ability"
 	3, "Decoy Hologram"
 	4, "Sonic Shockwave"
 }
+OptionString "Passive1"
+{
+	0, "Adrenaline Rush"
+	1, "Rapid-Alt Tech"
+}
+OptionString "Passive2"
+{
+	0, "Overclocked"
+	1, "Bandolier"
+	2, "Speed Demon"
+}
+OptionString "Passive3"
+{
+	0, "Nano-Plating"
+	1, "Nega-Barrier"
+}
+
 
 //ZANDRONUM MENU REPLACEMENTS
 
@@ -183,6 +200,10 @@ OptionMenu ZA_JoinMenu
 	Option "Travel Ability", "alph_travel", "TravelAbility"
 	Option "Action Ability", "alph_action", "Action1Ability"
 	StaticText	" "
+	Option "Lethality Passive", "alph_passive1", "Passive1"
+	Option "Utility Passive", "alph_passive2", "Passive2"
+	Option "Safeguard Passive", "alph_passive3", "Passive3"
+	StaticText  " "
 	Command		"Join game",			"menu_joingame"
 }
 
@@ -200,6 +221,10 @@ OptionMenu ZA_JoinTeamMenu
 	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
 	Option "Travel Ability", "alph_travel", "TravelAbility"
 	Option "Action Ability", "alph_action", "Action1Ability"
+	StaticText	" "
+	Option "Lethality Passive", "alph_passive1", "Passive1"
+	Option "Utility Passive", "alph_passive2", "Passive2"
+	Option "Safeguard Passive", "alph_passive3", "Passive3"
 	StaticText  " "
 	Command		"Auto-select",			"menu_autoselect"
 	StaticText  " "
@@ -223,6 +248,10 @@ OptionMenu ZA_SelectClassMenu
 	Option "Travel Ability", "alph_travel", "TravelAbility"
 	Option "Action Ability", "alph_action", "Action1Ability"
 	StaticText	" "
+	Option "Lethality Passive", "alph_passive1", "Passive1"
+	Option "Utility Passive", "alph_passive2", "Passive2"
+	Option "Safeguard Passive", "alph_passive3", "Passive3"
+	StaticText  " "
 	JoinMenuPlayerClassOption
 	StaticText	" "
 	Command		"Join game",			"menu_joingamewithclass"
