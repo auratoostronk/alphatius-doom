@@ -187,7 +187,7 @@ Script "SonicShockwave" (void)
 		Thing_Stop(0);
 		SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
 		SpawnSpotFacingForced("SonicShockwaveSpawner", 0, 0);
-		delay(12);
+		delay(8);
 		SpawnProjectile(0, "SonicShockwaveMissile", 0, 0, 0, 0, 0);
 		SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
 	}

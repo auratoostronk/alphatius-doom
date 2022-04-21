@@ -94,7 +94,7 @@ Actor C14Trail
 	Renderstyle Add
 	+NOINTERACTION
 	+CLIENTSIDEONLY
-	+NOGRAVITY
+	+NONETID
 	+FORCEXYBILLBOARD
 	+BRIGHT
 		
@@ -111,8 +111,9 @@ Actor C14Blast1
 	Scale 0.8
 	Alpha 1.0
 	Renderstyle Add
-	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+CLIENTSIDEONLY
+	+NONETID
 	+FORCEXYBILLBOARD
 	+BRIGHT
 	States
@@ -134,6 +135,8 @@ Actor C14Blast2
 	+BOUNCEONCEILINGS
 	+BOUNCEONWALLS
 	+BOUNCEONACTORS
+	+CLIENTSIDEONLY
+	+NONETID
 	BounceType Doom
 	BounceFactor 0.5
 	BounceCount 2
@@ -150,77 +153,6 @@ Actor C14Blast2
 		stop	
 	}
 }
-/*
-Actor C14Blast3 : C14Blast1 
-{
-	XScale 0.15
-	YScale 0.15
-	Alpha 0.7
-	+VISIBILITYPULSE
-	+BRIGHT
-	States
-	{
-	Spawn:
-		CPEW AA 0
-		CPEW A 1 A_SetTranslucent(frandom(0.3,0.8),1)
-		Goto Death
-	}
-}*/
-/*
-Actor C14BeamProjectile : FastProjectile
-{
-	Projectile
-	+RIPPER
-	+BLOODLESSIMPACT
-	+BRIGHT
-	ProjectileKickback 0
-	Scale 0.1
-	Radius 4
-	Height 4
-	Speed 24
-	Damage (100)
-	+PIERCEARMOR
-	DamageType "GammaBeam"
-	RenderStyle Add
-	Obituary "%o got hit by %k's gamma beam."
-	States
-	{
-		Spawn:
-		CPBL ABCDEFGHIJKLABCDEF 1 A_SpawnItemEX("C14BeamTrail", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
-		Goto Death
-	}
-}
-
-Actor C14BeamTrail
-{
-	Projectile
-	+RIPPER
-	+DONTBLAST
-	+BLOODLESSIMPACT
-	+BRIGHT
-	ProjectileKickback 0
-	Scale 0.3
-	Radius 8
-	Height 8
-	Damage (20 - args[0])
-	+PIERCEARMOR
-	DamageType "GammaBeam"
-	RenderStyle Add
-	Obituary "%o got stuck in %k's gamma beam."
-	args 0
-	States
-	{
-		Spawn:
-		CPBL ABCDEFGHIJKLABCDEFGHIJKLABCDEFGHIJKL 3
-		Goto Spawn1
-		Spawn1:
-		CPBL ABCDEFGHIJKL 3 A_FadeOut(0.05)
-		TNT1 A 0 A_SetArg(0, 20)
-		loop
-		
-	}
-	
-}*/
 const int gas_radius = 192;
 Actor C14GasGrenade
 {
@@ -283,8 +215,9 @@ Actor C14GasCloud
 	RenderStyle Add
 	Radius 2
 	Height 2
-	+CLIENTSIDEONLY
     +NOINTERACTION
+	+CLIENTSIDEONLY
+	+NONETID
 	Speed 10
 	Scale 2.0
 	States
@@ -322,8 +255,9 @@ Actor C14GasDamage
 Actor C14GasDamageIndicator
 {
 	+BRIGHT
+    +NOINTERACTION
 	+CLIENTSIDEONLY
-	+NOINTERACTION
+	+NONETID
 	Scale 0.1
 	Renderstyle ADD
 	States
@@ -337,11 +271,13 @@ Actor C14GasDamageIndicator
 }
 Actor C14RespawnProtection1 : PowerProtection
 {
+	+NONETID
 	DamageFactor "GammaBeam", 0.0
 	Powerup.Duration -2
 }
 Actor C14RespawnProtection2 : PowerProtection
 {
+	+NONETID
 	DamageFactor "ToxicGas", 0.0
 	Powerup.Duration -2
 }

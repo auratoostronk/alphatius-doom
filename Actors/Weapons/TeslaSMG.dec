@@ -59,10 +59,13 @@ Actor TeslaSMG : Weapon 10006
 }
 
 //Used to increase the user's speed while the user is firing.
-Actor TeslaSpeedBoost : Inventory { Inventory.MaxAmount 5 }
+Actor TeslaSpeedBoost : Inventory {
+	+NONETID
+	Inventory.MaxAmount 5 }
 
 Actor TaserProtection : PowerProtection
 {
+	+NONETID
 	DamageFactor "TeslaTaser", 0.0
 	Powerup.Duration 12
 }
@@ -98,6 +101,7 @@ Actor TeslaPuff : BulletPuff
 	+PUFFONACTORS
 	+BRIGHT
 	+NOBLOCKMAP
+	+NONETID
 	DamageType "TeslaTaser"
 	ActiveSound "TeslaSMG/AltFire"
 	AttackSound "TeslaSMG/AltFire"
@@ -115,6 +119,7 @@ Actor TeslaPuff : BulletPuff
 }
 Actor TeslaNoPuff : TeslaPuff
 {
+	+NONETID
 	ActiveSound ""
 	AttackSound ""
 	SeeSound "TeslaSMG/AltFireHit"

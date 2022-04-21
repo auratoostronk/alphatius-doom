@@ -3,26 +3,56 @@
 //scripts use these inventory items instead of the cvar, so that your travel
 //abilities and such change only after dying.
 
-Actor TravelThrusterBoots : Inventory { Inventory.MaxAmount 1 }
-Actor TravelJumpThrust : Inventory { Inventory.MaxAmount 1 }
-Actor TravelWarpDrive : Inventory { Inventory.MaxAmount 1 }
-Actor TravelHyperdrive : Inventory { Inventory.MaxAmount 1 }
+Actor TravelThrusterBoots : Inventory {
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor TravelJumpThrust : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor TravelWarpDrive : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor TravelHyperdrive : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
 
-Actor PassiveAdrenalineRush : Inventory { Inventory.MaxAmount 1 }
-Actor PassiveRapidAlt : Inventory { Inventory.MaxAmount 1 }
-Actor PassiveOverclocked : Inventory { Inventory.MaxAmount 1 }
-Actor PassiveBandolier : Inventory { Inventory.MaxAmount 1 }
-Actor PassiveSpeedDemon : Inventory { Inventory.MaxAmount 1 }
-Actor PassiveNanoPlating : Inventory { Inventory.MaxAmount 1 }
-Actor PassiveNegaBarrier: Inventory { Inventory.MaxAmount 1 }
+Actor PassiveAdrenalineRush : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor PassiveRapidAlt : Inventory {
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor PassiveOverclocked : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor PassiveBandolier : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor PassiveSpeedDemon : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor PassiveNanoPlating : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor PassiveNegaBarrier: Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
 
-Actor ActionRegenZone : Inventory { Inventory.MaxAmount 1 }
-Actor ActionSonicShockwave : Inventory { Inventory.MaxAmount 1 }
-Actor ActionPowerBrace : Inventory { Inventory.MaxAmount 1 }
-Actor ActionDecoyHologram : Inventory { Inventory.MaxAmount 1 }
-Actor ActionAutoDrone : Inventory { Inventory.MaxAmount 1 }
-Actor ActionEnergyZone : Inventory { Inventory.MaxAmount 1 }
-
-Actor GrenadeTypeIncendiary : Inventory { Inventory.MaxAmount 1 }
-Actor GrenadeTypeBounce : Inventory { Inventory.MaxAmount 1 }
-Actor GrenadeTypeDisc : Inventory { Inventory.MaxAmount 1 }
+Actor ActionRegenZone : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor ActionSonicShockwave : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor ActionPowerBrace : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor ActionDecoyHologram : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor ActionAutoDrone : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor ActionEnergyZone : Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }

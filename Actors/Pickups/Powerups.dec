@@ -7,7 +7,7 @@ Actor ExtraTravelCharge : Ammo 12000
 	Inventory.Amount 1
 	Inventory.MaxAmount 1
 	Ammo.BackpackMaxAmount 1
-	Inventory.PickupMessage "Travel Device overloaded!"
+	Inventory.PickupMessage "Extra Travel Ability usage granted!"
 	Inventory.RespawnTics 280 //8 seconds
 	+FLOATBOB
 	+BRIGHT

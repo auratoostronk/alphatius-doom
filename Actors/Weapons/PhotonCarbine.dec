@@ -86,6 +86,7 @@ Actor PhotonTrail
 	RenderStyle ADD
 	+NOINTERACTION
 	+CLIENTSIDEONLY
+	+NONETID
 	+BRIGHT
 	Scale 0.6
 	States
@@ -105,6 +106,8 @@ Actor PhotonDeathFX
 	-SOLID
 	+NOCLIP
 	+NOBLOCKMAP
+	+CLIENTSIDEONLY
+	+NONETID
 	+BRIGHT
 	States
 	{
@@ -153,7 +156,9 @@ Actor PhotonGrenadeTrail
 {
 	Radius 2
 	Height 2
+	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+NONETID
 	+BRIGHT
 	Scale 0.12
 	RenderStyle Add
@@ -172,6 +177,7 @@ Actor PhotonGrenadeDeathFX
 	Scale 0.8
 	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+NONETID
 	+BRIGHT
 	States
 	{
@@ -190,6 +196,8 @@ Actor PhotonGrenadeDeathDots
 	+BOUNCEONCEILINGS
 	+BOUNCEONWALLS
 	+BOUNCEONACTORS
+	+CLIENTSIDEONLY
+	+NONETID
 	BounceType Doom
 	BounceFactor 0.6
 	BounceCount 3

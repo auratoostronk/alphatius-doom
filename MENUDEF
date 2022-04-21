@@ -46,10 +46,11 @@ OptionMenu "ModOptions"
 	Slider "ACS HUD Scale", "alph_textscale", 0.5, 2.0, 0.1, 1
 	StaticText "Scales ACS-related HUD Elements"
 	StaticText " "
-	StaticText "Info"
+	StaticText "Learn More!"
 	SubMenu "Weapon Info", "I_Weapons"
 	SubMenu "Travel Ability Info", "I_Travels"
 	SubMenu "Action Ability Info", "I_Actions"
+	SubMenu "Passive Ability Info", "I_Passives"
 	StaticText " "
 	StaticText " "
 }
@@ -64,6 +65,7 @@ OptionMenu "CustomizeLoadout"
 	SubMenu "Weapon Info", "I_Weapons"
 	SubMenu "Travel Ability Info", "I_Travels"
 	SubMenu "Action Ability Info", "I_Actions"
+	SubMenu "Passive Ability Info", "I_Passives"
 }
 OptionMenu "I_Weapons"
 {
@@ -132,6 +134,31 @@ OptionMenu "I_Actions"
 	StaticText "Creates a blast at your location after a short delay."
 	StaticText " "
 }
+OptionMenu "I_Passives"
+{
+	Title "Passive Ability Info"
+	StaticText "ADRENALINE RUSH"
+	StaticText "Heal over time on kill."
+	StaticText " "
+	StaticText "RAPID-ALT TECH"
+	StaticText "Kills refund a portion of your Alt-fire cooldown."
+	StaticText " "
+	StaticText "OVERCLOCKED"
+	StaticText "Reduces action skill cooldown."
+	StaticText " "
+	StaticText "BANDOLIER"
+	StaticText "Kills restore a portion of your energy."
+	StaticText " "
+	StaticText "SPEED DEMON"
+	StaticText "Spawn with an extra use of your Travel Ability."
+	StaticText " "
+	StaticText "NANO-PLATING"
+	StaticText "Spawn with some armor."
+	StaticText " "
+	StaticText "NEGA-BARRIER"
+	StaticText "Spawn with a shield that reduces barrier until hit."
+	StaticText " "
+}
 
 //OPTION VALUES 
 
@@ -187,15 +214,12 @@ OptionMenu ZA_JoinMenu
 {
 	Title		"JOIN GAME"
 
-	StaticText	"You are spectating."
+	StaticText "KEYBINDS"
+	Control "Alt-Fire", "+altattack"
+	Control "Travel Ability", "travelability"
+	Control "Action Ability", "actionability"
 	StaticText	" "
-	StaticText	" "
-	StaticText	" "
-	StaticText	" "
-	StaticText	" "
-	StaticText	" "
-	SubMenu		"Alphatius Options",			"ModOptions"
-	StaticText	" "
+	StaticText "LOADOUT"
 	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
 	Option "Travel Ability", "alph_travel", "TravelAbility"
 	Option "Action Ability", "alph_action", "Action1Ability"
@@ -204,6 +228,7 @@ OptionMenu ZA_JoinMenu
 	Option "Utility Passive", "alph_passive2", "Passive2"
 	Option "Safeguard Passive", "alph_passive3", "Passive3"
 	StaticText  " "
+	StaticText "JOIN!"
 	Command		"Join game",			"menu_joingame"
 }
 
@@ -211,13 +236,13 @@ OptionMenu ZA_JoinTeamMenu
 {
 	Title		"JOIN TEAM"
 
-	StaticText	"Please select a team."
+	
+	StaticText "KEYBINDS"
+	Control "Alt-Fire", "+altattack"
+	Control "Travel Ability", "travelability"
+	Control "Action Ability", "actionability"
 	StaticText	" "
-	StaticText	" "
-	StaticText	" "
-	StaticText	" "
-	SubMenu		"Alphatius Options",			"ModOptions"
-	StaticText	" "
+	StaticText "LOADOUT"
 	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
 	Option "Travel Ability", "alph_travel", "TravelAbility"
 	Option "Action Ability", "alph_action", "Action1Ability"
@@ -226,6 +251,7 @@ OptionMenu ZA_JoinTeamMenu
 	Option "Utility Passive", "alph_passive2", "Passive2"
 	Option "Safeguard Passive", "alph_passive3", "Passive3"
 	StaticText  " "
+	StaticText "JOIN!"
 	Command		"Auto-select",			"menu_autoselect"
 	StaticText  " "
 	JoinMenuTeamOption
@@ -236,14 +262,13 @@ OptionMenu ZA_SelectClassMenu
 {
 	Title		"PLAYER CLASS SELECTION"
 
+	
+	StaticText "KEYBINDS"
+	Control "Alt-Fire", "+altattack"
+	Control "Travel Ability", "travelability"
+	Control "Action Ability", "actionability"
 	StaticText	" "
-	StaticText	" "
-	StaticText	" "
-	StaticText	" "
-	StaticText	" "
-	StaticText	" "
-	SubMenu		"Alphatius Options",			"ModOptions"
-	StaticText	" "
+	StaticText "LOADOUT"
 	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
 	Option "Travel Ability", "alph_travel", "TravelAbility"
 	Option "Action Ability", "alph_action", "Action1Ability"
@@ -252,6 +277,7 @@ OptionMenu ZA_SelectClassMenu
 	Option "Utility Passive", "alph_passive2", "Passive2"
 	Option "Safeguard Passive", "alph_passive3", "Passive3"
 	StaticText  " "
+	StaticText "JOIN!"
 	JoinMenuPlayerClassOption
 	StaticText	" "
 	Command		"Join game",			"menu_joingamewithclass"

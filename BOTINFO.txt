@@ -81,7 +81,7 @@
 }
 
 {
-	name = "liljeck"
+	name = "\cgliljeck"
 	accuracy = 3
 	intellect = 5
 	evade = 3
@@ -89,9 +89,9 @@
 	reactiontime = 2
 	perception = 4
 	favoriteweapon = "ParticleSplitter"
-	color = "00 FF 00"
+	color = "88 88 88"
 	gender = "male"
-	railcolor = green
+	railcolor = red
 	chatfrequency = 20
 	revealed = true
 	script = "humanbot"

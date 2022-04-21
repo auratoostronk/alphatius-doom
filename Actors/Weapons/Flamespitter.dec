@@ -229,6 +229,7 @@ Actor ThermiteChainReactFX
 	Scale 0.8
 	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+NONETID
 	States
 	{
 	Spawn:
@@ -240,6 +241,7 @@ Actor ThermiteChainReactFX
 }
 Actor ThermiteDebuff : Inventory
 {
+	+NONETID
 	Inventory.MaxAmount 105
 }
 Actor ThermiteFX
@@ -248,6 +250,7 @@ Actor ThermiteFX
 	VSpeed -3
 	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+NONETID
 	Scale 0.8
 	Alpha 0.4
 	+BRIGHT

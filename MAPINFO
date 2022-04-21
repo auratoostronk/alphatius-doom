@@ -56,7 +56,7 @@ map ALPHDM05 lookup "Frostbite"
 	next = "ALPHDM06"
 	AllowRespawn
 }
-map ALPHDM06 lookup "Asteroid"
+map ALPHDM06 lookup "Protoplanet"
 {
 	levelnum = 6
 	sky1 = "SPACESKY", 0
@@ -90,12 +90,23 @@ map ALPHDM09 lookup "Sinkhole"
 }
 map ALPHDM10 lookup "Andesite"
 {
-	levelnum = 9
+	levelnum = 10
 	sky1 = "REDSKY", 0
 	music = "DREADMAZ"
+	next = "ALPHDM11"
+	AllowRespawn
+}
+map ALPHDM11 lookup "Excavation"
+{
+	levelnum = 11
+	sky1 = "DFIRESKY", 0
+	music = "SONIC4"
 	next = "ALPHDM01"
 	AllowRespawn
 }
+
+//DUEL MAPS
+
 map ALPHDL01 lookup "Cagefight"
 {
 	levelnum = 201
@@ -136,6 +147,9 @@ map ALPHDL05 lookup "Sandstone"
 	next = "ALPHDL01"
 	AllowRespawn
 }
+
+//OTHER MAPS
+
 map ALPHFL01 lookup "Damnati"
 {
 	levelnum = 301

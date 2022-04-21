@@ -1,77 +1,80 @@
 ACTOR ExplodeHitFlash
 {
-
-  RenderStyle Add
-  +NOGRAVITY
-  +FORCEXYBILLBOARD
-  Alpha 1.0
-  Radius 1
-  Height 1
-  States
-  {
-  Spawn:
-    TNT1 A 0 
-    BFSH B 1 Bright A_SetScale(0.04,0.04)
-	BFSH B 1 Bright A_SetScale(0.08,0.08)
-	BFSH B 0 A_PlaySound("CompactExplosion",CHAN_AUTO)
-	BFSH B 0 A_PlaySound("DistantExplosion",CHAN_AUTO)
-	BFSH B 1 Bright A_SetScale(0.19,0.19)
-	BFSH BBBBBBBBB 1 Bright A_FadeOut(0.1)
-	TNT1 A 20
-    Stop
-  }
+	RenderStyle Add
+	+NOGRAVITY
+	+FORCEXYBILLBOARD
+	+NONETID
+	+CLIENTSIDEONLY
+	Alpha 1.0
+	Radius 1
+	Height 1
+	States
+	{
+		Spawn:
+		TNT1 A 0 
+		BFSH B 1 Bright A_SetScale(0.04,0.04)
+		BFSH B 1 Bright A_SetScale(0.08,0.08)
+		BFSH B 0 A_PlaySound("CompactExplosion",CHAN_AUTO)
+		BFSH B 0 A_PlaySound("DistantExplosion",CHAN_AUTO)
+		BFSH B 1 Bright A_SetScale(0.19,0.19)
+		BFSH BBBBBBBBB 1 Bright A_FadeOut(0.1)
+		TNT1 A 20
+		Stop
+	}
 }
 ACTOR ExplodeHitFlash2
 {
-
-  RenderStyle Add
-  +NOGRAVITY
-  +FORCEXYBILLBOARD
-  Alpha 0.7
-  Radius 1
-  Height 1
-  States
-  {
-  Spawn:
-    TNT1 A 0 
-    BFSH B 1 Bright A_SetScale(0.08,0.08)
-	BFSH B 1 Bright A_SetScale(0.16,0.16)
-	BFSH B 1 Bright A_SetScale(0.38,0.38)
-	BFSH BBBBBBBBB 1 Bright A_FadeOut(0.07)
-	TNT1 A 20
-    Stop
-  }
+	RenderStyle Add
+	+NONETID
+	+CLIENTSIDEONLY
+	+NOINTERACTION
+	+NOGRAVITY
+	+FORCEXYBILLBOARD
+	Alpha 0.7
+	Radius 1
+	Height 1
+	States
+	{
+		Spawn:
+		TNT1 A 0 
+		BFSH B 1 Bright A_SetScale(0.08,0.08)
+		BFSH B 1 Bright A_SetScale(0.16,0.16)
+		BFSH B 1 Bright A_SetScale(0.38,0.38)
+		BFSH BBBBBBBBB 1 Bright A_FadeOut(0.07)
+		TNT1 A 20
+		Stop
+	}
 }
 ACTOR ExplodeSmokeRing
 {
-
-  RenderStyle Add
-  +NOGRAVITY
-  +FORCEXYBILLBOARD
-  Alpha 1
-  Radius 1
-  Height 1
-  Scale 0.1
-  States
-  {
-  Spawn:
-    BSW1 A 1 
-	BSW1 A 0 Bright A_FadeOut
-	BSW1 A 0 Bright A_SetScale(scalex+0.3,scaley+0.3)
-    Loop
-  }
+	RenderStyle Add
+	+NONETID
+	+CLIENTSIDEONLY
+	+NOINTERACTION
+	+NOGRAVITY
+	+FORCEXYBILLBOARD
+	Alpha 1
+	Radius 1
+	Height 1
+	Scale 0.1
+	States
+	{
+		Spawn:
+		BSW1 A 1 
+		BSW1 A 0 Bright A_FadeOut
+		BSW1 A 0 Bright A_SetScale(scalex+0.3,scaley+0.3)
+		Loop
+	}
 }
 ACTOR ExplodeSmokeSpawner
 {
     Speed 1
 	Radius 1
 	Height 1
-    +NOBLOCKMAP
 	+MISSILE
-    +CLIENTSIDEONLY
-    +NOINTERACTION
-	+NOCLIP
-	+NOGRAVITY
+	+NONETID
+	+CLIENTSIDEONLY
+	+NOINTERACTION
 	States
 	{
     Spawn:
@@ -87,18 +90,9 @@ ACTOR ExplodeSmoke
 	Scale 0.45
 	Speed 1
 	VSpeed 7
-	+NOBLOCKMAP
-    +NOTELEPORT
-    +DONTSPLASH
-	+MISSILE
-	+FORCEXYBILLBOARD
-    +CLIENTSIDEONLY
-    +NOINTERACTION
-	+NOGRAVITY
-	+BOUNCEONCEILINGS
-	+BOUNCEONWALLS
-	+BOUNCEONFLOORS
-	+THRUACTORS
+	+NONETID
+	+CLIENTSIDEONLY
+	+NOINTERACTION
     States
     {
     Spawn:

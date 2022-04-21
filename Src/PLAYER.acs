@@ -18,6 +18,14 @@ Script "CheckPlayerEnter" ENTER
 	GiveInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
 }
 
+Script "CheckPlayerReturn" RETURN
+{
+	Thing_ChangeTID(0, 1000 + PlayerNumber());
+	ACS_NamedExecuteAlways("SetupPlayer", 0);
+	ACS_NamedExecuteAlways("SBARActionFixer", 0);
+	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0);
+}
+
 script "CheckPlayerRespawn" RESPAWN
 {
 	Thing_ChangeTID(0, 1000 + PlayerNumber());
@@ -125,14 +133,17 @@ Script "SetupPlayer" (void)
 			
 		if(CheckInventory("PassiveSpeedDemon") > 0)
 		{
+			displayHUDText("Extra Travel Charge granted.", 0.7, 2.0, 1303);
 			GiveInventory("ExtraTravelCharge", 1);
 		}
 		if(CheckInventory("PassiveNanoPlating") > 0)
 		{
-			GiveInventory("NanoShard", 2);
+			displayHUDText("Extra Nano-Armor granted.", 0.75, 2.0, 1304);
+			GiveInventory("NanoShard", 3);
 		}
 		if(CheckInventory("PassiveNegaBarrier") > 0)
 		{
+			displayHUDText("Temporary barrier granted.", 0.75, 2.0, 1304);
 			GiveInventory("NegaBarrier", 1);
 			ACS_NamedExecuteAlways("NegaBarrierBubbleFX", 0);
 		}

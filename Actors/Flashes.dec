@@ -2,17 +2,18 @@
 
 ACTOR RedLight
 {
-  +NOGRAVITY
-  +DONTSPLASH
-  +NOINTERACTION
-  +CLIENTSIDEONLY
-  RenderStyle None
-  States
+	+NONETID
+	+NOGRAVITY
+	+DONTSPLASH
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	RenderStyle None
+	States
 	{
-	Spawn:
-	TNT1 A 0 
-	TNT1 A 1
-	Stop
+		Spawn:
+		TNT1 A 0 
+		TNT1 A 1
+		Stop
 	}
 }
 ACTOR BlueLight : RedLight
@@ -52,8 +53,7 @@ ACTOR BlueGlowSpawner
 	States
 	{
 		Spawn:
-		TNT1 A 0 
-		TNT1 A 1
+		TNT1 A 1 
 		stop
 	}
 }

@@ -228,8 +228,9 @@ Actor SGAltPellet2 : SGPellet
 Actor SGPelletFX
 {
 	RenderStyle Add
+	+NONETID
+	+CLIENTSIDEONLY
 	+NOINTERACTION
-	+NOBLOCKMAP
 	+BRIGHT
 	Scale 0.4
 	States

@@ -82,6 +82,7 @@ ACTOR SonicShockwaveSpawner
 Actor ShockwaveWarningFX
 {
 	+BRIGHT
+	+NONETID
 	+CLIENTSIDEONLY
 	+NOINTERACTION
 	Gravity 0.7
@@ -110,6 +111,8 @@ Actor SonicShockwaveDots
 	BounceFactor 0.6
 	BounceCount 3
 	+BRIGHT
+	+NONETID
+	+CLIENTSIDEONLY
 	+THRUACTORS
 	-NOGRAVITY
 	Gravity 1.0
