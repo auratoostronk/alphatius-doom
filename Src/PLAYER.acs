@@ -11,7 +11,7 @@ int targetdummyid = 900;
 Script "CheckPlayerEnter" ENTER
 {
 	Thing_ChangeTID(0, 1000 + PlayerNumber());
-	ACS_NamedExecuteAlways("SetupPlayer", 0);
+	ACS_NamedExecuteAlways("SetupPlayerMP", 0);
 	ACS_NamedExecuteAlways("SBARActionFixer", 0);
 	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0);
 	delay(1); //Why is this needed? I don't know.
@@ -21,7 +21,7 @@ Script "CheckPlayerEnter" ENTER
 Script "CheckPlayerReturn" RETURN
 {
 	Thing_ChangeTID(0, 1000 + PlayerNumber());
-	ACS_NamedExecuteAlways("SetupPlayer", 0);
+	ACS_NamedExecuteAlways("SetupPlayerMP", 0);
 	ACS_NamedExecuteAlways("SBARActionFixer", 0);
 	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0);
 }
@@ -29,12 +29,12 @@ Script "CheckPlayerReturn" RETURN
 script "CheckPlayerRespawn" RESPAWN
 {
 	Thing_ChangeTID(0, 1000 + PlayerNumber());
-	ACS_NamedExecuteAlways("SetupPlayer", 0);
+	ACS_NamedExecuteAlways("SetupPlayerMP", 0);
 	ACS_NamedExecuteAlways("SBARActionFixer", 0);
 	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0 );
 }
 
-Script "SetupPlayer" (void)
+Script "SetupPlayerMP" (void)
 {
 	if(!(ClassifyActor(0) & ACTOR_BOT))
 	{

@@ -83,6 +83,10 @@ Script "PowerBrace" (void)
 		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
 		GiveInventory("PowerBrace", 1);
 		ACS_NamedExecuteAlways("PowerBraceBubbleFX", 0);
+		PlaySound(0, "Actions/PowerBraceOn", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
+		delay(35);
+		TakeInventory("PowerBrace", 1);
+		PlaySound(0, "Actions/PowerBraceOff", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
 		//checkActionSurge();
 	}
 	else

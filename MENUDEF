@@ -156,7 +156,7 @@ OptionMenu "I_Passives"
 	StaticText "Spawn with some armor."
 	StaticText " "
 	StaticText "NEGA-BARRIER"
-	StaticText "Spawn with a shield that reduces barrier until hit."
+	StaticText "Spawn with a shield that reduces damage until hit."
 	StaticText " "
 }
 

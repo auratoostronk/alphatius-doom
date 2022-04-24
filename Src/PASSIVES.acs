@@ -82,10 +82,10 @@ Script "Overclocked" ENTER
 Script "AdrenalineRush" (void)
 {
 	displayHUDText("You feel adrenaline pumping...", 0.70, 2.0, 1303);
-	for(int i = 0; i < 10; i++)
+	for(int i = 0; i < 15; i++)
 	{
 		delay(7);
-		GiveInventory("Health", 2);
+		GiveInventory("Health", 1);
 	}
 }
 Script "NegaBarrierBubbleFX" (void)

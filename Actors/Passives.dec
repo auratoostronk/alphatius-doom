@@ -3,7 +3,7 @@
 Actor NegaBarrier : PowerProtection
 {
 	+NONETID
-	DamageFactor "Normal", 0.35
+	DamageFactor "Normal", 0.5
 	Powerup.Duration -69000000
 	//Powerup.Color Bluemap
 }
