@@ -1,5 +1,8 @@
 Actor FireAutoDrone : CustomInventory
 {
+	+NONETID
+	+CLIENTSIDEONLY
+	+NOINTERACTION
 	States
 	{
 		Pickup:

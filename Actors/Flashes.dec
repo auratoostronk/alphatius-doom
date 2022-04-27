@@ -50,6 +50,9 @@ ACTOR LightBlueLightShoot : RedLight
 
 ACTOR BlueGlowSpawner
 {
+	+NONETID
+	+NOINTERACTION
+	+CLIENTSIDEONLY
 	States
 	{
 		Spawn:

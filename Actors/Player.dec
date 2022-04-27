@@ -81,7 +81,8 @@ Actor NewBlood : Blood replaces Blood
 	Scale 0.6
 	Mass 6
 	-ALLOWPARTICLES
-	-NONETID
+	+NONETID
+	+CLIENTSIDEONLY
 	States
 	{
 	Spawn:

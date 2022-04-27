@@ -12,6 +12,7 @@ actor DigitBase
 	+NOBLOCKMAP
 	+FORCEXYBILLBOARD
 	+CLIENTSIDEONLY
+	+NONETID
 	States
 	{
 		Spawn:

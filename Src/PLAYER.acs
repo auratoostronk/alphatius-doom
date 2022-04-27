@@ -147,6 +147,8 @@ Script "SetupPlayer" (void)
 			GiveInventory("NegaBarrier", 1);
 			ACS_NamedExecuteAlways("NegaBarrierBubbleFX", 0);
 		}
+		ACS_NamedExecuteAlways("TravelSetup", 0);
+		ACS_NamedExecuteAlways("TravelSetupClient", 0);
 	}
 }
 Script "PlayerDeath" DEATH

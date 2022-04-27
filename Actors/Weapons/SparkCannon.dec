@@ -117,12 +117,12 @@ Actor LaserSparkDot : BulletPuff
 		Stop
 	}
 }
-Actor FluxOrbMissile
+Actor FluxOrbMissile : UnlaggedActor
 {
 	RenderStyle add
 	Speed 48
-	Radius 8
-	Height 16
+	Radius 12
+	Height 24
 	Damage (0)  
 	Scale 1.6
 	Health 10000
@@ -140,34 +140,59 @@ Actor FluxOrbMissile
 	Spawn:
 		SPBA ABC 2
 		loop
-	RailedDeath:
+	DeathCombo:
 		TNT1 A 0 A_SetScale(scalex * 1.5, scaley * 1.5)
 		TNT1 A 0 A_Explode(150, 256)
-		TNT1 AAAAAAAAAA 0 A_SpawnItemEx("FluxOrbFX", 0, 0, 0, frandom(-16.0, 16.0), frandom(-16.0, 16.0), frandom(-16.0, 16.0))
-		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash")
-		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2")
-		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")
-		TNT1 AAAAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-4,4),frandom(-4,4),frandom(-4,4))
-		TNT1 AAAA 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,random(0,360),4,random(0,360))
-		DMFX DEFGHI 2
-		TNT1 A 35 
+		TNT1 A 0 A_SpawnItemEx("FluxOrbFXSpawner2", 0, 0, 0, 0, 0, 0, 0, SXF_NOUNLAGGED)
+		SPBA DEFGHI 2
 		stop
 		
-	Death:
-		TNT1 A 0 A_JumpIf(health < -20, "RailedDeath")  
+	Death: 
+		TNT1 A 0 A_JumpIf(health < -1, "DeathCombo")
 		TNT1 A 0 A_Explode(40, 192)
-		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash")
-		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2")
-		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")
-		TNT1 AAAAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-2,2),frandom(-2,2),frandom(-2,2))
-		TNT1 AAAA 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,random(0,360),2,random(0,360))
-		DMFX DEFGHI 2
-		TNT1 A 35 
+		TNT1 A 0 A_SpawnItemEx("FluxOrbFXSpawner", 0, 0, 0, 0, 0, 0, 0, SXF_NOUNLAGGED)
+		TNT1 A 0 A_SetInvulnerable
+		TNT1 A 0 A_ChangeFlag("NOINTERACTION",1)
+		SPBA DEFGHI 2
+		TNT1 A 350
 		stop
 		
 	}
 }
 
+Actor FluxOrbFXSpawner
+{
+	//+NOINTERACTION
+	//+NONETID
+	States
+	{
+	Spawn:
+		//TNT1 AAAAAAAAAA 0 nodelay A_SpawnItemEx("FluxOrbFX", 0, 0, 0, frandom(-16.0, 16.0), frandom(-16.0, 16.0), frandom(-16.0, 16.0))
+		TNT1 A 0 nodelay A_SpawnItemEx("ExplodeHitFlash")
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2")
+		TNT1 AAAAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-4,4),frandom(-4,4),frandom(-4,4))
+		TNT1 AAAA 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,frandom(0,360),4,frandom(0,360))
+		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")
+		Stop
+	}
+}
+
+Actor FluxOrbFXSpawner2
+{
+	//+NOINTERACTION
+	//+NONETID
+	States
+	{
+	Spawn:
+		TNT1 AAAAAAAAAA 0 nodelay A_SpawnItemEx("FluxOrbFX", 0, 0, 0, frandom(-16.0, 16.0), frandom(-16.0, 16.0), frandom(-16.0, 16.0))
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash")
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2")
+		TNT1 AAAAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-4,4),frandom(-4,4),frandom(-4,4))
+		TNT1 AAAA 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,frandom(0,360),4,frandom(0,360))
+		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")
+		Stop
+	}
+}
 Actor FluxOrbFX
 {
 	RenderStyle ADD
