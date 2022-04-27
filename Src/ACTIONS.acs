@@ -160,7 +160,8 @@ Script "DecoyWalk" (void)
 {
 	while(ClassifyActor(0) & ACTOR_ALIVE)
 	{
-		SetActorVelocity(0, FixedMul(15.0, cos(GetActorAngle(0))), FixedMul(15.0, sin(GetActorAngle(0))), GetActorVelZ(0), false, false);
+		//Using 12 because 80% of default doom walk speed (15.0)
+		SetActorVelocity(0, FixedMul(12.0, cos(GetActorAngle(0))), FixedMul(12.0, sin(GetActorAngle(0))), GetActorVelZ(0), false, false);
 		delay(1);
 	}
 }

@@ -1,7 +1,30 @@
-user int alph_travel = 0;
-user int alph_grenadetype = 0;
-user string alph_action = 0;
-user string alph_startweapon = "PhotonCarbine";
-user float alph_textscale = 1.0;
+user string alph_startweapon1 = "PhotonCarbine";
+user int alph_travel1 = 0;
+user int alph_action1 = 1;
+user int alph_lethality1 = 1;
+user int alph_utility1 = 0;
+user int alph_safeguard1 = 0;
 
-server bool alph_allowsuperweapons = false;
+user string alph_startweapon2 = "ParticleSplitter";
+user int alph_travel2 = 1;
+user int alph_action2 = 2;
+user int alph_lethality2 = 0;
+user int alph_utility2 = 2;
+user int alph_safeguard2 = 1;
+
+user string alph_startweapon3 = "TeslaSMG";
+user int alph_travel3 = 2;
+user int alph_action3 = 4;
+user int alph_lethality3 = 1;
+user int alph_utility3 = 1;
+user int alph_safeguard3 = 1;
+
+user string alph_startweapon4 = "SparkCannon";
+user int alph_travel4 = 3;
+user int alph_action4 = 3;
+user int alph_lethality4 = 0;
+user int alph_utility4 = 2;
+user int alph_safeguard4 = 0;
+
+user int alph_loadout = 0;
+user float alph_textscale = 1.0;

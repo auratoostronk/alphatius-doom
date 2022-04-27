@@ -1,0 +1,184 @@
+#library "player"
+#include "zcommon.acs"
+#import "ALPHLIB.acs"
+#import "ACTIONS.acs"
+#import "TRAVEL.acs"
+#import "HUD.acs"
+#import "PASSIVES.acs"
+
+int targetdummyid = 900;
+
+Script "CheckPlayerEnter" ENTER
+{
+	Thing_ChangeTID(0, 1000 + PlayerNumber());
+	ACS_NamedExecuteAlways("SetupPlayerMP", 0);
+	ACS_NamedExecuteAlways("SBARActionFixer", 0);
+	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0);
+	delay(1); //Why is this needed? I don't know.
+	GiveInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
+}
+
+Script "CheckPlayerReturn" RETURN
+{
+	Thing_ChangeTID(0, 1000 + PlayerNumber());
+	ACS_NamedExecuteAlways("SetupPlayerMP", 0);
+	ACS_NamedExecuteAlways("SBARActionFixer", 0);
+	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0);
+}
+
+script "CheckPlayerRespawn" RESPAWN
+{
+	Thing_ChangeTID(0, 1000 + PlayerNumber());
+	ACS_NamedExecuteAlways("SetupPlayerMP", 0);
+	ACS_NamedExecuteAlways("SBARActionFixer", 0);
+	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0 );
+}
+
+Script "SetupPlayerMP" (void)
+{
+	if(!(ClassifyActor(0) & ACTOR_BOT))
+	{
+		str loadoutnum = "1";
+		switch(GetCVAR("alph_loadout"))
+		{
+			case 1:
+			loadoutnum = "2";
+			break;
+			case 2:
+			loadoutnum = "3";
+			break;
+			case 3:
+			loadoutnum = "4";
+			break;
+			default:
+			loadoutnum = "1";
+			break;
+		}
+		GiveInventory(GetCVARString(StrParam(s:"alph_startweapon", s:loadoutnum)), 1);
+		
+		if(	!CheckInventory("PhotonCarbine") &&
+			!CheckInventory("ParticleSplitter") &&
+			!CheckInventory("TeslaSMG") &&
+			!CheckInventory("C14") &&
+			!CheckInventory("SparkCannon") &&
+			/*!CheckInventory("RocketCannon") && */
+			!CheckInventory("Flamespitter") && 
+			!CheckInventory("BeamRifle"))
+			{
+				GiveInventory("PhotonCarbine", 1);
+			}
+			
+		for(int j = 0; j < NUM_WEAPS; j++)
+		{
+			GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
+		}
+		ACS_NamedExecuteAlways("RestoreActionTimers", 0);
+		switch(GetCVAR(StrParam(s:"alph_travel", s:loadoutnum)))
+		{
+			case 0:
+			GiveInventory("TravelThrusterBoots", 1);
+			GiveInventory("ThrusterBootsCharge", 3);
+			GiveInventory("TBootsCD", GetAmmoCapacity("TBootsCD"));
+			break;
+			case 1:
+			GiveInventory("TravelWarpDrive", 1);
+			break;
+			case 2:
+			GiveInventory("TravelHyperdrive", 1);
+			break;
+			case 3:
+			GiveInventory("TravelJumpThrust", 1);
+			break;
+			default:
+			GiveInventory("TravelThrusterBoots", 1);
+			GiveInventory("ThrusterBootsCharge", 3);
+			GiveInventory("TBootsCD", GetAmmoCapacity("TBootsCD"));
+			break;
+		}
+		switch(GetCVAR(StrParam(s:"alph_action", s:loadoutnum)))
+		{
+			case 0:
+			GiveInventory("ActionRegenZone", 1);
+			break;
+			case 1:
+			GiveInventory("ActionAutoDrone", 1);
+			break;
+			case 2:
+			GiveInventory("ActionPowerBrace", 1);
+			break;
+			case 3:
+			GiveInventory("ActionDecoyHologram", 1);
+			break;
+			case 4:
+			GiveInventory("ActionSonicShockwave", 1);
+			break;
+			default:
+			GiveInventory("ActionRegenZone", 1);
+			break;
+		}
+		switch(GetCVAR(StrParam(s:"alph_lethality", s:loadoutnum)))
+		{
+			case 0:
+			GiveInventory("PassiveAdrenalineRush", 1);
+			break;
+			case 1:
+			GiveInventory("PassiveRapidAlt", 1);
+			break;
+		}
+		switch(GetCVAR(StrParam(s:"alph_utility", s:loadoutnum)))
+		{
+			case 0:
+			GiveInventory("PassiveOverclocked", 1);
+			break;
+			case 1:
+			GiveInventory("PassiveBandolier", 1);
+			break;
+			case 2:
+			GiveInventory("PassiveSpeedDemon", 1);
+			break;
+		}
+		switch(GetCVAR(StrParam(s:"alph_safeguard", s:loadoutnum)))
+		{
+			case 0:
+			GiveInventory("PassiveNanoPlating", 1);
+			break;
+			case 1:
+			GiveInventory("PassiveNegaBarrier", 1);
+			break;
+		}
+			
+		if(CheckInventory("PassiveSpeedDemon") > 0)
+		{
+			displayHUDText("Extra Travel Charge granted.", 0.7, 2.0, 1303);
+			GiveInventory("ExtraTravelCharge", 1);
+		}
+		if(CheckInventory("PassiveNanoPlating") > 0)
+		{
+			displayHUDText("Extra Nano-Armor granted.", 0.75, 2.0, 1304);
+			GiveInventory("NanoShard", 3);
+		}
+		if(CheckInventory("PassiveNegaBarrier") > 0)
+		{
+			displayHUDText("Temporary barrier granted.", 0.75, 2.0, 1304);
+			GiveInventory("NegaBarrier", 1);
+			ACS_NamedExecuteAlways("NegaBarrierBubbleFX", 0);
+		}
+	}
+}
+Script "PlayerDeath" DEATH
+{
+	Thing_ChangeTID(0, 0);
+}
+Script "PlayerDisconnect" (int playerwholeft) DISCONNECT
+{
+	Thing_ChangeTID(0, 0);
+}
+Script "TargetDummySpawn" (void)
+{
+	Thing_ChangeTID(0, targetdummyid);
+	targetdummyid++;
+	if(targetdummyid >= 1000)
+	{
+		targetdummyid = 900;
+	}
+}

@@ -22,6 +22,18 @@ Model PowerBraceBubble
 	
 	Frame TRNG A 0 "frame01"
 }
+Model NegaBarrierBubble
+{
+   Path "Models/Decorations" 
+	Model 0 "shield.md2"
+	Skin 0 "forcefield1.png"
+	Scale 25.0 25.0 25.0
+	Offset 0 0 16
+	INHERITACTORPITCH
+	INHERITACTORROLL
+	
+	Frame BRNG A 0 "frame01"
+}
 Model SpaceShipSmall
 { 
    Path "Models/Decorations" 

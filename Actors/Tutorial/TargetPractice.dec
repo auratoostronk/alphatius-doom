@@ -17,27 +17,44 @@ Actor TargetDummy 10015
 		PLAY AABBCCDD 2
 		Loop
 	Pain:
-		PLAY G 3 Bright 
+		TNT1 AA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
+		PLAY G 1 Bright 
+		PLAY G 2 Bright A_TakeInventory("NegaBarrier", 0)
 		PLAY G 3 Bright A_Pain
 		Goto Spawn
+	Pain.TeslaTaser:
+		TNT1 A 0 A_GiveInventory("TaserProtection", 1)
+		Goto Pain
+	Pain.FlamespitterThermite:
+		TNT1 A 0 A_GiveInventory("ThermiteDebuff", 105)
+		Goto Pain
+	Death.FlamespitterThermite:
+		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByThermite",0)
+		Goto Death
+	XDeath.FlamespitterThermite:
+		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByThermite",0)
+		Goto XDeath
+	Death.FlamespitterFlames:
+		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "Death.FlamespitterThermite")
+		Goto Death
 	Death:
 		TNT1 AAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
-		PLYD A 4 
-		PLYD B 4 A_PlayerScream
-		PLYD DEF 4
-		PLYD G -1
-		Goto Death1
+		PLAY H 12
+		PLAY I 12 A_PlayerScream
+		PLAY J 12 A_NoBlocking
+		PLAY KL 12
+		PLAY M -1
+		stop
+	XDeath.FlamespitterFlames:
+		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "XDeath.FlamespitterThermite")
+		Goto XDeath
 	XDeath:
 		TNT1 AAAAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
-		PLYD H 4 
-		PLYD I 4 A_PlayerScream
-		PLYD JKL 4
-		PLYD M -1
-	Death1:
-		PLAY N 35
-		stop
-	XDeath1:
-		PLAY W 35
+		PLAY N 5
+		PLAY O 5 A_PlayerScream
+		PLAY P 5 A_NoBlocking
+		PLAY QRST 5
+		PLAY U -1
 		stop
 	}
 }

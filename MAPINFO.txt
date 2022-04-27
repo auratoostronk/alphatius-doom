@@ -32,7 +32,7 @@ map ALPHDM02 lookup "Sediment"
 	next = "ALPHDM03"
 	AllowRespawn
 }
-map ALPHDM03 lookup "Magma"
+map ALPHDM03 lookup "Igneous"
 {
 	levelnum = 3
 	sky1 = "REDSKY", 0
@@ -56,7 +56,7 @@ map ALPHDM05 lookup "Frostbite"
 	next = "ALPHDM06"
 	AllowRespawn
 }
-map ALPHDM06 lookup "Asteroid"
+map ALPHDM06 lookup "Protoplanet"
 {
 	levelnum = 6
 	sky1 = "SPACESKY", 0
@@ -85,15 +85,33 @@ map ALPHDM09 lookup "Sinkhole"
 	levelnum = 9
 	sky1 = "OLOSSKY", 0
 	music = "QUAKE3_1"
+	next = "ALPHDM10"
+	AllowRespawn
+}
+map ALPHDM10 lookup "Andesite"
+{
+	levelnum = 10
+	sky1 = "REDSKY", 0
+	music = "DREADMAZ"
+	next = "ALPHDM11"
+	AllowRespawn
+}
+map ALPHDM11 lookup "Excavation"
+{
+	levelnum = 11
+	sky1 = "DFIRESKY", 0
+	music = "SONIC4"
 	next = "ALPHDM01"
 	AllowRespawn
 }
+
+//DUEL MAPS
 
 map ALPHDL01 lookup "Cagefight"
 {
 	levelnum = 201
 	sky1 = "SPACSKY2", 0
-	music = "SONIC1"
+	music = "SONIC4"
 	next = "ALPHDL02"
 	AllowRespawn
 }
@@ -105,11 +123,11 @@ map ALPHDL02 lookup "Outpost"
 	next = "ALPHDL03"
 	AllowRespawn
 }
-map ALPHDL03 lookup "Flood"
+map ALPHDL03 lookup "Deluge"
 {
 	levelnum = 203
 	sky1 = "OLOSSKY", 0
-	music = "SONIC4"
+	music = "QUAKE3_1"
 	next = "ALPHDL04"
 	AllowRespawn
 }
@@ -118,9 +136,20 @@ map ALPHDL04 lookup "Cold Sludge"
 	levelnum = 204
 	sky1 = "SNOWSKY", 0
 	music = "QUAKE2_2"
+	next = "ALPHDL05"
+	AllowRespawn
+}
+map ALPHDL05 lookup "Sandstone"
+{
+	levelnum = 205
+	sky1 = "DFIRESKY", 0
+	music = "SONIC1"
 	next = "ALPHDL01"
 	AllowRespawn
 }
+
+//OTHER MAPS
+
 map ALPHFL01 lookup "Damnati"
 {
 	levelnum = 301

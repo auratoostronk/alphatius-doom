@@ -85,7 +85,7 @@ map ALPHDM09 lookup "Sinkhole"
 	levelnum = 9
 	sky1 = "OLOSSKY", 0
 	music = "QUAKE3_1"
-	next = "ALPHDM09"
+	next = "ALPHDM10"
 	AllowRespawn
 }
 map ALPHDM10 lookup "Andesite"

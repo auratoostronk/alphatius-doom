@@ -1,0 +1,30 @@
+DEATHMATCH
+{
+	GameSettings
+	{
+		Compat_ExplosionThrust = true;
+		Sv_NoRespawnInvul = true;
+		Sv_NoMedals = true;
+		Sv_ItemRespawn = true;
+	}
+}
+CTF
+{
+	GameSettings
+	{
+		Compat_ExplosionThrust = true;
+		Sv_NoRespawnInvul = true;
+		Sv_NoMedals = true;
+		Sv_ItemRespawn = true;
+	}
+}
+TEAMPLAY
+{
+	GameSettings
+	{
+		Compat_ExplosionThrust = true;
+		Sv_NoRespawnInvul = true;
+		Sv_NoMedals = true;
+		Sv_ItemRespawn = true;
+	}
+}

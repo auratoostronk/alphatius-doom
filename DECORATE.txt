@@ -8,12 +8,12 @@
 #include Actors/Effects.dec
 #include Actors/DamageNumbers.dec
 #include Actors/SoundActors.dec
+#include Actors/Passives.dec
 
 #include Actors/Weapons/PhotonCarbine.dec
 #include Actors/Weapons/C14.dec
 #include Actors/Weapons/TeslaSMG.dec
 #include Actors/Weapons/ParticleSplitter.dec
-//#include Actors/Weapons/RocketCannon.dec
 #include Actors/Weapons/SparkCannon.dec
 #include Actors/Weapons/BeamRifle.dec
 #include Actors/Weapons/Flamespitter.dec
@@ -28,6 +28,7 @@
 #include Actors/Actions/RegenZone.dec
 #include Actors/Actions/AutoDrone.dec
 #include Actors/Actions/SonicShockwave.dec
+
 
 #include Actors/Pickups/Powerups.dec
 #include Actors/Pickups/Health.dec

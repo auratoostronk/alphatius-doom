@@ -19,6 +19,7 @@ SPECIAL THANKS
 -Thanks to all the people who made the resources that are being used in this mod. If you made something and feel the need to be creditted specifically, please let me know in the contact section in the readme.txt
 -Thanks to the Multiplayer Doom Federation for hosting events for this mod (and many others) to help build the community.
 -Thanks to Euroboros for letting me host my mod on your servers for free, and help build it's community.
+-Thanks to FAP for letting me host my mod on your servers for free, and help build it's community. //added 1.13beta13
 -Thanks to The Sentinel's Playground for letting me host my mod on your servers for free, and help build it's community.
 -Thanks to BlushBerry and Nuclear Empire for letting me host an official server for the mod, and help build it's community.
 -Thanks to me, for making this. I honestly couldn't of done it without you. Hehe...

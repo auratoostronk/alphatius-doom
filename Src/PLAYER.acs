@@ -38,7 +38,23 @@ Script "SetupPlayerMP" (void)
 {
 	if(!(ClassifyActor(0) & ACTOR_BOT))
 	{
-		GiveInventory(GetCVARString("alph_startweapon"), 1);
+		str loadoutnum = "1";
+		switch(GetCVAR("alph_loadout"))
+		{
+			case 1:
+			loadoutnum = "2";
+			break;
+			case 2:
+			loadoutnum = "3";
+			break;
+			case 3:
+			loadoutnum = "4";
+			break;
+			default:
+			loadoutnum = "1";
+			break;
+		}
+		GiveInventory(GetCVARString(StrParam(s:"alph_startweapon", s:loadoutnum)), 1);
 		
 		if(	!CheckInventory("PhotonCarbine") &&
 			!CheckInventory("ParticleSplitter") &&
@@ -57,7 +73,7 @@ Script "SetupPlayerMP" (void)
 			GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
 		}
 		ACS_NamedExecuteAlways("RestoreActionTimers", 0);
-		switch(GetCVAR("alph_travel"))
+		switch(GetCVAR(StrParam(s:"alph_travel", s:loadoutnum)))
 		{
 			case 0:
 			GiveInventory("TravelThrusterBoots", 1);
@@ -79,7 +95,7 @@ Script "SetupPlayerMP" (void)
 			GiveInventory("TBootsCD", GetAmmoCapacity("TBootsCD"));
 			break;
 		}
-		switch(GetCVAR("alph_action"))
+		switch(GetCVAR(StrParam(s:"alph_action", s:loadoutnum)))
 		{
 			case 0:
 			GiveInventory("ActionRegenZone", 1);
@@ -100,7 +116,7 @@ Script "SetupPlayerMP" (void)
 			GiveInventory("ActionRegenZone", 1);
 			break;
 		}
-		switch(GetCVAR("alph_passive1"))
+		switch(GetCVAR(StrParam(s:"alph_lethality", s:loadoutnum)))
 		{
 			case 0:
 			GiveInventory("PassiveAdrenalineRush", 1);
@@ -109,7 +125,7 @@ Script "SetupPlayerMP" (void)
 			GiveInventory("PassiveRapidAlt", 1);
 			break;
 		}
-		switch(GetCVAR("alph_passive2"))
+		switch(GetCVAR(StrParam(s:"alph_utility", s:loadoutnum)))
 		{
 			case 0:
 			GiveInventory("PassiveOverclocked", 1);
@@ -121,7 +137,7 @@ Script "SetupPlayerMP" (void)
 			GiveInventory("PassiveSpeedDemon", 1);
 			break;
 		}
-		switch(GetCVAR("alph_passive3"))
+		switch(GetCVAR(StrParam(s:"alph_safeguard", s:loadoutnum)))
 		{
 			case 0:
 			GiveInventory("PassiveNanoPlating", 1);

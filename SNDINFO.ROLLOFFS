@@ -65,6 +65,11 @@ $volume Explosion1 0.7
 $volume Explosion2 0.7
 $volume Explosion3 0.7
 
+$volume General/WeaponReady 0.5
+$volume General/AltReady 0.5
+$volume General/TravelReady 0.5
+
+
 $musicvolume SONIC1 0.5
 $musicvolume SONIC2 0.5
 $musicvolume SONIC3 0.5

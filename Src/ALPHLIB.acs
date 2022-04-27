@@ -103,16 +103,17 @@ Script "RechargeTimers" ENTER
 			TakeInventory("AltFireFailCD", 1);
 			
 			int movespeed = 1.0;
-			/*if(CheckInventory("TravelHyperdrive") >= 1)
+			if(CheckInventory("TeslaSpeedBoost") >= 1)
 			{
 				movespeed += 0.2;
-			}*/
+			}
 			if(CheckInventory("HyperdriveSpeed") >= 1)
 			{
 				movespeed += 0.5;
 			}
 			SetActorProperty(0, APROP_SPEED, movespeed);
 			
+			TakeInventory("TeslaSpeedBoost", 1);
 			/*if(!CheckInventory("EnergyRechargeCD"))
 			{
 				for(int j = 0; j < NUM_WEAPS; j++)
@@ -129,7 +130,7 @@ Script "RechargeTimers" ENTER
 					GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
 				}
 				TakeInventory("NoLowEnergySound", 1);
-				LocalAmbientSound("General/WeaponReady", 0.8);
+				LocalAmbientSound("General/WeaponReady", 0.5);
 			}
 			
 		}

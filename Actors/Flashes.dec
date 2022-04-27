@@ -53,6 +53,7 @@ ACTOR BlueGlowSpawner
 	States
 	{
 		Spawn:
+		TNT1 A 0 //Removing this removes the glows. Why? Who tf knows.
 		TNT1 A 1 
 		stop
 	}

@@ -126,6 +126,7 @@ Actor FluxOrbMissile
 	Damage (0)  
 	Scale 1.6
 	Health 10000
+	Mass 0xfffffd
 	Projectile
 	ProjectileKickback 160
 	Obituary "%k > \cgSpark Cannon (Alt)\c- > %o"

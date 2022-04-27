@@ -1,0 +1,224 @@
+#library "actions"
+#include "zcommon.acs"
+#import "PLAYER.acs"
+#import "ALPHLIB.acs"
+#import "TRAVEL.acs"
+
+//#libdefine FAST_ACTION_CD 10
+//#libdefine MEDIUM_ACTION_CD 15
+//#libdefine SLOW_ACTION_CD 20
+#define AUTODRONE_SHOTSFIRED 40
+
+global int 1:action1Recharge[];
+
+
+Script "ActionAbility1" (void) net
+{
+	if(ClassifyActor(0) & ACTOR_DEAD)
+	{
+	
+	}
+	else if (!(ClassifyActor(0) & ACTOR_PLAYER))
+	{
+	
+	}
+	else if(PlayerIsSpectator(PlayerNumber()) != 0)
+	{
+	
+	}
+	else
+	{
+		if(CheckInventory("ActionRegenZone") > 0)
+		{
+			ACS_NamedExecuteAlways("RegenerationZone", 0);
+		}
+		else if(CheckInventory("ActionPowerBrace") > 0)
+		{
+			ACS_NamedExecuteAlways("PowerBrace", 0);
+		}
+		else if(CheckInventory("ActionDecoyHologram") > 0)
+		{
+			ACS_NamedExecuteAlways("DecoyHologram", 0);
+		}
+		else if(CheckInventory("ActionAutoDrone") > 0)
+		{
+			ACS_NamedExecuteAlways("AutoDrone", 0);
+		}
+		else if(CheckInventory("ActionSonicShockwave") > 0)
+		{
+			ACS_NamedExecuteAlways("SonicShockwave", 0);
+		}
+		else
+		{
+			displayHUDText("Error processing your action ability. Reset it in the Loadout menu.", 0.6, 2.0, 1301);
+			LocalAmbientSound("General/Fail",96);
+		}
+	}
+}
+Script "SaveActionTimers" DEATH
+{
+	action1Recharge[PlayerNumber()] = CheckInventory("Action1Charge");
+}
+Script "RestoreActionTimers" (void)
+{
+	GiveInventory("Action1Charge", action1Recharge[PlayerNumber()]);
+}
+Script "RegenerationZone" (void)
+{
+	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("Action1Charge"))
+	{
+		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
+		SpawnSpotForced("RegenZone", 0, 0, 0);
+		//checkActionSurge();
+	}
+	else
+	{
+		ACS_NamedExecuteAlways("Action1Fail", 0);
+	}
+}
+Script "PowerBrace" (void)
+{
+	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("FastActionCharge"))
+	{
+		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
+		GiveInventory("PowerBrace", 1);
+		ACS_NamedExecuteAlways("PowerBraceBubbleFX", 0);
+		PlaySound(0, "Actions/PowerBraceOn", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
+		delay(35);
+		TakeInventory("PowerBrace", 1);
+		PlaySound(0, "Actions/PowerBraceOff", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
+		//checkActionSurge();
+	}
+	else
+	{
+		ACS_NamedExecuteAlways("Action1Fail", 0);
+	}
+}
+Script "PowerBraceBubbleFX" (void)
+{
+	int ptid = ActivatorTID();
+	int utid = UniqueTID(0, 999);
+	SpawnSpotForced("PowerBraceBubble", 0, utid, 0);
+	SetActivator(utid);
+	while(CheckActorInventory(ptid, "PowerBrace") && (ClassifyActor(ptid) & ACTOR_ALIVE) && !(ClassifyActor(ptid) & ACTOR_WORLD))
+	{
+		Warp(ptid, 0, 0, 0, 0.0, WARPF_NOCHECKPOSITION);
+		delay(1);
+	}
+	Thing_Remove(utid);
+}
+
+Script "DecoyHologram" (void)
+{
+	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("FastActionCharge"))
+	{
+		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
+		if(GetWeapon() == "C14" || GetWeapon() == "C14Alt")
+		{
+			GiveInventory("UseDecoyHologramGreen", 1);
+		}
+		if(GetWeapon() == "PhotonCarbine" || GetWeapon() == "PhotonCarbineAlt")
+		{
+			GiveInventory("UseDecoyHologramBlue", 1);
+		}
+		if(GetWeapon() == "TeslaSMG" || GetWeapon() == "TeslaSMGAlt")
+		{
+			GiveInventory("UseDecoyHologramYellow", 1);
+		}
+		if(GetWeapon() == "ParticleSplitter" || GetWeapon() == "ParticleSplitterAlt")
+		{
+			GiveInventory("UseDecoyHologramPurple", 1);
+		}
+		if(GetWeapon() == "SparkCannon" || GetWeapon() == "SparkCannonAlt")
+		{
+			GiveInventory("UseDecoyHologramRed", 1);
+		}
+		if(GetWeapon() == "RocketCannon" || GetWeapon() == "RocketCannonAlt")
+		{
+			GiveInventory("UseDecoyHologramGray", 1);
+		}
+		if(GetWeapon() == "Flamespitter" || GetWeapon() == "FlamespitterAlt")
+		{
+			GiveInventory("UseDecoyHologramOrange", 1);
+		}
+		if(GetWeapon() == "BeamRifle" || GetWeapon() == "BeamRifleAlt")
+		{
+			GiveInventory("UseDecoyHologramLightBlue", 1);
+		}
+		if(GetWeapon() == "OVR9000" || GetWeapon() == "OVR9000Alt")
+		{
+			GiveInventory("UseDecoyHologramLightGreen", 1);
+		}
+		//checkActionSurge();
+	}
+	else
+	{
+		ACS_NamedExecuteAlways("Action1Fail", 0);
+	}
+}
+Script "DecoyWalk" (void)
+{
+	while(ClassifyActor(0) & ACTOR_ALIVE)
+	{
+		//Using 12 because 80% of default doom walk speed (15.0)
+		SetActorVelocity(0, FixedMul(12.0, cos(GetActorAngle(0))), FixedMul(12.0, sin(GetActorAngle(0))), GetActorVelZ(0), false, false);
+		delay(1);
+	}
+}
+Script "AutoDrone" (void)
+{
+	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("MediumActionCharge"))
+	{
+		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
+		for(int i = 0; i < AUTODRONE_SHOTSFIRED; i++)
+		{
+			if(ClassifyActor(0) & ACTOR_DEAD)
+				terminate;
+			GiveInventory("FireAutoDrone", 1);
+			delay(3);
+			TakeInventory("FireAutoDrone", 1);
+		}
+	}
+	else
+	{
+		ACS_NamedExecuteAlways("Action1Fail", 0);
+	}
+}
+Script "SonicShockwave" (void)
+{
+	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("MediumActionCharge"))
+	{
+		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
+		Thing_Stop(0);
+		SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
+		SpawnSpotFacingForced("SonicShockwaveSpawner", 0, 0);
+		delay(8);
+		SpawnProjectile(0, "SonicShockwaveMissile", 0, 0, 0, 0, 0);
+		SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
+	}
+	else
+	{
+		ACS_NamedExecuteAlways("Action1Fail", 0);
+	}
+}
+//This is to make the Status bar display properly, i.e. the bar fills up to full when the ability is charged, and not have extra space
+Script "SBARActionFixer" (void)
+{
+	while(ClassifyActor(0) & ACTOR_ALIVE)
+	{
+		TakeInventory("FastActionCharge", GetAmmoCapacity("Action1Charge"));
+		TakeInventory("MediumActionCharge", GetAmmoCapacity("Action1Charge"));
+		GiveInventory("FastActionCharge", CheckInventory("Action1Charge"));
+		GiveInventory("MediumActionCharge", CheckInventory("Action1Charge"));
+		
+		delay(1);
+	}
+}
+Script "Action1Fail" (void)
+{
+	if(!(ClassifyActor(0) & ACTOR_BOT))
+	{
+		displayHUDText("Action ability on cooldown.", 0.6, 2.0, 1301);
+		LocalAmbientSound("General/Fail",96);
+	}
+}
