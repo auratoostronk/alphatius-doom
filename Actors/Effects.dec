@@ -33,13 +33,12 @@ Actor RainDrop
 	RenderStyle ADD
 	Scale 0.1
 	Vspeed -10
-	+NONETID
 	+CLIENTSIDEONLY
 	+NOINTERACTION
 	States
 	{
 		Spawn:
-		TNT1 A 0 A_JumpIf(z <= floorz, "Death")
+		TNT1 A 0 nodelay A_JumpIf(z <= floorz, "Death")
 		RAIN A 1
 		loop
 		Death:

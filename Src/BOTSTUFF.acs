@@ -68,13 +68,16 @@ Script "SetupBot" (void)
 		break;
 		
 	}
-	switch(random(0, 1))
+	switch(random(0, 2))
 	{
 		case 0:
-		GiveInventory("PassiveAdrenalineRush", 1);
+		GiveInventory("PassiveRapidAlt", 1);
 		break;
 		case 1:
-		GiveInventory("PassiveRapidAlt", 1);
+		GiveInventory("PassiveAssassin", 1);
+		break;
+		case 2:
+		GiveInventory("PassiveBloodFrenzy", 1);
 		break;
 	}
 	switch(random(0, 2))
@@ -89,13 +92,16 @@ Script "SetupBot" (void)
 		GiveInventory("PassiveSpeedDemon", 1);
 		break;
 	}
-	switch(random(0, 1))
+	switch(random(0, 2))
 	{
 		case 0:
 		GiveInventory("PassiveNanoPlating", 1);
 		break;
 		case 1:
 		GiveInventory("PassiveNegaBarrier", 1);
+		break;
+		case 2:
+		GiveInventory("PassiveAdrenalineRush", 1);
 		break;
 	}
 		

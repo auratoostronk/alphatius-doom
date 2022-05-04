@@ -72,148 +72,207 @@ statusbar fullscreen, fullscreenoffsets
 	//ACTION COOLDOWN
 	InInventory ActionRegenZone
 	{
-		drawBar "BLUEMPTY", "BLUFULL", Ammo Action1Charge, horizontal, Interpolate(20), -210, -20;
+		drawBar "BLUFULL", "BLUEMPTY", Ammo ActionCD, horizontal, Interpolate(20)|reverse, -210, -20;
 	}
 	InInventory ActionPowerBrace
 	{
-		drawBar "BLUEMPTY", "BLUFULL", Ammo FastActionCharge, horizontal, Interpolate(20), -210, -20;
+		drawBar "BLUFULL", "BLUEMPTY", Ammo FastActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
 	}
 	InInventory ActionDecoyHologram
 	{
-		drawBar "BLUEMPTY", "BLUFULL", Ammo FastActionCharge, horizontal, Interpolate(20), -210, -20;
+		drawBar "BLUFULL", "BLUEMPTY", Ammo FastActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
 	}
 	InInventory ActionAutoDrone
 	{
-		drawBar "BLUEMPTY", "BLUFULL", Ammo MediumActionCharge, horizontal, Interpolate(20), -210, -20;
+		drawBar "BLUFULL", "BLUEMPTY", Ammo MediumActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
 	}
 	InInventory ActionSonicShockwave
 	{
-		drawBar "BLUEMPTY", "BLUFULL", Ammo MediumActionCharge, horizontal, Interpolate(20), -210, -20;
+		drawBar "BLUFULL", "BLUEMPTY", Ammo MediumActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
 	}
 }
+//New Alt-Hud courtesy of BathySalts
 resolution 640, 400;
-statusbar normal, fullscreenoffsets
+statusbar normal, forcescaled
 {
-	drawstring SMALLFONT, Red, "Armor", 10, -70, 0, alignment(left);
-	drawstring SMALLFONT, Green, "Health", 10, -50, 0, alignment(left);
-	drawstring SMALLFONT, Cyan, "Energy", 10, -30, 0, alignment(left);
-	
-	drawBar "REDFULL", "REDEMPTY", armor (50), horizontal, Interpolate(120), 10, -60;
-	drawBar "GRNFULL", "GRNEMPTY", health, horizontal, Interpolate(120), 10, -40;
-	drawBar "BLUFULL", "BLUEMPTY", Ammo1, horizontal,Interpolate(120), 10, -20;
-	
-	drawnumber 10, SMALLFONT, Red, armor, Alignment(left)|drawshadow, 210, -60;
-	drawnumber 10, SMALLFONT, Green, health,  Alignment(left)|drawshadow, 210, -40;
-	drawnumber 10, SMALLFONT, Cyan, Ammo1, Alignment(left)|drawshadow, 210, -20;
-	
-	//ALTFIRE COOLDOWN
+	//Armor
+	drawimage "ARM3A0", 214, 342;
+	drawnumber 3, BIGFONT, Red, armor, drawshadow, whennotzero, 274, 322;
+
+	//Health
+	drawimage "MEDIA0", 214, 360, none, 17, 23;
+	drawnumber 3, BIGFONT, Green, health, 274, 342;
+
+	//Weapon Energy
+	drawimage "CLIPZ0", 214, 376;
+	drawnumber 3, BIGFONT, Cyan, Ammo1, 274, 362;	//Was 304, I Removed 30 Units
+
+	//Keycards + Skullkeys
+	gamemode deathmatch
+	{
+		drawnumber 3, HUDFONT_DOOM, White, frags, drawshadow, alignment(center), 320, 366;
+	}
+	else
+	{
+		// let's hope no mod ever uses 100 keys...
+		drawswitchableimage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 292, 366;
+		drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 312, 366;
+		drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 332, 366;
+	}
+
+	//Altfire Cooldown
 	IsSelected PhotonCarbine
 	{
-		drawBar "VREDFULL", "GRAYMPTY", Ammo CarbineAltCD, vertical, Interpolate(20), 40 + center, 150 + center;
+		InInventory CarbineAltCD, 1
+		{
+			drawimage "sgrna6a4", 416, 327, none, 24, 12, forcescale;
+			drawnumber 3, BIGFONT, Red, Ammo CarbineAltCD, 388, 322;	//Was 488, I Added Removed 100 Units
+		}
 	}
 	IsSelected C14
 	{
-		drawBar "VREDFULL", "GRAYMPTY", Ammo C14AltCD, vertical, Interpolate(20), 40 + center, 150 + center;
+		InInventory C14AltCD, 1
+		{
+			drawimage "sgrna6a4", 416, 327, none, 24, 12, forcescale;
+			drawnumber 3, BIGFONT, Red, Ammo C14AltCD, 388, 322;
+		}
 	}
 	IsSelected ParticleSplitter
 	{
-		drawBar "VREDFULL", "GRAYMPTY", Ammo PumpSGAltCD, vertical, Interpolate(20), 40 + center, 150 + center;
+		InInventory PumpSGAltCD, 1
+		{
+			drawimage "sgrna6a4", 416, 327, none, 24, 12, forcescale;
+			drawnumber 3, BIGFONT, Red, Ammo PumpSGAltCD, 388, 322;
+		}
 	}
 	IsSelected TeslaSMG
 	{
-		drawBar "VREDFULL", "GRAYMPTY", Ammo SMGAltCD, vertical, Interpolate(20), 40 + center, 150 + center;
+		InInventory SMGAltCD, 1
+		{
+			drawimage "sgrna6a4", 416, 327, none, 24, 12, forcescale;
+			drawnumber 3, BIGFONT, Red, Ammo SMGAltCD, 388, 322;
+		}
 	}
 	IsSelected SparkCannon
 	{
-		drawBar "VREDFULL", "GRAYMPTY", Ammo SparkAltCD, vertical, Interpolate(20), 40 + center, 150 + center;
+		InInventory SparkAltCD, 1
+		{
+			drawimage "sgrna6a4", 416, 327, none, 24, 12, forcescale;
+			drawnumber 3, BIGFONT, Red, Ammo SparkAltCD, 388, 322;
+		}
 	}
 	IsSelected Flamespitter
 	{
-		drawBar "VREDFULL", "GRAYMPTY", Ammo  FlameAltCD, vertical, Interpolate(20), 40 + center, 150 + center;
+		InInventory FlameAltCD, 1
+		{
+			drawimage "sgrna6a4", 416, 327, none, 24, 12, forcescale;
+			drawnumber 3, BIGFONT, Red, Ammo FlameAltCD, 388, 322;
+		}
 	}
 	IsSelected BeamRifle
 	{
-		drawBar "VREDFULL", "GRAYMPTY", Ammo  BeamAltCD, vertical, Interpolate(20), 40 + center, 150 + center;
+		InInventory BeamAltCD, 1
+		{
+			drawimage "sgrna6a4", 416, 327, none, 24, 12, forcescale;
+			drawnumber 3, BIGFONT, Red, Ammo BeamAltCD, 388, 322;
+		}
 	}
-	
-	//TRAVEL COOLDOWN
+
+	//Travel Cooldown	
+	InInventory ExtraTravelCharge, 1
+	{
+		drawimage "ENUKC0", 416, 360;
+		InInventory TravelThrusterBoots
+		{
+			drawnumber 3, BIGFONT, Cyan, Ammo ExtraTravelCharge, 458, 342;
+		}
+		Else
+		{
+			drawnumber 3, BIGFONT, Cyan, Ammo ExtraTravelCharge, 442, 342;
+		}
+	}
 	InInventory TravelThrusterBoots
 	{
-		drawBar "TRAVONCD", "TRAVREDY", Ammo TBootsCD, vertical, Interpolate(20)|reverse, 0 + center, 140 + center;
-		InInventory ThrusterBootsCharge, 2
+		drawimage "ENUKC0", 416, 360;
+		drawnumber 3, BIGFONT, Green, Ammo ThrusterBootsCharge, 442, 342;
+		InInventory not TBootsCD, 105
 		{
-			drawImage "XTRAVRDY", 0 + center, 120 + center;
-			drawImage "XTRAVRDY", 0 + center, 100 + center;
-			InInventory ExtraTravelCharge, 1
-			{
-				drawImage "STRAVRDY", 0 + center, 80 + center;
-			}
-		}
-		else
-		{
-			InInventory ThrusterBootsCharge, 1
-			{
-				drawImage "XTRAVRDY", 0 + center, 120 + center;
-				InInventory ExtraTravelCharge, 1
-				{
-					drawImage "STRAVRDY", 0 + center, 100 + center;
-				}
-			}
-			else
-			{	
-				InInventory ExtraTravelCharge, 1
-				{
-					drawImage "STRAVRDY", 0 + center, 120 + center;
-				}
-			}
+			drawnumber 3, BIGFONT, Green, Ammo TBootsCD, 388, 342;
 		}
 	}
 	InInventory TravelWarpDrive
 	{
-		drawBar "TRAVONCD", "TRAVREDY", Ammo WDriveCD, vertical, Interpolate(20)|reverse, 0 + center, 140 + center;
-		InInventory ExtraTravelCharge, 1
+		InInventory WDriveCD, 1
 		{
-			drawImage "STRAVRDY", 0 + center, 120 + center;
+			drawimage "ENUKC0", 416, 360;
+			drawnumber 3, BIGFONT, Green, Ammo WDriveCD, 388, 342;
 		}
 	}
 	InInventory TravelJumpThrust
 	{
-		drawBar "TRAVONCD", "TRAVREDY", Ammo JThrustCD, vertical, Interpolate(20)|reverse, 0 + center, 140 + center;
-		InInventory ExtraTravelCharge, 1
+		InInventory JThrustCD, 1
 		{
-			drawImage "STRAVRDY", 0 + center, 120 + center;
+			drawimage "ENUKC0", 416, 360;
+			drawnumber 3, BIGFONT, Green, Ammo JThrustCD, 388, 342;
 		}
 	}
+
 	InInventory TravelHyperdrive
 	{
-		drawBar "TRAVONCD", "TRAVREDY", Ammo HDriveCD, vertical, Interpolate(20)|reverse, 0 + center, 140 + center;
-		InInventory ExtraTravelCharge, 1
+		//Added By Bathy
+		InInventory HDriveCD, 1
 		{
-			drawImage "STRAVRDY", 0 + center, 120 + center;
+			drawimage "ENUKC0", 416, 360;
+			drawnumber 3, BIGFONT, Green, Ammo HDriveCD, 388, 342;
 		}
 	}
-	
-	//ACTION COOLDOWN
+
+	//Ability Cooldown	
 	InInventory ActionRegenZone
 	{
-		drawBar "GRAYMPTY", "VBLUFULL", Ammo Action1Charge, vertical, Interpolate(20)|reverse, -40 + center, 150 + center;
+		InInventory ActionCD
+		{
+			drawimage "CELLC0", 402, 364, none, 25, 16;
+			drawnumber 3, BIGFONT, Cyan, Ammo ActionCD, 388, 362;
+		}
 	}
+
 	InInventory ActionPowerBrace
 	{
-		drawBar "GRAYMPTY", "VBLUFULL", Ammo FastActionCharge, vertical, Interpolate(20)|reverse, -40 + center, 150 + center;
+		InInventory ActionCD
+		{
+			drawimage "CELLC0", 402, 364, none, 25, 16;
+			drawnumber 3, BIGFONT, Cyan, Ammo ActionCD, 388, 362;
+		}
 	}
+
 	InInventory ActionDecoyHologram
 	{
-		drawBar "GRAYMPTY", "VBLUFULL", Ammo FastActionCharge, vertical, Interpolate(20)|reverse, -40 + center, 150 + center;
+		//Added By Bathy
+		InInventory ActionCD
+		{
+			drawimage "CELLC0", 402, 364, none, 25, 16;
+			drawnumber 3, BIGFONT, Cyan, Ammo ActionCD, 388, 362;
+		}
 	}
+
 	InInventory ActionAutoDrone
 	{
-		drawBar "GRAYMPTY", "VBLUFULL", Ammo MediumActionCharge, vertical, Interpolate(20)|reverse, -40 + center, 150 + center;
+		//Added By Bathy
+		InInventory ActionCD
+		{
+			drawimage "CELLC0", 402, 364, none, 25, 16;
+			drawnumber 3, BIGFONT, Cyan, Ammo ActionCD, 388, 362;
+		}
 	}
+
 	InInventory ActionSonicShockwave
 	{
-		drawBar "GRAYMPTY", "VBLUFULL", Ammo MediumActionCharge, vertical, Interpolate(20)|reverse, -40 + center, 150 + center;
+		//Added By Bathy
+		InInventory ActionCD
+		{
+			drawimage "CELLC0", 402, 364, none, 25, 16;
+			drawnumber 3, BIGFONT, Cyan, Ammo ActionCD, 388, 362;
+		}
 	}
-	
-	
 }

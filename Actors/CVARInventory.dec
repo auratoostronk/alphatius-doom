@@ -15,11 +15,14 @@ Actor TravelWarpDrive : Inventory {
 Actor TravelHyperdrive : Inventory { 
 	+NONETID
 	Inventory.MaxAmount 1 }
-
-Actor PassiveAdrenalineRush : Inventory { 
+	
+Actor PassiveRapidAlt : Inventory {
 	+NONETID
 	Inventory.MaxAmount 1 }
-Actor PassiveRapidAlt : Inventory {
+Actor PassiveBloodFrenzy : Inventory {
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor PassiveAssassin : Inventory {
 	+NONETID
 	Inventory.MaxAmount 1 }
 Actor PassiveOverclocked : Inventory { 
@@ -35,6 +38,9 @@ Actor PassiveNanoPlating : Inventory {
 	+NONETID
 	Inventory.MaxAmount 1 }
 Actor PassiveNegaBarrier: Inventory { 
+	+NONETID
+	Inventory.MaxAmount 1 }
+Actor PassiveAdrenalineRush : Inventory { 
 	+NONETID
 	Inventory.MaxAmount 1 }
 

@@ -47,7 +47,8 @@ Actor Flamespitter : Weapon 10010
 		Goto Ready
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("FlameAltCD",1,"AltFail")
-		TNT1 A 0 A_SpawnItemEX("PurpleLightShoot", 0, 0, 0)
+		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponAltFired", 0)
+		TNT1 A 0 A_SpawnItemEX("OrangeLightShoot", 0, 0, 0)
 		TNT1 A 0 A_PlaySound("GrenadeLaunch", CHAN_WEAPON)
 		TNT1 A 0 A_Recoil(6)
 		TNT1 A 0 Bright A_FireCustomMissile("FlamespitterThermite")

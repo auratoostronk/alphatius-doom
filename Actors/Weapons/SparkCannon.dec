@@ -47,11 +47,11 @@ ACTOR SparkCannon : Weapon 10009
 		TNT1 A 0 A_PlaySound("SparkCannon/Fire", CHAN_WEAPON)
 		TNT1 A 0 A_Recoil(8)
 		SPKF D 4 A_RailAttack(70,0,true,"none","none",RGF_SILENT,0,"LaserSparkDot",0,0,16384.0,2,8.0,0,"LaserSpark2", -2)
-		SPKF E 48
+		SPKF E 52
 		Goto Ready
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("SparkAltCD", 1, "AltFail")
-		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
+		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponAltFired", 0)
 		TNT1 A 0 A_SpawnItemEX("RedLightShoot")
 		TNT1 A 0 A_PlaySound("SparkCannon/AltFire", CHAN_WEAPON)
 		TNT1 A 0 A_FireCustomMissile("FluxOrbMissile", 0, true, 0, -2.0, 0, 0)
@@ -156,7 +156,7 @@ Actor FluxOrbMissile
 		
 	Death:
 		TNT1 A 0 A_JumpIf(health < -20, "RailedDeath")  
-		TNT1 A 0 A_Explode(40, 192)
+		TNT1 A 0 A_Explode(60, 192)
 		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash")
 		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2")
 		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")

@@ -4,26 +4,24 @@
 #import "ALPHLIB.acs"
 #import "PLAYER.acs"
 
-#define ADRUSH_DURATION 70.0
-#define ADRUSH_HEAL 20
-#define BANDOLIER_RESTORE 25
-#define RAPIDALT_RESTORE 1
+//#define ADRUSH_DURATION 70.0
+//#define ADRUSH_HEAL 20
+#define BANDOLIER_RESTORE 50
+#define RAPIDALT_RESTORE 1.0
 
 function void rapidAlt(void)
 {
-	//displayHUDText("Alt-Fire cooldown partially restored.", 0.70, 2.0, 1303);
 	for(int i = 0; i < NUM_WEAPS; i++)
 	{
-		TakeInventory(WEAP_COOLDOWNNAMES[i], GetAmmoCapacity(WEAP_COOLDOWNNAMES[i]) / RAPIDALT_RESTORE);
+		TakeInventory(WEAP_COOLDOWNNAMES[i], (GetAmmoCapacity(WEAP_COOLDOWNNAMES[i]) * RAPIDALT_RESTORE) >> 16);
 	}
 	LocalAmbientSound("General/AltReady", 0.5);
 }
 function void bandolier(void)
 {
-	//displayHUDText("Energy partially restored.", 0.725, 2.0, 1302);
 	for(int i = 0; i < NUM_WEAPS; i++)
 	{
-		GiveInventory(WEAP_ENERGYNAMES[i], 100);
+		GiveInventory(WEAP_ENERGYNAMES[i], BANDOLIER_RESTORE);
 	}
 	LocalAmbientSound("General/WeaponReady", 0.5);
 }
@@ -39,7 +37,7 @@ Script "PassiveDeath" DEATH
 	{
 		ACS_NamedExecuteAlways("AdrenalineRush", 0);
 	}
-	else if(CheckInventory("PassiveRapidAlt") > 0)
+	if(CheckInventory("PassiveRapidAlt") > 0)
 	{
 		rapidAlt();
 	}
@@ -48,51 +46,77 @@ Script "PassiveDeath" DEATH
 		bandolier();
 	}
 }
-/*
-Script "PassiveSetup" (void)
-{
-	GiveInventory(GetCVARString("alph_passive1"), 1);
-	GiveInventory(GetCVARString("alph_passive2"), 1);
-	GiveInventory(GetCVARString("alph_passive3"), 1);
-	
-	//Kill Skills are in PassiveDeath above
-	//Overclocked is in ALPHLIB.acs
-	//Spawn passives are below.
-	
-	if(CheckInventory("PassiveSpeedDemon") > 0)
-	{
-		GiveInventory("ExtraTravelCharge", 1);
-	}
-	if(CheckInventory("PassiveNanoPlating") > 0)
-	{
-		GiveInventory("NanoShard", 25);
-	}
-	if(CheckInventory("PassiveNegaBarrier") > 0)
-	{
-		GiveInventory("NegaBarrier", 1);
-	}
-}*/
 
-Script "Overclocked" ENTER
+Script "OverclockedTimer" (void)
 {
-	while(true)
+	while(ClassifyActor(0) & ACTOR_ALIVE)
 	{
 		if(CheckInventory("PassiveOverclocked") > 0)
 		{
-			GiveInventory("Action1Charge", 1);
+			TakeInventory("ActionCD", 1);
 		}
-		delay(3);
+		delay(4);
+	}
+}
+Script "SpeedDemonTimer" (void)
+{
+	while(ClassifyActor(0) & ACTOR_ALIVE)
+	{
+		if(CheckInventory("PassiveSpeedDemon") > 0)
+		{
+			TakeInventory("WDriveCD", 1);
+			TakeInventory("TBootsCD", 1);
+			TakeInventory("HDriveCD", 1);
+			TakeInventory("JThrustCD", 1);
+		}
+		delay(4);
 	}
 }
 Script "AdrenalineRush" (void)
 {
-	//displayHUDText("You feel adrenaline pumping...", 0.70, 2.0, 1303);
-	for(int i = 0; i < 10; i++)
+	for(int i = 0; i < 15; i++)
 	{
-		delay(3);
+		delay(7);
 		GiveInventory("Health", 1);
-		delay(4);
-		GiveInventory("Health", 1);
+	}
+}
+Script "BloodFrenzyHit" (int type, int arg1, int arg2) EVENT
+{
+	if(type == 11)//GAMEEVENT_ACTOR_DAMAGED 
+	{
+		SetActivator(0, AAPTR_DAMAGE_SOURCE);
+		if(CheckInventory("PassiveBloodFrenzy") > 0 && CheckInventory("BloodFrenzyBoostCD") == 0)
+		{
+			if(CheckInventory("PowerBloodFrenzy4") > 0)
+			{
+				TakeInventory("PowerBloodFrenzy4", 1);
+				GiveInventory("PowerBloodFrenzy5", 1);
+				GiveInventory("BloodFrenzyBoostCD", GetAmmoCapacity("BloodFrenzyBoostCD"));
+			}
+			else if(CheckInventory("PowerBloodFrenzy3") > 0)
+			{
+				TakeInventory("PowerBloodFrenzy3", 1);
+				GiveInventory("PowerBloodFrenzy4", 1);
+				GiveInventory("BloodFrenzyBoostCD", GetAmmoCapacity("BloodFrenzyBoostCD"));
+			}
+			else if(CheckInventory("PowerBloodFrenzy2") > 0)
+			{
+				TakeInventory("PowerBloodFrenzy2", 1);
+				GiveInventory("PowerBloodFrenzy3", 1);
+				GiveInventory("BloodFrenzyBoostCD", GetAmmoCapacity("BloodFrenzyBoostCD"));
+			}
+			else if(CheckInventory("PowerBloodFrenzy1") > 0)
+			{
+				TakeInventory("PowerBloodFrenzy1", 1);
+				GiveInventory("PowerBloodFrenzy2", 1);
+				GiveInventory("BloodFrenzyBoostCD", GetAmmoCapacity("BloodFrenzyBoostCD"));
+			}
+			else
+			{
+				GiveInventory("PowerBloodFrenzy1", 1);
+				GiveInventory("BloodFrenzyBoostCD", GetAmmoCapacity("BloodFrenzyBoostCD"));
+			}
+		}
 	}
 }
 Script "NegaBarrierBubbleFX" (void)

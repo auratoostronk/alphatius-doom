@@ -26,3 +26,28 @@ Script "PlayerDeathByThermite" (void)
 	SpawnProjectile(0, "ThermiteChainReact", 0, 0, 0, 0, blastid);
 	SetActorPosition(blastid, GetActorX(initid), GetActorY(initid), GetActorZ(initid) + 16.0, false);
 }
+//Every weapon should execute this script when fired.
+Script "OnWeaponFired" (void) 
+{
+	GiveInventory("EnergyRechargeCD", 105);
+	for(int i = 0; i < NUM_WEAPS; i++)
+	{
+		if(GetWeapon() == WEAP_CLASSNAMES[i] && CheckInventory(WEAP_ENERGYNAMES[i]) <= 20 && CheckInventory("NoLowEnergySound") == 0)
+		{
+			LocalAmbientSound("General/LowEnergy", 96);
+			GiveInventory("NoLowEnergySound", 1);
+		}
+	}
+	ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
+	
+}
+//Every weapon should execute this script when fired.
+Script "OnWeaponAltFired" (void) 
+{
+	for(int i = 0; i < NUM_WEAPS; i++)
+	{
+		GiveInventory(WEAP_COOLDOWNNAMES[i], GetAmmoCapacity(WEAP_COOLDOWNNAMES[i]));
+	}
+	ACS_NamedExecuteAlways("OnWeaponFired", 0);
+	
+}

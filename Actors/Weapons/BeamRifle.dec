@@ -46,7 +46,7 @@ ACTOR BeamRifle : Weapon 10011
 		BRFF E 1 A_StopSound(CHAN_WEAPON)
 		Goto Ready
 	AltFire:
-		TNT1 A 0 A_JumpIfInventory("SparkAltCD", 1, "AltFail")
+		//TNT1 A 0 A_JumpIfInventory("SparkAltCD", 1, "AltFail")
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		TNT1 A 0 A_SpawnItemEX("LightBlueLightShoot")
 		TNT1 A 0 A_PlaySound("BeamRifle/AltFire", CHAN_WEAPON)

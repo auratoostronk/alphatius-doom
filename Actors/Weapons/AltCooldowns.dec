@@ -26,8 +26,8 @@ Actor SMGAltCD : Ammo
 Actor PumpSGAltCD : Ammo
 {
 	+NONETID
-	Inventory.MaxAmount 105
-	Ammo.BackpackMaxAmount 105
+	Inventory.MaxAmount 70
+	Ammo.BackpackMaxAmount 70
 }
 Actor FlameAltCD : Ammo
 {

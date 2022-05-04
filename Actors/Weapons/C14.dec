@@ -41,12 +41,10 @@ ACTOR C14 : Weapon 10005
 		Goto Ready
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("C14AltCD",1,"AltFail")
-		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
-		//TNT1 A 0 A_JumpIfInventory("C14BeamMod",1,"AltFireBeam")
+		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponAltFired", 0)
 		TNT1 A 0 A_SpawnItemEX("GreenLightShoot")
 		TNT1 A 0 A_PlaySound("GrenadeLaunch", CHAN_WEAPON)
 		TNT1 A 0 A_FireCustomMissile("C14GasGrenade",frandom(-0.4,0.4),true,0.0,-2.0,0,frandom(-0.4,0.4))
-		TNT1 A 0 A_GiveInventory("C14AltCD", 350)
 		C14R A 8
 		Goto Ready
 	AltFail:

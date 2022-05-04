@@ -5,7 +5,7 @@ Actor NegaBarrier : PowerProtection
 	+NONETID
 	DamageFactor "Normal", 0.5
 	Powerup.Duration -69000000
-	//Powerup.Color Bluemap
+	Powerup.Color "00 00 40"
 }
 
 Actor NegaBarrierBubble
@@ -21,4 +21,61 @@ Actor NegaBarrierBubble
 		BRNG A 1
 		loop
 	}
+}
+
+Actor PowerAssassinBuff : PowerDamage
+{
+	+NONETID
+	DamageFactor "Normal", 1.2
+	Powerup.Duration -69000000
+	//Powerup.Color "20 00 00"
+}
+Actor PowerAssassinBuff2 : PowerDamage
+{
+	+NONETID
+	DamageFactor "Normal", 1.2
+	Powerup.Duration 18
+	//Powerup.Color "20 00 00"
+}
+
+Actor PowerBloodFrenzy1 : PowerDamage
+{
+	+NONETID
+	DamageFactor "Normal", 1.05
+	Powerup.Duration -6900000
+	//Powerup.Color "20 00 00"
+}
+Actor PowerBloodFrenzy2 : PowerDamage
+{
+	+NONETID
+	DamageFactor "Normal", 1.1
+	Powerup.Duration -6900000
+	//Powerup.Color "20 00 00"
+}
+Actor PowerBloodFrenzy3 : PowerDamage
+{
+	+NONETID
+	DamageFactor "Normal", 1.15
+	Powerup.Duration -6900000
+	//Powerup.Color "30 00 00"
+}
+Actor PowerBloodFrenzy4 : PowerDamage
+{
+	+NONETID
+	DamageFactor "Normal", 1.2
+	Powerup.Duration -6900000
+	//Powerup.Color "20 00 00"
+}
+Actor PowerBloodFrenzy5 : PowerDamage
+{
+	+NONETID
+	DamageFactor "Normal", 1.25
+	Powerup.Duration -6900000
+	//Powerup.Color "20 00 00"
+}
+//Cooldown before being able to increase Blood Frenzy stacks.
+Actor BloodFrenzyBoostCD : Ammo
+{
+	+NONETID
+	Inventory.MaxAmount 9
 }

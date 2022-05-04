@@ -98,7 +98,7 @@ Script "RechargeTimers" ENTER
 			}
 			TakeInventory("ThermiteDebuff", 1);
 			
-			GiveInventory("Action1Charge", 1);
+			TakeInventory("ActionCD", 1);
 			TakeInventory("EnergyRechargeCD",1);
 			TakeInventory("AltFireFailCD", 1);
 			
@@ -114,6 +114,7 @@ Script "RechargeTimers" ENTER
 			SetActorProperty(0, APROP_SPEED, movespeed);
 			
 			TakeInventory("TeslaSpeedBoost", 1);
+			TakeInventory("BloodFrenzyBoostCD", 1);
 			/*if(!CheckInventory("EnergyRechargeCD"))
 			{
 				for(int j = 0; j < NUM_WEAPS; j++)
@@ -131,26 +132,33 @@ Script "RechargeTimers" ENTER
 				}
 				TakeInventory("NoLowEnergySound", 1);
 				LocalAmbientSound("General/WeaponReady", 0.5);
+				if(CheckInventory("PassiveAssassin") > 0)
+				{
+					GiveInventory("PowerAssassinBuff", 1);
+				}
+				if(CheckInventory("PassiveBloodFrenzy") > 0)
+				{
+					TakeInventory("PowerBloodFrenzy1", 1);
+					TakeInventory("PowerBloodFrenzy2", 1);
+					TakeInventory("PowerBloodFrenzy3", 1);
+					TakeInventory("PowerBloodFrenzy4", 1);
+					TakeInventory("PowerBloodFrenzy5", 1);
+				}
 			}
 			
 		}
 		delay(1);
 	}
 }
-//Every weapon should execute this script when fired.
-Script "OnWeaponFired" (void) 
+Script "CheckAssassinTactics" (void)
 {
-	GiveInventory("EnergyRechargeCD", 105);
-	for(int i = 0; i < NUM_WEAPS; i++)
+	//Removes "Assassin's Tactics" buff from the player's inventory and replaces it with the same powerup that last a short while after.
+	if(CheckInventory("PassiveAssassin") > 0)
 	{
-		if(GetWeapon() == WEAP_CLASSNAMES[i] && CheckInventory(WEAP_ENERGYNAMES[i]) <= 20 && CheckInventory("NoLowEnergySound") == 0)
-		{
-			LocalAmbientSound("General/LowEnergy", 96);
-			GiveInventory("NoLowEnergySound", 1);
-		}
+		TakeInventory("PowerAssassinBuff", 999);
+		GiveInventory("PowerAssassinBuff2", 1);
 	}
 }
-
 //Checks for detonating mid-air rockets and energy grenades.
 Script "CheckAltFirePressed" ENTER
 {

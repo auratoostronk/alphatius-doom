@@ -42,8 +42,9 @@ SPECIAL THANKS TO THESE BETA TESTERS / FREQUENT PLAYERS
 BACK TO OUR REGULARLY SCHEDULED CREDITS
 
 CODE
-All code has been written by hiimaura.
 Some of the QZandronum code (specifically the unlagged code) was written by geNia to help me out.
+Alternate HUD was made courtesy of BathySalts.
+All other code has been written by hiimaura.
 
 SOUNDS
 

@@ -56,7 +56,7 @@ Actor MediumActionCharge : Ammo
 	Inventory.MaxAmount 525
 }
 //Action Ability 1's cooldown
-Actor Action1Charge : Ammo
+Actor ActionCD : Ammo
 {
 	+NONETID
 	Inventory.MaxAmount 700

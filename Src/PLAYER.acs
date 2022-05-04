@@ -15,7 +15,6 @@ Script "CheckPlayerEnter" ENTER
 	ACS_NamedExecuteAlways("SBARActionFixer", 0);
 	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0);
 	delay(1); //Why is this needed? I don't know.
-	GiveInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
 }
 
 Script "CheckPlayerReturn" RETURN
@@ -118,50 +117,62 @@ Script "SetupPlayerMP" (void)
 		}
 		switch(GetCVAR(StrParam(s:"alph_lethality", s:loadoutnum)))
 		{
-			case 0:
-			GiveInventory("PassiveAdrenalineRush", 1);
-			break;
 			case 1:
+			GiveInventory("PassiveAssassin", 1);
+			break;
+			case 2:
+			GiveInventory("PassiveBloodFrenzy", 1);
+			break;
+			default:
 			GiveInventory("PassiveRapidAlt", 1);
 			break;
 		}
 		switch(GetCVAR(StrParam(s:"alph_utility", s:loadoutnum)))
 		{
-			case 0:
-			GiveInventory("PassiveOverclocked", 1);
-			break;
 			case 1:
 			GiveInventory("PassiveBandolier", 1);
 			break;
 			case 2:
 			GiveInventory("PassiveSpeedDemon", 1);
 			break;
+			default:
+			GiveInventory("PassiveOverclocked", 1);
+			break;
 		}
 		switch(GetCVAR(StrParam(s:"alph_safeguard", s:loadoutnum)))
 		{
-			case 0:
-			GiveInventory("PassiveNanoPlating", 1);
-			break;
 			case 1:
 			GiveInventory("PassiveNegaBarrier", 1);
+			break;
+			case 2:
+			GiveInventory("PassiveAdrenalineRush", 1);
+			break;
+			default:
+			GiveInventory("PassiveNanoPlating", 1);
 			break;
 		}
 			
 		if(CheckInventory("PassiveSpeedDemon") > 0)
 		{
-			displayHUDText("Extra Travel Charge granted.", 0.7, 2.0, 1303);
 			GiveInventory("ExtraTravelCharge", 1);
+			//ACS_NamedExecuteAlways("SpeedDemonTimer", 0);
+		}
+		if(CheckInventory("PassiveOverclocked") > 0)
+		{
+			ACS_NamedExecuteAlways("OverclockedTimer", 0);
 		}
 		if(CheckInventory("PassiveNanoPlating") > 0)
 		{
-			displayHUDText("Extra Nano-Armor granted.", 0.75, 2.0, 1304);
 			GiveInventory("NanoShard", 3);
 		}
 		if(CheckInventory("PassiveNegaBarrier") > 0)
 		{
-			displayHUDText("Temporary barrier granted.", 0.75, 2.0, 1304);
 			GiveInventory("NegaBarrier", 1);
 			ACS_NamedExecuteAlways("NegaBarrierBubbleFX", 0);
+		}
+		if(CheckInventory("PassiveAssassin") > 0)
+		{
+			GiveInventory("PowerAssassinBuff", 1);
 		}
 	}
 }

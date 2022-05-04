@@ -14,7 +14,7 @@ Gameinfo
 	MenuFontColor_Selection = "White"
 	MenuFontColor_Value= "White"
 	MenuFontColor_Header = "Gold"
-	//ForceDamageEventScripts = true
+	ForceDamageEventScripts = true
 }
 map ALPHDM01 lookup "Quarry"
 {

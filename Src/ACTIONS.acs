@@ -57,17 +57,17 @@ Script "ActionAbility1" (void) net
 }
 Script "SaveActionTimers" DEATH
 {
-	action1Recharge[PlayerNumber()] = CheckInventory("Action1Charge");
+	action1Recharge[PlayerNumber()] = CheckInventory("ActionCD");
 }
 Script "RestoreActionTimers" (void)
 {
-	GiveInventory("Action1Charge", action1Recharge[PlayerNumber()]);
+	GiveInventory("ActionCD", action1Recharge[PlayerNumber()]);
 }
 Script "RegenerationZone" (void)
 {
-	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("Action1Charge"))
+	if(CheckInventory("ActionCD") == 0)
 	{
-		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
+		GiveInventory("ActionCD", GetAmmoCapacity("ActionCD"));
 		SpawnSpotForced("RegenZone", 0, 0, 0);
 		//checkActionSurge();
 	}
@@ -78,9 +78,9 @@ Script "RegenerationZone" (void)
 }
 Script "PowerBrace" (void)
 {
-	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("FastActionCharge"))
+	if(CheckInventory("ActionCD") == 0)
 	{
-		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
+		GiveInventory("ActionCD", GetAmmoCapacity("FastActionCharge"));
 		GiveInventory("PowerBrace", 1);
 		ACS_NamedExecuteAlways("PowerBraceBubbleFX", 0);
 		PlaySound(0, "Actions/PowerBraceOn", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
@@ -110,9 +110,9 @@ Script "PowerBraceBubbleFX" (void)
 
 Script "DecoyHologram" (void)
 {
-	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("FastActionCharge"))
+	if(CheckInventory("ActionCD") == 0)
 	{
-		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
+		GiveInventory("ActionCD", GetAmmoCapacity("FastActionCharge"));
 		if(GetWeapon() == "C14" || GetWeapon() == "C14Alt")
 		{
 			GiveInventory("UseDecoyHologramGreen", 1);
@@ -167,9 +167,11 @@ Script "DecoyWalk" (void)
 }
 Script "AutoDrone" (void)
 {
-	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("MediumActionCharge"))
+	if(CheckInventory("ActionCD") == 0)
 	{
-		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
+		GiveInventory("ActionCD", GetAmmoCapacity("MediumActionCharge"));
+		//Need this so people don't abuse the damage buff from Assassin's Tactics while not firing their weapon.
+		ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
 		for(int i = 0; i < AUTODRONE_SHOTSFIRED; i++)
 		{
 			if(ClassifyActor(0) & ACTOR_DEAD)
@@ -186,14 +188,16 @@ Script "AutoDrone" (void)
 }
 Script "SonicShockwave" (void)
 {
-	if(CheckInventory("Action1Charge") >= GetAmmoCapacity("MediumActionCharge"))
+	if(CheckInventory("ActionCD") == 0)
 	{
-		TakeInventory("Action1Charge", GetAmmoCapacity("Action1Charge"));
+		GiveInventory("ActionCD", GetAmmoCapacity("MediumActionCharge"));
 		Thing_Stop(0);
 		SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
 		SpawnSpotFacingForced("SonicShockwaveSpawner", 0, 0);
 		delay(8);
 		SpawnProjectile(0, "SonicShockwaveMissile", 0, 0, 0, 0, 0);
+		//Need this so people don't abuse the damage buff from Assassin's Tactics while not firing their weapon.
+		ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
 		SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
 	}
 	else
@@ -206,10 +210,10 @@ Script "SBARActionFixer" (void)
 {
 	while(ClassifyActor(0) & ACTOR_ALIVE)
 	{
-		TakeInventory("FastActionCharge", GetAmmoCapacity("Action1Charge"));
-		TakeInventory("MediumActionCharge", GetAmmoCapacity("Action1Charge"));
-		GiveInventory("FastActionCharge", CheckInventory("Action1Charge"));
-		GiveInventory("MediumActionCharge", CheckInventory("Action1Charge"));
+		TakeInventory("FastActionCharge", GetAmmoCapacity("ActionCD"));
+		TakeInventory("MediumActionCharge", GetAmmoCapacity("ActionCD"));
+		GiveInventory("FastActionCharge", CheckInventory("ActionCD"));
+		GiveInventory("MediumActionCharge", CheckInventory("ActionCD"));
 		
 		delay(1);
 	}
