@@ -46,7 +46,7 @@ ACTOR SparkCannon : Weapon 10009
 		TNT1 A 0 A_SpawnItemEX("RedLightShoot")
 		TNT1 A 0 A_PlaySound("SparkCannon/Fire", CHAN_WEAPON)
 		TNT1 A 0 A_Recoil(8)
-		SPKF D 4 A_RailAttack(70,0,true,"none","none",RGF_SILENT,0,"LaserSparkDot",0,0,16384.0,2,8.0,0,"LaserSpark2", -2)
+		SPKF D 4 A_RailAttack(70, 0, true, "none", "none", RGF_SILENT, 0.0, "LaserSparkDot", 0, 0, 16384.0, 2, 4.0, 0, "LaserSpark2", -2)
 		SPKF E 52
 		Goto Ready
 	AltFire:
@@ -55,9 +55,8 @@ ACTOR SparkCannon : Weapon 10009
 		TNT1 A 0 A_SpawnItemEX("RedLightShoot")
 		TNT1 A 0 A_PlaySound("SparkCannon/AltFire", CHAN_WEAPON)
 		TNT1 A 0 A_FireCustomMissile("FluxOrbMissile", 0, true, 0, -2.0, 0, 0)
-		TNT1 A 0 A_GiveInventory("SparkAltCD", 140)
 		SPKF D 4
-		SPKF E 8
+		SPKF E 12
 		Goto Ready
 	AltFail:
 		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
@@ -121,8 +120,8 @@ Actor FluxOrbMissile
 {
 	RenderStyle add
 	Speed 48
-	Radius 8
-	Height 16
+	Radius 12
+	Height 24
 	Damage (0)  
 	Scale 1.6
 	Health 10000

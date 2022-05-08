@@ -41,7 +41,7 @@ Script "OnWeaponFired" (void)
 	ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
 	
 }
-//Every weapon should execute this script when fired.
+//Handles Alt-Fire cooldowns.
 Script "OnWeaponAltFired" (void) 
 {
 	for(int i = 0; i < NUM_WEAPS; i++)

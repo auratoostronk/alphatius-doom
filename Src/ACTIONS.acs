@@ -177,7 +177,8 @@ Script "AutoDrone" (void)
 			if(ClassifyActor(0) & ACTOR_DEAD)
 				terminate;
 			GiveInventory("FireAutoDrone", 1);
-			delay(3);
+			PlaySound(0, "Actions/AutoLaser", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
+			delay(4);
 			TakeInventory("FireAutoDrone", 1);
 		}
 	}
@@ -194,7 +195,7 @@ Script "SonicShockwave" (void)
 		Thing_Stop(0);
 		SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
 		SpawnSpotFacingForced("SonicShockwaveSpawner", 0, 0);
-		delay(8);
+		delay(16);
 		SpawnProjectile(0, "SonicShockwaveMissile", 0, 0, 0, 0, 0);
 		//Need this so people don't abuse the damage buff from Assassin's Tactics while not firing their weapon.
 		ACS_NamedExecuteAlways("CheckAssassinTactics", 0);

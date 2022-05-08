@@ -70,7 +70,7 @@ ACTOR SonicShockwaveSpawner
 		TNT1 A 0 A_SpawnItemEx("ShockwaveWarningFX", 0, 256, 0, 0, 0, 0)
 		TNT1 A 0 A_SpawnItemEx("ShockwaveWarningFX", 0, -256, 0, 0, 0, 0)
 		TNT1 A 0 A_SetAngle(angle + 10)
-		TNT1 A 12
+		TNT1 A 18
 		TNT1 A 0 A_StopSound(CHAN_7)
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("SonicShockwaveDots", frandom(-16.0, 16.0), frandom(-16.0, 16.0), frandom(0.0, 16.0), frandom(-16.0, 16.0), frandom(-16.0, 16.0), frandom(8.0, 24.0))
 		TNT1 AAAAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-2,2),frandom(-2,2),frandom(-2,2))

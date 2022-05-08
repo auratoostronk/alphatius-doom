@@ -16,11 +16,10 @@ Actor AutoDroneLaser
 	Scale 1.0
 	Speed 192
 	Decal RailScorchLower
-	Damage (6)
-	DamageType "AutoDrone"
+	Damage (4)
 	Renderstyle Add
 	Obituary "%k > \cgAuto Laser\c- > %o"
-	SeeSound "Actions/AutoLaser"
+	//SeeSound "Actions/AutoLaser"
 	+BRIGHT
 	States
 	{
