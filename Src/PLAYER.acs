@@ -14,7 +14,6 @@ Script "CheckPlayerEnter" ENTER
 	ACS_NamedExecuteAlways("SetupPlayerMP", 0);
 	ACS_NamedExecuteAlways("SBARActionFixer", 0);
 	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0);
-	delay(1); //Why is this needed? I don't know.
 }
 
 Script "CheckPlayerReturn" RETURN
@@ -115,47 +114,38 @@ Script "SetupPlayerMP" (void)
 			GiveInventory("ActionRegenZone", 1);
 			break;
 		}
-		switch(GetCVAR(StrParam(s:"alph_lethality", s:loadoutnum)))
+		switch(GetCVAR(StrParam(s:"alph_passive", s:loadoutnum)))
 		{
-			case 1:
-			GiveInventory("PassiveAssassin", 1);
-			break;
-			case 2:
-			GiveInventory("PassiveBloodFrenzy", 1);
-			break;
-			default:
+			case 0:
 			GiveInventory("PassiveRapidAlt", 1);
 			break;
-		}
-		switch(GetCVAR(StrParam(s:"alph_utility", s:loadoutnum)))
-		{
 			case 1:
-			GiveInventory("PassiveBandolier", 1);
-			break;
-			case 2:
-			GiveInventory("PassiveSpeedDemon", 1);
-			break;
-			default:
 			GiveInventory("PassiveOverclocked", 1);
 			break;
-		}
-		switch(GetCVAR(StrParam(s:"alph_safeguard", s:loadoutnum)))
-		{
-			case 1:
+			case 2:
+			GiveInventory("PassiveBandolier", 1);
+			break;
+			case 3:
+			GiveInventory("PassiveSpeedDemon", 1);
+			break;
+			case 4:
+			GiveInventory("PassiveNanoPlating", 1);
+			break;
+			case 5:
 			GiveInventory("PassiveNegaBarrier", 1);
 			break;
-			case 2:
+			case 6:
 			GiveInventory("PassiveAdrenalineRush", 1);
 			break;
-			default:
-			GiveInventory("PassiveNanoPlating", 1);
+			default: //0
+			GiveInventory("PassiveRapidAlt", 1);
 			break;
 		}
 			
 		if(CheckInventory("PassiveSpeedDemon") > 0)
 		{
 			GiveInventory("ExtraTravelCharge", 1);
-			//ACS_NamedExecuteAlways("SpeedDemonTimer", 0);
+			ACS_NamedExecuteAlways("SpeedDemonTimer", 0);
 		}
 		if(CheckInventory("PassiveOverclocked") > 0)
 		{
@@ -163,7 +153,7 @@ Script "SetupPlayerMP" (void)
 		}
 		if(CheckInventory("PassiveNanoPlating") > 0)
 		{
-			GiveInventory("NanoShard", 3);
+			GiveInventory("NanoShard", 5);
 		}
 		if(CheckInventory("PassiveNegaBarrier") > 0)
 		{

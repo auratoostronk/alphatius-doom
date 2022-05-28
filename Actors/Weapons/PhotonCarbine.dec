@@ -7,8 +7,8 @@ ACTOR PhotonCarbine : Weapon 10004
 	Weapon.BobStyle "Smooth"
 	Weapon.AmmoType1 "CarbineEnergy"
 	Weapon.AmmoType2 "CarbineEnergy"
-	Weapon.AmmoUse1 2
-	Weapon.AmmoUse2 20
+	Weapon.AmmoUse1 1
+	Weapon.AmmoUse2 10
 	+WEAPON.NOAUTOAIM
 	Inventory.Icon "CARPA0"
 	Weapon.SlotNumber 2

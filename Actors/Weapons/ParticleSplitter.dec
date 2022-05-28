@@ -1,7 +1,7 @@
-const float spread1 = 1.0;
-const float spread2 = 2.0;
-const float spread3 = 3.0;
-//const float spread4 = 3.0;
+const float spread1 = 0.75;
+const float spread2 = 1.5;
+const float spread3 = 2.25;
+const float spread4 = 3.0;
 
 Actor ParticleSplitter : Weapon 10007
 {
@@ -11,8 +11,8 @@ Actor ParticleSplitter : Weapon 10007
 	Weapon.BobStyle "Smooth"
 	Weapon.AmmoType1 "PumpSGEnergy"
 	Weapon.AmmoType2 "PumpSGEnergy"
-	Weapon.AmmoUse1 20
-	Weapon.AmmoUse2 20
+	Weapon.AmmoUse1 1
+	Weapon.AmmoUse2 1
 	+WEAPON.NOAUTOAIM
 	Inventory.Icon "PSGPA0"
 	Weapon.SlotNumber 3
@@ -82,7 +82,7 @@ Actor ParticleSplitter : Weapon 10007
 		TNT1 A 0 A_FireCustomMissile("SGPellet", spread3*(-0.5), 	false, 0.0, -1.0, 0,	spread3*(-0.866))
 		
 		
-		/*TNT1 A 0 A_FireCustomMissile("SGPellet", spread4*(1.0), 	false, 0.0, -1.0, 0, spread4*(0.0))
+		TNT1 A 0 A_FireCustomMissile("SGPellet", spread4*(1.0), 	false, 0.0, -1.0, 0, spread4*(0.0))
 		TNT1 A 0 A_FireCustomMissile("SGPellet", spread4*(-1.0),	false, 0.0, -1.0, 0, spread4*(0.0))
 		TNT1 A 0 A_FireCustomMissile("SGPellet", spread4*(0.0), 	false, 0.0, -1.0, 0, spread4*(1.0))
 		TNT1 A 0 A_FireCustomMissile("SGPellet", spread4*(0.0), 	false, 0.0, -1.0, 0, spread4*(-1.0))
@@ -94,7 +94,7 @@ Actor ParticleSplitter : Weapon 10007
 		TNT1 A 0 A_FireCustomMissile("SGPellet", spread4*(0.866), 	false, 0.0, -1.0, 0, 	spread4*(-0.5))
 		TNT1 A 0 A_FireCustomMissile("SGPellet", spread4*(0.5), 	false, 0.0, -1.0, 0, 	spread4*(-0.866))
 		TNT1 A 0 A_FireCustomMissile("SGPellet", spread4*(-0.866), 	false, 0.0, -1.0, 0, 	spread4*(-0.5))
-		TNT1 A 0 A_FireCustomMissile("SGPellet", spread4*(-0.5), 	false, 0.0, -1.0, 0,	spread4*(-0.866))*/
+		TNT1 A 0 A_FireCustomMissile("SGPellet", spread4*(-0.5), 	false, 0.0, -1.0, 0,	spread4*(-0.866))
 		
 		Goto FireAnim
 	AltFire:
@@ -107,9 +107,9 @@ Actor ParticleSplitter : Weapon 10007
 		Goto FireAnim
 	FireAnim:
 		PSGF ABC 2
-		PSGR A 18 A_WeaponReady(WRF_NOFIRE|WRF_DISABLESWITCH)
+		PSGR A 14 A_WeaponReady(WRF_NOFIRE|WRF_DISABLESWITCH)
 		TNT1 A 0 A_PlaySound("ParticleSplitter/Pump", CHAN_WEAPON)
-		PSGR A 22 A_WeaponReady(WRF_NOFIRE|WRF_DISABLESWITCH)
+		PSGR A 24 A_WeaponReady(WRF_NOFIRE|WRF_DISABLESWITCH)
 		Goto Ready
 	AltFail:
 		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
@@ -125,14 +125,13 @@ Actor SGPellet
 	Speed 80
 	Radius 2
 	Height 2
-	Damage (5)  
+	Damage (4)
 	DamageType "ParticleSplitter"
 	Decal RailScorchLower
 	Scale 0.5
 	Obituary "%k > \ctParticle Splitter\c- > %o"
 	+DONTSPLASH
 	+BRIGHT
-	args 0, 0, 0, 0
 	States
 	{
 	Spawn:
@@ -198,7 +197,7 @@ Actor SGAltPellet : SGPellet
 		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread3 * 0.866)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread3 * -0.5)-180)
 		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread3 * -0.866)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,(spread3 * -0.5)-180)
 		
-		/*TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread4 * 1.0)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread4 * 0.0)-180)
+		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread4 * 1.0)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread4 * 0.0)-180)
 		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread4 * -1.0)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH, 	(spread4 * 0.0)-180)
 		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread4 * 0.0)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread4 * 1.0)-180)
 		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread4 * 0.0)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH, 	(spread4 * -1.0)-180)
@@ -209,7 +208,7 @@ Actor SGAltPellet : SGPellet
 		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread4 * 0.866)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread4 * 0.5)-180)
 		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread4 * -0.866)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,(spread4 * 0.5)-180)
 		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread4 * 0.866)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread4 * -0.5)-180)
-		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread4 * -0.866)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,(spread4 * -0.5)-180)*/
+		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread4 * -0.866)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,(spread4 * -0.5)-180)
 		
 	SplitFinish:
 		//TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("SGPellet", 0.0, 0.0, frandom(-2.0, 2.0)-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH, frandom(-2.0, 2.0) - 180)

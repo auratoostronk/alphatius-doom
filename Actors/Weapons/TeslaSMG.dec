@@ -9,7 +9,7 @@ Actor TeslaSMG : Weapon 10006
 	Weapon.AmmoType1 "SMGEnergy"
 	Weapon.AmmoType2 "SMGEnergy"
 	Weapon.AmmoUse1 1
-	Weapon.AmmoUse2 20
+	Weapon.AmmoUse2 5
 	+WEAPON.NOAUTOAIM
 	Weapon.SlotNumber 1
 	Weapon.SelectionOrder 500
@@ -72,7 +72,7 @@ Actor TaserProtection : PowerProtection
 Actor SMGProjectile
 {
 	Projectile
-	Speed 40
+	Speed 48
 	Damage (12)
 	Radius 6
 	Height 12

@@ -68,6 +68,7 @@ Script "SetupBot" (void)
 		break;
 		
 	}
+	/*
 	switch(random(0, 2))
 	{
 		case 0:
@@ -117,8 +118,8 @@ Script "SetupBot" (void)
 	{
 		GiveInventory("NegaBarrier", 1);
 		ACS_NamedExecuteAlways("NegaBarrierBubbleFX", 0);
-	}
-	SetActorProperty(0, APROP_SPEED, GetActorProperty(0, APROP_SPEED) * 0.9);
+	}*/
+	SetActorProperty(0, APROP_SPEED, GetActorProperty(0, APROP_SPEED) * 0.8);
 	ACS_NamedExecuteAlways("StartBotAliveTimer", 0);
 }
 Script "StartBotAliveTimer" (void)

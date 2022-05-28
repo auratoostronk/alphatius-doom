@@ -21,8 +21,8 @@ Model PowerBraceBubble
 	INHERITACTORROLL
 	
 	Frame TRNG A 0 "frame01"
-}
-/*Model NegaBarrierBubble
+}/*
+Model NegaBarrierBubble
 {
    Path "Models/Decorations" 
 	Model 0 "shield.md2"

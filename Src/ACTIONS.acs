@@ -10,6 +10,7 @@
 #define AUTODRONE_SHOTSFIRED 40
 
 global int 1:action1Recharge[];
+global int 2:decoyIDs[];
 
 
 Script "ActionAbility1" (void) net
@@ -69,7 +70,6 @@ Script "RegenerationZone" (void)
 	{
 		GiveInventory("ActionCD", GetAmmoCapacity("ActionCD"));
 		SpawnSpotForced("RegenZone", 0, 0, 0);
-		//checkActionSurge();
 	}
 	else
 	{
@@ -87,7 +87,6 @@ Script "PowerBrace" (void)
 		delay(35);
 		TakeInventory("PowerBrace", 1);
 		PlaySound(0, "Actions/PowerBraceOff", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
-		//checkActionSurge();
 	}
 	else
 	{
@@ -110,50 +109,63 @@ Script "PowerBraceBubbleFX" (void)
 
 Script "DecoyHologram" (void)
 {
-	if(CheckInventory("ActionCD") == 0)
+	if(isTIDUsed(decoyIDs[PlayerNumber()]) && decoyIDs[PlayerNumber()] != 0)
 	{
-		GiveInventory("ActionCD", GetAmmoCapacity("FastActionCharge"));
-		if(GetWeapon() == "C14" || GetWeapon() == "C14Alt")
-		{
-			GiveInventory("UseDecoyHologramGreen", 1);
-		}
-		if(GetWeapon() == "PhotonCarbine" || GetWeapon() == "PhotonCarbineAlt")
-		{
-			GiveInventory("UseDecoyHologramBlue", 1);
-		}
-		if(GetWeapon() == "TeslaSMG" || GetWeapon() == "TeslaSMGAlt")
-		{
-			GiveInventory("UseDecoyHologramYellow", 1);
-		}
-		if(GetWeapon() == "ParticleSplitter" || GetWeapon() == "ParticleSplitterAlt")
-		{
-			GiveInventory("UseDecoyHologramPurple", 1);
-		}
-		if(GetWeapon() == "SparkCannon" || GetWeapon() == "SparkCannonAlt")
-		{
-			GiveInventory("UseDecoyHologramRed", 1);
-		}
-		if(GetWeapon() == "RocketCannon" || GetWeapon() == "RocketCannonAlt")
-		{
-			GiveInventory("UseDecoyHologramGray", 1);
-		}
-		if(GetWeapon() == "Flamespitter" || GetWeapon() == "FlamespitterAlt")
-		{
-			GiveInventory("UseDecoyHologramOrange", 1);
-		}
-		if(GetWeapon() == "BeamRifle" || GetWeapon() == "BeamRifleAlt")
-		{
-			GiveInventory("UseDecoyHologramLightBlue", 1);
-		}
-		if(GetWeapon() == "OVR9000" || GetWeapon() == "OVR9000Alt")
-		{
-			GiveInventory("UseDecoyHologramLightGreen", 1);
-		}
-		//checkActionSurge();
+		int tempTID = UniqueTID();
+		int aTID = ActivatorTID();
+		//Spawns a spawn spot at the Player's spot.
+		SpawnSpotFacingForced("MapSpot", ActivatorTID(), tempTID);
+		//Sets the player's location to the decoy's spot.
+		Warp(decoyIDs[PlayerNumber()], 0, 0, 0, 0, 0);
+		//Sets the decoy's location to the players' spot.
+		SetActivator(decoyIDs[PlayerNumber()]);
+		Warp(tempTID, 0, 0, 0, 0, 0);
+		//Sets activator back to player.
+		Thing_Destroy(tempTID, false, 0);
+		SetActivator(aTID);
+		decoyIDs[PlayerNumber()] = 0;
 	}
 	else
 	{
-		ACS_NamedExecuteAlways("Action1Fail", 0);
+		if(CheckInventory("ActionCD") == 0)
+		{
+			GiveInventory("ActionCD", GetAmmoCapacity("FastActionCharge"));
+			int utid = UniqueTID();
+			if(GetWeapon() == "C14" || GetWeapon() == "C14Alt")
+			{
+				SpawnSpotFacingForced("DecoyHologramGreen", 0, utid);
+			}
+			if(GetWeapon() == "PhotonCarbine" || GetWeapon() == "PhotonCarbineAlt")
+			{
+				SpawnSpotFacingForced("DecoyHologramBlue", 0, utid);
+			}
+			if(GetWeapon() == "TeslaSMG" || GetWeapon() == "TeslaSMGAlt")
+			{
+				SpawnSpotFacingForced("DecoyHologramYellow", 0, utid);
+			}
+			if(GetWeapon() == "ParticleSplitter" || GetWeapon() == "ParticleSplitterAlt")
+			{
+				SpawnSpotFacingForced("DecoyHologramPurple", 0, utid);
+			}
+			if(GetWeapon() == "SparkCannon" || GetWeapon() == "SparkCannonAlt")
+			{
+				SpawnSpotFacingForced("DecoyHologramRed", 0, utid);
+			}
+			if(GetWeapon() == "Flamespitter" || GetWeapon() == "FlamespitterAlt")
+			{
+				SpawnSpotFacingForced("DecoyHologramOrange", 0, utid);
+			}
+			if(GetWeapon() == "BeamRifle" || GetWeapon() == "BeamRifleAlt")
+			{
+				SpawnSpotFacingForced("DecoyHologramLightBlue", 0, utid);
+			}
+			displayHUDText("Reactivate to swap.", 0.6, 2.0, 1301);
+			decoyIDs[PlayerNumber()] = utid;
+		}
+		else
+		{
+			ACS_NamedExecuteAlways("Action1Fail", 0);
+		}
 	}
 }
 Script "DecoyWalk" (void)
@@ -171,7 +183,7 @@ Script "AutoDrone" (void)
 	{
 		GiveInventory("ActionCD", GetAmmoCapacity("MediumActionCharge"));
 		//Need this so people don't abuse the damage buff from Assassin's Tactics while not firing their weapon.
-		ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
+		//ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
 		for(int i = 0; i < AUTODRONE_SHOTSFIRED; i++)
 		{
 			if(ClassifyActor(0) & ACTOR_DEAD)
@@ -198,7 +210,7 @@ Script "SonicShockwave" (void)
 		delay(16);
 		SpawnProjectile(0, "SonicShockwaveMissile", 0, 0, 0, 0, 0);
 		//Need this so people don't abuse the damage buff from Assassin's Tactics while not firing their weapon.
-		ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
+		//ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
 		SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
 	}
 	else

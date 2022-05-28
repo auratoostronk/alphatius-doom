@@ -9,8 +9,8 @@ ACTOR SparkCannon : Weapon 10009
 	Weapon.BobStyle "Smooth"
 	Weapon.AmmoType1 "SparkEnergy"
 	Weapon.AmmoType2 "SparkEnergy"
-	Weapon.AmmoUse1 25
-	Weapon.AmmoUse2 25
+	Weapon.AmmoUse1 1
+	Weapon.AmmoUse2 1
 	+WEAPON.NOAUTOAIM
 	+BLOODLESSIMPACT
 	Weapon.SlotNumber 5
@@ -46,8 +46,8 @@ ACTOR SparkCannon : Weapon 10009
 		TNT1 A 0 A_SpawnItemEX("RedLightShoot")
 		TNT1 A 0 A_PlaySound("SparkCannon/Fire", CHAN_WEAPON)
 		TNT1 A 0 A_Recoil(8)
-		SPKF D 4 A_RailAttack(70, 0, true, "none", "none", RGF_SILENT, 0.0, "LaserSparkDot", 0, 0, 16384.0, 2, 4.0, 0, "LaserSpark2", -2)
-		SPKF E 52
+		SPKF D 4 A_RailAttack(80, 0, true, "none", "none", RGF_SILENT, 0.0, "LaserSparkDot", 0, 0, 16384.0, 2, 4.0, 0, "LaserSpark2", -2)
+		SPKF E 44
 		Goto Ready
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("SparkAltCD", 1, "AltFail")
@@ -132,6 +132,7 @@ Actor FluxOrbMissile
 	+DONTSPLASH
 	-NOBLOCKMAP
 	+SHOOTABLE
+	DamageFactor "Normal", 0.0
 	DamageFactor "SparkRail", 10000.0
 	+BRIGHT
 	Decal PlasmaScorchLower
@@ -155,7 +156,7 @@ Actor FluxOrbMissile
 		
 	Death:
 		TNT1 A 0 A_JumpIf(health < -20, "RailedDeath")  
-		TNT1 A 0 A_Explode(60, 192)
+		TNT1 A 0 A_Explode(40, 192)
 		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash")
 		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2")
 		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")

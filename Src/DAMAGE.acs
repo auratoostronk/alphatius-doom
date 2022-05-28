@@ -3,23 +3,36 @@
 
 #import "ALPHLIB.acs"
 
-int prev_hp[MAX_PLAYERS];
-
 Script "AlphatiusDamageOpen" OPEN
 {
 	CreateTranslation(6400, 176:191=112:127, 32:47=120:127);
 }
-Script "AlphatiusDamageEnter" ENTER
+Script "AlphatiusDamage" (int type, int dmg, int dmgType) EVENT
+{
+	if(type == 12)//GAMEEVENT_ACTOR_ARMORDAMAGED 
+	{
+		TakeInventory("NegaBarrier", 1);
+		if(dmgType == "FlamespitterThermite")
+		{
+			GiveInventory("ThermiteDebuff", 105);
+		}
+		if(dmgType == "TeslaTaser")
+		{
+			GiveInventory("TaserProtection", 1);
+		}
+	}
+	
+}
+Script "AlphatiusDamageNumbers" ENTER
 {
 	while(true)
 	{
-		prev_hp[PlayerNumber()] = GetActorProperty(0, APROP_HEALTH);
+		int oldHealth = GetActorProperty(0, APROP_HEALTH) + GetArmorInfo(ARMORINFO_SAVEAMOUNT);
 		delay(1);
-		int damage = prev_hp[PlayerNumber()] - GetActorProperty(0, APROP_HEALTH);
+		int newHealth = GetActorProperty(0, APROP_HEALTH) + GetArmorInfo(ARMORINFO_SAVEAMOUNT);
+		int damage = oldHealth - newHealth;
 		if(damage != 0)
-		{
 			ACS_NamedExecuteAlways("AlphatiusPain", 0, damage);
-		}
 	}
 }
 

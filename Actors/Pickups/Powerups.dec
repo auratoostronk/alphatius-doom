@@ -49,7 +49,7 @@ Actor AlphatiusPowerup : CustomInventory 12012
 	Height 48
 	Inventory.Amount 1
 	Inventory.MaxAmount 1
-	Inventory.RespawnTics 2100 //60 seconds
+	Inventory.RespawnTics 1050 //30 seconds
 	+FLOATBOB
 	+BRIGHT
 	States
@@ -64,6 +64,11 @@ Actor AlphatiusPowerup : CustomInventory 12012
 }
 
 Actor PowerRapidAlt : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+}
+Actor PowerSpeedDemon : Inventory
 {
 	Inventory.Amount 1
 	Inventory.MaxAmount 1

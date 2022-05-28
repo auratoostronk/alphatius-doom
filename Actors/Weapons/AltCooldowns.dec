@@ -2,8 +2,8 @@
 Actor SparkAltCD : Ammo
 {
 	+NONETID
-	Inventory.MaxAmount 140
-	Ammo.BackpackMaxAmount 140
+	Inventory.MaxAmount 210
+	Ammo.BackpackMaxAmount 210
 }
 Actor CarbineAltCD : Ammo
 {

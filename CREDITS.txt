@@ -1,4 +1,4 @@
-1.13 beta 9 (4/11/2022)
+1.13 beta 9 (4/11/2022) (updated it a bit since, but this is still a WIP)
 
 CONCEPT
 Alphatius was only an idea in late 2016, during a dark time in my life where I was placed in a pseudo-boarding school
@@ -26,16 +26,19 @@ SPECIAL THANKS
 
 SPECIAL THANKS TO THESE BETA TESTERS / FREQUENT PLAYERS
 -Aku (a.k.a CUNT)
+-Aliens
 -Armorum Adamantium
 -Asriel
 -BlushBerry
 -geNia
+-Hailst0rm
 -Iko
 -Infernis
 -Kaapeli47
+-Kaminsky
 -liljeck
 -Marcaek
--Summer's Exile
+-Seidolon
 -Xenaero
 
 

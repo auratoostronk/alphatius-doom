@@ -8,7 +8,7 @@ Script "WeaponGlow" ENTER
 	{
 		for(int i = 0; i < NUM_WEAPS; i++)
 		{
-			if(GetWeapon() == WEAP_CLASSNAMES[i] || GetWeapon() == WEAP_ALTCLASSNAMES[i])
+			if(StrIcmp(GetWeapon(), WEAP_CLASSNAMES[i]) == 0 || StrIcmp(GetWeapon(), WEAP_ALTCLASSNAMES[i]) == 0)
 			{
 				str glowclass = StrParam(s:WEAP_COLORS[i], s:"GlowSpawner");
 				SpawnForced(glowclass, GetActorX(0), GetActorY(0), GetActorZ(0) + 2.0);
@@ -32,13 +32,13 @@ Script "OnWeaponFired" (void)
 	GiveInventory("EnergyRechargeCD", 105);
 	for(int i = 0; i < NUM_WEAPS; i++)
 	{
-		if(GetWeapon() == WEAP_CLASSNAMES[i] && CheckInventory(WEAP_ENERGYNAMES[i]) <= 20 && CheckInventory("NoLowEnergySound") == 0)
+		if(StrIcmp(GetWeapon(), WEAP_CLASSNAMES[i]) == 0 && CheckInventory(WEAP_ENERGYNAMES[i]) <= 20 && CheckInventory("NoLowEnergySound") == 0)
 		{
 			LocalAmbientSound("General/LowEnergy", 96);
 			GiveInventory("NoLowEnergySound", 1);
 		}
 	}
-	ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
+	//ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
 	
 }
 //Handles Alt-Fire cooldowns.
@@ -46,7 +46,10 @@ Script "OnWeaponAltFired" (void)
 {
 	for(int i = 0; i < NUM_WEAPS; i++)
 	{
-		GiveInventory(WEAP_COOLDOWNNAMES[i], GetAmmoCapacity(WEAP_COOLDOWNNAMES[i]));
+		if(StrIcmp(GetWeapon(), WEAP_CLASSNAMES[i]) == 0 || StrIcmp(GetWeapon(), WEAP_ALTCLASSNAMES[i]) == 0)
+		{
+			GiveInventory(WEAP_COOLDOWNNAMES[i], GetAmmoCapacity(WEAP_COOLDOWNNAMES[i]));
+		}
 	}
 	ACS_NamedExecuteAlways("OnWeaponFired", 0);
 	

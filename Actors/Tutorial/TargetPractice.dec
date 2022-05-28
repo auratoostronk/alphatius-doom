@@ -18,8 +18,7 @@ Actor TargetDummy 10015
 		Loop
 	Pain:
 		TNT1 AA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
-		PLAY G 1 Bright 
-		PLAY G 2 Bright A_TakeInventory("NegaBarrier", 0)
+		PLAY G 3 Bright
 		PLAY G 3 Bright A_Pain
 		Goto Spawn
 	Pain.TeslaTaser:

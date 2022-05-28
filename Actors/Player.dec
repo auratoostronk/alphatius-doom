@@ -37,15 +37,16 @@ Actor AlphatiusPlayer : PlayerPawn
 	Pain:
 		TNT1 AA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
 		PLAY G 1 Bright 
-		PLAY G 2 Bright A_TakeInventory("NegaBarrier", 0)
+		PLAY G 2 Bright
 		PLAY G 3 Bright A_Pain
 		Goto Spawn
-	Pain.TeslaTaser:
+	//This is now handled in WEAPONS.acs
+	/*Pain.TeslaTaser:
 		TNT1 A 0 A_GiveInventory("TaserProtection", 1)
 		Goto Pain
 	Pain.FlamespitterThermite:
 		TNT1 A 0 A_GiveInventory("ThermiteDebuff", 105)
-		Goto Pain
+		Goto Pain*/
 	Death.FlamespitterThermite:
 		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByThermite",0)
 		Goto Death

@@ -6,7 +6,7 @@
 
 //#define ADRUSH_DURATION 70.0
 //#define ADRUSH_HEAL 20
-#define BANDOLIER_RESTORE 50
+#define BANDOLIER_RESTORE 0.5
 #define RAPIDALT_RESTORE 1.0
 
 function void rapidAlt(void)
@@ -21,7 +21,7 @@ function void bandolier(void)
 {
 	for(int i = 0; i < NUM_WEAPS; i++)
 	{
-		GiveInventory(WEAP_ENERGYNAMES[i], BANDOLIER_RESTORE);
+		GiveInventory(WEAP_ENERGYNAMES[i], (GetAmmoCapacity(WEAP_ENERGYNAMES[i]) * BANDOLIER_RESTORE) >> 16);
 	}
 	LocalAmbientSound("General/WeaponReady", 0.5);
 }
@@ -55,7 +55,7 @@ Script "OverclockedTimer" (void)
 		{
 			TakeInventory("ActionCD", 1);
 		}
-		delay(4);
+		delay(3);
 	}
 }
 Script "SpeedDemonTimer" (void)
@@ -74,12 +74,13 @@ Script "SpeedDemonTimer" (void)
 }
 Script "AdrenalineRush" (void)
 {
-	for(int i = 0; i < 15; i++)
+	for(int i = 0; i < 20; i++)
 	{
 		delay(7);
 		GiveInventory("Health", 1);
 	}
 }
+/*
 Script "BloodFrenzyHit" (int type, int arg1, int arg2) EVENT
 {
 	if(type == 11)//GAMEEVENT_ACTOR_DAMAGED 
@@ -118,7 +119,7 @@ Script "BloodFrenzyHit" (int type, int arg1, int arg2) EVENT
 			}
 		}
 	}
-}
+}*/
 Script "NegaBarrierBubbleFX" (void)
 {
 	int ptid = ActivatorTID();

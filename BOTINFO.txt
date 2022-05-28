@@ -13,10 +13,10 @@
 {
 	//hiimaura
 	name = "\chhi\cnim\cvaura"
-	accuracy = 2
-	intellect = 2
+	accuracy = 1
+	intellect = 1
 	evade = 1
-	anticipation = 2
+	anticipation = 1
 	reactiontime = 2
 	perception = 1
 	favoriteweapon = "ParticleSplitter"
@@ -29,18 +29,37 @@
 }
 
 {
-	name = "\cgSummer's Exile"
+	//[UD]Xenaero
+	name = "[UD]Xen"
 	accuracy = 2
-	intellect = 4
-	evade = 2
+	intellect = 2
+	evade = 1
 	anticipation = 1
 	reactiontime = 1
 	perception = 1
-	favoriteweapon = "PhotonCarbine"
-	color = "FF 00 00"
+	favoriteweapon = "Beam Rifle"
+	color = "00 00 FF"
 	gender = "male"
-	railcolor = red
+	railcolor = blue
 	chatfrequency = 75
+	revealed = true
+	script = "humanbot"
+}
+
+{
+	//Kaapeli47
+	name = "\c[C2]Kaapeli\c[C1]47"
+	accuracy = 2
+	intellect = 2
+	evade = 1
+	anticipation = 1
+	reactiontime = 2
+	perception = 1
+	favoriteweapon = "Tesla SMG"
+	color = "B3 FF 00"
+	gender = "male"
+	railcolor = green
+	chatfrequency = 50
 	revealed = true
 	script = "humanbot"
 }
@@ -49,8 +68,8 @@
 	//[NE]BlushBerry (rest in peace NUCLEAR EMPIRE!!!)
 	name = "\c[q6][NE]\c[q5]Blush\c[y1]Berry"
 	accuracy = 2
-	intellect = 2
-	evade = 3
+	intellect = 1
+	evade = 1
 	anticipation = 1
 	reactiontime = 1
 	perception = 1
@@ -65,12 +84,12 @@
 
 {
 	name = "geNia"
-	accuracy = 4
-	intellect = 5
-	evade = 4
+	accuracy = 2
+	intellect = 2
+	evade = 1
 	anticipation = 1
-	reactiontime = 3
-	perception = 3
+	reactiontime = 2
+	perception = 2
 	favoriteweapon = "PhotonCarbine"
 	color = "00 FF 00"
 	gender = "male"
@@ -82,12 +101,12 @@
 
 {
 	name = "\cgliljeck"
-	accuracy = 3
-	intellect = 5
-	evade = 3
-	anticipation = 3
-	reactiontime = 2
-	perception = 4
+	accuracy = 1
+	intellect = 2
+	evade = 1
+	anticipation = 2
+	reactiontime = 1
+	perception = 1
 	favoriteweapon = "ParticleSplitter"
 	color = "88 88 88"
 	gender = "male"
@@ -100,12 +119,12 @@
 {
 	//[CR]yler
 	name = "\cm[\cgCR\cm]\cgy\cmler"
-	accuracy = 4
-	intellect = 3
-	evade = 4
-	anticipation = 3
+	accuracy = 2
+	intellect = 1
+	evade = 2
+	anticipation = 2
 	reactiontime = 2
-	perception = 5
+	perception = 2
 	favoriteweapon = "SparkCannon"
 	color = "DD 00 00"
 	gender = "male"
@@ -118,17 +137,53 @@
 {
 	//[CR]abio
 	name = "\cm[\cgCR\cm]\cga\cmbio"
-	accuracy = 6
+	accuracy = 3
 	intellect = 2
-	evade = 5
-	anticipation = 4
-	reactiontime = 4
-	perception = 5
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 2
 	favoriteweapon = "BeamRifle"
 	color = "DD 00 00"
 	gender = "male"
 	railcolor = red
 	chatfrequency = 70
+	revealed = true
+	script = "humanbot"
+}
+
+{
+	//Kaminsky
+	name = "\c[V2]Ka\c[V6]minsky"
+	accuracy = 3
+	intellect = 3
+	evade = 3
+	anticipation = 3
+	reactiontime = 3
+	perception = 3
+	favoriteweapon = "PhotonCarbine"
+	color = "00 10 A0"
+	gender = "male"
+	railcolor = blue
+	chatfrequency = 60
+	revealed = true
+	script = "humanbot"
+}
+
+{
+	//Iko
+	name = "\c[a6]Iko"
+	accuracy = 3
+	intellect = 2
+	evade = -2
+	anticipation = 0
+	reactiontime = 1
+	perception = 0
+	favoriteweapon = "BeamRifle"
+	color = "FF 00 FF"
+	gender = "male"
+	railcolor = purple
+	chatfrequency = 50
 	revealed = true
 	script = "humanbot"
 }
