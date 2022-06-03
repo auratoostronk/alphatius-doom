@@ -1,8 +1,8 @@
 Actor HealFX
 {
-	+NONETID
 	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+NONETID
 	Vspeed 2
 	States
 	{
@@ -17,9 +17,9 @@ Actor NoPuff : BulletPuff
 	Projectile
 	Radius 2
 	Height 2
-	+NONETID
 	+NOINTERACTION
 	+CLIENTSIDEONLY
+	+NONETID
 	States
 	{
 	Spawn:
@@ -32,9 +32,10 @@ Actor RainDrop
 {
 	RenderStyle ADD
 	Scale 0.1
-	Vspeed -10
+	Vspeed -32
 	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+NONETID
 	States
 	{
 		Spawn:

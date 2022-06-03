@@ -27,7 +27,7 @@ Actor NanoShard : BasicArmorBonus replaces ArmorBonus
 	//Inventory.PickupSound "Pickups/NanoArmor"
 	Inventory.Icon "NANSD0"
 	Armor.SavePercent 100
-	Armor.SaveAmount 5
+	Armor.SaveAmount 2
 	Armor.MaxSaveAmount 25
 	Inventory.RespawnTics 350 //10 seconds
 	-INVENTORY.ALWAYSPICKUP

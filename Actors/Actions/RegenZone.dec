@@ -35,7 +35,6 @@ Actor RegenZone
 Actor RegenZoneFX
 {
 	+BRIGHT
-	+NONETID
 	+NOINTERACTION
 	+CLIENTSIDEONLY
 	States

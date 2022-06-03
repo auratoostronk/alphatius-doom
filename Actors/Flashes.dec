@@ -2,11 +2,11 @@
 
 ACTOR RedLight
 {
-	+NONETID
 	+NOGRAVITY
 	+DONTSPLASH
 	+NOINTERACTION
 	+CLIENTSIDEONLY
+	+NONETID
 	RenderStyle None
 	States
 	{

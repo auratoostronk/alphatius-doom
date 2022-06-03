@@ -37,7 +37,6 @@ Actor DroneLaserTrail
 	RenderStyle ADD
 	+NOINTERACTION
 	+CLIENTSIDEONLY
-	+NONETID
 	+BRIGHT
 	Scale 0.4
 	States
@@ -55,7 +54,6 @@ Actor DroneLaserFX
 	-NOGRAVITY
 	+NOINTERACTION
 	+CLIENTSIDEONLY
-	+NONETID
 	+BRIGHT
 	States
 	{

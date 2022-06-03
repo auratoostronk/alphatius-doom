@@ -90,6 +90,12 @@ statusbar fullscreen, fullscreenoffsets
 	{
 		drawBar "BLUFULL", "BLUEMPTY", Ammo MediumActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
 	}
+	
+	InInventory DecoySwapDuration, 1
+	{
+		drawstring SMALLFONT, Red, "Decoy Swap Duration", -10, -90, 0, alignment(right);
+		drawBar "REDFULL", "REDEMPTY", Ammo DecoySwapDuration, horizontal, Interpolate(20)|reverse, -210, -80;
+	}
 }
 //New Alt-Hud courtesy of BathySalts
 resolution 640, 400;

@@ -101,6 +101,7 @@ Script "RechargeTimers" ENTER
 			TakeInventory("ActionCD", 1);
 			TakeInventory("EnergyRechargeCD",1);
 			TakeInventory("AltFireFailCD", 1);
+			TakeInventory("DecoySwapDuration", 1);
 			
 			int movespeed = 1.0;
 			if(CheckInventory("TeslaSpeedBoost") >= 1)

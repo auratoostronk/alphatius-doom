@@ -123,7 +123,7 @@ Script "BloodFrenzyHit" (int type, int arg1, int arg2) EVENT
 Script "NegaBarrierBubbleFX" (void)
 {
 	int ptid = ActivatorTID();
-	int utid = UniqueTID(0, 999);
+	int utid = UniqueTID();
 	SpawnSpotForced("NegaBarrierBubble", 0, utid, 0);
 	SetActivator(utid);
 	while(CheckActorInventory(ptid, "NegaBarrier") && (ClassifyActor(ptid) & ACTOR_ALIVE) && !(ClassifyActor(ptid) & ACTOR_WORLD))

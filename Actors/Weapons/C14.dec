@@ -34,8 +34,7 @@ ACTOR C14 : Weapon 10005
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		TNT1 A 0 A_PlaySound("C14/Fire", CHAN_WEAPON)
 		TNT1 A 0 A_SpawnItemEX("GreenLightShoot")
-		TNT1 A 0 A_Recoil(1)
-		C14F A 2 A_FireCustomMissile("C14Projectile", frandom(-0.4,0.4), true, 0, -5.0, 0, frandom(-0.4,0.4))
+		C14F A 2 A_FireCustomMissile("C14Projectile", frandom(-0.2,0.2), true, 0, -5.0, 0, frandom(-0.2,0.2))
 		C14F BC 2
 		C14R A 2
 		Goto Ready
@@ -44,7 +43,7 @@ ACTOR C14 : Weapon 10005
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponAltFired", 0)
 		TNT1 A 0 A_SpawnItemEX("GreenLightShoot")
 		TNT1 A 0 A_PlaySound("GrenadeLaunch", CHAN_WEAPON)
-		TNT1 A 0 A_FireCustomMissile("C14GasGrenade", frandom(-0.4,0.4), true, 0.0, -2.0, 0, frandom(-0.4,0.4))
+		TNT1 A 0 A_FireCustomMissile("C14GasGrenade", frandom(-0.2,0.2), true, 0.0, -2.0, 0, frandom(-0.2,0.2))
 		C14R A 8
 		Goto Ready
 	AltFail:
@@ -62,9 +61,9 @@ Actor C14Projectile
 	Obituary "%k > \cdC14\c- > %o"
 	Projectile
 	Speed 128
-	-NOGRAVITY
+	//-NOGRAVITY
 	+BRIGHT
-	Gravity 0.6
+	//Gravity 0.6
 	Damage (0)
 	RenderStyle Add
 	ProjectileKickback 80
@@ -75,7 +74,6 @@ Actor C14Projectile
 		CPBL ABCDEFGHIJKL 1  A_SpawnItemEx("C14Trail")
 		Loop
 	Death:
-	    TNT1 A 0 A_PlaySound("LaserHit",CHAN_AUTO,1.0)
 		TNT1 A 0 A_SpawnItemEx("C14Blast1")
 		TNT1 AAAAAA 0 A_SpawnItemEx("C14Blast2", 0, 0, 0, frandom(-4, 4), frandom(-4, 4), frandom(2, 8))
 		TNT1 A 0 A_Quake(2, 4, 0, 128)
@@ -111,7 +109,7 @@ Actor C14Blast1
 	Renderstyle Add
 	+NOINTERACTION
 	+CLIENTSIDEONLY
-	+NONETID
+	
 	+FORCEXYBILLBOARD
 	+BRIGHT
 	States
@@ -159,7 +157,6 @@ Actor C14GasGrenade
 	Projectile
 	Speed 48
 	Damage (10)
-	+PIERCEARMOR
 	Obituary "%k > \cdC14 (Alt Impact)\c- > %o"
 	-NOGRAVITY
 	+NOBLOOD
@@ -235,6 +232,7 @@ Actor C14GasDamage
 	+NOGRAVITY
 	+NODAMAGETHRUST
 	+DONTSPLASH
+	+NONETID
 	DamageType "ToxicGas"
 	Obituary "%k > \cdC14 (Alt)\c- > %o"
 	args 0, 0

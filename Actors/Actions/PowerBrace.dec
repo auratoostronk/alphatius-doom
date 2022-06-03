@@ -1,6 +1,5 @@
 Actor PowerBrace : PowerProtection
 {
-	+NONETID
 	DamageFactor "Normal", 0.25
 	Powerup.Duration 350
 	Powerup.Color "00 40 00"

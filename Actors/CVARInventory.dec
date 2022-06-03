@@ -3,7 +3,7 @@
 //scripts use these inventory items instead of the cvar, so that your travel
 //abilities and such change only after dying.
 
-Actor TravelThrusterBoots : Inventory {
+Actor TravelThrusterBoots : Inventory { 
 	+NONETID
 	Inventory.MaxAmount 1 }
 Actor TravelJumpThrust : Inventory { 
@@ -12,17 +12,11 @@ Actor TravelJumpThrust : Inventory {
 Actor TravelWarpDrive : Inventory { 
 	+NONETID
 	Inventory.MaxAmount 1 }
-Actor TravelHyperdrive : Inventory { 
+Actor TravelHyperdrive : Inventory {
 	+NONETID
-	Inventory.MaxAmount 1 }
+	 Inventory.MaxAmount 1 }
 	
-Actor PassiveRapidAlt : Inventory {
-	+NONETID
-	Inventory.MaxAmount 1 }
-Actor PassiveBloodFrenzy : Inventory {
-	+NONETID
-	Inventory.MaxAmount 1 }
-Actor PassiveAssassin : Inventory {
+Actor PassiveRapidAlt : Inventory { 
 	+NONETID
 	Inventory.MaxAmount 1 }
 Actor PassiveOverclocked : Inventory { 
@@ -57,8 +51,5 @@ Actor ActionDecoyHologram : Inventory {
 	+NONETID
 	Inventory.MaxAmount 1 }
 Actor ActionAutoDrone : Inventory { 
-	+NONETID
-	Inventory.MaxAmount 1 }
-Actor ActionEnergyZone : Inventory { 
 	+NONETID
 	Inventory.MaxAmount 1 }

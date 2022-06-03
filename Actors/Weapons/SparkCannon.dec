@@ -45,9 +45,9 @@ ACTOR SparkCannon : Weapon 10009
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		TNT1 A 0 A_SpawnItemEX("RedLightShoot")
 		TNT1 A 0 A_PlaySound("SparkCannon/Fire", CHAN_WEAPON)
-		TNT1 A 0 A_Recoil(8)
-		SPKF D 4 A_RailAttack(80, 0, true, "none", "none", RGF_SILENT, 0.0, "LaserSparkDot", 0, 0, 16384.0, 2, 4.0, 0, "LaserSpark2", -2)
-		SPKF E 44
+		TNT1 A 0 A_Recoil(4)
+		SPKF D 4 A_RailAttack(70, 0, true, "none", "none", RGF_SILENT, 0.0, "LaserSparkDot", 0, 0, 16384.0, 2, 4.0, 0, "LaserSpark2", -2)
+		SPKF E 52
 		Goto Ready
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("SparkAltCD", 1, "AltFail")
@@ -68,7 +68,6 @@ Actor LaserSpark
 {
 	Scale 0.3
 	Renderstyle Add
-	+NONETID
 	+NOINTERACTION
 	+CLIENTSIDEONLY
 	+BRIGHT
@@ -93,7 +92,6 @@ Actor LaserSpark2 : LaserSpark
 }
 Actor LaserSparkDot : BulletPuff
 {
-	+NONETID
 	+PUFFONACTORS
 	+AlWAYSPUFF
 	//-RANDOMIZE
@@ -178,8 +176,8 @@ Actor FluxOrbFX
 	+BOUNCEONCEILINGS
 	+BOUNCEONWALLS
 	+BOUNCEONACTORS
-	+NONETID
 	+CLIENTSIDEONLY
+	+NONETID
 	BounceType Doom
 	BounceFactor 0.6
 	BounceCount 3

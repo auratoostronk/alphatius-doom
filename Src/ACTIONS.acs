@@ -159,6 +159,12 @@ Script "DecoyHologram" (void)
 			{
 				SpawnSpotFacingForced("DecoyHologramLightBlue", 0, utid);
 			}
+			Thing_SetTranslation(utid, -1);
+			if(CheckInventory("NegaBarrier") > 0)
+			{
+				ACS_NamedExecuteAlways("DecoyBarrier", 0, utid);
+			}
+			GiveInventory("DecoySwapDuration", 96);
 			displayHUDText("Reactivate to swap.", 0.6, 2.0, 1301);
 			decoyIDs[PlayerNumber()] = utid;
 		}
@@ -176,6 +182,18 @@ Script "DecoyWalk" (void)
 		SetActorVelocity(0, FixedMul(12.0, cos(GetActorAngle(0))), FixedMul(12.0, sin(GetActorAngle(0))), GetActorVelZ(0), false, false);
 		delay(1);
 	}
+}
+Script "DecoyBarrier" (int ptid)
+{
+	int utid = UniqueTID();
+	SpawnSpotForced("NegaBarrierBubble", 0, utid, 0);
+	SetActivator(utid);
+	while((ClassifyActor(ptid) & ACTOR_ALIVE) && !(ClassifyActor(ptid) & ACTOR_WORLD))
+	{
+		Warp(ptid, 0, 0, 0, 0.0, WARPF_NOCHECKPOSITION);
+		delay(1);
+	}
+	Thing_Remove(utid);
 }
 Script "AutoDrone" (void)
 {

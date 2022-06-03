@@ -11,7 +11,6 @@ Script "AlphatiusDamage" (int type, int dmg, int dmgType) EVENT
 {
 	if(type == 12)//GAMEEVENT_ACTOR_ARMORDAMAGED 
 	{
-		TakeInventory("NegaBarrier", 1);
 		if(dmgType == "FlamespitterThermite")
 		{
 			GiveInventory("ThermiteDebuff", 105);
@@ -20,6 +19,8 @@ Script "AlphatiusDamage" (int type, int dmg, int dmgType) EVENT
 		{
 			GiveInventory("TaserProtection", 1);
 		}
+		delay(1);
+		TakeInventory("NegaBarrier", 1);
 	}
 	
 }

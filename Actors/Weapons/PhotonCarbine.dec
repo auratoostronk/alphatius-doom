@@ -156,9 +156,9 @@ Actor PhotonGrenadeTrail
 {
 	Radius 2
 	Height 2
+	+NONETID
 	+CLIENTSIDEONLY
 	+NOINTERACTION
-	+NONETID
 	+BRIGHT
 	Scale 0.12
 	RenderStyle Add
@@ -175,9 +175,9 @@ Actor PhotonGrenadeDeathFX
 {
 	RenderStyle ADD
 	Scale 0.8
+	+NONETID
 	+CLIENTSIDEONLY
 	+NOINTERACTION
-	+NONETID
 	+BRIGHT
 	States
 	{

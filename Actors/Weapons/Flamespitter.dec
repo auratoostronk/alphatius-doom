@@ -50,7 +50,7 @@ Actor Flamespitter : Weapon 10010
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponAltFired", 0)
 		TNT1 A 0 A_SpawnItemEX("OrangeLightShoot", 0, 0, 0)
 		TNT1 A 0 A_PlaySound("GrenadeLaunch", CHAN_WEAPON)
-		TNT1 A 0 A_Recoil(6)
+		TNT1 A 0 A_Recoil(4)
 		TNT1 A 0 Bright A_FireCustomMissile("FlamespitterThermite")
 		Goto FireAnim
 	FireAnim:
@@ -74,8 +74,8 @@ Actor FlamespitterProjectile
 {
 	Projectile
 	Speed 32
-	Radius 16
-	Height 32
+	Radius 14
+	Height 28
 	Damage (3)
 	Scale 0.4
 	Renderstyle Add
@@ -241,7 +241,6 @@ Actor ThermiteChainReactFX
 }
 Actor ThermiteDebuff : Inventory
 {
-	+NONETID
 	Inventory.MaxAmount 105
 }
 Actor ThermiteFX

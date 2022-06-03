@@ -29,6 +29,10 @@ Actor PowerWarpInvulnerability : PowerInvulnerable
 	Powerup.Duration 5
 }
 //Used by certain healing items to spawn HealFX particles
-Actor IsHealing : Inventory {
+Actor IsHealing : Inventory { 
 	+NONETID
 	Inventory.MaxAmount 1 }
+	
+Actor DecoySwapDuration : Ammo { 
+	+NONETID
+	Inventory.MaxAmount 96 }
