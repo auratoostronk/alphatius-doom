@@ -1,23 +1,19 @@
 //Used for detonating missiles and Particle Cones etc.
 Actor AltFirePressed : Inventory
 {
-	+NONETID
 	Inventory.MaxAmount 1
 }
 Actor AltFireReleased : Inventory
 {
-	+NONETID
 	Inventory.MaxAmount 1
 }
 Actor HyperdriveSpeed : Inventory
 {
-	+NONETID
 	Inventory.MaxAmount 1
 }
 //For Warp Drive
 Actor PowerWarpInvisibility : PowerInvisibility
 {
-	+NONETID
 	Powerup.Strength 100
 	Powerup.Mode "Translucent"
 	Powerup.Duration 5
@@ -25,14 +21,16 @@ Actor PowerWarpInvisibility : PowerInvisibility
 //For Warp Drive
 Actor PowerWarpInvulnerability : PowerInvulnerable
 {
-	+NONETID
 	Powerup.Duration 5
 }
 //Used by certain healing items to spawn HealFX particles
-Actor IsHealing : Inventory { 
-	+NONETID
-	Inventory.MaxAmount 1 }
+Actor IsHealing : Inventory { Inventory.MaxAmount 1 }
 	
-Actor DecoySwapDuration : Ammo { 
-	+NONETID
-	Inventory.MaxAmount 96 }
+Actor DecoySwapDuration : Ammo { Inventory.MaxAmount 96 }
+
+Actor BotSpeedDebuff : PowerSpeed
+{
+	+POWERSPEED.NOTRAIL
+	Powerup.Strength 0.8
+	Powerup.Duration 0xfffffd
+}

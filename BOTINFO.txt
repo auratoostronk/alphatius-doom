@@ -29,8 +29,8 @@
 }
 
 {
-	//[UD]Xenaero
-	name = "[UD]Xen"
+	//Xenaero
+	name = "\c[L7]Xen"
 	accuracy = 2
 	intellect = 2
 	evade = 1

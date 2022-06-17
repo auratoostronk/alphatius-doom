@@ -50,7 +50,7 @@ Script "TravelAbility" (void) net
 		}
 		else
 		{
-			displayHUDText("Error in processing your travel ability. Reset it in the loadout menu.", 0.6, 2.0, 1301);
+			//displayHUDText("Error in processing your travel ability. Reset it in the loadout menu.", 0.6, 2.0, 1301);
 			LocalAmbientSound("General/Fail",96);
 		}
 	}

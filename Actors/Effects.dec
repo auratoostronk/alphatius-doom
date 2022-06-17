@@ -2,7 +2,6 @@ Actor HealFX
 {
 	+CLIENTSIDEONLY
 	+NOINTERACTION
-	+NONETID
 	Vspeed 2
 	States
 	{
@@ -19,7 +18,6 @@ Actor NoPuff : BulletPuff
 	Height 2
 	+NOINTERACTION
 	+CLIENTSIDEONLY
-	+NONETID
 	States
 	{
 	Spawn:
@@ -35,7 +33,6 @@ Actor RainDrop
 	Vspeed -32
 	+CLIENTSIDEONLY
 	+NOINTERACTION
-	+NONETID
 	States
 	{
 		Spawn:

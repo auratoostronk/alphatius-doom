@@ -106,7 +106,7 @@ Script "SetupBot" (void)
 		GiveInventory("NegaBarrier", 1);
 		ACS_NamedExecuteAlways("NegaBarrierBubbleFX", 0);
 	}
-	SetActorProperty(0, APROP_SPEED, GetActorProperty(0, APROP_SPEED) * 0.8);
+	GiveInventory("BotSpeedDebuff", 1);
 	ACS_NamedExecuteAlways("StartBotAliveTimer", 0);
 }
 Script "StartBotAliveTimer" (void)

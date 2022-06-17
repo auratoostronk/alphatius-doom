@@ -6,7 +6,6 @@ ACTOR RedLight
 	+DONTSPLASH
 	+NOINTERACTION
 	+CLIENTSIDEONLY
-	+NONETID
 	RenderStyle None
 	States
 	{

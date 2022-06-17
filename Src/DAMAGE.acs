@@ -28,9 +28,9 @@ Script "AlphatiusDamageNumbers" ENTER
 {
 	while(true)
 	{
-		int oldHealth = GetActorProperty(0, APROP_HEALTH) + GetArmorInfo(ARMORINFO_SAVEAMOUNT);
+		int oldHealth = GetActorProperty(0, APROP_HEALTH);// + GetArmorInfo(ARMORINFO_SAVEAMOUNT);
 		delay(1);
-		int newHealth = GetActorProperty(0, APROP_HEALTH) + GetArmorInfo(ARMORINFO_SAVEAMOUNT);
+		int newHealth = GetActorProperty(0, APROP_HEALTH);// + GetArmorInfo(ARMORINFO_SAVEAMOUNT);
 		int damage = oldHealth - newHealth;
 		if(damage != 0)
 			ACS_NamedExecuteAlways("AlphatiusPain", 0, damage);

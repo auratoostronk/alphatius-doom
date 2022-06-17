@@ -106,7 +106,11 @@ Script "PowerBraceBubbleFX" (void)
 	}
 	Thing_Remove(utid);
 }
-
+Script "DecoyUserDeath" DEATH
+{
+	//Breaks the link between the player and their decoy so that they cannot swap back to their decoy on death.
+	decoyIDs[PlayerNumber()] = 0;
+}
 Script "DecoyHologram" (void)
 {
 	if(isTIDUsed(decoyIDs[PlayerNumber()]) && decoyIDs[PlayerNumber()] != 0)
@@ -129,7 +133,7 @@ Script "DecoyHologram" (void)
 	{
 		if(CheckInventory("ActionCD") == 0)
 		{
-			GiveInventory("ActionCD", GetAmmoCapacity("FastActionCharge"));
+			GiveInventory("ActionCD", GetAmmoCapacity("MediumActionCharge"));
 			int utid = UniqueTID();
 			if(GetWeapon() == "C14" || GetWeapon() == "C14Alt")
 			{
@@ -165,7 +169,7 @@ Script "DecoyHologram" (void)
 				ACS_NamedExecuteAlways("DecoyBarrier", 0, utid);
 			}
 			GiveInventory("DecoySwapDuration", 96);
-			displayHUDText("Reactivate to swap.", 0.6, 2.0, 1301);
+			displayHUDText("Reactivate to swap.", 0.6, 3.0, 1301);
 			decoyIDs[PlayerNumber()] = utid;
 		}
 		else
@@ -225,7 +229,12 @@ Script "SonicShockwave" (void)
 		Thing_Stop(0);
 		SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
 		SpawnSpotFacingForced("SonicShockwaveSpawner", 0, 0);
-		delay(16);
+		for(int i = 0; i < 16; i++)
+		{
+			Thing_Stop(0);
+			delay(1);
+		}
+		ThrustThingZ(0, 128, 1, 1);
 		SpawnProjectile(0, "SonicShockwaveMissile", 0, 0, 0, 0, 0);
 		//Need this so people don't abuse the damage buff from Assassin's Tactics while not firing their weapon.
 		//ACS_NamedExecuteAlways("CheckAssassinTactics", 0);

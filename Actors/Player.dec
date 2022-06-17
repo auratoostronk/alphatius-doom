@@ -40,7 +40,7 @@ Actor AlphatiusPlayer : PlayerPawn
 		PLAY G 2 Bright
 		PLAY G 3 Bright A_Pain
 		Goto Spawn
-	//This is now handled in WEAPONS.acs
+	//This is now handled in DAMAGE.acs
 	/*Pain.TeslaTaser:
 		TNT1 A 0 A_GiveInventory("TaserProtection", 1)
 		Goto Pain

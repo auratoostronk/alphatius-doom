@@ -69,15 +69,15 @@ Actor Flamespitter : Weapon 10010
 		Goto Ready
 	}
 }
-
+const float flame_slowspeed = -5.0;
 Actor FlamespitterProjectile
 {
 	Projectile
-	Speed 32
-	Radius 14
-	Height 28
+	Speed 24
+	Radius 12
+	Height 20
 	Damage (3)
-	Scale 0.4
+	Scale 0.3
 	Renderstyle Add
 	Alpha 0.3
 	DamageType "FlamespitterFlames"
@@ -91,17 +91,17 @@ Actor FlamespitterProjectile
 		Spawn:
 		OFLM A 4 A_SetScale(scalex + frandom(-0.1, 0.1), scaley + frandom(-0.1, 0.1))
 		TNT1 A 0 A_SetScale(scalex + 0.1, scaley + 0.1)
-		OFLM B 4 A_ChangeVelocity(-6, 0.0, 0.0, CVF_RELATIVE)
+		OFLM B 4 A_ChangeVelocity(flame_slowspeed, 0.0, 0.0, CVF_RELATIVE)
 		TNT1 A 0 A_SetScale(scalex + 0.1, scaley + 0.1)
-		OFLM C 4 A_ChangeVelocity(-6, 0.0, 0.0, CVF_RELATIVE)
+		OFLM C 4 A_ChangeVelocity(flame_slowspeed, 0.0, 0.0, CVF_RELATIVE)
 		TNT1 A 0 A_SetScale(scalex + 0.1, scaley + 0.1)
-		OFLM D 4 A_ChangeVelocity(-6, 0.0, 0.0, CVF_RELATIVE)
+		OFLM D 4 A_ChangeVelocity(flame_slowspeed, 0.0, 0.0, CVF_RELATIVE)
 		TNT1 A 0 A_SetScale(scalex + 0.1, scaley + 0.1)
-		OFLM E 4 A_ChangeVelocity(-6, 0.0, 0.0, CVF_RELATIVE)
+		OFLM E 4 A_ChangeVelocity(flame_slowspeed, 0.0, 0.0, CVF_RELATIVE)
 		TNT1 A 0 A_SetScale(scalex + 0.1, scaley + 0.1)
-		OFLM F 4 A_ChangeVelocity(-6, 0.0, 0.0, CVF_RELATIVE)
+		OFLM F 4 A_ChangeVelocity(flame_slowspeed, 0.0, 0.0, CVF_RELATIVE)
 		TNT1 A 0 A_SetScale(scalex + 0.1, scaley + 0.1)
-		OFLM G 4 A_ChangeVelocity(-6, 0.0, 0.0, CVF_RELATIVE)
+		OFLM G 4 A_ChangeVelocity(flame_slowspeed, 0.0, 0.0, CVF_RELATIVE)
 		Goto Death
 		Death:
 		TNT1 A 1

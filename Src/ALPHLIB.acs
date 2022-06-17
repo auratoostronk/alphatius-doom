@@ -15,6 +15,7 @@ str WEAP_ENERGYNAMES[NUM_WEAPS] = 	{"SMGEnergy", 	"PumpSGEnergy", 		"CarbineEner
 str WEAP_COOLDOWNNAMES[NUM_WEAPS] = {"SMGAltCD", 	"PumpSGAltCD", 			"CarbineAltCD",	 	"C14AltCD", 	"SparkAltCD", 		/*"RocketAltCD",*/ 		"FlameAltCD", 		"BeamAltCD"};
 str WEAP_COLORS[NUM_WEAPS] = 		{"Yellow", 		"Purple", 				"Blue", 			"Green", 		"Red", 				/*"Gray",*/ 			"Orange", 			"LightBlue"};
 
+
 function int abs (int x)
 {
     if (x < 0)
@@ -125,35 +126,12 @@ Script "RechargeTimers" ENTER
 				}
 				TakeInventory("NoLowEnergySound", 1);
 				LocalAmbientSound("General/WeaponReady", 0.5);
-				/*
-				if(CheckInventory("PassiveAssassin") > 0)
-				{
-					GiveInventory("PowerAssassinBuff", 1);
-				}
-				if(CheckInventory("PassiveBloodFrenzy") > 0)
-				{
-					TakeInventory("PowerBloodFrenzy1", 1);
-					TakeInventory("PowerBloodFrenzy2", 1);
-					TakeInventory("PowerBloodFrenzy3", 1);
-					TakeInventory("PowerBloodFrenzy4", 1);
-					TakeInventory("PowerBloodFrenzy5", 1);
-				}*/
 			}
 			
 		}
 		delay(1);
 	}
 }
-/*
-Script "CheckAssassinTactics" (void)
-{
-	//Removes "Assassin's Tactics" buff from the player's inventory and replaces it with the same powerup that last a short while after.
-	if(CheckInventory("PassiveAssassin") > 0)
-	{
-		TakeInventory("PowerAssassinBuff", 999);
-		GiveInventory("PowerAssassinBuff2", 1);
-	}
-}*/
 //Checks for detonating mid-air rockets and energy grenades.
 Script "CheckAltFirePressed" ENTER
 {
@@ -178,15 +156,92 @@ Script "CheckAltFirePressed" ENTER
 	}
 }
 /*
-//For the Particle splitter's Decay mod. Flings decay pellets in multiple lateral directions when a player dies to a decay pellet.
-Script "PlayerDeathByDecayPellet" (void)
+Script "IntroSequence" OPEN
 {
-	int initid = ActivatorTID();
-	SetActivator(0, AAPTR_TARGET);
-	for(int i = 0; i < 256; i += 8)
+	introSequenceTime = 350;
+	while(PlayerCount() == 0)
 	{
-		int projid = UniqueTID(1, 0);
-		SpawnProjectile(0, "SGDecayPellet2", i, 144, 0, 0, projid);
-		SetActorPosition(projid, GetActorX(initid), GetActorY(initid), GetActorZ(initid) + 32.0, false);
+		delay(1);
 	}
+	while(PlayerCount() > 0)
+	{
+		introSequenceTime--;
+		delay(1);
+		if(PlayerCount() == 0)
+		{
+			restart;
+		}
+	}	
+}
+Script "IntroSequenceEnter" ENTER
+{
+	while(introSequenceTime > 0)
+	{
+		SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
+		SetFont("BIGFONT");
+		HudMessage(i:(introSequenceTime / 35) + 1; HUDMSG_PLAIN, 1501, CR_RED, 0.5, 0.5, 1.0);
+		delay(1);
+		str loadoutnum = "1";
+		if(introSequenceTime == 35 * 8)
+		{
+			LocalAmbientSound("General/AltReady", 1.0);
+			switch(GetCVAR("alph_loadout"))
+			{
+				case 1:
+				loadoutnum = "2";
+				break;
+				case 2:
+				loadoutnum = "3";
+				break;
+				case 3:
+				loadoutnum = "4";
+				break;
+				default:
+				loadoutnum = "1";
+				break;
+			}
+			GiveInventory(GetCVARString(StrParam(s:"alph_startweapon", s:loadoutnum)), 1);
+			
+			if(	!CheckInventory("PhotonCarbine") &&
+				!CheckInventory("ParticleSplitter") &&
+				!CheckInventory("TeslaSMG") &&
+				!CheckInventory("C14") &&
+				!CheckInventory("SparkCannon") &&
+				!CheckInventory("Flamespitter") && 
+				!CheckInventory("BeamRifle"))
+				{
+					GiveInventory("PhotonCarbine", 1);
+				}
+		}
+		if(introSequenceTime == 35 * 5)
+		{
+			LocalAmbientSound("General/WeaponReady", 1.0);
+			for(int j = 0; j < NUM_WEAPS; j++)
+			{
+				GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
+			}
+		}
+		if(introSequenceTime == 35 * 3)
+		{
+			LocalAmbientSound("announcer/an/three", 1.0);
+		}
+		if(introSequenceTime == 35 * 2)
+		{
+			LocalAmbientSound("announcer/an/two", 1.0);
+		}
+		if(introSequenceTime == 35 * 1)
+		{
+			LocalAmbientSound("announcer/an/one", 1.0);
+		}
+	}
+	SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
+	if(ClassifyActor(0) & ACTOR_BOT)
+	{
+		ACS_NamedExecuteAlways("SetupBot", 0);
+	}
+	else
+	{
+		ACS_NamedExecuteAlways("SetupPlayerMP", 0);
+	}
+	ACS_NamedExecuteAlways("SBARActionFixer", 0);
 }*/
