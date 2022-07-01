@@ -4,7 +4,6 @@ SparkCannon/AltFire			SPARKALT
 
 C14/Fire					C14FIRE
 C14/GasHiss					GASHISS
-C14/AltCharge				FDLCHARG
 C14HIT1 C14HIT1
 C14HIT2 C14HIT2
 C14HIT3 C14HIT3
@@ -21,19 +20,16 @@ TeslaSMG/AltFire			TSMGALTF
 TeslaSMG/AltFireHit			TSMGHIT
 
 ParticleSplitter/Fire		PSSGFIRE
-ParticleSplitter/FlameStart SGFLAME1
-ParticleSplitter/FlameLoop 	SGFLAME2
-ParticleSplitter/FlameStop	SGFLAME3
 ParticleSplitter/Pump		PSSGPUMP
 
-RocketCannon/Load 		CRCLOAD1
-RocketCannon/Fire 		CRCFIRE1 
-RocketCannon/Detonate 	CRCDET
-RocketCannon/Flyby		CRCFLYBY
-
 BeamRifle/Fire			BEAMFIRE
+BeamRifle/AltCharge 	C14CHARG
 BeamRifle/AltFire		BEAMALTF
 BeamRifle/FireStop		NOTHING1
+
+Flamespitter/FlameStart SGFLAME1
+Flamespitter/FlameLoop 	SGFLAME2
+Flamespitter/FlameStop	SGFLAME3
 
 //WEAPON EFFECTS
 

@@ -1,44 +1,37 @@
 
 Actor SparkAltCD : Ammo
 {
-	+NONETID
 	Inventory.MaxAmount 210
 	Ammo.BackpackMaxAmount 210
 }
 Actor CarbineAltCD : Ammo
 {
-	+NONETID
 	Inventory.MaxAmount 210
 	Ammo.BackpackMaxAmount 210
 }
 Actor C14AltCD : Ammo
 {
-	+NONETID
 	Inventory.MaxAmount 350
 	Ammo.BackpackMaxAmount 350
 }
 Actor SMGAltCD : Ammo
 {
-	+NONETID
 	Inventory.MaxAmount 105
 	Ammo.BackpackMaxAmount 105
 }
 Actor PumpSGAltCD : Ammo
 {
-	+NONETID
 	Inventory.MaxAmount 70
 	Ammo.BackpackMaxAmount 70
 }
 Actor FlameAltCD : Ammo
 {
-	+NONETID
 	Inventory.MaxAmount 210
 	Ammo.BackpackMaxAmount 210
 }
 //Placeholder. Does nothing.
 Actor BeamAltCD : Ammo
 {
-	+NONETID
-	Inventory.MaxAmount 35
-	Ammo.BackpackMaxAmount 35
+	Inventory.MaxAmount 210
+	Ammo.BackpackMaxAmount 210
 }

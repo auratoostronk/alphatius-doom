@@ -63,7 +63,7 @@ Actor PhotonProjectile : FastProjectile
 	Scale 1.5
 	Speed 192
 	Decal RailScorchLower
-	Damage (14)
+	Damage (15)
 	Renderstyle Add
 	Obituary "%k > \cvPhoton Carbine\c- > %o"
 	+BRIGHT
@@ -86,7 +86,6 @@ Actor PhotonTrail
 	RenderStyle ADD
 	+NOINTERACTION
 	+CLIENTSIDEONLY
-	+NONETID
 	+BRIGHT
 	Scale 0.6
 	States
@@ -107,7 +106,6 @@ Actor PhotonDeathFX
 	+NOCLIP
 	+NOBLOCKMAP
 	+CLIENTSIDEONLY
-	+NONETID
 	+BRIGHT
 	States
 	{
@@ -156,7 +154,6 @@ Actor PhotonGrenadeTrail
 {
 	Radius 2
 	Height 2
-	+NONETID
 	+CLIENTSIDEONLY
 	+NOINTERACTION
 	+BRIGHT
@@ -175,7 +172,6 @@ Actor PhotonGrenadeDeathFX
 {
 	RenderStyle ADD
 	Scale 0.8
-	+NONETID
 	+CLIENTSIDEONLY
 	+NOINTERACTION
 	+BRIGHT
@@ -197,7 +193,6 @@ Actor PhotonGrenadeDeathDots
 	+BOUNCEONWALLS
 	+BOUNCEONACTORS
 	+CLIENTSIDEONLY
-	+NONETID
 	BounceType Doom
 	BounceFactor 0.6
 	BounceCount 3

@@ -113,7 +113,7 @@ Script "DecoyUserDeath" DEATH
 }
 Script "DecoyHologram" (void)
 {
-	if(isTIDUsed(decoyIDs[PlayerNumber()]) && decoyIDs[PlayerNumber()] != 0)
+	/*if(isTIDUsed(decoyIDs[PlayerNumber()]) && decoyIDs[PlayerNumber()] != 0)
 	{
 		int tempTID = UniqueTID();
 		int aTID = ActivatorTID();
@@ -130,11 +130,11 @@ Script "DecoyHologram" (void)
 		decoyIDs[PlayerNumber()] = 0;
 	}
 	else
-	{
+	{*/
 		if(CheckInventory("ActionCD") == 0)
 		{
 			GiveInventory("ActionCD", GetAmmoCapacity("MediumActionCharge"));
-			int utid = UniqueTID();
+			int utid = 0;//UniqueTID();
 			if(GetWeapon() == "C14" || GetWeapon() == "C14Alt")
 			{
 				SpawnSpotFacingForced("DecoyHologramGreen", 0, utid);
@@ -168,15 +168,15 @@ Script "DecoyHologram" (void)
 			{
 				ACS_NamedExecuteAlways("DecoyBarrier", 0, utid);
 			}
-			GiveInventory("DecoySwapDuration", 96);
-			displayHUDText("Reactivate to swap.", 0.6, 3.0, 1301);
-			decoyIDs[PlayerNumber()] = utid;
+			//GiveInventory("DecoySwapDuration", 96);
+			//displayHUDText("Reactivate to swap.", 0.6, 3.0, 1301);
+			//decoyIDs[PlayerNumber()] = utid;
 		}
 		else
 		{
 			ACS_NamedExecuteAlways("Action1Fail", 0);
 		}
-	}
+	//}
 }
 Script "DecoyWalk" (void)
 {

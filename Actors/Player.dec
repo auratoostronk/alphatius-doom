@@ -20,6 +20,7 @@ Actor AlphatiusPlayer : PlayerPawn
 	Player.StartItem "C14RespawnProtection2"
 	Species "PlayerRelated"
 	+TELESTOMP
+	+USEDAMAGEEVENTSCRIPT 
 	States
 	{
 	Spawn:

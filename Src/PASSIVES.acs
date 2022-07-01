@@ -7,13 +7,13 @@
 //#define ADRUSH_DURATION 70.0
 //#define ADRUSH_HEAL 20
 #define BANDOLIER_RESTORE 0.5
-#define RAPIDALT_RESTORE 1.0
+#define RAPIDALT_RESTORE 0.4
 
 function void rapidAlt(void)
 {
 	for(int i = 0; i < NUM_WEAPS; i++)
 	{
-		TakeInventory(WEAP_COOLDOWNNAMES[i], (GetAmmoCapacity(WEAP_COOLDOWNNAMES[i]) * RAPIDALT_RESTORE) >> 16);
+		TakeInventory(WEAP_COOLDOWNNAMES[i], (CheckInventory(WEAP_COOLDOWNNAMES[i]) * RAPIDALT_RESTORE) >> 16);
 	}
 	LocalAmbientSound("General/AltReady", 0.5);
 }
@@ -55,7 +55,7 @@ Script "OverclockedTimer" (void)
 		{
 			TakeInventory("ActionCD", 1);
 		}
-		delay(3);
+		delay(4);
 	}
 }
 Script "SpeedDemonTimer" (void)
@@ -69,7 +69,7 @@ Script "SpeedDemonTimer" (void)
 			TakeInventory("HDriveCD", 1);
 			TakeInventory("JThrustCD", 1);
 		}
-		delay(4);
+		delay(5);
 	}
 }
 Script "AdrenalineRush" (void)
@@ -80,46 +80,6 @@ Script "AdrenalineRush" (void)
 		GiveInventory("Health", 1);
 	}
 }
-/*
-Script "BloodFrenzyHit" (int type, int arg1, int arg2) EVENT
-{
-	if(type == 11)//GAMEEVENT_ACTOR_DAMAGED 
-	{
-		SetActivator(0, AAPTR_DAMAGE_SOURCE);
-		if(CheckInventory("PassiveBloodFrenzy") > 0 && CheckInventory("BloodFrenzyBoostCD") == 0)
-		{
-			if(CheckInventory("PowerBloodFrenzy4") > 0)
-			{
-				TakeInventory("PowerBloodFrenzy4", 1);
-				GiveInventory("PowerBloodFrenzy5", 1);
-				GiveInventory("BloodFrenzyBoostCD", GetAmmoCapacity("BloodFrenzyBoostCD"));
-			}
-			else if(CheckInventory("PowerBloodFrenzy3") > 0)
-			{
-				TakeInventory("PowerBloodFrenzy3", 1);
-				GiveInventory("PowerBloodFrenzy4", 1);
-				GiveInventory("BloodFrenzyBoostCD", GetAmmoCapacity("BloodFrenzyBoostCD"));
-			}
-			else if(CheckInventory("PowerBloodFrenzy2") > 0)
-			{
-				TakeInventory("PowerBloodFrenzy2", 1);
-				GiveInventory("PowerBloodFrenzy3", 1);
-				GiveInventory("BloodFrenzyBoostCD", GetAmmoCapacity("BloodFrenzyBoostCD"));
-			}
-			else if(CheckInventory("PowerBloodFrenzy1") > 0)
-			{
-				TakeInventory("PowerBloodFrenzy1", 1);
-				GiveInventory("PowerBloodFrenzy2", 1);
-				GiveInventory("BloodFrenzyBoostCD", GetAmmoCapacity("BloodFrenzyBoostCD"));
-			}
-			else
-			{
-				GiveInventory("PowerBloodFrenzy1", 1);
-				GiveInventory("BloodFrenzyBoostCD", GetAmmoCapacity("BloodFrenzyBoostCD"));
-			}
-		}
-	}
-}*/
 Script "NegaBarrierBubbleFX" (void)
 {
 	int ptid = ActivatorTID();

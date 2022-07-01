@@ -61,7 +61,7 @@ Actor C14Projectile
 	Projectile
 	Speed 128
 	+BRIGHT
-	Damage (2)
+	Damage (0)
 	RenderStyle Add
 	ProjectileKickback 80
 	Decal BigScorch
@@ -75,7 +75,7 @@ Actor C14Projectile
 		TNT1 AAAAAA 0 A_SpawnItemEx("C14Blast2", 0, 0, 0, frandom(-4, 4), frandom(-4, 4), frandom(2, 8))
 		TNT1 A 0 A_Quake(2, 4, 0, 128)
 		TNT1 A 0 A_Explode(18, 96)
-		TNT1 A 0 A_Explode(4, 96, XF_HURTSOURCE, true, 96)
+		TNT1 A 0 A_Explode(6, 96, XF_HURTSOURCE, true, 96)
 		TNT1 A 35 A_PlaySound("C14/Hit", CHAN_AUTO)
 		Stop
 	}
@@ -87,10 +87,8 @@ Actor C14Trail
 	Renderstyle Add
 	+NOINTERACTION
 	+CLIENTSIDEONLY
-	+NONETID
 	+FORCEXYBILLBOARD
 	+BRIGHT
-		
 	States 
 	{
 	Spawn:
@@ -106,7 +104,6 @@ Actor C14Blast1
 	Renderstyle Add
 	+NOINTERACTION
 	+CLIENTSIDEONLY
-	
 	+FORCEXYBILLBOARD
 	+BRIGHT
 	States
@@ -129,7 +126,6 @@ Actor C14Blast2
 	+BOUNCEONWALLS
 	+BOUNCEONACTORS
 	+CLIENTSIDEONLY
-	+NONETID
 	BounceType Doom
 	BounceFactor 0.5
 	BounceCount 2
@@ -209,7 +205,6 @@ Actor C14GasCloud
 	Height 2
     +NOINTERACTION
 	+CLIENTSIDEONLY
-	+NONETID
 	Speed 10
 	Scale 2.0
 	States
@@ -229,7 +224,6 @@ Actor C14GasDamage
 	+NOGRAVITY
 	+NODAMAGETHRUST
 	+DONTSPLASH
-	+NONETID
 	DamageType "ToxicGas"
 	Obituary "%k > \cdC14 (Alt)\c- > %o"
 	args 0, 0
@@ -250,7 +244,6 @@ Actor C14GasDamageIndicator
 	+BRIGHT
     +NOINTERACTION
 	+CLIENTSIDEONLY
-	+NONETID
 	Scale 0.1
 	Renderstyle ADD
 	States
@@ -264,13 +257,11 @@ Actor C14GasDamageIndicator
 }
 Actor C14RespawnProtection1 : PowerProtection
 {
-	+NONETID
 	DamageFactor "GammaBeam", 0.0
 	Powerup.Duration -2
 }
 Actor C14RespawnProtection2 : PowerProtection
 {
-	+NONETID
 	DamageFactor "ToxicGas", 0.0
 	Powerup.Duration -2
 }
