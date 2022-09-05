@@ -1,6 +1,10 @@
 texture HOTFALL1 range HOTFALL4 tics 8
+texture SLMFALL1 range SLMFALL4 tics 8
+
 
 warp2 flat qlava
 warp2 flat wwater
+warp2 flat wnuke
+warp2 flat wslime
 warp2 texture ENERGY_1
 warp2 texture ENERGY_4

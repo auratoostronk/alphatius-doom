@@ -1,4 +1,4 @@
-//Actors that utilize GLDefs to make colored light Lightes. See GLDEFS for more.
+//Actors that utilize GLDefs to make colored lights. See GLDEFS for more.
 
 ACTOR RedLight
 {
@@ -6,6 +6,7 @@ ACTOR RedLight
 	+DONTSPLASH
 	+NOINTERACTION
 	+CLIENTSIDEONLY
+	+NONETID
 	RenderStyle None
 	States
 	{
@@ -49,6 +50,7 @@ ACTOR LightBlueLightShoot : RedLight
 
 ACTOR BlueGlowSpawner
 {
+	+SERVERNETID
 	States
 	{
 		Spawn:

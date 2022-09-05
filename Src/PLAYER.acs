@@ -8,10 +8,99 @@
 
 int targetdummyid = 900;
 
+function void setPassive(int p)
+{
+	switch(p)
+	{
+		case 0:
+		GiveInventory("PassiveRapidAlt", 1);
+		break;
+		case 1:
+		GiveInventory("PassiveSpeedDemon", 1);
+		break;
+		case 2:
+		GiveInventory("PassiveNegaBarrier", 1);
+		break;
+		case 3:
+		GiveInventory("PassiveAdrenalineRush", 1);
+		break;
+		case 4:
+		GiveInventory("PassiveBandolier", 1);
+		break;
+		default: //0
+		GiveInventory("PassiveAdrenalineRush", 1);
+		break;
+	}
+	if(CheckInventory("PassiveSpeedDemon") > 0)
+	{
+		GiveInventory("ExtraTravelCharge", 1);
+		//ACS_NamedExecuteAlways("SpeedDemonTimer", 0);
+	}
+	if(CheckInventory("PassiveNegaBarrier") > 0)
+	{
+		GiveInventory("NegaBarrier", 1);
+		ACS_NamedExecuteAlways("NegaBarrierBubbleFX", 0);
+	}
+}
+function void setAction(int a)
+{
+	switch(a)
+	{
+		case 0:
+		GiveInventory("ActionRegenZone", 1);
+		break;
+		case 1:
+		GiveInventory("ActionAutoDrone", 1);
+		break;
+		case 2:
+		GiveInventory("ActionPowerBrace", 1);
+		break;
+		case 3:
+		GiveInventory("ActionDecoyHologram", 1);
+		break;
+		default:
+		GiveInventory("ActionRegenZone", 1);
+		break;
+	}
+}
+function void setStartWeapon(str sw)
+{
+	GiveInventory(sw, 1);
+	if(	!CheckInventory("PhotonCarbine") &&
+		!CheckInventory("ParticleSplitter") &&
+		!CheckInventory("TeslaSMG") &&
+		!CheckInventory("C14") &&
+		!CheckInventory("SparkCannon") &&
+		!CheckInventory("Flamespitter") && 
+		!CheckInventory("BeamRifle"))
+		{
+			GiveInventory("PhotonCarbine", 1);
+		}
+		
+	for(int j = 0; j < NUM_WEAPS; j++)
+	{
+		GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
+	}
+}
+function void gamemodeCheck(void)
+{
+	if(StrICmp(GetCurrentGameMode(), "Last Man Standing") == 0 || StrICmp(GetCurrentGameMode(), "Team Last Man Standing") == 0)
+	{
+		GiveInventory("NanoArmor", 1);
+	}
+}
 Script "CheckPlayerEnter" ENTER
 {
 	Thing_ChangeTID(0, 1000 + PlayerNumber());
-	ACS_NamedExecuteAlways("SetupPlayerMP", 0);
+	ClearInventory();
+	if(ClassifyActor(0) & ACTOR_BOT)
+	{
+		ACS_NamedExecuteAlways("SetupBot", 0);
+	}
+	else
+	{
+		ACS_NamedExecuteAlways("SetupPlayerMP", 0);
+	}
 	ACS_NamedExecuteAlways("SBARActionFixer", 0);
 	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0);
 }
@@ -19,7 +108,15 @@ Script "CheckPlayerEnter" ENTER
 Script "CheckPlayerReturn" RETURN
 {
 	Thing_ChangeTID(0, 1000 + PlayerNumber());
-	ACS_NamedExecuteAlways("SetupPlayerMP", 0);
+	ClearInventory();
+	if(ClassifyActor(0) & ACTOR_BOT)
+	{
+		ACS_NamedExecuteAlways("SetupBot", 0);
+	}
+	else
+	{
+		ACS_NamedExecuteAlways("SetupPlayerMP", 0);
+	}
 	ACS_NamedExecuteAlways("SBARActionFixer", 0);
 	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0);
 }
@@ -27,7 +124,15 @@ Script "CheckPlayerReturn" RETURN
 script "CheckPlayerRespawn" RESPAWN
 {
 	Thing_ChangeTID(0, 1000 + PlayerNumber());
-	ACS_NamedExecuteAlways("SetupPlayerMP", 0);
+	ClearInventory();
+	if(ClassifyActor(0) & ACTOR_BOT)
+	{
+		ACS_NamedExecuteAlways("SetupBot", 0);
+	}
+	else
+	{
+		ACS_NamedExecuteAlways("SetupPlayerMP", 0);
+	}
 	ACS_NamedExecuteAlways("SBARActionFixer", 0);
 	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0 );
 }
@@ -36,133 +141,16 @@ Script "SetupPlayerMP" (void)
 {
 	if(!(ClassifyActor(0) & ACTOR_BOT))
 	{
-		str loadoutnum = "1";
-		switch(GetCVAR("alph_loadout"))
-		{
-			case 1:
-			loadoutnum = "2";
-			break;
-			case 2:
-			loadoutnum = "3";
-			break;
-			case 3:
-			loadoutnum = "4";
-			break;
-			default:
-			loadoutnum = "1";
-			break;
-		}
-		GiveInventory(GetCVARString(StrParam(s:"alph_startweapon", s:loadoutnum)), 1);
-		
-		if(	!CheckInventory("PhotonCarbine") &&
-			!CheckInventory("ParticleSplitter") &&
-			!CheckInventory("TeslaSMG") &&
-			!CheckInventory("C14") &&
-			!CheckInventory("SparkCannon") &&
-			!CheckInventory("Flamespitter") && 
-			!CheckInventory("BeamRifle"))
-			{
-				GiveInventory("PhotonCarbine", 1);
-			}
-			
-		for(int j = 0; j < NUM_WEAPS; j++)
-		{
-			GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
-		}
+		setAction(GetCVAR("alph_action"));
+		setPassive(GetCVAR("alph_passive")); //Need this before weapon for bandolier check.
+		setStartWeapon(GetCVARString("alph_startweapon"));
+		gamemodeCheck();
 		ACS_NamedExecuteAlways("RestoreActionTimers", 0);
-		switch(GetCVAR(StrParam(s:"alph_travel", s:loadoutnum)))
-		{
-			case 0:
-			GiveInventory("TravelThrusterBoots", 1);
-			GiveInventory("ThrusterBootsCharge", 3);
-			GiveInventory("TBootsCD", GetAmmoCapacity("TBootsCD"));
-			break;
-			case 1:
-			GiveInventory("TravelWarpDrive", 1);
-			break;
-			case 2:
-			GiveInventory("TravelHyperdrive", 1);
-			break;
-			case 3:
-			GiveInventory("TravelJumpThrust", 1);
-			break;
-			default:
-			GiveInventory("TravelThrusterBoots", 1);
-			GiveInventory("ThrusterBootsCharge", 3);
-			GiveInventory("TBootsCD", GetAmmoCapacity("TBootsCD"));
-			break;
-		}
-		switch(GetCVAR(StrParam(s:"alph_action", s:loadoutnum)))
-		{
-			case 0:
-			GiveInventory("ActionRegenZone", 1);
-			break;
-			case 1:
-			GiveInventory("ActionAutoDrone", 1);
-			break;
-			case 2:
-			GiveInventory("ActionPowerBrace", 1);
-			break;
-			case 3:
-			GiveInventory("ActionDecoyHologram", 1);
-			break;
-			case 4:
-			GiveInventory("ActionSonicShockwave", 1);
-			break;
-			default:
-			GiveInventory("ActionRegenZone", 1);
-			break;
-		}
-		switch(GetCVAR(StrParam(s:"alph_passive", s:loadoutnum)))
-		{
-			case 0:
-			GiveInventory("PassiveRapidAlt", 1);
-			break;
-			case 1:
-			GiveInventory("PassiveOverclocked", 1);
-			break;
-			case 2:
-			GiveInventory("PassiveBandolier", 1);
-			break;
-			case 3:
-			GiveInventory("PassiveSpeedDemon", 1);
-			break;
-			case 4:
-			GiveInventory("PassiveNanoPlating", 1);
-			break;
-			case 5:
-			GiveInventory("PassiveNegaBarrier", 1);
-			break;
-			case 6:
-			GiveInventory("PassiveAdrenalineRush", 1);
-			break;
-			default: //0
-			GiveInventory("PassiveRapidAlt", 1);
-			break;
-		}
-			
-		if(CheckInventory("PassiveSpeedDemon") > 0)
-		{
-			GiveInventory("ExtraTravelCharge", 1);
-			ACS_NamedExecuteAlways("SpeedDemonTimer", 0);
-		}
-		if(CheckInventory("PassiveOverclocked") > 0)
-		{
-			ACS_NamedExecuteAlways("OverclockedTimer", 0);
-		}
-		if(CheckInventory("PassiveNanoPlating") > 0)
-		{
-			GiveInventory("NanoShard", 5);
-		}
-		if(CheckInventory("PassiveNegaBarrier") > 0)
-		{
-			GiveInventory("NegaBarrier", 1);
-			ACS_NamedExecuteAlways("NegaBarrierBubbleFX", 0);
-		}
-		if(CheckInventory("PassiveAssassin") > 0)
-		{
-			GiveInventory("PowerAssassinBuff", 1);
-		}
+		
+		ACS_NamedExecuteAlways("TravelSetup", 0);
+		ACS_NamedExecuteAlways("TravelSetupClient", 0);
+		ACS_NamedExecuteAlways("ZoomSetup", 0);
+		ACS_NamedExecuteAlways("ZoomSetupClient", 0);
 	}
 }
 Script "PlayerDeath" DEATH

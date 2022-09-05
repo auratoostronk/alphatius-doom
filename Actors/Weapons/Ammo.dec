@@ -1,35 +1,42 @@
 Actor SparkEnergy : Ammo
 {
+	+SERVERNETID 
 	Inventory.MaxAmount 5
-	Inventory.Icon "CELLA0"
+	Ammo.BackpackMaxAmount 6
 }
 Actor CarbineEnergy : Ammo
 {
+	+SERVERNETID 
 	Inventory.MaxAmount 60
-	Inventory.Icon "CELLA0"
+	Ammo.BackpackMaxAmount 72
 }
 Actor C14Energy : Ammo
 {
+	+SERVERNETID 
 	Inventory.MaxAmount 30
-	Inventory.Icon "CELLA0"
+	Ammo.BackpackMaxAmount 36
 }
 Actor SMGEnergy : Ammo
 {
+	+SERVERNETID 
 	Inventory.MaxAmount 50
-	Inventory.Icon "CELLA0"
+	Ammo.BackpackMaxAmount 60
 }
 Actor PumpSGEnergy : Ammo
 {
+	+SERVERNETID 
 	Inventory.MaxAmount 5
-	Inventory.Icon "CELLA0"
+	Ammo.BackpackMaxAmount 6
 }
 Actor FlameEnergy : Ammo
 {
+	+SERVERNETID 
 	Inventory.MaxAmount 100
-	Inventory.Icon "CELLA0"
+	Ammo.BackpackMaxAmount 120
 }
 Actor BeamEnergy : Ammo
 {
-	Inventory.MaxAmount 120
-	Inventory.Icon "CELLA0"
+	+SERVERNETID 
+	Inventory.MaxAmount 100
+	Ammo.BackpackMaxAmount 120
 }

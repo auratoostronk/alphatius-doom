@@ -7,7 +7,7 @@
 //#libdefine FAST_ACTION_CD 10
 //#libdefine MEDIUM_ACTION_CD 15
 //#libdefine SLOW_ACTION_CD 20
-#define AUTODRONE_SHOTSFIRED 40
+#define AUTODRONE_SHOTSFIRED 30
 
 global int 1:action1Recharge[];
 global int 2:decoyIDs[];
@@ -45,10 +45,10 @@ Script "ActionAbility1" (void) net
 		{
 			ACS_NamedExecuteAlways("AutoDrone", 0);
 		}
-		else if(CheckInventory("ActionSonicShockwave") > 0)
+		/*else if(CheckInventory("ActionSonicShockwave") > 0)
 		{
 			ACS_NamedExecuteAlways("SonicShockwave", 0);
-		}
+		}*/
 		else
 		{
 			displayHUDText("Error processing your action ability. Reset it in the Loadout menu.", 0.6, 2.0, 1301);
@@ -62,7 +62,10 @@ Script "SaveActionTimers" DEATH
 }
 Script "RestoreActionTimers" (void)
 {
-	GiveInventory("ActionCD", action1Recharge[PlayerNumber()]);
+	//if(StrICmp(GetCurrentGameMode(), "Last Man Standing") != 0 && StrICmp(GetCurrentGameMode(), "Team Last Man Standing") != 0)
+	//{
+		GiveInventory("ActionCD", action1Recharge[PlayerNumber()]);
+	//}
 }
 Script "RegenerationZone" (void)
 {
@@ -128,13 +131,13 @@ Script "DecoyHologram" (void)
 		Thing_Destroy(tempTID, false, 0);
 		SetActivator(aTID);
 		decoyIDs[PlayerNumber()] = 0;
-	}
-	else
-	{*/
+	}*/
+	//else
+	//{
 		if(CheckInventory("ActionCD") == 0)
 		{
 			GiveInventory("ActionCD", GetAmmoCapacity("MediumActionCharge"));
-			int utid = 0;//UniqueTID();
+			int utid = UniqueTID();
 			if(GetWeapon() == "C14" || GetWeapon() == "C14Alt")
 			{
 				SpawnSpotFacingForced("DecoyHologramGreen", 0, utid);
@@ -169,7 +172,7 @@ Script "DecoyHologram" (void)
 				ACS_NamedExecuteAlways("DecoyBarrier", 0, utid);
 			}
 			//GiveInventory("DecoySwapDuration", 96);
-			//displayHUDText("Reactivate to swap.", 0.6, 3.0, 1301);
+			//displayHUDText("Reactivate to swap.", 0.6, 2.75, 1301);
 			//decoyIDs[PlayerNumber()] = utid;
 		}
 		else
@@ -203,7 +206,7 @@ Script "AutoDrone" (void)
 {
 	if(CheckInventory("ActionCD") == 0)
 	{
-		GiveInventory("ActionCD", GetAmmoCapacity("MediumActionCharge"));
+		GiveInventory("ActionCD", GetAmmoCapacity("ActionCD"));
 		//Need this so people don't abuse the damage buff from Assassin's Tactics while not firing their weapon.
 		//ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
 		for(int i = 0; i < AUTODRONE_SHOTSFIRED; i++)
@@ -212,7 +215,7 @@ Script "AutoDrone" (void)
 				terminate;
 			GiveInventory("FireAutoDrone", 1);
 			PlaySound(0, "Actions/AutoLaser", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
-			delay(4);
+			delay(5);
 			TakeInventory("FireAutoDrone", 1);
 		}
 	}

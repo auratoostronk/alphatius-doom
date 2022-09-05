@@ -9,6 +9,7 @@
 #include Actors/DamageNumbers.dec
 #include Actors/SoundActors.dec
 #include Actors/Passives.dec
+#include Actors/Travels.dec
 
 #include Actors/Weapons/PhotonCarbine.dec
 #include Actors/Weapons/C14.dec

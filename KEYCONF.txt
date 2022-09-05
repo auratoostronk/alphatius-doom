@@ -1,12 +1,9 @@
 addkeysection "Alphatius Deathmatch" AlphatiusKeysection
 
-addmenukey "Travel Ability" travelability
-alias travelability "pukename TravelAbility always"
-defaultbind v travelability
-
-addmenukey "Action Ability" actionability
 alias actionability "pukename ActionAbility1 always"
 defaultbind q actionability
+
+defaultbind shift +user1
 
 alias pepega1 "echo \"kindred(?): \"customize loadout\". im not playing this mod. goodbye\""
 alias pepega2 "echo \"(unknown): what is this forcefield bs\""

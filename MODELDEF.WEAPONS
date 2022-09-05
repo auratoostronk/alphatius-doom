@@ -1,0 +1,59 @@
+/*Model ParticleSplitter 
+{ 
+   Path "Models/Weapons" 
+   //SurfaceSkin 0 0 "AQF054.png"
+   //SurfaceSkin 0 1 "AQF025.png"
+   MODEL 0 "psgready.md3"
+   MODEL 1 "psgfire1.md3"
+   MODEL 2 "psgfire2.md3"
+   MODEL 3 "psgfire3.md3"
+   Scale 0.2 0.2 0.2
+   AngleOffset 90
+   Offset 8.0 -24.0 -16.0
+   
+   FrameIndex PSGR A 0 0
+}
+Model ParticleSplitter 
+{ 
+   Path "Models/Weapons" 
+   MODEL 0 "psgready.md3"
+   Scale 0.2 0.2 0.2
+   AngleOffset 90
+   Offset 8.0 -20.0 -16.0
+   RollOffset -5
+   
+   FrameIndex PSGF A 0 0
+}
+Model ParticleSplitter 
+{ 
+   Path "Models/Weapons" 
+   MODEL 0 "psgready.md3"
+   Scale 0.2 0.2 0.2
+   AngleOffset 90
+   Offset 8.0 -16.0 -16.0
+   RollOffset -10
+   
+   FrameIndex PSGF B 0 0
+}
+Model ParticleSplitter 
+{ 
+   Path "Models/Weapons" 
+   MODEL 0 "psgready.md3"
+   Scale 0.2 0.2 0.2
+   AngleOffset 90
+   Offset 8.0 -20.0 -16.0
+   RollOffset -5
+   
+   FrameIndex PSGF C 0 0
+}
+Model ParticleSplitter 
+{ 
+   Path "Models/Weapons" 
+   //SurfaceSkin 0 0 "AQF054.png"
+   //SurfaceSkin 0 1 "AQF025.png"
+   MODEL 0 "psg.md3"
+   Scale 0.2 0.2 0.2
+   Offset 0.0 0.0 16.0
+   
+   FrameIndex PSGP A 0 0
+}*/

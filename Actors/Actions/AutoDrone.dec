@@ -8,23 +8,25 @@ Actor FireAutoDrone : CustomInventory
 		stop
 	}
 }
-Actor AutoDroneLaser
+Actor AutoDroneLaser : FastProjectile
 {
 	Projectile
 	Radius 4
 	Height 4
 	Scale 1.0
-	Speed 192
+	Speed 160
 	Decal RailScorchLower
-	Damage (4)
+	Damage (8)
 	Renderstyle Add
 	Obituary "%k > \cgAuto Laser\c- > %o"
 	//SeeSound "Actions/AutoLaser"
+	MissileType "DroneLaserTrail"
+	MissileHeight 8
 	+BRIGHT
 	States
 	{
 	Spawn:
-		RSPK A 1 A_SpawnItemEX("DroneLaserTrail", 0, 0, 0)
+		RSPK A 1
 		loop
 	Death:
 		TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnItemEx("DroneLaserFX", 0.0, 0.0, 0.0, frandom(-1.0, 1.0), frandom(-1.0, 1.0), frandom (-1.0, 1.0))
@@ -37,6 +39,7 @@ Actor DroneLaserTrail
 	RenderStyle ADD
 	+NOINTERACTION
 	+CLIENTSIDEONLY
+	+NONETID
 	+BRIGHT
 	Scale 0.4
 	States
@@ -54,6 +57,7 @@ Actor DroneLaserFX
 	-NOGRAVITY
 	+NOINTERACTION
 	+CLIENTSIDEONLY
+	+NONETID
 	+BRIGHT
 	States
 	{

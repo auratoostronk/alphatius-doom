@@ -3,21 +3,53 @@
 //scripts use these inventory items instead of the cvar, so that your travel
 //abilities and such change only after dying.
 
-Actor TravelThrusterBoots : Inventory { Inventory.MaxAmount 1 }
-Actor TravelJumpThrust : Inventory { Inventory.MaxAmount 1 }
-Actor TravelWarpDrive : Inventory { Inventory.MaxAmount 1 }
-Actor TravelHyperdrive : Inventory { Inventory.MaxAmount 1 }
+Actor TravelThrusterBoots : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor TravelJumpThrust : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor TravelWarpDrive : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor TravelHyperdrive : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
 	
-Actor PassiveRapidAlt : Inventory { Inventory.MaxAmount 1 }
-Actor PassiveOverclocked : Inventory { Inventory.MaxAmount 1 }
-Actor PassiveBandolier : Inventory { Inventory.MaxAmount 1 }
-Actor PassiveSpeedDemon : Inventory { Inventory.MaxAmount 1 }
-Actor PassiveNanoPlating : Inventory { Inventory.MaxAmount 1 }
-Actor PassiveNegaBarrier: Inventory { Inventory.MaxAmount 1 }
-Actor PassiveAdrenalineRush : Inventory { Inventory.MaxAmount 1 }
+Actor PassiveRapidAlt : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor PassiveOverclocked : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor PassiveBandolier : BackpackItem { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor PassiveSpeedDemon : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor PassiveNanoPlating : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor PassiveNegaBarrier: Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor PassiveAdrenalineRush : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
 
-Actor ActionRegenZone : Inventory { Inventory.MaxAmount 1 }
-Actor ActionSonicShockwave : Inventory { Inventory.MaxAmount 1 }
-Actor ActionPowerBrace : Inventory { Inventory.MaxAmount 1 }
-Actor ActionDecoyHologram : Inventory { Inventory.MaxAmount 1 }
-Actor ActionAutoDrone : Inventory { Inventory.MaxAmount 1 }
+Actor ActionRegenZone : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor ActionSonicShockwave : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor ActionPowerBrace : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor ActionDecoyHologram : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor ActionAutoDrone : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }

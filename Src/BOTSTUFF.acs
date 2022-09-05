@@ -6,106 +6,64 @@
 #import "TRAVEL.acs"
 #import "PASSIVES.acs"
 
+#define BOT_ACTIONFREQ 0.5
 
-Script "CheckBotEnter" ENTER
+function int VLength3d(int x, int y, int z)
 {
-	if(ClassifyActor(0) & ACTOR_BOT)
-	{
-		ACS_NamedExecuteAlways("SetupBot", 0);
-	}
+	int len = VectorLength(x, y);
+	len = VectorLength(z, len);
+	return len;
 }
-Script "BotRespawn" RESPAWN
+
+function bool checkCombat(void)
 {
-	if(ClassifyActor(0) & ACTOR_BOT)
+	if(CheckInventory("EnergyRechargeCD") >= 55)
 	{
-		ACS_NamedExecuteAlways("SetupBot", 0);
+		return true;
 	}
-	
+	return false;
 }
-Script "SetupBot" (void)
+function bool botAbilChance(void)
 {
-	GiveInventory(WEAP_CLASSNAMES[random(0, NUM_WEAPS - 1)], 1);
-	for(int j = 0; j < NUM_WEAPS; j++)
-	{
-		GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
-	}
+	if(CheckInventory("ActionCD") != 0)
+		return false;
 	
-	switch(random(0,3))
+	if(random(1, (35.0 / BOT_ACTIONFREQ) >> 16) == 1)
+		return true;
+		
+	return false;
+}
+
+function void setTravel(int t)
+{
+	switch(t)
 	{
 		case 0:
 		GiveInventory("TravelThrusterBoots", 1);
-		GiveInventory("ThrusterBootsCharge", 2);
 		break;
 		case 1:
 		GiveInventory("TravelWarpDrive", 1);
 		break;
 		case 2:
-		GiveInventory("TravelJumpThrust", 1);
-		break;
-		case 3:
 		GiveInventory("TravelHyperdrive", 1);
 		break;
-	}
-	switch(random(0,4))
-	{
-		case 0:
-		GiveInventory("ActionRegenZone", 1);
-		break;
-		case 1:
-		GiveInventory("ActionSonicShockwave", 1);
-		break;
-		case 2:
-		GiveInventory("ActionPowerBrace", 1);
-		break;
 		case 3:
-		GiveInventory("ActionDecoyHologram", 1);
-		break;
-		case 4:
-		GiveInventory("ActionAutoDrone", 1);
+		GiveInventory("TravelJumpThrust", 1);
 		break;
 		default:
-		GiveInventory("ActionRegenZone", 1);
-		break;
-		
-	}
-	switch(random(0, 6))
-	{
-		case 0:
-		GiveInventory("PassiveRapidAlt", 1);
-		break;
-		case 1:
-		GiveInventory("PassiveOverclocked", 1);
-		break;
-		case 2:
-		GiveInventory("PassiveBandolier", 1);
-		break;
-		case 3:
-		GiveInventory("PassiveSpeedDemon", 1);
-		break;
-		case 4:
-		GiveInventory("PassiveNanoPlating", 1);
-		break;
-		case 5:
-		GiveInventory("PassiveNegaBarrier", 1);
-		break;
-		case 6:
-		GiveInventory("PassiveAdrenalineRush", 1);
+		GiveInventory("TravelThrusterBoots", 1);
 		break;
 	}
-		
-	if(CheckInventory("PassiveSpeedDemon") > 0)
-	{
-		GiveInventory("ExtraTravelCharge", 1);
-	}
-	if(CheckInventory("PassiveNanoPlating") > 0)
-	{
-		GiveInventory("NanoShard", 5);
-	}
-	if(CheckInventory("PassiveNegaBarrier") > 0)
-	{
-		GiveInventory("NegaBarrier", 1);
-		ACS_NamedExecuteAlways("NegaBarrierBubbleFX", 0);
-	}
+}
+Script "SetupBot" (void)
+{
+	Thing_ChangeTID(0, 1000 + PlayerNumber());
+	//log(i:ActivatorTID());
+	setStartWeapon(WEAP_CLASSNAMES[random(0, NUM_WEAPS - 1)]);
+	setTravel(random(0, 3));
+	setAction(random(0, 4));
+	setPassive(random(0, 3));
+	gamemodeCheck();
 	GiveInventory("BotSpeedDebuff", 1);
 	ACS_NamedExecuteAlways("StartBotAliveTimer", 0);
 }
@@ -114,14 +72,42 @@ Script "StartBotAliveTimer" (void)
 	int cdrate = 1;
 	while(ClassifyActor(0) & ACTOR_ALIVE)
 	{
-		if(random(1, 35 / cdrate) == 1)
-		{
-			ACS_NamedExecuteAlways("TravelAbility", 0);
-		}
 		if(random(1, 70 / cdrate) == 1)
 		{
-			ACS_NamedExecuteAlways("ActionAbility1", 0);
+			ACS_NamedExecuteAlways("TravelAbilityBot", 0);
 		}
+		
+		//Action ability logic
+		if(botAbilChance())
+		{
+			if(CheckInventory("ActionRegenZone") > 0)
+			{
+				if(GetActorProperty(0, APROP_HEALTH) < 50)
+				{
+					ACS_NamedExecuteAlways("ActionAbility1", 0);
+				}
+			}
+			else if(CheckInventory("ActionPowerBrace") > 0)
+			{
+				if(checkCombat())
+				{
+					ACS_NamedExecuteAlways("ActionAbility1", 0);
+				}
+			}
+			else if(CheckInventory("ActionDecoyHologram") > 0)
+			{
+				ACS_NamedExecuteAlways("ActionAbility1", 0);
+			}
+			else if(CheckInventory("ActionAutoDrone") > 0)
+			{
+				if(checkCombat())
+				{
+					ACS_NamedExecuteAlways("ActionAbility1", 0);
+				}
+			}
+		}
+		
+		//Bot Change Weapons
 		if(random(1, 105) == 1)
 		{
 			ACS_NamedExecuteAlways("BotChangeToAltWeapon", 0);
@@ -130,6 +116,8 @@ Script "StartBotAliveTimer" (void)
 		{
 			ACS_NamedExecuteAlways("BotChangeWeapon", 0);
 		}
+		
+		//Alt fire presses
 		if(random(1, 35 / cdrate) == 1)
 		{
 			GiveInventory("AltFirePressed", 1);
@@ -141,6 +129,7 @@ Script "StartBotAliveTimer" (void)
 			GiveInventory("AltFireReleased", 1);
 		}
 		
+		//Check for weapons to give the alt-fire variant.
 		if(CheckInventory("PhotonCarbine") && !CheckInventory("PhotonCarbineAlt"))
 		{
 			GiveInventory("PhotonCarbineAlt", 1);
@@ -170,6 +159,34 @@ Script "StartBotAliveTimer" (void)
 			GiveInventory("BeamRifleAlt", 1);
 		}
 		delay(1);
+	}
+}
+Script "ActionAbilityBot" (void)
+{
+	if(CheckInventory("ActionRegenZone") > 0)
+	{
+		if(GetActorProperty(0, APROP_HEALTH) < 50)
+		{
+			ACS_NamedExecuteAlways("ActionAbility1", 0);
+		}
+	}
+	else if(CheckInventory("ActionPowerBrace") > 0)
+	{
+		if(checkCombat())
+		{
+			ACS_NamedExecuteAlways("ActionAbility1", 0);
+		}
+	}
+	else if(CheckInventory("ActionDecoyHologram") > 0)
+	{
+		ACS_NamedExecuteAlways("ActionAbility1", 0);
+	}
+	else if(CheckInventory("ActionAutoDrone") > 0)
+	{
+		if(checkCombat())
+		{
+			ACS_NamedExecuteAlways("ActionAbility1", 0);
+		}
 	}
 }
 //Required for the bots to swap weapons even if they have ammo for their current weapon.

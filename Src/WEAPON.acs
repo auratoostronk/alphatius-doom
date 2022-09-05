@@ -54,3 +54,57 @@ Script "OnWeaponAltFired" (void)
 	ACS_NamedExecuteAlways("OnWeaponFired", 0);
 	
 }
+//For use with Beam Rifle Alt-Fire (for unlagging the detonation)
+Script "CheckAltFirePressed" (void)
+{
+	//Sets the activator to the shooter of the pellet, instead of the pellet itself.
+	SetActivator(0, AAPTR_TARGET);
+	if(GetPlayerInput(-1, INPUT_BUTTONS) & BT_ALTATTACK)
+	{
+		SetResultValue(1);
+	}
+	else
+	{
+		SetResultValue(0);
+	}
+}
+//For use with Particle Splitter Alt-Fire (for unlagging the detonation)
+Script "CheckAltFireReleased" (void)
+{
+	//Sets the activator to the shooter of the pellet, instead of the pellet itself.
+	SetActivator(0, AAPTR_TARGET);
+	if((GetPlayerInput(-1, INPUT_OLDBUTTONS) & BT_ALTATTACK) && !(GetPlayerInput(-1, INPUT_BUTTONS) & BT_ALTATTACK))
+	{
+		SetResultValue(1);
+	}
+	else
+	{
+		SetResultValue(0);
+	}
+}
+Script "ZoomSetup" (void)
+{
+	SetActionScript(0, BT_ZOOM, "WeaponZoomControl");
+}
+Script "ZoomSetupClient" (void) CLIENTSIDE
+{
+	SetActionScript(0, BT_ZOOM, "WeaponZoomControl");
+}
+Script "WeaponZoomControl" (int predicting, int justPressed, int justReleased, int buttons)
+{
+	if (!predicting)
+	{
+		if (justPressed)
+		{
+			SetNetworkReplicationFlags( NETREP_SKIPOWNER );
+			SetPlayerWeaponZoomFactor(PlayerNumber(), GetCVAR("alph_zoomamount"));
+			SetNetworkReplicationFlags( 0 );
+		}
+		else if (justReleased)
+		{
+			SetNetworkReplicationFlags( NETREP_SKIPOWNER );
+			SetPlayerWeaponZoomFactor(PlayerNumber(), 1.0);
+			SetNetworkReplicationFlags( 0 );
+		}
+	}
+}

@@ -7,7 +7,7 @@ Script "AlphatiusDamageOpen" OPEN
 {
 	CreateTranslation(6400, 176:191=112:127, 32:47=120:127);
 }
-Script "AlphatiusDamage" (int type, int dmg, int dmgType) EVENT
+/*Script "AlphatiusDamage" (int type, int dmg, int dmgType) EVENT
 {
 	if(type == 12)//GAMEEVENT_ACTOR_ARMORDAMAGED 
 	{
@@ -21,9 +21,11 @@ Script "AlphatiusDamage" (int type, int dmg, int dmgType) EVENT
 		}
 		delay(1);
 		TakeInventory("NegaBarrier", 1);
+		if(dmg != 0)
+			ACS_NamedExecuteAlways("AlphatiusPain", 0, dmg);
 	}
 	
-}
+}*/
 Script "AlphatiusDamageNumbers" ENTER
 {
 	while(true)
@@ -36,10 +38,26 @@ Script "AlphatiusDamageNumbers" ENTER
 			ACS_NamedExecuteAlways("AlphatiusPain", 0, damage);
 	}
 }
-
+Script "DummyEnter" (void)
+{
+	Thing_ChangeTID(0, UniqueTID(0, 0));
+	while(!(ClassifyActor(0) & ACTOR_NONE))
+	{
+		if(CheckInventory("ThermiteDebuff") > 0)
+		{
+			spawnThermiteFX();
+		}
+		TakeInventory("ThermiteDebuff", 1);
+		int oldHealth = GetActorProperty(0, APROP_HEALTH);// + GetArmorInfo(ARMORINFO_SAVEAMOUNT);
+		delay(1);
+		int newHealth = GetActorProperty(0, APROP_HEALTH);// + GetArmorInfo(ARMORINFO_SAVEAMOUNT);
+		int damage = oldHealth - newHealth;
+		if(damage != 0)
+			ACS_NamedExecuteAlways("AlphatiusPain", 0, damage);
+	}
+}
 Script "AlphatiusPain" (int damage)
 {
-	
 	int utid = UniqueTID(0, 0);
 
 	int posx = GetActorX(0);
@@ -87,4 +105,6 @@ Script "AlphatiusPain" (int damage)
 	{
 		Thing_SetTranslation(utid, 6400); //Turns red to green.
 	}
+	delay(1);
+	TakeInventory("NegaBarrier", 1);
 }

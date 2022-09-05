@@ -1,3 +1,5 @@
+const float c14_recoil = 0.5;
+
 ACTOR C14 : Weapon 10005
 {
 	//$Category Alphatius Weapons
@@ -33,16 +35,17 @@ ACTOR C14 : Weapon 10005
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		TNT1 A 0 A_PlaySound("C14/Fire", CHAN_WEAPON)
 		TNT1 A 0 A_SpawnItemEX("GreenLightShoot")
-		C14F A 2 A_FireCustomMissile("C14Projectile", frandom(-0.2,0.2), true, 0, -5.0, 0, frandom(-0.2,0.2))
-		C14F BC 2
-		C14R A 2
+		TNT1 A 0 A_FireCustomMissile("C14Projectile", afrandom(-0.2,0.2), true, 0, -2.0, 0, afrandom(-0.2,0.2))
+		C14F A 2 A_SetPitch(pitch - c14_recoil)
+		C14F BBCC 1 A_SetPitch(pitch + c14_recoil * 0.20)
+		C14R A 2 A_SetPitch(pitch + c14_recoil * 0.20)
 		Goto Ready
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("C14AltCD",1,"AltFail")
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponAltFired", 0)
 		TNT1 A 0 A_SpawnItemEX("GreenLightShoot")
 		TNT1 A 0 A_PlaySound("GrenadeLaunch", CHAN_WEAPON)
-		TNT1 A 0 A_FireCustomMissile("C14GasGrenade", frandom(-0.2,0.2), true, 0.0, -2.0, 0, frandom(-0.2,0.2))
+		TNT1 A 0 A_FireCustomMissile("C14GasGrenade", afrandom(-0.2,0.2), true, 0.0, -2.0, 0, afrandom(-0.2,0.2))
 		C14R A 8
 		Goto Ready
 	AltFail:
@@ -52,23 +55,25 @@ ACTOR C14 : Weapon 10005
   }
 }
 
-Actor C14Projectile
+Actor C14Projectile : FastProjectile
 {
-	Radius 5
-	Height 5
+	Radius 6
+	Height 8
 	Scale 0.5
 	Obituary "%k > \cdC14\c- > %o"
 	Projectile
-	Speed 128
+	Speed 96
 	+BRIGHT
 	Damage (0)
 	RenderStyle Add
-	ProjectileKickback 80
+	ProjectileKickback 20
 	Decal BigScorch
+	MissileType "C14Trail"
+	MissileHeight 8
 	States 
 	{
 	Spawn:
-		CPBL ABCDEFGHIJKL 1  A_SpawnItemEx("C14Trail")
+		CPBL ABCDEFGHIJKL 1
 		Loop
 	Death:
 		TNT1 A 0 A_SpawnItemEx("C14Blast1")
@@ -81,29 +86,35 @@ Actor C14Projectile
 	}
 }
 Actor C14Trail
- {
+{
+	Radius 3
+	Height 4
 	Scale 0.05
-	Alpha 0.6
+	Alpha 0.9
 	Renderstyle Add
 	+NOINTERACTION
 	+CLIENTSIDEONLY
+	+NONETID
 	+FORCEXYBILLBOARD
 	+BRIGHT
 	States 
 	{
 	Spawn:
 		TNT1 A 0 A_SetScale(scalex + 0.01, scaley + 0.01)
-		CPEW A 1 A_FadeOut(0.05)
+		CPEW A 1 A_FadeOut(0.1)
 		loop
 	}
 }
 Actor C14Blast1 
 {
+	Radius 2
+	Height 2
 	Scale 0.8
 	Alpha 1.0
 	Renderstyle Add
 	+NOINTERACTION
 	+CLIENTSIDEONLY
+	+NONETID
 	+FORCEXYBILLBOARD
 	+BRIGHT
 	States
@@ -118,6 +129,8 @@ Actor C14Blast1
 }
 Actor C14Blast2
 {
+	Radius 2
+	Height 2
 	RenderStyle ADD
 	Scale 0.1
 	Projectile
@@ -126,6 +139,7 @@ Actor C14Blast2
 	+BOUNCEONWALLS
 	+BOUNCEONACTORS
 	+CLIENTSIDEONLY
+	+NONETID
 	BounceType Doom
 	BounceFactor 0.5
 	BounceCount 2
@@ -142,7 +156,7 @@ Actor C14Blast2
 		stop	
 	}
 }
-const int gas_radius = 192;
+const int gas_radius = 160;
 Actor C14GasGrenade
 {
 	Height 8
@@ -205,6 +219,7 @@ Actor C14GasCloud
 	Height 2
     +NOINTERACTION
 	+CLIENTSIDEONLY
+	+NONETID
 	Speed 10
 	Scale 2.0
 	States
@@ -220,6 +235,8 @@ Actor C14GasCloud
 Actor C14GasDamage
 {
 	//PoisonDamage 3, 15, 3
+	Radius 192
+	Height 192
 	+THRUACTORS
 	+NOGRAVITY
 	+NODAMAGETHRUST
@@ -244,6 +261,7 @@ Actor C14GasDamageIndicator
 	+BRIGHT
     +NOINTERACTION
 	+CLIENTSIDEONLY
+	+NONETID
 	Scale 0.1
 	Renderstyle ADD
 	States

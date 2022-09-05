@@ -1,6 +1,6 @@
 ACTOR SparkCannonAlt : SparkCannon
 {
-	Tag "Spark Cannon (Bot's Alt Fire)"
+	Tag "Spark Cannon (Bot)"
 	States
 	{
 	Fire:
@@ -14,7 +14,7 @@ ACTOR SparkCannonAlt : SparkCannon
 }
 ACTOR PhotonCarbineAlt : PhotonCarbine
 {
-	Tag "Photon Carbine (Bot's Alt Fire)"
+	Tag "Photon Carbine (Bot)"
 	States
 	{
 	Fire:
@@ -30,13 +30,13 @@ ACTOR PhotonCarbineAlt : PhotonCarbine
 
 ACTOR TeslaSMGAlt : TeslaSMG
 {
-	Tag "Tesla SMG (Bot's Alt Fire)"
+	Tag "Tesla SMG (Bot)"
 	+WEAPON.MELEEWEAPON
 	States
 	{
 	Fire:
 		TNT1 A 0 A_JumpIfInventory("SMGAltCD", 1, "SwapWeapon")
-		TNT1 A 0 A_JumpIfCloser(192, "SwapWeapon")
+		TNT1 A 0 A_JumpIfCloser(160, "SwapWeapon")
 		Goto AltFire
 	SwapWeapon:
 		TNT1 A 1 ACS_NamedExecuteAlways("BotChangeWeapon", 0)
@@ -47,7 +47,7 @@ ACTOR TeslaSMGAlt : TeslaSMG
 
 ACTOR ParticleSplitterAlt : ParticleSplitter
 {
-	Tag "Particle Splitter (Bot's Alt Fire)"
+	Tag "Particle Splitter (Bot)"
 	States
 	{
 	Fire:
@@ -62,7 +62,7 @@ ACTOR ParticleSplitterAlt : ParticleSplitter
 
 ACTOR C14Alt : C14
 {
-	Tag "C14 (Bot's Alt Fire)"
+	Tag "C14 (Bot)"
 	States
 	{
 	Fire:
@@ -75,7 +75,7 @@ ACTOR C14Alt : C14
 }
 ACTOR FlamespitterAlt : Flamespitter
 {
-	Tag "Flamespitter (Bot's Alt Fire)"
+	Tag "Flamespitter (Bot)"
 	States
 	{
 	Fire:
@@ -89,12 +89,16 @@ ACTOR FlamespitterAlt : Flamespitter
 }
 ACTOR BeamRifleAlt : BeamRifle
 {
-	Tag "Beam Rifle (Bot's Alt Fire)"
+	Tag "Beam Rifle (Bot)"
 	States
 	{
 	Fire:
-		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("BeamAltCD", 1, "SwapWeapon")
 		Goto AltFire
+	SwapWeapon:
+		TNT1 A 1 ACS_NamedExecuteAlways("BotChangeWeapon", 0)
+		Goto Ready
+		
 	}
 }
 /*

@@ -4,6 +4,7 @@ ACTOR ExplodeHitFlash
 	+NOGRAVITY
 	+FORCEXYBILLBOARD
 	+CLIENTSIDEONLY
+	+NONETID
 	Alpha 1.0
 	Radius 1
 	Height 1
@@ -26,6 +27,7 @@ ACTOR ExplodeHitFlash2
 	RenderStyle Add
 	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+NONETID
 	+NOGRAVITY
 	+FORCEXYBILLBOARD
 	Alpha 0.7
@@ -48,6 +50,7 @@ ACTOR ExplodeSmokeRing
 	RenderStyle Add
 	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+NONETID
 	+NOGRAVITY
 	+FORCEXYBILLBOARD
 	Alpha 1
@@ -71,6 +74,7 @@ ACTOR ExplodeSmokeSpawner
 	+MISSILE
 	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+NONETID
 	States
 	{
     Spawn:
@@ -88,6 +92,7 @@ ACTOR ExplodeSmoke
 	VSpeed 7
 	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+NONETID
     States
     {
     Spawn:

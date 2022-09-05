@@ -57,6 +57,8 @@ $rolloff Actions/SonicShockwave 400 1600
 $rolloff Ambient/TeleportHum 100 800
 $rolloff Ambient/JumppadHit  400 800
 
+//PLAYER
+$rolloff Footstep 1000 1600
 
 //VOLUMES
 $volume Actions/AutoLaser 0.7

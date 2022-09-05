@@ -1,0 +1,26 @@
+#library "TIMER"
+#include "zcommon.acs"
+#import "ALPHLIB.acs"
+
+Script "TimerOpen" OPEN CLIENTSIDE
+{
+	ACS_NamedExecuteAlways("TimerStart", 0);
+}
+
+Script "TimerStart" (void) CLIENTSIDE
+{
+	while(true)
+	{
+		int clock = Timer() / 35;
+		int mins = clock/60;
+		int sec10 = (clock%60)/10;
+		int sec1 = clock%10;
+		
+		str clockstr = StrParam(d:mins, s:":", d:sec10, d:sec1);
+		
+		SetFont("BIGFONT");
+		HUDMessage(s:clockstr; HUDMSG_PLAIN, 1399, CR_UNTRANSLATED, 0.5, 0.05, 1.0);
+	
+		delay(35);
+	}
+}

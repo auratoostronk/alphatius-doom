@@ -51,6 +51,7 @@ General/Fail				NOENRGY
 General/LowEnergy			LOENRGY
 General/WeaponReady 		ENRGYRDY
 General/WeaponSwitch		WEAPSWAP
+General/WeaponHit			WEAPNHIT
 General/AltReady			ALTREADY
 General/TravelReady			TRAVREDY	
 
@@ -93,6 +94,30 @@ Ambient/JumppadHit			JUMPPAD
 Ambient/WaterFlow 			WATERFLO
 
 //PICKUPS
+
+//PLAYER
+/*Footstep1 "Sounds/Player/Footstep1.ogg"
+Footstep2 "Sounds/Player/Footstep2.ogg"
+Footstep3 "Sounds/Player/Footstep3.ogg"
+Footstep4 "Sounds/Player/Footstep4.ogg"
+WomanJump1 "Sounds/Player/WomanJump1.ogg"
+WomanJump2 "Sounds/Player/WomanJump2.ogg"
+ManJump1 "Sounds/Player/ManJump1.ogg"
+ManJump2 "Sounds/Player/ManJump2.ogg"
+RobotJump1 "Sounds/Player/RobotJump1.ogg"
+RobotJump2 "Sounds/Player/RobotJump2.ogg"
+
+$random WomanJump { WomanJump1 WomanJump2 }
+$random ManJump { ManJump1 ManJump2 }
+$random RobotJump { RobotJump1 RobotJump2 }
+
+$random Footstep { Footstep1 Footstep2 Footstep3 Footstep4 }
+*footstep  Footstep
+
+$alias player/male/jump1 ManJump
+$alias player/female/jump1 ManJump//WomanJump
+$alias player/other/jump1  ManJump//RobotJump*/
+
 
 //MENU
 $alias menu/activate 				PhotonCarbine/Fire

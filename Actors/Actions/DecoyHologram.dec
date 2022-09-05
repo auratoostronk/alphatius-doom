@@ -15,10 +15,11 @@ Actor DecoyHologram
 	{
 		Spawn:
 		TNT1 A 0 nodelay ACS_NamedExecuteAlways("DecoyWalk", 0)
-		PLAY ABCDABCDABCDABCDABCDABCD 4 //ThrustThing(angle * 256/360, 4, 1, 0)
+		PLAY ABCDABCDABCDABCDABCDABCD 4
 		Goto Death
 		Death:
 		TNT1 AAAAAAAA 0 A_SpawnItemEx("DecoyDeathFX", frandom(-8.0, 8.0), frandom(-8.0, 8.0), frandom(-8.0, 8.0) + 32.0, frandom(-8.0, 8.0), frandom(-8.0, 8.0), frandom(-8.0, 8.0)) 
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("DecoyDeathFX2", frandom(-8.0, 8.0), frandom(-8.0, 8.0), frandom(-8.0, 8.0) + 32.0, frandom(-8.0, 8.0), frandom(-8.0, 8.0), frandom(-8.0, 8.0)) 
 		stop
 	}
 }
@@ -45,7 +46,17 @@ Actor DecoyDeathFX
 	{
 		Spawn:
 		TNT1 A 0 A_SetScale(scalex * 0.8, scaley * 0.8)
-		BSPK A 1 A_FadeOut(0.2)
+		BSPK A 1 A_FadeOut(0.1)
+		loop
+	}
+}
+Actor DecoyDeathFX2 : DecoyDeathFX
+{
+	States
+	{
+		Spawn:
+		TNT1 A 0 A_SetScale(scalex * 0.8, scaley * 0.8)
+		RSPK A 1 A_FadeOut(0.1)
 		loop
 	}
 }
