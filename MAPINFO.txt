@@ -130,7 +130,7 @@ map ALPHDL03 lookup "Deluge"
 	next = "ALPHDL04"
 	AllowRespawn
 }
-map ALPHDL04 lookup "Cold Sludge"
+map ALPHDL04 lookup "Cold Siege"
 {
 	levelnum = 104
 	sky1 = "SNOWSKY", 0

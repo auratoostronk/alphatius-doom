@@ -7,13 +7,13 @@
 //#define ADRUSH_DURATION 70.0
 //#define ADRUSH_HEAL 20
 #define BANDOLIER_RESTORE 0.2
-#define RAPIDALT_RESTORE 0.5
+#define RAPIDALT_RESTORE 105//0.5
 
 function void rapidAlt(void)
 {
 	for(int i = 0; i < NUM_WEAPS; i++)
 	{
-		TakeInventory(WEAP_COOLDOWNNAMES[i], (GetAmmoCapacity(WEAP_COOLDOWNNAMES[i]) * RAPIDALT_RESTORE) >> 16);
+		TakeInventory(WEAP_COOLDOWNNAMES[i], RAPIDALT_RESTORE);//(GetAmmoCapacity(WEAP_COOLDOWNNAMES[i]) * RAPIDALT_RESTORE) >> 16);
 	}
 	LocalAmbientSound("General/AltReady", 0.5);
 }

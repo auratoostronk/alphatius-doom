@@ -10,6 +10,10 @@ Object NanoArmor
 {
 	Frame ARM3 { light REDLIGHT }
 }
+Object NanoPlate
+{
+	Frame ARM2 { light REDLIGHT }
+}
 
 object ExtraTravelCharge
 {

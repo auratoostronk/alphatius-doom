@@ -1,6 +1,7 @@
 //WEAPONS
 $rolloff SparkCannon/Fire 800 3200
 $rolloff SparkCannon/AltFire 400 1600 
+$rolloff SparkCannon/Hiss 200 800
 
 $rolloff C14/Fire 400 1600
 $rolloff C14/GasHiss 200 800
@@ -36,6 +37,7 @@ $rolloff EXPLOS2 800 4800
 $rolloff EXPLOS3 800 4800
 
 //GENERAL
+$rolloff General/ArmorBreak 800 3200
 
 //TRAVELS
 $rolloff Travel/ThrusterBoots 400 1600
@@ -67,9 +69,9 @@ $volume Explosion1 0.7
 $volume Explosion2 0.7
 $volume Explosion3 0.7
 
-$volume General/WeaponReady 0.5
-$volume General/AltReady 0.5
-$volume General/TravelReady 0.5
+$volume General/WeaponReady 0.3
+$volume General/AltReady 0.3
+$volume General/TravelReady 0.3
 
 
 $musicvolume SONIC1 0.5

@@ -30,12 +30,17 @@ Script "AlphatiusDamageNumbers" ENTER
 {
 	while(true)
 	{
-		int oldHealth = GetActorProperty(0, APROP_HEALTH);// + GetArmorInfo(ARMORINFO_SAVEAMOUNT);
+		//bool hasArmor = false;
+		int brokeArmor = 0;
+		int oldHealth = GetActorProperty(0, APROP_HEALTH);
+		//int oldArmor = GetArmorInfo(ARMORINFO_SAVEAMOUNT);
 		delay(1);
-		int newHealth = GetActorProperty(0, APROP_HEALTH);// + GetArmorInfo(ARMORINFO_SAVEAMOUNT);
+		int newHealth = GetActorProperty(0, APROP_HEALTH);
+		//int newArmor = GetArmorInfo(ARMORINFO_SAVEAMOUNT);
 		int damage = oldHealth - newHealth;
+		
 		if(damage != 0)
-			ACS_NamedExecuteAlways("AlphatiusPain", 0, damage);
+			ACS_NamedExecuteAlways("AlphatiusPain", 0, damage, brokeArmor);
 	}
 }
 Script "DummyEnter" (void)
@@ -56,7 +61,7 @@ Script "DummyEnter" (void)
 			ACS_NamedExecuteAlways("AlphatiusPain", 0, damage);
 	}
 }
-Script "AlphatiusPain" (int damage)
+Script "AlphatiusPain" (int damage, int brokeArmor)
 {
 	int utid = UniqueTID(0, 0);
 
@@ -104,6 +109,10 @@ Script "AlphatiusPain" (int damage)
 	if(damage < 0)
 	{
 		Thing_SetTranslation(utid, 6400); //Turns red to green.
+	}
+	if(brokeArmor > 0)
+	{
+		PlaySound(0, "General/ArmorBreak", CHAN_AUTO, 1.0, false);
 	}
 	delay(1);
 	TakeInventory("NegaBarrier", 1);

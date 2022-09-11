@@ -4,6 +4,7 @@ ACTOR PhotonCarbine : Weapon 10004
 {
 	//$Category Alphatius Weapons
 	Radius 32
+	Height 32
 	Tag "Photon Carbine"
 	Obituary "%k > \cvPhoton Carbine (Alt)\c- > %o"
 	Weapon.BobStyle "Smooth"
@@ -19,7 +20,7 @@ ACTOR PhotonCarbine : Weapon 10004
 	States
 	{
 	Spawn:
-		CARP A 1 bright
+		CARP A 1 bright A_SetAngle(angle + 1.0)
 		Loop
 	Ready:
 		CARR A 1 A_WeaponReady
@@ -37,12 +38,15 @@ ACTOR PhotonCarbine : Weapon 10004
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		TNT1 A 0 A_SpawnItemEX("BlueLightShoot")
 		TNT1 A 0 A_PlaySound("PhotonCarbine/Fire", CHAN_WEAPON)
-		TNT1 A 0 A_FireCustomMissile("PhotonProjectile", afrandom(-0.2, 0.2), true, 0.0, -2.0, 0 , afrandom(-0.2, 0.2))
+		//For non voxel model
+		//TNT1 A 0 A_FireCustomMissile("PhotonProjectile", afrandom(-0.2, 0.2), true, 0.0, -2.0, 0 , afrandom(-0.2, 0.2))
+		//For voxel model
+		TNT1 A 0 A_FireCustomMissile("PhotonProjectile", afrandom(-0.2, 0.2), true, 6.0, -1.0, 0 , afrandom(-0.2, 0.2))
 		CARF A 1 A_SetPitch(pitch - carb_recoil)
-		CARF A 1 A_SetPitch(pitch + carb_recoil * 0.5)
-		CARF B 2 A_SetPitch(pitch + carb_recoil * 0.5)
-		CARF C 1 A_Refire("Fire")
-		CARR A 1
+		CARF B 1 A_SetPitch(pitch + carb_recoil * 0.5)
+		CARF C 1 A_SetPitch(pitch + carb_recoil * 0.5)
+		CARF D 1 
+		CARR A 1 A_Refire("Fire")
 		Goto Ready
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("CarbineAltCD",1,"AltFail")
@@ -50,8 +54,8 @@ ACTOR PhotonCarbine : Weapon 10004
 		TNT1 A 0 A_SpawnItemEX("BlueLightShoot")
 		TNT1 A 0 A_PlaySound("GrenadeLaunch", CHAN_WEAPON)
 		TNT1 A 0 A_Recoil(2)
-		TNT1 A 0 A_FireCustomMissile("PhotonGrenade",0.0,true,0,-2,0,3)
-		CARF ABC 2
+		TNT1 A 0 A_FireCustomMissile("PhotonGrenade", 0.0, true,  6.0, -4.0, 0, 0.0)
+		CARF ABCD 2 bright
 		Goto Ready
 	AltFail:
 		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
@@ -65,7 +69,7 @@ Actor PhotonProjectile : FastProjectile
 	Radius 6
 	Height 6
 	Scale 1.5
-	Speed 192
+	Speed 256
 	Decal RailScorchLower
 	Damage (15)
 	Renderstyle Add

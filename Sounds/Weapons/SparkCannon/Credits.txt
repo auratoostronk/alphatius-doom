@@ -1,2 +1,3 @@
 Spark Main from a mod for an XCOM game. That's all I know.
 Spark alt from Boom Library
+Spark Hiss is modified C14 gas hiss sound.

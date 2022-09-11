@@ -152,3 +152,39 @@
 	revealed = true
 	script = "humanbot"
 }
+
+{
+	//[CR]yler
+	name = "\cm[\cgCR\cm]\cgy\cmler"
+	accuracy = 2
+	intellect = 1
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 2
+	favoriteweapon = "SparkCannon"
+	color = "DD 00 00"
+	gender = "male"
+	railcolor = red
+	chatfrequency = 50
+	revealed = true
+	script = "humanbot"
+}
+
+{
+	//[CR]abio
+	name = "\cm[\cgCR\cm]\cga\cmbio"
+	accuracy = 3
+	intellect = 2
+	evade = 2
+	anticipation = 2
+	reactiontime = 2
+	perception = 2
+	favoriteweapon = "BeamRifle"
+	color = "DD 00 00"
+	gender = "male"
+	railcolor = red
+	chatfrequency = 70
+	revealed = true
+	script = "humanbot"
+}

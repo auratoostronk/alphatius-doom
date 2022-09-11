@@ -47,17 +47,17 @@ Actor NoLowEnergySound : Inventory
 Actor FastActionCharge : Ammo
 {
 	+SERVERNETID
-	Inventory.MaxAmount 350
+	Inventory.MaxAmount 525 //15s
 }
 //To make recharge bars appear filled when they should be
 Actor MediumActionCharge : Ammo
 {
 	+SERVERNETID
-	Inventory.MaxAmount 525
+	Inventory.MaxAmount 700 //20s
 }
 //Action Ability 1's cooldown
 Actor ActionCD : Ammo
 {
 	+SERVERNETID
-	Inventory.MaxAmount 700
+	Inventory.MaxAmount 875 //25s
 }

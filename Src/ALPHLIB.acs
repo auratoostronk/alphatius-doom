@@ -50,7 +50,7 @@ function void displayHUDText(str text, int yLoc, int holdTime, int id)
 	SetFont("SMALLFNT");
 	HUDMessage(s:text;HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP, id, CR_UNTRANSLATED, (textX << 16), (textY << 16), holdTime);
 }
-
+//Holds the script for many timers that occur each tic.
 Script "RechargeTimers" ENTER
 {
 	while (true)
@@ -59,24 +59,48 @@ Script "RechargeTimers" ENTER
 		{	
 			for(int i = 0; i < NUM_WEAPS; i++)
 			{
+				//Reduces alt-fire cooldown
 				TakeInventory(WEAP_COOLDOWNNAMES[i], 1);
+				//If the weapon's cooldown is about to be ready (4 tics) and its the correct weapon, play a sound.
 				if(CheckInventory(WEAP_COOLDOWNNAMES[i]) == 4 && GetWeapon() == WEAP_CLASSNAMES[i])
 				{
 					LocalAmbientSound("General/AltReady", 0.5);
 				}
 			}
+			//Cooldown between "Alt Fire Failed" messages
+			TakeInventory("AltFireFailCD", 1);
+			
+			int ENERGY_SOUND_DELAY = 1;
+			//Refills energy when the player has not fired a weapon in a while.
+			if(CheckInventory("EnergyRechargeCD") == ENERGY_SOUND_DELAY)
+			{
+				for(int j = 0; j < NUM_WEAPS; j++)
+				{
+					GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
+				}
+				//And plays this sound.
+				LocalAmbientSound("General/WeaponReady", 0.5);
+			}
+			//Energy Recharge Cooldown: How many tics before your energy begins replenishing.
+			TakeInventory("EnergyRechargeCD",1);
 
+			//Reduce travel ability cooldowns.
 			TakeInventory("WDriveCD",1);
 			TakeInventory("HDriveCD",1);
 			TakeInventory("JThrustCD",1);
+			//Thruster boots uses charges, so it uses slightly different code.
 			if(CheckInventory("TravelThrusterBoots"))
 			{
+				//If not max charges...
 				if(CheckInventory("ThrusterBootsCharge") < 2)
 				{
+					//And cooldown meter isn't depleted...
 					if (CheckInventory("TBootsCD") > 0)
 					{
+						//Reduce cooldown meter.
 						TakeInventory("TBootsCD", 1);
 					}
+					//If the meter is empty, give a charge and put the meter on cooldown again.
 					else 
 					{
 						GiveInventory("ThrusterBootsCharge", 1);
@@ -84,62 +108,59 @@ Script "RechargeTimers" ENTER
 					}
 				}				
 			}
-			int trav_sound_delay = 7;
-			if(	CheckInventory("WDriveCD") == trav_sound_delay ||
-				CheckInventory("HDriveCD") == trav_sound_delay ||
-				CheckInventory("JThrustCD") == trav_sound_delay ||
-				CheckInventory("TBootsCD") == trav_sound_delay)
+			//This is how early the TravelReady sound plays in tics before the travel ability is ready.
+			int TRAV_SOUND_DELAY = 7;
+			if(	CheckInventory("WDriveCD") == TRAV_SOUND_DELAY ||
+				CheckInventory("HDriveCD") == TRAV_SOUND_DELAY ||
+				CheckInventory("JThrustCD") == TRAV_SOUND_DELAY ||
+				CheckInventory("TBootsCD") == TRAV_SOUND_DELAY)
 			{
 				LocalAmbientSound("General/TravelReady", 0.5);
 			}
 			
+			//For the flamespitter. If the player recently was hit by the alt-fire, spawn napalm effects on them.
 			if(CheckInventory("ThermiteDebuff") > 0)
 			{
 				spawnThermiteFX();
 			}
+			//Then remove a tic of the debuff.
 			TakeInventory("ThermiteDebuff", 1);
 			
+			//If not LMS or TeamLMS
 			if(StrICmp(GetCurrentGameMode(), "Last Man Standing") != 0 && StrICmp(GetCurrentGameMode(), "Team Last Man Standing") != 0)
 			{
+				//Action cooldown recharges
 				TakeInventory("ActionCD", 1);
 			}
-			TakeInventory("EnergyRechargeCD",1);
-			TakeInventory("AltFireFailCD", 1);
+
 			
 			int movespeed = 1.0;
+			//Speed boost from firing Tesla SMG
 			if(CheckInventory("TeslaSpeedBoost") >= 1)
 			{
 				movespeed += 0.2;
 			}
+			//Speed boost from having your travel ability be Hyperdrive
 			if(CheckInventory("TravelHyperdrive") >= 1)
 			{
-				movespeed += 0.15;
+				movespeed += HYPERD_PASSIVESPD;
 			}
-			/*if(CheckInventory("HyperdriveSpeed") >= 1)
+			//Speed boost from activating Hyperdrive
+			if(CheckInventory("HyperdriveSpeed") >= 1)
 			{
-				movespeed += 0.4;
-			}*/
+				movespeed += HYPERD_ACTIVESPD;
+			}
 			SetActorProperty(0, APROP_SPEED, movespeed);
-			
+			//Telsa SMG speed boost is not permanent (only lasts about 5 tics)
 			TakeInventory("TeslaSpeedBoost", 1);
-			//TakeInventory("BloodFrenzyBoostCD", 1);
-			int energy_sound_delay = 1;
-			if(CheckInventory("EnergyRechargeCD") == energy_sound_delay)
-			{
-				for(int j = 0; j < NUM_WEAPS; j++)
-				{
-					GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
-				}
-				TakeInventory("NoLowEnergySound", 1);
-				LocalAmbientSound("General/WeaponReady", 0.5);
-			}
 			
+
+			//Spawns smoke when the player is using Thruster Boots.
 			if(CheckInventory("ThrusterBootsSmokeTics") >= 1)
 			{
 				SpawnSpotFacingForced("ThrusterBootsSmokeSpawner", 0, 0);
 			}
 			TakeInventory("ThrusterBootsSmokeTics", 1);
-			TakeInventory("HitmarkerHit", 1);
 		}
 		delay(1);
 	}

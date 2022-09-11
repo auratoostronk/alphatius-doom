@@ -24,7 +24,6 @@ OptionMenu "ModOptions"
 	Control "Travel Ability", "+user1"
 	Control "Action Ability", "actionability"
 	Control "Weapon Zoom", "+zoom"
-	//Control "Walk", "+crouch"
 	StaticText " "
 	StaticText	"Loadout Options"
 	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
@@ -40,9 +39,9 @@ OptionMenu "ModOptions"
 	Slider "ACS HUD Scale", "alph_textscale", 0.5, 2.0, 0.1, 1
 	StaticText "Scales ACS-related HUD Elements"
 	StaticText  " "
-	Slider "Timer Location X", "alph_timerx", 0.0, 1.0, 0.01, 2
-	Slider "Timer Location Y", "alph_timery", 0.0, 1.0, 0.01, 2
-	StaticText  " "
+	//Slider "Timer Location X", "alph_timerx", 0.0, 1.0, 0.01, 2
+	//Slider "Timer Location Y", "alph_timery", 0.0, 1.0, 0.01, 2
+	//StaticText  " "
 	StaticText	"Zoom Options"
 	StaticText " "
 	Slider "Zoom Speed", "cl_fovchangespeed", 5.0, 50.0, 1.0, 1
@@ -98,14 +97,17 @@ OptionMenu "I_Weapons"
 OptionMenu "I_Travels"
 {
 	Title "Travel Ability Info"
-	StaticText "THRUSTER JETS"
+	StaticText "THRUSTER BOOTS"
 	StaticText "Dash laterally. Stores up to 2 uses."
 	StaticText " "
-	StaticText "PHASE BLINK"
+	StaticText "WARP DRIVE"
 	StaticText "Short teleport towards your crosshair."
 	StaticText " "
 	StaticText "SWIFTFOOT SHOES"
-	StaticText "Run faster and wall jump. Activate for a small leap."
+	StaticText "Run faster and wall jump. Activate for a quick sprint."
+	StaticText " "
+	StaticText "GRAVITRON LEAP"
+	StaticText "Leap into the air. Aim upwards for best results."
 	StaticText " "
 }
 OptionMenu "I_Actions"
@@ -128,7 +130,7 @@ OptionMenu "I_Passives"
 {
 	Title "Passive Ability Info"
 	StaticText "RAPID-ALT TECH"
-	StaticText "Kills refund 50% of your Alt-fire cooldown."
+	StaticText "Kills refund 3 seconds of your Alt-fire cooldown."
 	StaticText " "
 	StaticText "SPEED DEMON"
 	StaticText "Spawn with an extra use of your Travel Ability."
@@ -159,10 +161,10 @@ OptionString "StartingWeapon"
 
 OptionValue "TravelAbility"
 {
-	0, "Thruster Jets"
-	1, "Phase Blink"
+	0, "Thruster Boots"
+	1, "Warp Drive"
 	2, "Swiftfoot Shoes"
-	//3, "Jump Thrust"
+	3, "Gravitron Leap"
 }
 
 OptionValue "Action1Ability"
@@ -180,15 +182,6 @@ OptionString "PassiveAbility"
 	3, "Adrenaline Rush"
 	4, "Bandolier"
 }
-OptionValue "SelectedLoadout"
-{
-	0, "Loadout 1"
-	1, "Loadout 2"
-	2, "Loadout 3"
-	3, "Loadout 4"
-}
-
-
 
 //ZANDRONUM MENU REPLACEMENTS
 

@@ -2,6 +2,7 @@ Actor Flamespitter : Weapon 10010
 {
 	//$Category Alphatius Weapons
 	Radius 32
+	Height 32
 	Tag "Flamespitter"
 	Weapon.BobStyle "Smooth"
 	Weapon.AmmoType1 "FlameEnergy"
@@ -16,8 +17,8 @@ Actor Flamespitter : Weapon 10010
 	States
 	{
 	Spawn:
-		FLMP A 1 bright
-		loop	
+		FLMP A 1 bright A_SetAngle(angle + 1.0)
+		loop
 	Ready:
 		TNT1 A 0 A_StopSound(CHAN_WEAPON)
 		TNT1 A 0 A_PlaySound("BeamRifle/FireStop", CHAN_WEAPON, 1.0, false)
@@ -41,11 +42,17 @@ Actor Flamespitter : Weapon 10010
 		Goto FireFlames
 	FireFlames:
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
-		FLMF BBCC 1 A_FireCustomMissile("FlamespitterProjectile", afrandom(-2.0, 2.0), true, 0.0, -1.0, 0, afrandom(-2.0, 2.0))
+		FLMF B 1 offset(-2, -2)A_FireCustomMissile("FlamespitterProjectile", afrandom(-2.0, 2.0), true, 3.0, -0.5, 0, afrandom(-2.0, 2.0))
+		FLMF B 1 offset(-1, -2)A_FireCustomMissile("FlamespitterProjectile", afrandom(-2.0, 2.0), true, 3.0, -0.5, 0, afrandom(-2.0, 2.0))
+		FLMF C 1 offset(3, 2)A_FireCustomMissile("FlamespitterProjectile", afrandom(-2.0, 2.0), true, 3.0, -0.5, 0, afrandom(-2.0, 2.0))
+		FLMF C 1 offset(0, 2)A_FireCustomMissile("FlamespitterProjectile", afrandom(-2.0, 2.0), true, 3.0, -0.5, 0, afrandom(-2.0, 2.0))
 		TNT1 A 0 A_Refire("FireFlames")
 		FLMF D 2 A_StopSound(CHAN_WEAPON)
 		TNT1 A 0 A_PlaySound("Flamespitter/FlameStop", CHAN_WEAPON, 1.0, false)
-		FLMR A 38 A_WeaponReady
+		FLMF EFGHIJKL 1
+		FLMF L 2
+		FLMF LKJIHGFE 1
+		//FLMR A 38 A_WeaponReady
 		Goto Ready
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("FlameAltCD",1,"AltFail")
@@ -53,7 +60,7 @@ Actor Flamespitter : Weapon 10010
 		TNT1 A 0 A_SpawnItemEX("OrangeLightShoot", 0, 0, 0)
 		TNT1 A 0 A_PlaySound("GrenadeLaunch", CHAN_WEAPON)
 		TNT1 A 0 A_Recoil(4)
-		TNT1 A 0 Bright A_FireCustomMissile("FlamespitterThermite")
+		TNT1 A 0 Bright A_FireCustomMissile("FlamespitterThermite", 0.0, true, 2.0, -1.0)
 		Goto FireAnim
 	FireAnim:
 		FLMF ABCBA 1

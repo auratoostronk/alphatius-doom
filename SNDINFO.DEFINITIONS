@@ -1,6 +1,7 @@
 //WEAPONS
 SparkCannon/Fire			SPARKFIR
 SparkCannon/AltFire			SPARKALT
+SparkCannon/Hiss			SPARKHIS
 
 C14/Fire					C14FIRE
 C14/GasHiss					GASHISS
@@ -20,7 +21,8 @@ TeslaSMG/AltFire			TSMGALTF
 TeslaSMG/AltFireHit			TSMGHIT
 
 ParticleSplitter/Fire		PSSGFIRE
-ParticleSplitter/Pump		PSSGPUMP
+ParticleSplitter/Pump1		PSGPUMP1
+ParticleSplitter/Pump2		PSGPUMP2
 
 BeamRifle/Fire			BEAMFIRE
 BeamRifle/AltCharge 	C14CHARG
@@ -54,6 +56,7 @@ General/WeaponSwitch		WEAPSWAP
 General/WeaponHit			WEAPNHIT
 General/AltReady			ALTREADY
 General/TravelReady			TRAVREDY	
+//General/ArmorBreak			ARMORBRK
 
 //PICKUPS
 Pickups/NanoArmor 			ARMORUP

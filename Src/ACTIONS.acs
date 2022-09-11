@@ -10,7 +10,7 @@
 #define AUTODRONE_SHOTSFIRED 30
 
 global int 1:action1Recharge[];
-global int 2:decoyIDs[];
+//global int 2:decoyIDs[];
 
 
 Script "ActionAbility1" (void) net
@@ -83,7 +83,7 @@ Script "PowerBrace" (void)
 {
 	if(CheckInventory("ActionCD") == 0)
 	{
-		GiveInventory("ActionCD", GetAmmoCapacity("FastActionCharge"));
+		GiveInventory("ActionCD", GetAmmoCapacity("MediumActionCharge"));
 		GiveInventory("PowerBrace", 1);
 		ACS_NamedExecuteAlways("PowerBraceBubbleFX", 0);
 		PlaySound(0, "Actions/PowerBraceOn", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
@@ -112,7 +112,7 @@ Script "PowerBraceBubbleFX" (void)
 Script "DecoyUserDeath" DEATH
 {
 	//Breaks the link between the player and their decoy so that they cannot swap back to their decoy on death.
-	decoyIDs[PlayerNumber()] = 0;
+	//decoyIDs[PlayerNumber()] = 0;
 }
 Script "DecoyHologram" (void)
 {
@@ -136,7 +136,7 @@ Script "DecoyHologram" (void)
 	//{
 		if(CheckInventory("ActionCD") == 0)
 		{
-			GiveInventory("ActionCD", GetAmmoCapacity("MediumActionCharge"));
+			GiveInventory("ActionCD", GetAmmoCapacity("FastActionCharge"));
 			int utid = UniqueTID();
 			if(GetWeapon() == "C14" || GetWeapon() == "C14Alt")
 			{

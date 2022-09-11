@@ -2,6 +2,7 @@ ACTOR BeamRifle : Weapon 10011
 {
 	//$Category Alphatius Weapons
 	Radius 32
+	Height 32
 	Decal RailScorchLower
 	Tag "Beam Rifle"
 	//For some reason this is needed :c
@@ -17,11 +18,12 @@ ACTOR BeamRifle : Weapon 10011
 	Weapon.SelectionOrder 500
 	Weapon.Kickback 200
 	Inventory.Icon "BRFPA0"
+	DamageType "BeamRifle"
 	Inventory.RespawnTics 280 //8 seconds
 	States
 	{
 	Spawn:
-		BRFP A 1 bright
+		BRFP A 1 bright A_SetAngle(angle + 1.0)
 		Loop
 	Ready:
 		BRFR A 1 A_WeaponReady
@@ -41,18 +43,18 @@ ACTOR BeamRifle : Weapon 10011
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		TNT1 A 0 A_SpawnItemEX("LightBlueLightShoot")
 		TNT1 A 0 A_PlaySound("BeamRifle/Fire", CHAN_WEAPON, 1.0, true)
-		BRFF AB 1 A_RailAttack(4, 0, true, "none", "none", RGF_SILENT, 0, "BeamRailHit", 0, 0, 720.0, 1.0, 8.0, 0, "BeamRailPuff", -2)
+		BRFF AB 1 A_RailAttack(4, 2.5, true, "none", "none", RGF_SILENT, 0, "BeamRailHit", 0, 0, 720.0, 1.0, 8.0, 0, "BeamRailPuff", -1.0)
 		BRFF E 1 A_Refire("Fire")
 		TNT1 A 0 A_PlaySound("BeamRifle/FireStop", CHAN_WEAPON, 1.0, false)
 		TNT1 A 0 A_StopSound(CHAN_WEAPON)
 		Goto Ready
 	AltFire:
-		TNT1 A 0 A_JumpIfInventory("BeamAltCD", 1, "AltFail")
-		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponAltFired", 0)
+		//TNT1 A 0 A_JumpIfInventory("BeamAltCD", 1, "AltFail")
+		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		TNT1 A 0 A_SpawnItemEX("LightBlueLightShoot")
-		TNT1 A 0 A_PlaySound("SparkCannon/AltFire", CHAN_WEAPON)
-		BRFF A 1 A_FireCustomMissile("BeamRifleDisc", 0, true, 0, -1.0, 0, 0)
-		BRFF BC 2
+		TNT1 A 0 A_PlaySound("BeamRifle/AltFire", CHAN_WEAPON, 1.0, false)
+		BRFF C 1 A_RailAttack(14, 2.5, true, "none", "none", RGF_SILENT, 0, "BeamRailHit2", 0, 0, 16384.0, 1.0, 8.0, 0, "BeamRailPuff2", -1.0)
+		BRFF DEFG 1
 		BRFR A 1
 		Goto Ready
 	AltFail:
@@ -60,77 +62,123 @@ ACTOR BeamRifle : Weapon 10011
 		BRFR A 3 A_WeaponReady(WRF_NOSECONDARY)
 		Goto Ready
   }
+}/*
+Actor BeamOrbDebuff : PowerProtection
+{
+	+SERVERNETID
+	DamageFactor "BeamRifle", 1.5
+	Powerup.Duration 140
 }
-Actor BeamRifleDisc
+Actor BeamOrbDebuffFX
+{
+	RenderStyle add
+	VSpeed 2
+	+CLIENTSIDEONLY
+	+NOINTERACTION
+	+SERVERNETID
+	Alpha 0.4
+	Scale 0.25
+	+BRIGHT
+	States
+	{
+	Spawn:
+	Death:
+		ZAP6 ABCDE 1 A_FadeOut(0.025)
+		loop
+		
+	}
+	
+}
+const int beamorb_radius = 128;
+const int beamorb_empradius = 256;
+Actor BeamRifleOrb
 {
 	Projectile
-	Radius 16
-	Height 4
-	Scale 1.0
-	Speed 64
+	Radius 8
+	Height 16
+	Scale 2.0
+	Speed 48
 	Decal RailScorchLower
-	Damage (10)
-	+RIPPER
-	Renderstyle Add
+	Damage (40 + (args[0] * 20))
 	Obituary "%k > \cnBeam Rifle (Alt)\c- > %o"
 	+BRIGHT
-	MissileType "BeamCannonTrail"
+	DamageType "BeamRifleAlt"
+	MissileType "BeamOrbTrail"
 	MissileHeight 8
 	States
 	{
 	Spawn:
-		PSLH A 1 A_SpawnItemEx("BeamRifleDiscTrail")
-		loop
-	Death:
-		PSLH A 1 A_CustomMissile("BeamRifleDiscInWall", 0.0, 0.0, 0.0)
-		TNT1 A 1
-		stop
-	}
-}
-Actor BeamRifleDiscInWall
-{
-	+NOGRAVITY
-	+NOCLIP
-	+BRIGHT
-	Scale 1.4
-	Renderstyle Add
-	Radius 16
-	Height 4
-	ProjectileKickback 120
-	Obituary "%k > \cnBeam Rifle (Alt)\c- > %o"
-	States
-	{
-	Spawn:
-		PSLH A 18
+		BMBA ABCABC 2
 		Goto Spawn1
 	Spawn1:
-		PSLH E 1 A_JumpIf(CallACS("CheckAltFireReleased", 0) > 0, "Death")
-		TNT1 A 0 A_JumpIf(args[0] > 70, "PreDeath")
-		TNT1 A 0 A_SetArg(0, args[0] + 1)
-		Loop
-	PreDeath:
-		PSLH EEEAAAEEEAAAEEEAAA 1 A_JumpIf(ACS_NamedExecuteWithResult("CheckAltFireReleased") > 0, "Death")
-		Goto Death
+		TNT1 A 0 A_SetArg(0, 1) //Empowers the orb.
+		Goto Spawn2
+	Spawn2:
+		SPBA ABC 2
+		loop
 	Death:
-		TNT1 A 0 A_Explode(60, 256, XF_HURTSOURCE, 1, 128)
+		TNT1 A 0 A_JumpIf(args[0] == 1, "DeathEmpowered")
+		TNT1 A 0 A_SpawnItemEX("BeamOrbRadiusFX", beamorb_radius, 0.0, 8.0)
+		TNT1 A 0 A_SpawnItemEX("BeamOrbRadiusFX", -beamorb_radius, 0.0, 8.0)
+		TNT1 A 0 A_SetArg(1, args[1] + 10)
+		TNT1 A 0 A_SetAngle(angle + 10)
+		TNT1 A 0 A_JumpIf(args[1] > 180, "Death1")
+		Goto Death+1
+	Death1:
+		TNT1 A 0 A_Explode(20, beamorb_radius, !XF_HURTSOURCE)
 		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
 		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
 		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")
 		TNT1 A 0 A_SpawnItem("PhotonGrenadeDeathFX")
-		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("DiscDeathDots",0,0,0,frandom(-16.0, 16.0), frandom(-16.0, 16.0), frandom(-16.0, 16.0))
 		TNT1 AAAAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-2,2),frandom(-2,2),frandom(-2,2))
 		TNT1 AAAA 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,random(0,360),2,random(0,360))
-		TNT1 A 0 A_Quake(2,8,0, 384)
-		PSLH BCD 4
+		TNT1 A 0 A_Quake(2, 8, 0, 384)
+		BMBA DEFGHI 2
+		TNT1 A 35
+		Stop
+	DeathEmpowered:
+		TNT1 A 0 A_SpawnItemEX("BeamOrbRadiusFX", beamorb_empradius, 0.0, 8.0)
+		TNT1 A 0 A_SpawnItemEX("BeamOrbRadiusFX", -beamorb_empradius, 0.0, 8.0)
+		TNT1 A 0 A_SetArg(1, args[1] + 10)
+		TNT1 A 0 A_SetAngle(angle + 10)
+		TNT1 A 0 A_JumpIf(args[1] > 180, "DeathEmpowered1")
+		Goto DeathEmpowered
+	DeathEmpowered1:
+		TNT1 A 0 A_Explode(40, beamorb_empradius, !XF_HURTSOURCE)
+		TNT1 AAAAAAAAAA 0 A_SpawnItemEx("OrbDeathDots",0,0,0,frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(-4.0, 4.0))
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_SpawnItemEx("ExplodeHitFlash2",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_SpawnItem("ExplodeSmokeRing")
+		TNT1 A 0 A_SpawnItem("PhotonGrenadeDeathFX")
+		TNT1 AAAAA 0 A_SpawnItemEx("ExplodeSmoke",0,0,0,frandom(-2,2),frandom(-2,2),frandom(-2,2))
+		TNT1 AAAA 0 A_CustomMissile("ExplodeSmokeSpawner",0,0,random(0,360),2,random(0,360))
+		TNT1 A 0 A_Quake(2, 8, 0, 384)
+		SMBA DEFGHI 2
 		TNT1 A 35
 		Stop
 	}
 }
-Actor BeamRifleDiscTrail
+Actor BeamOrbTrail
 {
 	Radius 16
 	Height 4
-	RenderStyle ADD
+	Scale 0.2
+	+NOINTERACTION
+	+CLIENTSIDEONLY
+	+NONETID
+	+BRIGHT
+	States
+	{
+		Spawn:
+		BMBA ABC 3
+		BMBA ABC 3 A_FadeOut(0.1)
+		Goto Spawn+1
+	}
+}
+Actor BeamOrbRadiusFX
+{
+	Radius 1
+	Height 1
 	Scale 1.0
 	+NOINTERACTION
 	+CLIENTSIDEONLY
@@ -139,25 +187,24 @@ Actor BeamRifleDiscTrail
 	States
 	{
 		Spawn:
-		PSLH A 8
-		PSLH A 1 A_FadeOut(0.1)
+		LSPK A 8
+		LSPK A 1 A_FadeOut(0.05)
 		Goto Spawn+1
 	}
 }
-Actor DiscDeathDots : PhotonGrenadeDeathDots
+Actor OrbDeathDots : PhotonGrenadeDeathDots
 {
+	Scale 0.5
 	States
 	{
 		Spawn:
-		LSPK A 1
+		SMBA ABC 1
 		loop
 		Death:
-		LSPK A 35
-		LSPK AAAAAAAAAAAAAAAAAAAA 1 A_FadeOut(0.05)
-		TNT1 A 1 
-		stop
+		SMBA ABC 1 A_FadeOut(0.05)
+		loop
 	}
-}
+}*/
 Actor BeamRailPuff
 {
 	Radius 2
@@ -175,19 +222,18 @@ Actor BeamRailPuff
 		Loop
 	}
 }
-/*
 Actor BeamRailPuff2 : BeamRailPuff
 {
 	States
 	{
 	Spawn:
-		LSPK A 1
+		LSPK A 2
 		Goto Spawn1
 	Spawn1:
 	    LSPK A 1 Bright A_FadeOut(0.2)
 		Loop
 	}
-}*/
+}
 Actor BeamRailHit : BulletPuff
 {
 	+AlWAYSPUFF
@@ -207,10 +253,10 @@ Actor BeamRailHit : BulletPuff
 	    ZAP6 ABCDE 1 A_FadeOut(0.2)
 		Stop
 	}
-}/*
+}
 Actor BeamRailHit2 : BeamRailHit
 {
 	DamageType "BeamRifleAlt"
 	Obituary "%k > \cnBeam Rifle (Alt)\c- > %o"
 	ProjectileKickback 200
-}*/
+}
