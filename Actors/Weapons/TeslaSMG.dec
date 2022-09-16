@@ -4,7 +4,7 @@ Actor TeslaSMG : Weapon 10006
 	Radius 32
 	Height 32
 	Decal PlasmaScorchLower
-	Tag "Tesla SMG"
+	Tag "(1) Tesla SMG"
 	Obituary "%k > \ckTesla SMG (Alt)\c- > %o"
 	Weapon.BobStyle "Smooth"
 	Weapon.AmmoType1 "SMGEnergy"
@@ -44,7 +44,8 @@ Actor TeslaSMG : Weapon 10006
 		SMGF C 1
 		Goto Ready
     AltFire:
-        TNT1 A 0 A_JumpIfInventory("SMGAltCD",1,"AltFail")
+        TNT1 A 0 A_JumpIfInventory("SMGAltCD", 1, "AltFail")
+		TNT1 A 0 A_JumpIfInventory("AltFireDeviceCD", 1, "AltFail")
         TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponAltFired", 0)
 		SMGM ABCDE 2
         TNT1 A 0 A_SpawnItemEX("YellowLightShoot")

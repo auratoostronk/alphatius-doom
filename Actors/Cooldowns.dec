@@ -1,14 +1,60 @@
+//ALT FIRE COOLDOWNS
+Actor SparkAltCD : Ammo
+{
+	+SERVERNETID 
+	Inventory.MaxAmount 280
+	Ammo.BackpackMaxAmount 280
+}
+Actor CarbineAltCD : Ammo
+{
+	+SERVERNETID 
+	Inventory.MaxAmount 210
+	Ammo.BackpackMaxAmount 210
+}
+Actor C14AltCD : Ammo
+{
+	+SERVERNETID 
+	Inventory.MaxAmount 350
+	Ammo.BackpackMaxAmount 350
+}
+Actor SMGAltCD : Ammo
+{
+	+SERVERNETID 
+	Inventory.MaxAmount 105
+	Ammo.BackpackMaxAmount 105
+}
+Actor PumpSGAltCD : Ammo
+{
+	+SERVERNETID 
+	Inventory.MaxAmount 70
+	Ammo.BackpackMaxAmount 70
+}
+Actor FlameAltCD : Ammo
+{
+	+SERVERNETID 
+	Inventory.MaxAmount 210
+	Ammo.BackpackMaxAmount 210
+}
+Actor BeamAltCD : Ammo
+{
+	+SERVERNETID 
+	Inventory.MaxAmount 280
+	Ammo.BackpackMaxAmount 280
+}
+//Cooldowns shared across all alt-fires.
+Actor AltFireDeviceCD : Ammo
+{
+	+SERVERNETID 
+	Inventory.MaxAmount 70
+	Ammo.BackpackMaxAmount 70
+}
+
+//TRAVEL COOLDOWNS
 //Used to keep track of how many charges Thruster Boots has
 Actor ThrusterBootsCharge : Ammo
 {
 	+SERVERNETID
 	Inventory.MaxAmount 2
-}
-//Used for Energy Regen
-Actor EnergyRechargeCD : Ammo
-{
-	+SERVERNETID
-	Inventory.MaxAmount 70
 }
 //Travel ability cooldowns
 Actor TBootsCD : Ammo
@@ -29,20 +75,10 @@ Actor JThrustCD : Ammo
 Actor HDriveCD : Ammo
 {
 	+SERVERNETID
-	Inventory.MaxAmount 105
+	Inventory.MaxAmount 210
 }
-//Used to keep track of how long before the Alt Fire Fail message will appear next time the alt fire is used.
-Actor AltFireFailCD : Ammo
-{
-	+SERVERNETID
-	Inventory.MaxAmount 18
-}
-//Used to prevent Low Energy sound from spamming. See ALPHLIB.acs
-Actor NoLowEnergySound : Inventory
-{
-	+SERVERNETID
-	Inventory.MaxAmount 1
-}
+
+//ACTION COOLDOWNS
 //To make recharge bars appear filled when they should be
 Actor FastActionCharge : Ammo
 {
@@ -60,4 +96,24 @@ Actor ActionCD : Ammo
 {
 	+SERVERNETID
 	Inventory.MaxAmount 875 //25s
+}
+
+
+//Used for Energy Regen
+Actor EnergyRechargeCD : Ammo
+{
+	+SERVERNETID
+	Inventory.MaxAmount 70
+}
+//Used to keep track of how long before the Alt Fire Fail message will appear next time the alt fire is used.
+Actor AltFireFailCD : Ammo
+{
+	+SERVERNETID
+	Inventory.MaxAmount 18
+}
+//Used to prevent Low Energy sound from spamming. See ALPHLIB.acs
+Actor NoLowEnergySound : Inventory
+{
+	+SERVERNETID
+	Inventory.MaxAmount 1
 }

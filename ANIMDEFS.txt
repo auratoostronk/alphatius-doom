@@ -6,5 +6,6 @@ warp2 flat qlava
 warp2 flat wwater
 warp2 flat wnuke
 warp2 flat wslime
+warp2 flat blakwatr
 warp2 texture ENERGY_1
 warp2 texture ENERGY_4

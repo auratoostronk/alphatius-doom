@@ -12,6 +12,7 @@ Actor NegaBarrierBubble
 {
 	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+SERVERNETID
 	Alpha 0.3
 	Scale 2.0
 	+BRIGHT

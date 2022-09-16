@@ -56,10 +56,12 @@ General/WeaponSwitch		WEAPSWAP
 General/WeaponHit			WEAPNHIT
 General/AltReady			ALTREADY
 General/TravelReady			TRAVREDY	
-//General/ArmorBreak			ARMORBRK
+General/ArmorBreak			ARMORBRK
 
 //PICKUPS
-Pickups/NanoArmor 			ARMORUP
+Pickups/NanoArmor 			ARMORBIG
+Pickups/NanoPlate 			ARMORMED
+Pickups/NanoShard 			ARMORSML
 
 
 //TRAVELS

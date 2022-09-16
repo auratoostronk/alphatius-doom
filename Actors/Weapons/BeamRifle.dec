@@ -4,7 +4,7 @@ ACTOR BeamRifle : Weapon 10011
 	Radius 32
 	Height 32
 	Decal RailScorchLower
-	Tag "Beam Rifle"
+	Tag "(4) Beam Rifle"
 	//For some reason this is needed :c
 	Obituary "%k > \cnBeam Rifle\c- > %o"
 	Weapon.BobStyle "Smooth"

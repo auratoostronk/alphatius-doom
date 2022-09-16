@@ -76,11 +76,11 @@ statusbar fullscreen, fullscreenoffsets
 	}
 	InInventory ActionPowerBrace
 	{
-		drawBar "BLUFULL", "BLUEMPTY", Ammo FastActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
+		drawBar "BLUFULL", "BLUEMPTY", Ammo MediumActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
 	}
 	InInventory ActionDecoyHologram
 	{
-		drawBar "BLUFULL", "BLUEMPTY", Ammo MediumActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
+		drawBar "BLUFULL", "BLUEMPTY", Ammo FastActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
 	}
 	InInventory ActionAutoDrone
 	{

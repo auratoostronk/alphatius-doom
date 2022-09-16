@@ -146,11 +146,13 @@ Script "SetupPlayerMP" (void)
 		setStartWeapon(GetCVARString("alph_startweapon"));
 		gamemodeCheck();
 		ACS_NamedExecuteAlways("RestoreActionTimers", 0);
-		
 		ACS_NamedExecuteAlways("TravelSetup", 0);
 		ACS_NamedExecuteAlways("TravelSetupClient", 0);
 		ACS_NamedExecuteAlways("ZoomSetup", 0);
 		ACS_NamedExecuteAlways("ZoomSetupClient", 0);
+		ACS_NamedExecuteAlways("WeaponGlowSetup", 0);
+		ACS_NamedExecuteAlways("WeaponGlowSetupClient", 0);
+		GiveInventory("C14RespawnProtection", 1);
 	}
 }
 Script "PlayerDeath" DEATH

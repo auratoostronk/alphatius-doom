@@ -35,6 +35,7 @@ Actor RainDrop
 	Vspeed -32
 	+CLIENTSIDEONLY
 	+NOINTERACTION
+	+SERVERNETID
 	States
 	{
 		Spawn:

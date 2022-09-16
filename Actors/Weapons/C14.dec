@@ -5,7 +5,7 @@ ACTOR C14 : Weapon 10005
 	//$Category Alphatius Weapons
 	Radius 32
 	Height 32
-	Tag "C14 Energy Blaster"
+	Tag "(6) C14 Energy Blaster"
 	Weapon.BobStyle "Smooth"
 	Weapon.AmmoType1 "C14Energy"
 	Weapon.AmmoType2 "C14Energy"
@@ -42,7 +42,8 @@ ACTOR C14 : Weapon 10005
 		C14R A 2
 		Goto Ready
 	AltFire:
-		TNT1 A 0 A_JumpIfInventory("C14AltCD",1,"AltFail")
+		TNT1 A 0 A_JumpIfInventory("C14AltCD", 1, "AltFail")
+		TNT1 A 0 A_JumpIfInventory("AltFireDeviceCD", 1, "AltFail")
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponAltFired", 0)
 		TNT1 A 0 A_SpawnItemEX("GreenLightShoot")
 		TNT1 A 0 A_PlaySound("GrenadeLaunch", CHAN_WEAPON)
@@ -278,13 +279,9 @@ Actor C14GasDamageIndicator
 		Goto Death
 	}
 }
-Actor C14RespawnProtection1 : PowerProtection
-{
-	DamageFactor "GammaBeam", 0.0
-	Powerup.Duration -2
-}
-Actor C14RespawnProtection2 : PowerProtection
+Actor C14RespawnProtection : PowerProtection
 {
 	DamageFactor "ToxicGas", 0.0
+	DamageFactor "GammaBeam", 0.0
 	Powerup.Duration -2
 }

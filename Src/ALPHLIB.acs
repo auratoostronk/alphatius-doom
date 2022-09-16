@@ -67,6 +67,8 @@ Script "RechargeTimers" ENTER
 					LocalAmbientSound("General/AltReady", 0.5);
 				}
 			}
+			//Reduces global alt-fire cooldown (alt-fire cooldown shared between weapons)
+			TakeInventory("AltFireDeviceCD", 1);
 			//Cooldown between "Alt Fire Failed" messages
 			TakeInventory("AltFireFailCD", 1);
 			

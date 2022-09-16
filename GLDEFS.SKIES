@@ -70,3 +70,12 @@ Skybox OLOSSKY fliptop
 	OLOS_UP
 	OLOS_DN
 }
+Skybox FLOODSKY fliptop
+{
+	FLOOD_RT
+	FLOOD_FT
+	FLOOD_LF
+	FLOOD_BK
+	FLOOD_UP
+	FLOOD_DN
+}

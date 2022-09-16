@@ -2,20 +2,28 @@
 #include "zcommon.acs"
 #import "ALPHLIB.acs"
 
-Script "WeaponGlow" ENTER
+
+Script "WeaponGlow" (int predicting, int pressed, int released, int buttons)
 {
-	while(true)
+	str glowclass = "BlueGlowSpawner";
+	for(int i = 0; i < NUM_WEAPS; i++)
 	{
-		for(int i = 0; i < NUM_WEAPS; i++)
+		if(StrIcmp(GetWeapon(), WEAP_CLASSNAMES[i]) == 0 || StrIcmp(GetWeapon(), WEAP_ALTCLASSNAMES[i]) == 0)
 		{
-			if(StrIcmp(GetWeapon(), WEAP_CLASSNAMES[i]) == 0 || StrIcmp(GetWeapon(), WEAP_ALTCLASSNAMES[i]) == 0)
-			{
-				str glowclass = StrParam(s:WEAP_COLORS[i], s:"GlowSpawner");
-				SpawnForced(glowclass, GetActorX(0), GetActorY(0), GetActorZ(0) + 2.0);
-			}
+			glowclass = StrParam(s:WEAP_COLORS[i], s:"GlowSpawner");
+			SetNetworkReplicationFlags(NETREP_SKIPOWNER);
+			SpawnSpotForced(glowclass, ActivatorTID(), 0, 0);
+            SetNetworkReplicationFlags(0);
 		}
-		delay(1);
 	}
+}
+Script "WeaponGlowSetup" (void)
+{
+	SetActionScript(0, 0, "WeaponGlow");
+}
+Script "WeaponGlowSetupClient" (void) CLIENTSIDE
+{
+	SetActionScript(0, 0, "WeaponGlow");
 }
 //For the Thermite Spitter's alt-fire.
 Script "PlayerDeathByThermite" (void)
@@ -51,6 +59,7 @@ Script "OnWeaponAltFired" (void)
 			GiveInventory(WEAP_COOLDOWNNAMES[i], GetAmmoCapacity(WEAP_COOLDOWNNAMES[i]));
 		}
 	}
+	GiveInventory("AltFireDeviceCD", GetAmmoCapacity("AltFireDeviceCD"));
 	ACS_NamedExecuteAlways("OnWeaponFired", 0);
 	
 }

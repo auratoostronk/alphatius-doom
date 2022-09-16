@@ -1,13 +1,13 @@
 //WEAPONS
 $rolloff SparkCannon/Fire 800 3200
-$rolloff SparkCannon/AltFire 400 1600 
+$rolloff SparkCannon/AltFire 800 3200 
 $rolloff SparkCannon/Hiss 200 800
 
 $rolloff C14/Fire 400 1600
 $rolloff C14/GasHiss 200 800
 $rolloff C14/Hit 200 400
 
-$rolloff PhotonCarbine/Fire 400 1600
+$rolloff PhotonCarbine/Fire 800 3200
 $rolloff PhotonCarbine/Hit 200 400
 
 $rolloff TeslaSMG/Fire 400 1600
@@ -20,7 +20,7 @@ $rolloff ParticleSplitter/Pump 200 800
 $rolloff RocketCannon/Fire 800 1600
 
 $rolloff BeamRifle/Fire 400 1600
-$rolloff BeamRifle/AltFire 800 1600
+$rolloff BeamRifle/AltFire 800 3200
 
 //WEAPON EFFECTS
 $rolloff GrenadeHit 400 1600
@@ -37,7 +37,7 @@ $rolloff EXPLOS2 800 4800
 $rolloff EXPLOS3 800 4800
 
 //GENERAL
-$rolloff General/ArmorBreak 800 3200
+$rolloff General/ArmorBreak 400 1600
 
 //TRAVELS
 $rolloff Travel/ThrusterBoots 400 1600
@@ -60,7 +60,7 @@ $rolloff Ambient/TeleportHum 100 800
 $rolloff Ambient/JumppadHit  400 800
 
 //PLAYER
-$rolloff Footstep 1000 1600
+$rolloff Footstep 800 1600
 
 //VOLUMES
 $volume Actions/AutoLaser 0.7

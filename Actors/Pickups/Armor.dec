@@ -4,7 +4,7 @@ Actor NanoArmor : BasicArmorBonus replaces BlueArmor
 	Radius 24
 	Height 24
 	Inventory.PickupMessage "Equipped Nano-Armor!"
-	//Inventory.PickupSound "Pickups/NanoArmor"
+	Inventory.PickupSound "Pickups/NanoArmor"
 	Inventory.Icon "ARM3A0"
 	Armor.SavePercent 66.6
 	Armor.SaveAmount 50
@@ -26,7 +26,7 @@ Actor NanoPlate : BasicArmorBonus replaces GreenArmor
 	Radius 24
 	Height 24
 	Inventory.PickupMessage "Equipped a Nano-Plate."
-	//Inventory.PickupSound "Pickups/NanoArmor"
+	Inventory.PickupSound "Pickups/NanoPlate"
 	Inventory.Icon "ARM2A0"
 	Armor.SavePercent 66.6
 	Armor.SaveAmount 25
@@ -49,7 +49,7 @@ Actor NanoShard : BasicArmorBonus replaces ArmorBonus
 	Radius 16
 	Height 24
 	Inventory.PickupMessage "Picked up a Nano-Shard."
-	//Inventory.PickupSound "Pickups/NanoArmor"
+	Inventory.PickupSound "Pickups/NanoShard"
 	Inventory.Icon "NANSD0"
 	Armor.SavePercent 66.6
 	Armor.SaveAmount 5
