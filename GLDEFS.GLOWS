@@ -1,0 +1,16 @@
+glow
+{
+	Flats
+	{
+		A_FLAT14
+		A_FLAT15
+		COMP_RD
+		COMP_OR
+		COMP_YL
+		COMP_GR
+		COMP_LB
+		COMP_BL
+		COMP_PR
+		WNUKE
+	}
+}

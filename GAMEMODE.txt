@@ -20,6 +20,22 @@ CTF
 }
 TEAMPLAY
 {
+	//Allow players to spawn at either team's spawnpoints
+	removeflag TEAMGAME
+	addflag DEATHMATCH
+	GameSettings
+	{
+		Compat_ExplosionThrust = true;
+		Sv_NoRespawnInvul = true;
+		Sv_NoMedals = true;
+		Sv_ItemRespawn = true;
+	}
+}
+DOMINATION
+{
+	//Allow players to spawn at either team's spawnpoints
+	removeflag TEAMGAME
+	addflag DEATHMATCH
 	GameSettings
 	{
 		Compat_ExplosionThrust = true;

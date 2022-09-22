@@ -188,3 +188,20 @@
 	revealed = true
 	script = "humanbot"
 }
+{
+	//ludwig
+	name = "ludwig"
+	accuracy = 2
+	intellect = 0
+	evade = 4
+	anticipation = 1
+	reactiontime = 1
+	perception = 1
+	favoriteweapon = "TeslaSMG"
+	color = "00 55 88"
+	gender = "male"
+	railcolor = rainbow
+	chatfrequency = 60
+	revealed = true
+	script = "humanbot"
+}

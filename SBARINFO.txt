@@ -16,7 +16,7 @@ statusbar fullscreen, fullscreenoffsets
 	
 	drawstring SMALLFONT, Red, "Alt-Fire Cooldown", -10, -70, 0, alignment(right);
 	drawstring SMALLFONT, Green, "Travel Ability", -10, -50, 0, alignment(right);
-	drawnumber 10, SMALLFONT, Cyan, Ammo ExtraTravelCharge, Alignment(right), -240, -40;
+	drawnumber 10, SMALLFONT, Yellow, Ammo ExtraTravelCharge, Alignment(right), -240, -40;
 	drawstring SMALLFONT, Cyan, "Action Cooldown", -10, -30, 0, alignment(right);
 	
 	//ALTFIRE COOLDOWN

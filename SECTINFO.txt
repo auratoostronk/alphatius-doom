@@ -1,0 +1,56 @@
+//Quarry
+[ALPHDM01]
+points =
+{
+	"Alpha" = {259},
+	"Bravo" = {260},
+	"Charlie" = {261}
+}
+//Sediment
+[ALPHDM02]
+points =
+{
+	"Storage" = {454},
+	"Processing" = {455},
+	"Cavern" = {456}
+}
+//Stronghold
+[ALPHDM04]
+points =
+{
+	"Stairwell" = {304},
+	"Wall" = {305},
+	"Garage" = {306}
+}
+//Waste
+[ALPHDM08]
+points =
+{
+	"Outdoors" = {187},
+	"Dump Room" = {188},
+	"Storage" = {189}
+}
+//Sinkhole
+[ALPHDM09]
+points =
+{
+	"Sinkhole" = {132},
+	"Crate Room" = {133},
+	"Cave" = {134}
+}
+//Andesite
+[ALPHDM10]
+points =
+{
+	"Fluid Processing" = {309},
+	"Storehouse" = {310},
+	"Open Yard" = {311}
+}
+//Maritime
+[ALPHDM12]
+points =
+{
+	"Dock" = {182},
+	"Storage" = {183},
+	"Viewport" = {184}
+}

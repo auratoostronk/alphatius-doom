@@ -8,9 +8,9 @@
 #define HYPERD_WALLJUMP_Z 12.0
 #define HYPERD_WALLJUMP_XY 6.0
 #libdefine HYPERD_PASSIVESPD 0.15
-#libdefine HYPERD_ACTIVESPD 0.2
-#define WARPD_STRENGTH 8.0
-#define WARP_TICKS_TOTAL 2
+#libdefine HYPERD_ACTIVESPD 0.25
+#define WARPD_STRENGTH 2.4
+#define WARP_TICKS_TOTAL 4
 #define TBOOTS_STRENGTH 16
 
 
@@ -96,7 +96,9 @@ Script "ThrusterBootsNew" (int predicting, int pressed, int released, int button
 				//Play the sound and 
 				TakeInventory("ThrusterBootsSmokeTics", 350);
 				GiveInventory("ThrusterBootsSmokeTics", 18);
+				SetNetworkReplicationFlags( NETREP_SKIPOWNER );
 				PlaySound(0, "Travel/ThrusterBoots", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
+				SetNetworkReplicationFlags( 0 );
                 if(hasTravelPickup)
 					TakeInventory("ExtraTravelCharge", 1);
 				else
@@ -179,7 +181,9 @@ Script "JumpThrustNew" (int predicting, int pressed, int released, int buttons)
             bool jThrustOnCD = (CheckInventory("JThrustCD") > 0);
             if (hasTravelPickup || !jThrustOnCD)
             {
+				SetNetworkReplicationFlags( NETREP_SKIPOWNER );
 				PlaySound(0, "Travel/JumpThrust", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
+				SetNetworkReplicationFlags( 0 );
 				SpawnSpotFacingForced("JumpThrustSmokeSpawner", 0, 0);
 				SetPredictableValue(0, 0, 1);
                 if(hasTravelPickup)
@@ -216,7 +220,9 @@ Script "HyperdriveNew" (int predicting, int pressed, int released, int buttons)
 			{
 				if(!isHyperDriving)
 				{
+					SetNetworkReplicationFlags( NETREP_SKIPOWNER );
 					PlaySound(0, "Travel/HyperdriveStart", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
+					SetNetworkReplicationFlags( 0 );
 					GiveInventory("HyperdriveSpeed", 1);
 					SetPredictableValue(0, 0, 1);
 				}
@@ -227,7 +233,9 @@ Script "HyperdriveNew" (int predicting, int pressed, int released, int buttons)
 			delay(HYPERD_DUR);
 			if(predicting == 0)
 			{
+				SetNetworkReplicationFlags( NETREP_SKIPOWNER );
 				PlaySound(0, "Travel/HyperdriveEnd", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
+				SetNetworkReplicationFlags( 0 );
 				TakeInventory("HyperdriveSpeed", 1);
 				if(hasTravelPickup)
 					TakeInventory("ExtraTravelCharge", 1);
@@ -259,9 +267,9 @@ Script "WarpDriveNew" (int predicting, int pressed, int released, int buttons)
                 warpDriveTicks[PlayerNumber()] = WARP_TICKS_TOTAL;
                 SetPredictableValue(0, 0, warpDriveTicks[PlayerNumber()]);
                 //SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
-                PlaySound(0, "Travel/WarpStart", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
                 
                 SetNetworkReplicationFlags( NETREP_SKIPOWNER );
+                PlaySound(0, "Travel/WarpStart", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
                 GiveInventory("PowerWarpInvisibility", 1);
                 GiveInventory("PowerWarpInvulnerability", 1);
                 if(CheckInventory("ExtraTravelCharge") > 0)
@@ -319,9 +327,9 @@ Script "WarpDriveActive" (int predicting, int pressed, int released, int buttons
 			//warpDriveVely[PlayerNumber()] = 0;
 			//warpDriveVelz[PlayerNumber()] = 0;
             //SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
-            PlaySound(0, "Travel/WarpDone", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
             
             SetNetworkReplicationFlags( NETREP_SKIPOWNER );
+            PlaySound(0, "Travel/WarpDone", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
             TakeInventory("PowerWarpInvisibility", 1);
             TakeInventory("PowerWarpInvulnerability", 1);
             SpawnSpotFacingForced("TeleportFog", 0, 0);

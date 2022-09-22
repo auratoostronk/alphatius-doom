@@ -15,11 +15,3 @@ Actor IsHealing : Inventory
 	+SERVERNETID
 	Inventory.MaxAmount 1
 }
-
-Actor BotSpeedDebuff : PowerSpeed
-{
-	+SERVERNETID
-	+POWERSPEED.NOTRAIL
-	Powerup.Strength 0.8
-	Powerup.Duration 0xfffffd
-}

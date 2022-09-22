@@ -64,7 +64,7 @@ Script "SetupBot" (void)
 	setAction(random(0, 4));
 	setPassive(random(0, 3));
 	gamemodeCheck();
-	GiveInventory("BotSpeedDebuff", 1);
+	SetActorProperty(0, APROP_SPEED, 0.8);
 	ACS_NamedExecuteAlways("StartBotAliveTimer", 0);
 }
 Script "StartBotAliveTimer" (void)
