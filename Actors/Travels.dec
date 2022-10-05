@@ -156,3 +156,30 @@ ACTOR HyperdriveFootstepSmoke
 			
 	}
 }
+Actor ShifterOrb 
+{
+	RenderStyle add
+	Speed 64
+	Radius 12
+	Height 24
+	Damage (0)  
+	Scale 1.5
+	Projectile
+	-SOLID
+	+NODAMAGE
+	+CANPASS
+	+THRUACTORS
+	+BRIGHT
+	-SHOOTABLE
+	Decal PlasmaScorchLower
+	States
+	{
+	Spawn:
+		FORB ABC 2
+		loop
+	Death:
+		FORB ABC 2 A_FadeOut(0.05)
+		loop
+		
+	}
+}

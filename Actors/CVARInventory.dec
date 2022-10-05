@@ -15,6 +15,9 @@ Actor TravelWarpDrive : Inventory {
 Actor TravelHyperdrive : Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
+Actor TravelShifterOrb : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
 	
 Actor PassiveRapidAlt : Inventory { 
 	+SERVERNETID 
@@ -51,5 +54,8 @@ Actor ActionDecoyHologram : Inventory {
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
 Actor ActionAutoDrone : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor ActionRicochetDisc : Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }

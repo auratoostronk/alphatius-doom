@@ -7,29 +7,34 @@
 #define HYPERD_DUR 70
 #define HYPERD_WALLJUMP_Z 12.0
 #define HYPERD_WALLJUMP_XY 6.0
-#libdefine HYPERD_PASSIVESPD 0.15
-#libdefine HYPERD_ACTIVESPD 0.25
-#define WARPD_STRENGTH 2.4
-#define WARP_TICKS_TOTAL 4
-#define TBOOTS_STRENGTH 16
+#libdefine HYPERD_PASSIVESPD 0.2
+#libdefine HYPERD_ACTIVESPD 0.3
+#define WARPD_STRENGTH 1.2
+#define WARP_TICKS_TOTAL 8
+#define TBOOTS_STRENGTH 12
+//#define SHIFTORB_SPEED 16.0
 
+//global int 2:orbIDs[];
 
 Script "TravelSetupClient" (void) CLIENTSIDE
 {
 	switch(GetCVAR("alph_travel"))
 	{
 		case 1:
-		SetActionScript(0, BT_USER1, "WarpDriveNew");
+		SetActionScript(0, BT_USER1, "WarpDrive");
 		SetActionScript(0, 0, "WarpDriveActive");
 		break;
 		case 2:
-		SetActionScript(0, BT_USER1, "HyperdriveNew");
+		SetActionScript(0, BT_USER1, "Hyperdrive");
 		break;
 		case 3:
-		SetActionScript(0, BT_USER1, "JumpThrustNew");
+		SetActionScript(0, BT_USER1, "JumpThrust");
 		break;
+		//case 4:
+		//SetActionScript(0, BT_USER1, "ShifterOrb");
+		//break;
 		default:
-		SetActionScript(0, BT_USER1, "ThrusterBootsNew");
+		SetActionScript(0, BT_USER1, "ThrusterBoots");
 		break;
 	}
 }
@@ -40,7 +45,7 @@ Script "TravelSetup" (void)
 	{
 		case 1:
 		GiveInventory("TravelWarpDrive", 1);
-		SetActionScript(0, BT_USER1, "WarpDriveNew");
+		SetActionScript(0, BT_USER1, "WarpDrive");
 		SetActionScript(0, 0, "WarpDriveActive");
 		break;
 		break;
@@ -52,36 +57,25 @@ Script "TravelSetup" (void)
 		SetActorProperty(0, APROP_SECONDJUMPXY, HYPERD_WALLJUMP_XY);
 		SetActorProperty(0, APROP_SPEED, GetActorProperty(0, APROP_SPEED) + 0.2);
 		SetEffectActor(0, EA_SECOND_JUMP, "HyperdriveWallJumpFX");
-		SetActionScript(0, BT_USER1, "HyperdriveNew");
+		SetActionScript(0, BT_USER1, "Hyperdrive");
 		break;
 		case 3:
 		GiveInventory("TravelJumpThrust", 1);
-		SetActionScript(0, BT_USER1, "JumpThrustNew");
+		SetActionScript(0, BT_USER1, "JumpThrust");
 		break;
+		//case 4:
+		//GiveInventory("TravelShifterOrb", 1);
+		//SetActionScript(0, BT_USER1, "ShifterOrb");
+		//break;
 		default:
 		GiveInventory("TravelThrusterBoots", 1);
 		GiveInventory("ThrusterBootsCharge", 2);
-		SetActionScript(0, BT_USER1, "ThrusterBootsNew");
+		GiveInventory("TBootsCD", GetAmmoCapacity("TBootsCD"));
+		SetActionScript(0, BT_USER1, "ThrusterBoots");
 		break;
 	}
 }
-/*Script "CrouchScript" ENTER
-{
-	while(true)
-	{
-		if(GetPlayerInput(-1, INPUT_BUTTONS) & BT_CROUCH)
-		{
-			SetActorProperty(0, APROP_FootstepVolume, 0.0);
-		}
-		else
-		{
-			SetActorProperty(0, APROP_FootstepVolume, 1.0);	
-		}
-		
-		delay(1);
-	}
-}*/
-Script "ThrusterBootsNew" (int predicting, int pressed, int released, int buttons)
+Script "ThrusterBoots" (int predicting, int pressed, int released, int buttons)
 {
     if(pressed)
     {
@@ -94,15 +88,15 @@ Script "ThrusterBootsNew" (int predicting, int pressed, int released, int button
             {
                 SetPredictableValue(0, 0, 1);
 				//Play the sound and 
+				SetNetworkReplicationFlags( NETREP_SKIPOWNER );
 				TakeInventory("ThrusterBootsSmokeTics", 350);
 				GiveInventory("ThrusterBootsSmokeTics", 18);
-				SetNetworkReplicationFlags( NETREP_SKIPOWNER );
 				PlaySound(0, "Travel/ThrusterBoots", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
-				SetNetworkReplicationFlags( 0 );
                 if(hasTravelPickup)
 					TakeInventory("ExtraTravelCharge", 1);
 				else
 					TakeInventory("ThrusterBootsCharge", 1);
+				SetNetworkReplicationFlags( 0 );
             }
         }
         if (GetPredictableValue(0, 0) == 1)
@@ -171,7 +165,7 @@ Script "ThrusterBootsNew" (int predicting, int pressed, int released, int button
         }
     }
 }
-Script "JumpThrustNew" (int predicting, int pressed, int released, int buttons)
+Script "JumpThrust" (int predicting, int pressed, int released, int buttons)
 {
     if(pressed)
     {
@@ -181,15 +175,15 @@ Script "JumpThrustNew" (int predicting, int pressed, int released, int buttons)
             bool jThrustOnCD = (CheckInventory("JThrustCD") > 0);
             if (hasTravelPickup || !jThrustOnCD)
             {
+				SetPredictableValue(0, 0, 1);
 				SetNetworkReplicationFlags( NETREP_SKIPOWNER );
 				PlaySound(0, "Travel/JumpThrust", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
-				SetNetworkReplicationFlags( 0 );
 				SpawnSpotFacingForced("JumpThrustSmokeSpawner", 0, 0);
-				SetPredictableValue(0, 0, 1);
                 if(hasTravelPickup)
 					TakeInventory("ExtraTravelCharge", 1);
 				else
 					GiveInventory("JThrustCD",GetAmmoCapacity("JThrustCD"));
+				SetNetworkReplicationFlags( 0 );
             }
         }
         if (GetPredictableValue(0, 0) == 1)
@@ -207,7 +201,7 @@ Script "JumpThrustNew" (int predicting, int pressed, int released, int buttons)
     }
 }
 
-Script "HyperdriveNew" (int predicting, int pressed, int released, int buttons)
+Script "Hyperdrive" (int predicting, int pressed, int released, int buttons)
 {
     if(pressed)
     {
@@ -220,11 +214,11 @@ Script "HyperdriveNew" (int predicting, int pressed, int released, int buttons)
 			{
 				if(!isHyperDriving)
 				{
+					SetPredictableValue(0, 0, 1);
 					SetNetworkReplicationFlags( NETREP_SKIPOWNER );
 					PlaySound(0, "Travel/HyperdriveStart", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
-					SetNetworkReplicationFlags( 0 );
 					GiveInventory("HyperdriveSpeed", 1);
-					SetPredictableValue(0, 0, 1);
+					SetNetworkReplicationFlags( 0 );
 				}
 			}
 		}
@@ -250,7 +244,7 @@ int warpDriveTicks[64];
 int warpDriveVelx[64];
 int warpDriveVely[64];
 int warpDriveVelz[64];
-Script "WarpDriveNew" (int predicting, int pressed, int released, int buttons)
+Script "WarpDrive" (int predicting, int pressed, int released, int buttons)
 {
     if (pressed)
     {
@@ -345,7 +339,7 @@ Script "ShifterOrb" (int predicting, int pressed, int released, int buttons)
 		if(predicting == 0)
 		{
 			//If the Shifter Orb is in flight
-			if(isTIDUsed(decoyIDs[PlayerNumber()]) && decoyIDs[PlayerNumber()] != 0)
+			if(isTIDUsed(orbIDs[PlayerNumber()]) && orbIDs[PlayerNumber()] != 0)
 			{
 				//Swap places with it.
 				SetPredictableValue(0, 0, 2);
@@ -369,7 +363,10 @@ Script "ShifterOrb" (int predicting, int pressed, int released, int buttons)
 		{
 			int utid = UniqueTID();
 			orbIDs[PlayerNumber()] = utid;
-			SpawnSpotFacingForced("WarpOrb", 0, utid);
+			SpawnSpotFacingForced("ShifterOrb", 0, utid);
+			SetActorVelocity(utid, FixedMul(SHIFTORB_SPEED, cos(GetActorAngle(utid))), FixedMul(SHIFTORB_SPEED, sin(GetActorAngle(utid))), FixedMul(SHIFTORB_SPEED, sin(GetActorPitch(utid))), false, false);
+			SetActivator(utid);
+			Warp(utid, 0, 0, 40.0, GetActorAngle(0), 0);
 		}
 		//If the Shifter Orb is in flight, swap with it
 		else if(GetPredictableValue(0, 0) == 2)
@@ -377,21 +374,17 @@ Script "ShifterOrb" (int predicting, int pressed, int released, int buttons)
 			int tempTID = UniqueTID();
 			int aTID = ActivatorTID();
 			//Spawns a spawn spot at the Player's spot.
-			SpawnSpotFacingForced("MapSpot", ActivatorTID(), tempTID);
+			SpawnSpotFacingForced("MapSpot", aTID, tempTID);
+			SetActorVelocity(utid, FixedMul(SHIFTORB_SPEED, cos(GetActorAngle(utid))), FixedMul(SHIFTORB_SPEED, sin(GetActorAngle(utid))), FixedMul(SHIFTORB_SPEED, sin(GetActorPitch(utid))), false, false);
 			//Sets the player's location to the orb's spot.
 			Warp(orbIDs[PlayerNumber()], 0, 0, 0, 0, 0);
 			//Sets the orb's location to the players' spot.
 			SetActivator(orbIDs[PlayerNumber()]);
-			Warp(tempTID, 0, 0, 0, 0, 0);
+			Warp(tempTID, 0, 0, 40.0, GetActorAngle(0), 0);
 			//Sets activator back to player.
 			Thing_Destroy(tempTID, false, 0);
 			SetActivator(aTID);
-			orbIDs[PlayerNumber()] = 0;
 			SetPredictableValue(0, 0, 3);
-		}
-		else
-		{
-			
 		}
 	}
 }*/
@@ -414,19 +407,19 @@ Script "TravelAbilityBot" (void)
 	{
 		if(CheckInventory("TravelThrusterBoots") == 1)
 		{
-			ACS_NamedExecuteAlways("ThrusterBoots", 0);
+			ACS_NamedExecuteAlways("ThrusterBootsBot", 0);
 		}
 		else if(CheckInventory("TravelJumpThrust") == 1)
 		{
-			ACS_NamedExecuteAlways("JumpThrust", 0);
+			ACS_NamedExecuteAlways("JumpThrustBot", 0);
 		}
 		else if(CheckInventory("TravelWarpDrive") == 1)
 		{
-			ACS_NamedExecuteAlways("WarpDrive", 0);
+			ACS_NamedExecuteAlways("WarpDriveBot", 0);
 		}
 		else if(CheckInventory("TravelHyperdrive") == 1)
 		{
-			ACS_NamedExecuteAlways("Hyperdrive", 0);
+			ACS_NamedExecuteAlways("HyperdriveBot", 0);
 		}
 		else
 		{
@@ -435,7 +428,7 @@ Script "TravelAbilityBot" (void)
 	}
 }
 
-Script "ThrusterBoots" (void)
+Script "ThrusterBootsBot" (void)
 {	
 	//SetFont("ALPHFONT");
 	bool hasTravelPickup = (CheckInventory("ExtraTravelCharge") > 0);
@@ -518,7 +511,7 @@ Script "ThrusterBoots" (void)
 		
 	}
 }
-Script "JumpThrust" (void)
+Script "JumpThrustBot" (void)
 {
 	//SetFont("ALPHFONT");
 	bool hasTravelPickup = (CheckInventory("ExtraTravelCharge") > 0);
@@ -550,7 +543,7 @@ Script "JumpThrust" (void)
 	}
 }
 
-Script "WarpDrive" (void)
+Script "WarpDriveBot" (void)
 {
 	//SetFont("ALPHFONT");
 	bool hasTravelPickup = (CheckInventory("ExtraTravelCharge") > 0);
@@ -599,7 +592,7 @@ Script "WarpDrive" (void)
 	
 	}
 }
-Script "Hyperdrive" (void)
+Script "HyperdriveBot" (void)
 {
 	bool hasTravelPickup = (CheckInventory("ExtraTravelCharge") > 0);
 	if ((CheckInventory("HDriveCD") > 0 && !hasTravelPickup) || CheckInventory("HyperdriveSpeed") > 0)
@@ -625,7 +618,7 @@ Script "Hyperdrive" (void)
 }
 Script "TravelFail" (void)
 {
-	displayHUDText("Travel ability on cooldown.", 0.6, 2.0, 1301);
+	//displayHUDText("Travel ability on cooldown.", 0.6, 2.0, 1301);
 	LocalAmbientSound("General/Fail",96);
 	terminate;
 }

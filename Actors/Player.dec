@@ -20,7 +20,7 @@ Actor AlphatiusPlayer : PlayerPawn
 	//Player.FootstepInterval 12
 	//Player.CrouchScale 1.0
 	//Player.CrouchChangeSpeed 0.5
-	Player.AirAcceleration 0.2
+	//Player.AirAcceleration 0.2
 	//Player.VelocityCap 30.0
 	Player.CrouchSprite "PLAY"
 	Species "PlayerRelated"
@@ -60,6 +60,15 @@ Actor AlphatiusPlayer : PlayerPawn
 	Death.FlamespitterFlames:
 		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "Death.FlamespitterThermite")
 		Goto Death
+	XDeath.FlamespitterFlames:
+		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "XDeath.FlamespitterThermite")
+		Goto XDeath
+	Death.FlamespitterDoT:
+		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "Death.FlamespitterThermite")
+		Goto Death
+	XDeath.FlamespitterDoT:
+		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "XDeath.FlamespitterThermite")
+		Goto XDeath
 	Death:
 		//NT1 AAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
 		PLAY H 12
@@ -68,9 +77,6 @@ Actor AlphatiusPlayer : PlayerPawn
 		PLAY KL 12
 		PLAY M -1
 		stop
-	XDeath.FlamespitterFlames:
-		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "XDeath.FlamespitterThermite")
-		Goto XDeath
 	XDeath:
 		//TNT1 AAAAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
 		PLAY N 5

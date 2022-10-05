@@ -198,7 +198,7 @@
 	reactiontime = 1
 	perception = 1
 	favoriteweapon = "TeslaSMG"
-	color = "00 55 88"
+	color = "FF FF FF"
 	gender = "male"
 	railcolor = rainbow
 	chatfrequency = 60

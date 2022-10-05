@@ -45,10 +45,10 @@ Script "ActionAbility1" (void) net
 		{
 			ACS_NamedExecuteAlways("AutoDrone", 0);
 		}
-		/*else if(CheckInventory("ActionSonicShockwave") > 0)
+		else if(CheckInventory("ActionRicochetDisc") > 0)
 		{
-			ACS_NamedExecuteAlways("SonicShockwave", 0);
-		}*/
+			ACS_NamedExecuteAlways("RicochetDisc", 0);
+		}
 		else
 		{
 			displayHUDText("Error processing your action ability. Reset it in the Loadout menu.", 0.6, 2.0, 1301);
@@ -215,8 +215,25 @@ Script "AutoDrone" (void)
 				terminate;
 			GiveInventory("FireAutoDrone", 1);
 			PlaySound(0, "Actions/AutoLaser", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
-			delay(5);
+			delay(4);
 			TakeInventory("FireAutoDrone", 1);
+		}
+	}
+	else
+	{
+		ACS_NamedExecuteAlways("Action1Fail", 0);
+	}
+}
+Script "RicochetDisc" (void)
+{
+	if(CheckInventory("ActionCD") == 0)
+	{
+		GiveInventory("ActionCD", GetAmmoCapacity("FastActionCharge"));
+		for(int i = 0; i < 5; i++)
+		{
+			GiveInventory("FireRicochetDisc", 1);
+			PlaySound(0, "Actions/RicochetDiscFire", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
+			delay(4);
 		}
 	}
 	else
@@ -265,7 +282,7 @@ Script "Action1Fail" (void)
 {
 	if(!(ClassifyActor(0) & ACTOR_BOT))
 	{
-		displayHUDText("Action ability on cooldown.", 0.6, 2.0, 1301);
+		//displayHUDText("Action ability on cooldown.", 0.6, 2.0, 1301);
 		LocalAmbientSound("General/Fail",96);
 	}
 }

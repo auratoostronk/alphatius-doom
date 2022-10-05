@@ -12,6 +12,7 @@ Actor ExtraTravelCharge : Ammo 12000
 	Inventory.RespawnTics 525 //15 seconds
 	+FLOATBOB
 	+BRIGHT
+	+SERVERNETID
 	States
 	{
 		Spawn:

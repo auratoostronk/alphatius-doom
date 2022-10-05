@@ -6,12 +6,16 @@ Actor TeslaSMG : Weapon 10006
 	Decal PlasmaScorchLower
 	Tag "(1) Tesla SMG"
 	Obituary "%k > \ckTesla SMG (Alt)\c- > %o"
-	Weapon.BobStyle "Smooth"
+    Weapon.BobRangeX 0.7
+    Weapon.BobRangeY 1.0
+    Weapon.BobSpeed 1.5
+    Weapon.BobStyle "Alpha"  	
 	Weapon.AmmoType1 "SMGEnergy"
 	Weapon.AmmoType2 "SMGEnergy"
 	Weapon.AmmoUse1 1
 	Weapon.AmmoUse2 5
 	+WEAPON.NOAUTOAIM
+	+SERVERNETID
 	Weapon.SlotNumber 1
 	Weapon.SelectionOrder 500
 	Inventory.Icon "SMGPA0"
@@ -77,7 +81,7 @@ Actor SMGProjectile
 {
 	Projectile
 	Speed 48
-	Damage (12)
+	Damage (10)
 	Radius 8
 	Height 12
 	Decal PlasmaScorchLower

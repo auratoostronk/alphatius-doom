@@ -4,6 +4,7 @@ Actor NewMedikit : Medikit replaces Medikit
 	Radius 24
 	Height 16
 	Inventory.Amount 35
+	+SERVERNETID
 	States
 	{
 		Spawn:
@@ -17,6 +18,7 @@ Actor NewStimpack : Stimpack replaces Stimpack
 	Radius 16
 	Height 16
 	Inventory.Amount 10
+	+SERVERNETID
 	States
 	{
 		Spawn:

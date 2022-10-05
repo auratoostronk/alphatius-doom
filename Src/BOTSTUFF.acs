@@ -105,6 +105,13 @@ Script "StartBotAliveTimer" (void)
 					ACS_NamedExecuteAlways("ActionAbility1", 0);
 				}
 			}
+			else if(CheckInventory("ActionRicochetDisc") > 0)
+			{
+				if(checkCombat())
+				{
+					ACS_NamedExecuteAlways("ActionAbility1", 0);
+				}
+			}
 		}
 		
 		//Bot Change Weapons

@@ -2,7 +2,7 @@
 #include "zcommon.acs"
 #import "ALPHLIB.acs"
 
-
+/*
 Script "WeaponGlow" (int predicting, int pressed, int released, int buttons)
 {
 	str glowclass = "BlueGlowSpawner";
@@ -24,7 +24,7 @@ Script "WeaponGlowSetup" (void)
 Script "WeaponGlowSetupClient" (void) CLIENTSIDE
 {
 	SetActionScript(0, 0, "WeaponGlow");
-}
+}*/
 //For the Thermite Spitter's alt-fire.
 Script "PlayerDeathByThermite" (void)
 {
@@ -114,6 +114,20 @@ Script "WeaponZoomControl" (int predicting, int justPressed, int justReleased, i
 			SetNetworkReplicationFlags( NETREP_SKIPOWNER );
 			SetPlayerWeaponZoomFactor(PlayerNumber(), 1.0);
 			SetNetworkReplicationFlags( 0 );
+		}
+	}
+}
+
+//A hud script that is called when the user tries to Alt-Fire while it's on cooldown.
+Script "AltFireFail" (void) 
+{
+	if(!(ClassifyActor(0) & ACTOR_BOT))
+	{
+		if(CheckInventory("AltFireFailCD") < 1)
+		{
+			//displayHUDText("Alt-Fire on cooldown.", 0.6, 3.5, 1301);
+			LocalAmbientSound("General/Fail",96);
+			GiveInventory("AltFireFailCD", GetAmmoCapacity("AltFireFailCD"));
 		}
 	}
 }

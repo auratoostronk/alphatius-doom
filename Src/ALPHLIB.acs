@@ -50,6 +50,19 @@ function void displayHUDText(str text, int yLoc, int holdTime, int id)
 	SetFont("SMALLFNT");
 	HUDMessage(s:text;HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP, id, CR_UNTRANSLATED, (textX << 16), (textY << 16), holdTime);
 }
+
+Script "ArmorDecay" ENTER
+{
+	while (true)
+	{
+		if(CheckInventory("Armor") > 50)
+		{
+			//Reduces armor value by one
+			TakeInventory("Armor", 1);
+		}
+		delay(35);
+	}
+}
 //Holds the script for many timers that occur each tic.
 Script "RechargeTimers" ENTER
 {
@@ -72,7 +85,7 @@ Script "RechargeTimers" ENTER
 			//Cooldown between "Alt Fire Failed" messages
 			TakeInventory("AltFireFailCD", 1);
 			
-			int ENERGY_SOUND_DELAY = 1;
+			int ENERGY_SOUND_DELAY = 7;
 			//Refills energy when the player has not fired a weapon in a while.
 			if(CheckInventory("EnergyRechargeCD") == ENERGY_SOUND_DELAY)
 			{
@@ -90,6 +103,7 @@ Script "RechargeTimers" ENTER
 			TakeInventory("WDriveCD",1);
 			TakeInventory("HDriveCD",1);
 			TakeInventory("JThrustCD",1);
+			//TakeInventory("SOrbCD",1);
 			//Thruster boots uses charges, so it uses slightly different code.
 			if(CheckInventory("TravelThrusterBoots"))
 			{
@@ -115,9 +129,10 @@ Script "RechargeTimers" ENTER
 			if(	CheckInventory("WDriveCD") == TRAV_SOUND_DELAY ||
 				CheckInventory("HDriveCD") == TRAV_SOUND_DELAY ||
 				CheckInventory("JThrustCD") == TRAV_SOUND_DELAY ||
+				CheckInventory("SOrbCD") == TRAV_SOUND_DELAY ||
 				CheckInventory("TBootsCD") == TRAV_SOUND_DELAY)
 			{
-				LocalAmbientSound("General/TravelReady", 0.5);
+				//LocalAmbientSound("General/TravelReady", 0.5);
 			}
 			
 			//For the flamespitter. If the player recently was hit by the alt-fire, spawn napalm effects on them.

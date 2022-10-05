@@ -60,7 +60,7 @@ Actor ThrusterBootsCharge : Ammo
 Actor TBootsCD : Ammo
 {
 	+SERVERNETID
-	Inventory.MaxAmount 140
+	Inventory.MaxAmount 210
 }
 Actor WDriveCD : Ammo
 {
@@ -73,6 +73,11 @@ Actor JThrustCD : Ammo
 	Inventory.MaxAmount 140
 }
 Actor HDriveCD : Ammo
+{
+	+SERVERNETID
+	Inventory.MaxAmount 210
+}
+Actor SOrbCD : Ammo
 {
 	+SERVERNETID
 	Inventory.MaxAmount 210

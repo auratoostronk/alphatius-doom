@@ -6,6 +6,8 @@ DEATHMATCH
 		Sv_NoRespawnInvul = true;
 		Sv_NoMedals = true;
 		Sv_ItemRespawn = true;
+		sv_nodrop = true;
+		sv_nocrouch = true;
 	}
 }
 CTF
@@ -16,6 +18,8 @@ CTF
 		Sv_NoRespawnInvul = true;
 		Sv_NoMedals = true;
 		Sv_ItemRespawn = true;
+		sv_nodrop = true;
+		sv_nocrouch = true;
 	}
 }
 TEAMPLAY
@@ -29,6 +33,8 @@ TEAMPLAY
 		Sv_NoRespawnInvul = true;
 		Sv_NoMedals = true;
 		Sv_ItemRespawn = true;
+		sv_nodrop = true;
+		sv_nocrouch = true;
 	}
 }
 DOMINATION
@@ -42,5 +48,7 @@ DOMINATION
 		Sv_NoRespawnInvul = true;
 		Sv_NoMedals = true;
 		Sv_ItemRespawn = true;
+		sv_nodrop = true;
+		sv_nocrouch = true;
 	}
 }

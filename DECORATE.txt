@@ -28,6 +28,7 @@
 #include Actors/Actions/RegenZone.dec
 #include Actors/Actions/AutoDrone.dec
 #include Actors/Actions/SonicShockwave.dec
+#include Actors/Actions/RicochetDisc.dec
 
 
 #include Actors/Pickups/Powerups.dec

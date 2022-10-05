@@ -3,17 +3,3 @@
 
 #import "ALPHLIB.acs"
 #import "PLAYER.acs"
-
-//A hud script that is called when the user tries to Alt-Fire while it's on cooldown.
-Script "AltFireFail" (void) 
-{
-	if(!(ClassifyActor(0) & ACTOR_BOT))
-	{
-		if(CheckInventory("AltFireFailCD") < 1)
-		{
-			displayHUDText("Alt-Fire on cooldown.", 0.6, 3.5, 1301);
-			LocalAmbientSound("General/Fail",96);
-			GiveInventory("AltFireFailCD", GetAmmoCapacity("AltFireFailCD"));
-		}
-	}
-}

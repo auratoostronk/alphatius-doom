@@ -11,6 +11,7 @@ Actor NanoArmor : BasicArmorBonus replaces BlueArmor
 	Armor.MaxSaveAmount 75
 	Inventory.RespawnTics 1050 //30 seconds
 	+BRIGHT
+	+SERVERNETID
 	-INVENTORY.ALWAYSPICKUP
 	States
 	{
@@ -34,6 +35,7 @@ Actor NanoPlate : BasicArmorBonus replaces GreenArmor
 	Inventory.RespawnTics 1050 //30 seconds
 	Scale 1.5
 	+BRIGHT
+	+SERVERNETID
 	-INVENTORY.ALWAYSPICKUP
 	States
 	{
@@ -55,6 +57,7 @@ Actor NanoShard : BasicArmorBonus replaces ArmorBonus
 	Armor.SaveAmount 5
 	Armor.MaxSaveAmount 75
 	Inventory.RespawnTics 350 //10 seconds
+	+SERVERNETID
 	-INVENTORY.ALWAYSPICKUP
 	States
 	{

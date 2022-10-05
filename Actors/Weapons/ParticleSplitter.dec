@@ -1,7 +1,7 @@
 //Shotgun pellet spread multipliers.
-const float spread1 = 1.0;
-const float spread2 = 2.0;
-const float spread3 = 3.0;
+const float spread1 = 0.8;
+const float spread2 = 1.6;
+const float spread3 = 2.4;
 
 Actor ParticleSplitter : Weapon 10007
 {
@@ -9,12 +9,16 @@ Actor ParticleSplitter : Weapon 10007
 	Radius 32
 	Height 32
 	Tag "(3) Particle Splitter"
-	Weapon.BobStyle "Smooth"
+    Weapon.BobRangeX 0.7
+    Weapon.BobRangeY 1.0
+    Weapon.BobSpeed 1.5
+    Weapon.BobStyle "Alpha"  	
 	Weapon.AmmoType1 "PumpSGEnergy"
 	Weapon.AmmoType2 "PumpSGEnergy"
 	Weapon.AmmoUse1 1
 	Weapon.AmmoUse2 1
 	+WEAPON.NOAUTOAIM
+	+SERVERNETID
 	Inventory.Icon "PSGPA0"
 	Weapon.SlotNumber 3
 	Weapon.SelectionOrder 500
@@ -65,15 +69,15 @@ Actor ParticleSplitter : Weapon 10007
 		TNT1 A 0 A_FireCustomMissile("SGAltPellet", 0, true, 3.0, -1.0, 0, 0.0)
 		Goto FireAnim
 	FireAnim:
-		TNT1 A 0 A_PlayWeaponSound("ParticleSplitter/Fire")
+		TNT1 A 0 A_PlaySound("ParticleSplitter/Fire", CHAN_WEAPON)
 		TNT1 A 0 A_Recoil(4.0)
 		PSGF ABC 3
 		PSGR A 6
-		TNT1 A 0 A_PlaySound("ParticleSplitter/Pump1", CHAN_WEAPON)
+		TNT1 A 0 A_PlaySound("ParticleSplitter/Pump1", CHAN_7)
 		PSGF DEFGHIJKL 1
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		PSGF MMMMMM 1 A_SpawnItemEX("SparkCannonExhaustSpawner", 8.0, 0.0, 32.0, frandom(-1.0, 1.0), frandom(-1.0, 1.0), frandom(-1.0, 1.0))
-		TNT1 A 0 A_PlaySound("ParticleSplitter/Pump2", CHAN_WEAPON)
+		TNT1 A 0 A_PlaySound("ParticleSplitter/Pump2", CHAN_7)
 		PSGF NOPQRSTUV 1
 		PSGR A 5
 		Goto Ready
@@ -138,7 +142,7 @@ Actor SGPelletClientVisual : SGPellet
 }*/
 Actor SGAltPellet : SGPellet
 {
-	Speed 48
+	Speed 72
 	DamageType "ParticleSplitterAlt"
 	Obituary "%k > \ctParticle Splitter (Alt Pre-detonation)\c- > %o"
 	Scale 1.2

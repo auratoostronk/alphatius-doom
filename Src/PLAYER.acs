@@ -11,8 +11,20 @@ int targetdummyid = 900;
 function void setPassive(int p)
 {
 	switch(p)
-	{
+	{	
 		case 0:
+		GiveInventory("PassiveRapidAlt", 1);
+		GiveInventory("PassiveSpeedDemon", 1);
+		break;
+		case 1:
+		GiveInventory("PassiveNegaBarrier", 1);
+		GiveInventory("PassiveAdrenalineRush", 1);
+		break;
+		case 2:
+		GiveInventory("PassiveBandolier", 1);
+		GiveInventory("PassiveOverclocked", 1);
+		break;
+		/*case 0:
 		GiveInventory("PassiveRapidAlt", 1);
 		break;
 		case 1:
@@ -29,7 +41,7 @@ function void setPassive(int p)
 		break;
 		default: //0
 		GiveInventory("PassiveAdrenalineRush", 1);
-		break;
+		break;*/
 	}
 	if(CheckInventory("PassiveSpeedDemon") > 0)
 	{
@@ -57,6 +69,9 @@ function void setAction(int a)
 		break;
 		case 3:
 		GiveInventory("ActionDecoyHologram", 1);
+		break;
+		case 4:
+		GiveInventory("ActionRicochetDisc", 1);
 		break;
 		default:
 		GiveInventory("ActionRegenZone", 1);
@@ -86,7 +101,7 @@ function void gamemodeCheck(void)
 {
 	if(StrICmp(GetCurrentGameMode(), "Last Man Standing") == 0 || StrICmp(GetCurrentGameMode(), "Team Last Man Standing") == 0)
 	{
-		GiveInventory("NanoArmor", 1);
+		GiveInventory("NanoArmor", 2);
 	}
 }
 Script "CheckPlayerEnter" ENTER
@@ -150,8 +165,8 @@ Script "SetupPlayerMP" (void)
 		ACS_NamedExecuteAlways("TravelSetupClient", 0);
 		ACS_NamedExecuteAlways("ZoomSetup", 0);
 		ACS_NamedExecuteAlways("ZoomSetupClient", 0);
-		ACS_NamedExecuteAlways("WeaponGlowSetup", 0);
-		ACS_NamedExecuteAlways("WeaponGlowSetupClient", 0);
+		//ACS_NamedExecuteAlways("WeaponGlowSetup", 0);
+		//ACS_NamedExecuteAlways("WeaponGlowSetupClient", 0);
 		GiveInventory("C14RespawnProtection", 1);
 	}
 }

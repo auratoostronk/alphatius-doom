@@ -49,6 +49,42 @@ statusbar fullscreen, fullscreenoffsets
 		drawBar "REDFULL", "REDEMPTY", Ammo  BeamAltCD, horizontal, Interpolate(20)|reverse, -210, -60;
 	}
 	
+	//WEAPON ICONS
+	InInventory TeslaSMG
+	{
+		drawImage "SMGPA0", -60, -80;
+	}
+	drawstring SMALLFONT, Yellow, "Tesla SMG", -20, -110, 0;
+	InInventory PhotonCarbine
+	{
+		drawImage "CARPA0", -60, -120;
+	}
+	drawstring SMALLFONT, Cyan, "Photon Carbine", -20, -150, 0;
+	InInventory ParticleSplitter
+	{
+		drawImage "PSGPA0", -60, -160;
+	}
+	drawstring SMALLFONT, Purple, "Particle Splitter", -20, -190, 0;
+	InInventory BeamRifle
+	{
+		drawImage "BRFPA0", -60, -200;
+	}
+	drawstring SMALLFONT, LightBlue, "Beam Rifle", -20, -230, 0;
+	InInventory SparkCannon
+	{
+		drawImage "SPKPA0", -60, -240;
+	}
+	drawstring SMALLFONT, Red, "Spark Cannon", -20, -270, 0;
+	InInventory C14
+	{
+		drawImage "C14PA0", -60, -280;
+	}
+	drawstring SMALLFONT, Green, "C-14 Energy Blaster", -20, -310, 0;	
+	InInventory Flamespitter
+	{
+		drawImage "FLMPA0", -60, -320;
+	}
+	drawstring SMALLFONT, Orange, "Flamespitter", -20, -350, 0;
 	
 	//TRAVEL COOLDOWN
 	InInventory TravelThrusterBoots
@@ -67,6 +103,10 @@ statusbar fullscreen, fullscreenoffsets
 	InInventory TravelHyperdrive
 	{
 		drawBar "GRNFULL", "GRNEMPTY", Ammo HDriveCD, horizontal, Interpolate(20)|reverse, -210, -40;
+	}
+	InInventory TravelShifterOrb
+	{
+		drawBar "GRNFULL", "GRNEMPTY", Ammo SOrbCD, horizontal, Interpolate(20)|reverse, -210, -40;
 	}
 	
 	//ACTION COOLDOWN
@@ -89,6 +129,10 @@ statusbar fullscreen, fullscreenoffsets
 	InInventory ActionSonicShockwave
 	{
 		drawBar "BLUFULL", "BLUEMPTY", Ammo MediumActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
+	}
+	InInventory ActionRicochetDisc
+	{
+		drawBar "BLUFULL", "BLUEMPTY", Ammo FastActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
 	}
 }
 //New Alt-Hud courtesy of BathySalts
@@ -120,6 +164,14 @@ statusbar normal, forcescaled
 		drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 332, 366;
 	}
 
+	drawswitchableimage TeslaSMG, "STGNUM1", "STYSNUM1", 301, 331; 
+	drawswitchableimage PhotonCarbine, "STGNUM2", "STYSNUM2", 313, 331; 
+	drawswitchableimage ParticleSplitter, "STGNUM3", "STYSNUM3", 325, 331;
+	drawswitchableimage BeamRifle, "STGNUM4", "STYSNUM4", 301, 341;
+	drawswitchableimage SparkCannon, "STGNUM5", "STYSNUM5", 313, 341;
+	drawswitchableimage C14, "STGNUM6", "STYSNUM6", 325, 341;	
+	drawswitchableimage Flamespitter, "STGNUM7", "STYSNUM7", 337, 336;	
+	
 	//Altfire Cooldown
 	IsSelected PhotonCarbine
 	{
@@ -267,6 +319,15 @@ statusbar normal, forcescaled
 	}
 
 	InInventory ActionSonicShockwave
+	{
+		//Added By Bathy
+		InInventory ActionCD
+		{
+			drawimage "CELLC0", 402, 364, none, 25, 16;
+			drawnumber 3, BIGFONT, Cyan, Ammo ActionCD, 388, 362;
+		}
+	}
+	InInventory ActionRicochetDisc
 	{
 		//Added By Bathy
 		InInventory ActionCD

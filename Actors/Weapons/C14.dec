@@ -6,12 +6,16 @@ ACTOR C14 : Weapon 10005
 	Radius 32
 	Height 32
 	Tag "(6) C14 Energy Blaster"
-	Weapon.BobStyle "Smooth"
+    Weapon.BobRangeX 0.7
+    Weapon.BobRangeY 1.0
+    Weapon.BobSpeed 1.5
+    Weapon.BobStyle "Alpha"  	
 	Weapon.AmmoType1 "C14Energy"
 	Weapon.AmmoType2 "C14Energy"
 	Weapon.AmmoUse1 1
 	Weapon.AmmoUse2 5
 	+WEAPON.NOAUTOAIM
+	+SERVERNETID
 	Inventory.Icon "C14PA0"
 	Weapon.SlotNumber 6
 	Weapon.SelectionOrder 500
@@ -70,7 +74,7 @@ Actor C14Projectile
 	+BRIGHT
 	Damage (0)
 	RenderStyle Add
-	ProjectileKickback 20
+	ProjectileKickBack 10
 	Decal BigScorch
 	-NOGRAVITY
 	//MissileType "C14Trail"
@@ -247,6 +251,7 @@ Actor C14GasDamage
 	+NOGRAVITY
 	+NODAMAGETHRUST
 	+DONTSPLASH
+	+SERVERNETID
 	DamageType "ToxicGas"
 	Obituary "%k > \cdC14 (Alt)\c- > %o"
 	args 0, 0
@@ -281,6 +286,7 @@ Actor C14GasDamageIndicator
 }
 Actor C14RespawnProtection : PowerProtection
 {
+	+SERVERNETID
 	DamageFactor "ToxicGas", 0.0
 	DamageFactor "GammaBeam", 0.0
 	Powerup.Duration -2
