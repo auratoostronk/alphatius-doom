@@ -2,25 +2,39 @@
 #include "zcommon.acs"
 #import "ALPHLIB.acs"
 
-Script "TimerOpen" OPEN CLIENTSIDE
-{
-	ACS_NamedExecuteAlways("TimerStart", 0);
-}
-
-Script "TimerStart" (void) CLIENTSIDE
-{
+Script "TimerOpen" OPEN
+{	
+	int clock;
+	int mins;
+	int sec10;
+	int sec1;
+	str clockstr;
 	while(true)
 	{
-		int clock = Timer() / 35;
-		int mins = clock/60;
-		int sec10 = (clock%60)/10;
-		int sec1 = clock%10;
+		if(PlayerCount() == 0)
+		{
+			clock = 0;
+			delay(35);
+			restart;
+		}
+		clock = Timer() / 35;
+		mins = clock / 60;
+		sec10 = (clock % 60) / 10;
+		sec1 = clock % 10;
 		
-		str clockstr = StrParam(d:mins, s:":", d:sec10, d:sec1);
+		clockstr = StrParam(d:mins, s:":", d:sec10, d:sec1);
 		
-		SetFont("BIGFONT");
-		HUDMessage(s:clockstr; HUDMSG_PLAIN, 1399, CR_UNTRANSLATED, 0.5, 0.05, 1.0);
-	
+		for(int i = 0; i < MAX_PLAYERS; i++)
+		{
+			if(PlayerInGame(i))
+			{
+				SetActivatorToPlayer(i);
+				SetFont("BIGFONT");
+				HUDMessage(s:clockstr; HUDMSG_PLAIN, 1399, CR_UNTRANSLATED, 0.5, 0.05, 2.0);
+			}
+			//Set Activator to world.
+			SetActivator(0, AAPTR_NULL);
+		}
 		delay(35);
 	}
 }

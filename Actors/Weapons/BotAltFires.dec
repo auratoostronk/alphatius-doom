@@ -36,7 +36,7 @@ ACTOR TeslaSMGAlt : TeslaSMG
 	{
 	Fire:
 		TNT1 A 0 A_JumpIfInventory("SMGAltCD", 1, "SwapWeapon")
-		TNT1 A 0 A_JumpIfCloser(160, "SwapWeapon")
+		TNT1 A 0 A_JumpIfCloser(256, "SwapWeapon")
 		Goto AltFire
 	SwapWeapon:
 		TNT1 A 1 ACS_NamedExecuteAlways("BotChangeWeapon", 0)

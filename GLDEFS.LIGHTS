@@ -137,64 +137,64 @@ object DecoyHologramLightBlue
 pulselight REDLIGHTSHOOT
 {
     color 1.0 0.0 0.0
-    size 80
-	secondarysize 144
+    size 64
+	//secondarysize 96
 	interval 0.06
     offset 0 36 0
 } 
 pulselight GREENLIGHTSHOOT
 {
     color 0.0 1.0 0.0
-    size 80
-	secondarysize 144
+    size 64
+	//secondarysize 96
 	interval 0.06
     offset 0 36 0
 } 
 pulselight BLUELIGHTSHOOT
 {
     color 0.0 0.0 1.0
-    size 80
-	secondarysize 144
+    size 64
+	//secondarysize 96
 	interval 0.06
     offset 0 36 0
 } 
 pulselight YELLOWLIGHTSHOOT
 {
     color 1.0 1.0 0.0
-    size 80
-	secondarysize 144
+    size 64
+	//secondarysize 96
 	interval 0.06
     offset 0 36 0
 } 
 pulselight PURPLELIGHTSHOOT
 {
     color 0.2 0.0 0.8
-    size 80
-	secondarysize 144
+    size 64
+	//secondarysize 96
 	interval 0.06
     offset 0 36 0
 }
 pulselight MAGENTALIGHTSHOOT
 {
     color 0.6 0.0 0.7
-    size 80
-	secondarysize 144
+    size 64
+	//secondarysize 96
 	interval 0.06
     offset 0 36 0
 }
 pulselight ORANGELIGHTSHOOT
 {
     color 1.0 0.5 0.0
-    size 80
-	secondarysize 144
+    size 64
+	//secondarysize 96
 	interval 0.06
     offset 0 36 0
 }
 pulselight LIGHTBLUELIGHTSHOOT
 {
     color 0.5 0.5 1.0
-    size 80
-	secondarysize 144
+    size 64
+	//secondarysize 96
 	interval 0.06
     offset 0 36 0
 } 
@@ -202,42 +202,42 @@ pulselight LIGHTBLUELIGHTSHOOT
 pointlight REDLIGHT
 {
     color 1.0 0.0 0.0
-    size 32
+    size 16
 }
 pointlight GREENLIGHT
 {
     color 0.0 1.0 0.0
-    size 32
+    size 24
 }
 pointlight PURPLELIGHT
 {
     color 0.2 0.0 0.8
-    size 32
+    size 16
 }
 pointlight MAGENTALIGHT
 {
     color 0.6 0.0 0.7
-    size 32
+    size 16
 }
 pointlight YELLOWLIGHT
 {
     color 1.0 1.0 0.0
-    size 32
+    size 16
 }
 pointlight BIGYELLOWLIGHT
 {
     color 1.0 1.0 0.0
-    size 128
+    size 64
 }
 pointlight BLUELIGHT
 {
     color 0.0 0.0 1.0
-    size 32
+    size 16
 }
 pointlight LIGHTBLUELIGHT
 {
     color 0.5 0.5 1.0
-    size 32
+    size 16
 }
 pointlight ORANGELIGHT
 {
@@ -247,13 +247,13 @@ pointlight ORANGELIGHT
 pointlight GREYLIGHT
 {
     color 0.8 0.8 0.8
-    size 32
+    size 16
 }
 pointlight REDORANGELIGHT
 {
 	color 1.0 0.2 0.0
     offset 0 48 0
-	size 32
+	size 16
 }
 pointlight GREENLIGHTSMALL
 {

@@ -79,7 +79,7 @@ statusbar fullscreen, fullscreenoffsets
 	{
 		drawImage "C14PA0", -60, -280;
 	}
-	drawstring SMALLFONT, Green, "C-14 Energy Blaster", -20, -310, 0;	
+	drawstring SMALLFONT, Green, "C-14", -20, -310, 0;	
 	InInventory Flamespitter
 	{
 		drawImage "FLMPA0", -60, -320;

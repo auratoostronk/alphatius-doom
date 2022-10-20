@@ -42,7 +42,7 @@ ACTOR PhotonCarbine : Weapon 10004
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		TNT1 A 0 A_SpawnItemEX("BlueLightShoot")
 		TNT1 A 0 A_PlaySound("PhotonCarbine/Fire", CHAN_WEAPON)
-		TNT1 A 0 A_FireCustomMissile("PhotonProjectile", afrandom(-0.2, 0.2), true, 6.0, -1.0, 0 , afrandom(-0.2, 0.2))
+		TNT1 A 0 A_FireCustomMissile("PhotonProjectile", 0.0, true, 6.0, -1.0, 0 , 0.0)
 		CARF A 1 A_SetPitch(pitch - carb_recoil)
 		CARF B 1 A_SetPitch(pitch + carb_recoil * 0.5)
 		CARF C 1 A_SetPitch(pitch + carb_recoil * 0.5)
@@ -71,9 +71,9 @@ Actor PhotonProjectile : FastProjectile
 	Radius 6
 	Height 6
 	Scale 1.5
-	Speed 256
+	Speed 192
 	Decal RailScorchLower
-	Damage (14)
+	Damage (12)
 	Renderstyle Add
 	Obituary "%k > \cvPhoton Carbine\c- > %o"
 	+BRIGHT
@@ -141,7 +141,7 @@ Actor PhotonGrenade
 	Damage (0)
 	Decal BigScorch
 	Projectile
-	ProjectileKickBack 60
+	ProjectileKickBack 100
 	RenderStyle Add
 	Obituary "%k > \cvPhoton Carbine (Alt)\c- > %o"
 	-NOGRAVITY

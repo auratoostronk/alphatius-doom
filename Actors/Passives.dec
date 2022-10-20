@@ -4,7 +4,7 @@ Actor NegaBarrier : PowerProtection
 {
 	+SERVERNETID
 	DamageFactor "Normal", 0.5
-	Powerup.Duration 0xFFFFFD
+	Powerup.Duration -8
 	Powerup.Color "00 00 20"
 }
 

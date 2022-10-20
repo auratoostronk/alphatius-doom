@@ -55,7 +55,7 @@ Script "OverclockedTimer" (void)
 		{
 			TakeInventory("ActionCD", 1);
 		}
-		delay(4);
+		delay(3);
 	}
 }
 /*

@@ -32,10 +32,13 @@ function bool isAirborne(void)
 function void spawnThermiteFX(void)
 {
 	int latspread = 12.0;
-	SpawnForced("ThermiteFX", GetActorX(0) + Random(-latspread, latspread), GetActorY(0) + Random(-latspread, latspread), GetActorZ(0) + 32.0, 0, 0);
-
+	SpawnForced("ThermiteFX", GetActorX(0) + Random(-latspread, latspread), GetActorY(0) + Random(-latspread, latspread), GetActorZ(0) + 28.0, 0, 0);
 }
-
+function void spawnBeamOrbFX(void)
+{
+	int latspread = 12.0;
+	SpawnForced("BeamOrbDebuffFX", GetActorX(0) + Random(-latspread, latspread), GetActorY(0) + Random(-latspread, latspread), GetActorZ(0) + 28.0, 0, 0);
+}
 //Helpful function for displaying text based on user's scaling settings.
 function void displayHUDText(str text, int yLoc, int holdTime, int id)
 {
@@ -143,6 +146,13 @@ Script "RechargeTimers" ENTER
 			//Then remove a tic of the debuff.
 			TakeInventory("ThermiteDebuff", 1);
 			
+			//For the Beam Rifle. If the player recently was hit by the alt-fire, spawn electric effects on them.
+			if(CheckInventory("BeamOrbDebuff") > 0)
+			{
+				spawnBeamOrbFX();
+			}
+			//Then remove a tic of the debuff.
+			TakeInventory("BeamOrbDebuff", 1);
 			//If not LMS or TeamLMS
 			if(StrICmp(GetCurrentGameMode(), "Last Man Standing") != 0 && StrICmp(GetCurrentGameMode(), "Team Last Man Standing") != 0)
 			{

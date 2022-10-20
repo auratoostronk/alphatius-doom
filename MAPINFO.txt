@@ -105,9 +105,17 @@ map ALPHDM11 lookup "Excavation"
 }
 map ALPHDM12 lookup "Maritime"
 {
-	levelnum = 11
+	levelnum = 12
 	sky1 = "FLOODSKY", 0
-	music = ""
+	music = "QUAKE3_1"
+	next = "ALPHDM13"
+	AllowRespawn
+}
+map ALPHDM13 lookup "Crevice"
+{
+	levelnum = 13
+	sky1 = "SNOWSKY", 0
+	music = "QUAKE3_4"
 	next = "ALPHDM01"
 	AllowRespawn
 }

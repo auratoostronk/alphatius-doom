@@ -58,7 +58,7 @@ Actor NanoShard : BasicArmorBonus replaces ArmorBonus
 	Armor.MaxSaveAmount 75
 	Inventory.RespawnTics 350 //10 seconds
 	+SERVERNETID
-	-INVENTORY.ALWAYSPICKUP
+	+INVENTORY.ALWAYSPICKUP
 	States
 	{
 		Spawn:

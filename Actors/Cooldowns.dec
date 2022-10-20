@@ -20,8 +20,8 @@ Actor C14AltCD : Ammo
 Actor SMGAltCD : Ammo
 {
 	+SERVERNETID 
-	Inventory.MaxAmount 105
-	Ammo.BackpackMaxAmount 105
+	Inventory.MaxAmount 140
+	Ammo.BackpackMaxAmount 140
 }
 Actor PumpSGAltCD : Ammo
 {
@@ -38,8 +38,8 @@ Actor FlameAltCD : Ammo
 Actor BeamAltCD : Ammo
 {
 	+SERVERNETID 
-	Inventory.MaxAmount 280
-	Ammo.BackpackMaxAmount 280
+	Inventory.MaxAmount 210
+	Ammo.BackpackMaxAmount 210
 }
 //Cooldowns shared across all alt-fires.
 Actor AltFireDeviceCD : Ammo

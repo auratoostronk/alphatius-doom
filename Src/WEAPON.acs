@@ -25,6 +25,17 @@ Script "WeaponGlowSetupClient" (void) CLIENTSIDE
 {
 	SetActionScript(0, 0, "WeaponGlow");
 }*/
+Script "BeamOrbDebuffFX" ENTER
+{
+	while(true)
+	{
+		if(CheckInventory("BeamOrbDebuff") > 0)
+		{
+			SpawnForced("BeamOrbDebuffFX2", GetActorX(0), GetActorY(0), GetActorZ(0) + 24.0, 0, 0);
+		}
+		delay(12);
+	}
+}
 //For the Thermite Spitter's alt-fire.
 Script "PlayerDeathByThermite" (void)
 {
@@ -63,7 +74,7 @@ Script "OnWeaponAltFired" (void)
 	ACS_NamedExecuteAlways("OnWeaponFired", 0);
 	
 }
-//For use with Beam Rifle Alt-Fire (for unlagging the detonation)
+
 Script "CheckAltFirePressed" (void)
 {
 	//Sets the activator to the shooter of the pellet, instead of the pellet itself.
