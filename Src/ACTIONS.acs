@@ -228,7 +228,7 @@ Script "RicochetDisc" (void)
 {
 	if(CheckInventory("ActionCD") == 0)
 	{
-		GiveInventory("ActionCD", GetAmmoCapacity("FastActionCharge"));
+		GiveInventory("ActionCD", GetAmmoCapacity("ActionCD"));
 		for(int i = 0; i < 5; i++)
 		{
 			GiveInventory("FireRicochetDisc", 1);

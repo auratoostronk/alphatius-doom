@@ -75,6 +75,9 @@ Script "TravelSetup" (void)
 		break;
 	}
 }
+
+Script "TutorialNoTravel" (int predicting, int pressed, int released, int buttons) {}
+
 Script "ThrusterBoots" (int predicting, int pressed, int released, int buttons)
 {
     if(pressed)

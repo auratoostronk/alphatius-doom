@@ -132,7 +132,7 @@ statusbar fullscreen, fullscreenoffsets
 	}
 	InInventory ActionRicochetDisc
 	{
-		drawBar "BLUFULL", "BLUEMPTY", Ammo FastActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
+		drawBar "BLUFULL", "BLUEMPTY", Ammo ActionCD, horizontal, Interpolate(20)|reverse, -210, -20;
 	}
 }
 //New Alt-Hud courtesy of BathySalts
