@@ -9,7 +9,7 @@
 #define HYPERD_WALLJUMP_XY 6.0
 #libdefine HYPERD_PASSIVESPD 0.15
 #libdefine HYPERD_ACTIVESPD 0.25
-#define WARPD_STRENGTH 1.2
+#define WARPD_STRENGTH 1.25
 #define WARP_TICKS_TOTAL 8
 #define TBOOTS_STRENGTH 12
 //#define SHIFTORB_SPEED 16.0
@@ -101,6 +101,10 @@ Script "ThrusterBoots" (int predicting, int pressed, int released, int buttons)
 					TakeInventory("ThrusterBootsCharge", 1);
 				SetNetworkReplicationFlags( 0 );
             }
+			else
+			{	
+				ACS_NamedExecuteAlways("TravelFail", 0);
+			}
         }
         if (GetPredictableValue(0, 0) == 1)
         {
@@ -188,17 +192,21 @@ Script "JumpThrust" (int predicting, int pressed, int released, int buttons)
 					GiveInventory("JThrustCD",GetAmmoCapacity("JThrustCD"));
 				SetNetworkReplicationFlags( 0 );
             }
+			else
+			{	
+				ACS_NamedExecuteAlways("TravelFail", 0);
+			}
         }
         if (GetPredictableValue(0, 0) == 1)
         {
 			int angle = GetActorAngle(0);
-			int pitch = -GetActorPitch(0); //Up is positive now
+			int pitch = -GetActorPitch(0) + 5; //Up is positive now
 			int upordown;
 			if(pitch > 0.0) //greater than center
 				upordown = 0;
 			else
 				upordown = 1;
-			ThrustThing(angle >> 8, ((cos(abs(pitch))) >> 8) / 12, 1, 0);
+			ThrustThing(angle >> 8, ((cos(abs(pitch))) >> 8) / 8, 1, 0);
 			ThrustThingZ(0, ((sin(abs(pitch))) >> 8) / 2, upordown, 1);
         }
     }
@@ -223,6 +231,10 @@ Script "Hyperdrive" (int predicting, int pressed, int released, int buttons)
 					GiveInventory("HyperdriveSpeed", 1);
 					SetNetworkReplicationFlags( 0 );
 				}
+			}
+			else
+			{	
+				ACS_NamedExecuteAlways("TravelFail", 0);
 			}
 		}
 		if (GetPredictableValue(0, 0) == 1)
@@ -276,6 +288,10 @@ Script "WarpDrive" (int predicting, int pressed, int released, int buttons)
                 SpawnSpotFacingForced("TeleportFog", 0, 0);
                 SetNetworkReplicationFlags( 0 );
             }
+			else
+			{	
+				ACS_NamedExecuteAlways("TravelFail", 0);
+			}
         }
     }
 }

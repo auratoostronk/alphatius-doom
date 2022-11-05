@@ -129,6 +129,7 @@ Actor TargetDummy2Armored  10017
 	+SOLID
 	PainChance 255
 	GibHealth 30
+	//Green to red
 	Translation "112:127=176:191", "120:127=32:47"
 	States
 	{

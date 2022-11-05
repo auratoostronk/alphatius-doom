@@ -7,7 +7,7 @@
 //#libdefine FAST_ACTION_CD 10
 //#libdefine MEDIUM_ACTION_CD 15
 //#libdefine SLOW_ACTION_CD 20
-#define AUTODRONE_SHOTSFIRED 30
+#define AUTODRONE_SHOTSFIRED 20
 
 global int 1:action1Recharge[];
 //global int 2:decoyIDs[];
@@ -48,6 +48,10 @@ Script "ActionAbility1" (void) net
 		else if(CheckInventory("ActionRicochetDisc") > 0)
 		{
 			ACS_NamedExecuteAlways("RicochetDisc", 0);
+		}
+		else if(CheckInventory("ActionSonicShockwave") > 0)
+		{
+			ACS_NamedExecuteAlways("SonicShockwave", 0);
 		}
 		else
 		{
@@ -215,7 +219,7 @@ Script "AutoDrone" (void)
 				terminate;
 			GiveInventory("FireAutoDrone", 1);
 			PlaySound(0, "Actions/AutoLaser", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
-			delay(4);
+			delay(3);
 			TakeInventory("FireAutoDrone", 1);
 		}
 	}
@@ -249,7 +253,7 @@ Script "SonicShockwave" (void)
 		Thing_Stop(0);
 		SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
 		SpawnSpotFacingForced("SonicShockwaveSpawner", 0, 0);
-		for(int i = 0; i < 16; i++)
+		for(int i = 0; i < 15; i++)
 		{
 			Thing_Stop(0);
 			delay(1);

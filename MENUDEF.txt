@@ -30,7 +30,7 @@ OptionMenu "ModOptions"
 	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
 	Option "Travel Ability", "alph_travel", "TravelAbility"
 	Option "Action Ability", "alph_action", "Action1Ability"
-	Option "Passive Kit", "alph_passive", "PassiveAbility"
+	Option "Passive Skill", "alph_passive", "PassiveAbility"
 	StaticText  " "
 	StaticText	"Graphical Options"
 	StaticText " "
@@ -107,7 +107,7 @@ OptionMenu "I_Travels"
 	StaticText "SWIFTFOOT SHOES"
 	StaticText "Run faster and wall jump. Activate for a quick sprint."
 	StaticText " "
-	StaticText "GRAVITRON LEAP"
+	StaticText "GRAVITY LEAP"
 	StaticText "Leap into the air. Aim upwards for best results."
 	StaticText " "
 }
@@ -132,21 +132,22 @@ OptionMenu "I_Actions"
 }
 OptionMenu "I_Passives"
 {
-	Title "Passive Kits Info"
-	StaticText "DAREDEVIL"
-	StaticText "For the aggressive and daring..."
-	StaticText "Spawn with an extra use of your Travel Ability."
+	Title "Passive Skill Info"
+	StaticText "SPEED DEMON"
+	StaticText "Grants a Travel Sphere on spawn and on kill."
+	StaticText " "
+	StaticText "RAPID-ALT TECH"
 	StaticText "Kills refund some of your Alt-fire cooldown."
 	StaticText " "
-	StaticText "BULWARK"
-	StaticText "For the defensive, yet bloodthirsty..."
-	StaticText "Spawn with a shield that reduces damage until hit."
+	StaticText "ADRENALINE RUSH"
 	StaticText "Restore health on kill."
 	StaticText " "
-	StaticText "TACTICIAN"
-	StaticText "For the intelligent and well-prepared..."
+	StaticText "BANDOLIER"
 	StaticText "Extra energy capacity. Kills restore energy."
+	StaticText " "
+	StaticText "ACTION OVERCLOCK"
 	StaticText "Reduced Action Skill cooldown."
+	StaticText " "
 }
 
 //OPTION VALUES 
@@ -167,7 +168,7 @@ OptionValue "TravelAbility"
 	0, "Thruster Boots"
 	1, "Warp Drive"
 	2, "Swiftfoot Shoes"
-	3, "Gravitron Leap"
+	3, "Gravity Leap"
 	//4, "Shifter Sphere"
 }
 
@@ -178,22 +179,17 @@ OptionValue "Action1Ability"
 	2, "Power Brace"
 	3, "Decoy Hologram"
 	4, "Ricochet Burst"
+	5, "Shock Slam"
 }
-OptionString "PassiveAbility"
-{
-	0, "Daredevil"
-	1, "Bulwark"
-	2, "Tactician"
-}
-/*
+
 OptionString "PassiveAbility"
 {
 	0, "Rapid-Alt Tech"
 	1, "Speed Demon"
-	2, "Negaton Barrier"
-	3, "Adrenaline Rush"
-	4, "Bandolier"
-}*/
+	2, "Adrenaline Rush"
+	3, "Bandolier"
+	4, "Action Overclock"
+}
 
 //ZANDRONUM MENU REPLACEMENTS
 
@@ -212,7 +208,7 @@ OptionMenu ZA_JoinMenu
 	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
 	Option "Travel Ability", "alph_travel", "TravelAbility"
 	Option "Action Ability", "alph_action", "Action1Ability"
-	Option "Passive Kit", "alph_passive", "PassiveAbility"
+	Option "Passive Skill", "alph_passive", "PassiveAbility"
 	StaticText  " "
 	StaticText "JOIN!"
 	Command		"Join game",			"menu_joingame"
@@ -234,7 +230,7 @@ OptionMenu ZA_JoinTeamMenu
 	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
 	Option "Travel Ability", "alph_travel", "TravelAbility"
 	Option "Action Ability", "alph_action", "Action1Ability"
-	Option "Passive Kit", "alph_passive", "PassiveAbility"
+	Option "Passive Skill", "alph_passive", "PassiveAbility"
 	StaticText  " "
 	StaticText "JOIN!"
 	Command		"Auto-select",			"menu_autoselect"
@@ -259,7 +255,7 @@ OptionMenu ZA_SelectClassMenu
 	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
 	Option "Travel Ability", "alph_travel", "TravelAbility"
 	Option "Action Ability", "alph_action", "Action1Ability"
-	Option "Passive Kit", "alph_passive", "PassiveAbility"
+	Option "Passive Skill", "alph_passive", "PassiveAbility"
 	StaticText  " "
 	StaticText "JOIN!"
 	JoinMenuPlayerClassOption

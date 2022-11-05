@@ -45,6 +45,10 @@ Script "PassiveDeath" DEATH
 	{
 		bandolier();
 	}
+	if(CheckInventory("PassiveSpeedDemon") > 0)
+	{
+		GiveInventory("ExtraTravelCharge", 1);
+	}
 }
 
 Script "OverclockedTimer" (void)
@@ -55,7 +59,7 @@ Script "OverclockedTimer" (void)
 		{
 			TakeInventory("ActionCD", 1);
 		}
-		delay(3);
+		delay(4);
 	}
 }
 /*
@@ -77,8 +81,13 @@ Script "AdrenalineRush" (void)
 {
 	for(int i = 0; i < 20; i++)
 	{
-		delay(7);
 		GiveInventory("Health", 1);
+		delay(7);
+		
+		if(ClassifyActor(ActivatorTID()) & ACTOR_DEAD)
+		{
+			terminate;
+		}
 	}
 }
 Script "NegaBarrierBubbleFX" (void)

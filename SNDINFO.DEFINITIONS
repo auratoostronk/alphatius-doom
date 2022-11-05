@@ -49,7 +49,7 @@ $random CompactExplosion { Explosion1 Explosion2 Explosion3 }
 
 
 //GENERAL
-General/Fail				NOENRGY
+General/Fail				GENFAIL1
 General/LowEnergy			LOENRGY
 General/WeaponReady 		ENRGYRDY
 General/WeaponSwitch		WEAPSWAP
@@ -107,7 +107,8 @@ Ambient/WaterFlow 			WATERFLO
 //PICKUPS
 
 //PLAYER
-/*Footstep1 "Sounds/Player/Footstep1.ogg"
+/*
+Footstep1 "Sounds/Player/Footstep1.ogg"
 Footstep2 "Sounds/Player/Footstep2.ogg"
 Footstep3 "Sounds/Player/Footstep3.ogg"
 Footstep4 "Sounds/Player/Footstep4.ogg"
@@ -126,9 +127,9 @@ $random Footstep { Footstep1 Footstep2 Footstep3 Footstep4 }
 *footstep  Footstep
 
 $alias player/male/jump1 ManJump
-$alias player/female/jump1 ManJump//WomanJump
-$alias player/other/jump1  ManJump//RobotJump*/
-
+$alias player/female/jump1 WomanJump
+$alias player/other/jump1  RobotJump
+*/
 
 //MENU
 menu/activate			MENUUP	

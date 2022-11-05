@@ -1,4 +1,4 @@
-const float carb_recoil = 0.3;
+const float carb_recoil = 0.2;
 
 ACTOR PhotonCarbine : Weapon 10004
 {
@@ -10,7 +10,7 @@ ACTOR PhotonCarbine : Weapon 10004
     Weapon.BobRangeX 0.7
     Weapon.BobRangeY 1.0
     Weapon.BobSpeed 1.5
-    Weapon.BobStyle "Alpha"  	
+    Weapon.BobStyle "Alpha"
 	Weapon.AmmoType1 "CarbineEnergy"
 	Weapon.AmmoType2 "CarbineEnergy"
 	Weapon.AmmoUse1 1
@@ -61,7 +61,7 @@ ACTOR PhotonCarbine : Weapon 10004
 		Goto Ready
 	AltFail:
 		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
-		CARR A 3 A_WeaponReady(WRF_NOSECONDARY)
+		CARR A 1 A_WeaponReady(WRF_NOSECONDARY)
 		Goto Ready
 	}
 }
@@ -73,7 +73,7 @@ Actor PhotonProjectile : FastProjectile
 	Scale 1.5
 	Speed 192
 	Decal RailScorchLower
-	Damage (12)
+	Damage (14)
 	Renderstyle Add
 	Obituary "%k > \cvPhoton Carbine\c- > %o"
 	+BRIGHT

@@ -33,10 +33,8 @@ Script "AlphatiusDamageNumbers" ENTER
 		//bool hasArmor = false;
 		int brokeArmor = 0;
 		int oldHealth = GetActorProperty(0, APROP_HEALTH);
-		//int oldArmor = GetArmorInfo(ARMORINFO_SAVEAMOUNT);
 		delay(1);
 		int newHealth = GetActorProperty(0, APROP_HEALTH);
-		//int newArmor = GetArmorInfo(ARMORINFO_SAVEAMOUNT);
 		int damage = oldHealth - newHealth;
 		
 		if(damage != 0)
@@ -45,7 +43,7 @@ Script "AlphatiusDamageNumbers" ENTER
 }
 Script "DummyEnter" (void)
 {
-	Thing_ChangeTID(0, UniqueTID(0, 0));
+	//Thing_ChangeTID(0, UniqueTID(0, 0));
 	while(!(ClassifyActor(0) & ACTOR_NONE))
 	{
 		if(CheckInventory("ThermiteDebuff") > 0)
@@ -53,9 +51,9 @@ Script "DummyEnter" (void)
 			spawnThermiteFX();
 		}
 		TakeInventory("ThermiteDebuff", 1);
-		int oldHealth = GetActorProperty(0, APROP_HEALTH);// + GetArmorInfo(ARMORINFO_SAVEAMOUNT);
+		int oldHealth = GetActorProperty(0, APROP_HEALTH);
 		delay(1);
-		int newHealth = GetActorProperty(0, APROP_HEALTH);// + GetArmorInfo(ARMORINFO_SAVEAMOUNT);
+		int newHealth = GetActorProperty(0, APROP_HEALTH);
 		int damage = oldHealth - newHealth;
 		if(damage != 0)
 			ACS_NamedExecuteAlways("AlphatiusPain", 0, damage);
@@ -91,19 +89,19 @@ Script "AlphatiusPain" (int damage, int brokeArmor)
 	{
 		if(digit1 == j || digit1 == -j)
 		{
-			Spawn(strParam(s:"Digit1Num", i:j), posx, posy, posz + 48.0, utid);
+			Spawn(strParam(s:"Digit1Num", i:j), posx, posy, posz + 64.0, utid);
 		}
 		if(digit2 == j || digit2 == -j)
 		{
-			Spawn(strParam(s:"Digit2Num", i:j), posx, posy, posz + 48.0, utid);
+			Spawn(strParam(s:"Digit2Num", i:j), posx, posy, posz + 64.0, utid);
 		}
 		if(digit3 == j || digit3 == -j)
 		{
-			Spawn(strParam(s:"Digit3Num", i:j), posx, posy, posz + 48.0, utid);
+			Spawn(strParam(s:"Digit3Num", i:j), posx, posy, posz + 64.0, utid);
 		}
 		if(digit4 == j || digit4 == -j)
 		{
-			Spawn(strParam(s:"Digit4Num", i:j), posx, posy, posz + 48.0, utid);
+			Spawn(strParam(s:"Digit4Num", i:j), posx, posy, posz + 64.0, utid);
 		}
 	}
 	if(damage < 0)
@@ -112,7 +110,7 @@ Script "AlphatiusPain" (int damage, int brokeArmor)
 	}
 	if(brokeArmor > 0)
 	{
-		PlaySound(0, "General/ArmorBreak", CHAN_AUTO, 1.0, false);
+		//PlaySound(0, "General/ArmorBreak", CHAN_AUTO, 1.0, false);
 	}
 	delay(1);
 	TakeInventory("NegaBarrier", 1);

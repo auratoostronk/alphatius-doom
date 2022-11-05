@@ -72,26 +72,19 @@ Actor Flamespitter : Weapon 10010
 		Goto Ready
 	AltFail:
 		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
-		FLMR A 3 A_WeaponReady(WRF_NOSECONDARY)
-		Goto Ready
-	NoEnergy:
-		FLMR A 3 ACS_NamedExecuteAlways("WeaponNoEnergy")
-		Goto Ready
-	GrenadeCooloff:
-		FLMR A 1
-		TNT1 A 0 A_Refire("GrenadeCooloff")
+		FLMR A 1 A_WeaponReady(WRF_NOSECONDARY)
 		Goto Ready
 	}
 }
-const float flame_slowspeed = -5.0;
+const float flame_slowspeed = -6.0;
 Actor FlamespitterProjectile
 {
 	Projectile
 	Speed 32
-	Radius 14
+	Radius 12
 	Height 24
 	Damage (3)
-	Scale 0.3
+	Scale 0.25
 	Renderstyle Add
 	Alpha 0.25
 	DamageType "FlamespitterFlames"

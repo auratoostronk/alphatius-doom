@@ -1,4 +1,4 @@
-Actor NewMedikit : Medikit replaces Medikit
+Actor HealthLarge : Medikit replaces Medikit
 {
 	//$Category Alphatius Pickups
 	Radius 24
@@ -12,12 +12,12 @@ Actor NewMedikit : Medikit replaces Medikit
 		loop
 	}
 }
-Actor NewStimpack : Stimpack replaces Stimpack
+Actor HealthSmall : Stimpack replaces Stimpack
 {
 	//$Category Alphatius Pickups
 	Radius 16
 	Height 16
-	Inventory.Amount 10
+	Inventory.Amount 15
 	+SERVERNETID
 	States
 	{

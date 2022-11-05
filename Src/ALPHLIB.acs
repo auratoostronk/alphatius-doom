@@ -32,12 +32,12 @@ function bool isAirborne(void)
 function void spawnThermiteFX(void)
 {
 	int latspread = 12.0;
-	SpawnForced("ThermiteFX", GetActorX(0) + Random(-latspread, latspread), GetActorY(0) + Random(-latspread, latspread), GetActorZ(0) + 28.0, 0, 0);
+	SpawnForced("ThermiteFX", GetActorX(0) + Random(-latspread, latspread), GetActorY(0) + Random(-latspread, latspread), GetActorZ(0) + 24.0, 0, 0);
 }
 function void spawnBeamOrbFX(void)
 {
 	int latspread = 12.0;
-	SpawnForced("BeamOrbDebuffFX", GetActorX(0) + Random(-latspread, latspread), GetActorY(0) + Random(-latspread, latspread), GetActorZ(0) + 28.0, 0, 0);
+	SpawnForced("BeamOrbDebuffFX", GetActorX(0) + Random(-latspread, latspread), GetActorY(0) + Random(-latspread, latspread), GetActorZ(0) + 24.0, 0, 0);
 }
 //Helpful function for displaying text based on user's scaling settings.
 function void displayHUDText(str text, int yLoc, int holdTime, int id)
@@ -54,7 +54,7 @@ function void displayHUDText(str text, int yLoc, int holdTime, int id)
 	HUDMessage(s:text;HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP, id, CR_UNTRANSLATED, (textX << 16), (textY << 16), holdTime);
 }
 
-Script "ArmorDecay" ENTER
+/*Script "ArmorDecay" ENTER
 {
 	while (true)
 	{
@@ -63,9 +63,9 @@ Script "ArmorDecay" ENTER
 			//Reduces armor value by one
 			TakeInventory("Armor", 1);
 		}
-		delay(35);
+		delay(30);
 	}
-}
+}*/
 //Holds the script for many timers that occur each tic.
 Script "RechargeTimers" ENTER
 {
@@ -163,10 +163,10 @@ Script "RechargeTimers" ENTER
 			
 			int movespeed = 1.0;
 			//Speed boost from firing Tesla SMG
-			if(CheckInventory("TeslaSpeedBoost") >= 1)
+			/*if(CheckInventory("TeslaSpeedBoost") >= 1)
 			{
 				movespeed += 0.2;
-			}
+			}*/
 			//Speed boost from having your travel ability be Hyperdrive
 			if(CheckInventory("TravelHyperdrive") >= 1)
 			{
@@ -188,98 +188,17 @@ Script "RechargeTimers" ENTER
 				SpawnSpotFacingForced("ThrusterBootsSmokeSpawner", 0, 0);
 			}
 			TakeInventory("ThrusterBootsSmokeTics", 1);
-		}
-		delay(1);
-	}
-}
-
-/*
-Script "IntroSequence" OPEN
-{
-	introSequenceTime = 350;
-	while(PlayerCount() == 0)
-	{
-		delay(1);
-	}
-	while(PlayerCount() > 0)
-	{
-		introSequenceTime--;
-		delay(1);
-		if(PlayerCount() == 0)
-		{
-			restart;
-		}
-	}	
-}
-Script "IntroSequenceEnter" ENTER
-{
-	while(introSequenceTime > 0)
-	{
-		SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
-		SetFont("BIGFONT");
-		HudMessage(i:(introSequenceTime / 35) + 1; HUDMSG_PLAIN, 1501, CR_RED, 0.5, 0.5, 1.0);
-		delay(1);
-		str loadoutnum = "1";
-		if(introSequenceTime == 35 * 8)
-		{
-			LocalAmbientSound("General/AltReady", 1.0);
-			switch(GetCVAR("alph_loadout"))
-			{
-				case 1:
-				loadoutnum = "2";
-				break;
-				case 2:
-				loadoutnum = "3";
-				break;
-				case 3:
-				loadoutnum = "4";
-				break;
-				default:
-				loadoutnum = "1";
-				break;
-			}
-			GiveInventory(GetCVARString(StrParam(s:"alph_startweapon", s:loadoutnum)), 1);
 			
-			if(	!CheckInventory("PhotonCarbine") &&
-				!CheckInventory("ParticleSplitter") &&
-				!CheckInventory("TeslaSMG") &&
-				!CheckInventory("C14") &&
-				!CheckInventory("SparkCannon") &&
-				!CheckInventory("Flamespitter") && 
-				!CheckInventory("BeamRifle"))
-				{
-					GiveInventory("PhotonCarbine", 1);
-				}
-		}
-		if(introSequenceTime == 35 * 5)
-		{
-			LocalAmbientSound("General/WeaponReady", 1.0);
-			for(int j = 0; j < NUM_WEAPS; j++)
+			//Quiet Crouching
+			if(GetPlayerInput(0, INPUT_BUTTONS) & BT_CROUCH)
 			{
-				GiveInventory(WEAP_ENERGYNAMES[j], GetAmmoCapacity(WEAP_ENERGYNAMES[j]));
+				SetActorProperty(0, APROP_FOOTSTEPVOLUME, 0.0);
+			}
+			else
+			{
+				SetActorProperty(0, APROP_FOOTSTEPVOLUME, 1.0);
 			}
 		}
-		if(introSequenceTime == 35 * 3)
-		{
-			LocalAmbientSound("announcer/an/three", 1.0);
-		}
-		if(introSequenceTime == 35 * 2)
-		{
-			LocalAmbientSound("announcer/an/two", 1.0);
-		}
-		if(introSequenceTime == 35 * 1)
-		{
-			LocalAmbientSound("announcer/an/one", 1.0);
-		}
+		delay(1);
 	}
-	SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
-	if(ClassifyActor(0) & ACTOR_BOT)
-	{
-		ACS_NamedExecuteAlways("SetupBot", 0);
-	}
-	else
-	{
-		ACS_NamedExecuteAlways("SetupPlayerMP", 0);
-	}
-	ACS_NamedExecuteAlways("SBARActionFixer", 0);
-}*/
+}

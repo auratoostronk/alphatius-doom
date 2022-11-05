@@ -60,7 +60,7 @@ Actor ThrusterBootsCharge : Ammo
 Actor TBootsCD : Ammo
 {
 	+SERVERNETID
-	Inventory.MaxAmount 210
+	Inventory.MaxAmount 140
 }
 Actor WDriveCD : Ammo
 {
@@ -114,7 +114,7 @@ Actor EnergyRechargeCD : Ammo
 Actor AltFireFailCD : Ammo
 {
 	+SERVERNETID
-	Inventory.MaxAmount 18
+	Inventory.MaxAmount 70
 }
 //Used to prevent Low Energy sound from spamming. See ALPHLIB.acs
 Actor NoLowEnergySound : Inventory

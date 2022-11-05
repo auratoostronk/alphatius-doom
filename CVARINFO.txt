@@ -3,7 +3,6 @@ user int alph_travel = 0;
 user int alph_action = 1;
 user int alph_passive = 1;
 
-user int alph_loadout = 0;
 user float alph_textscale = 1.0;
 user float alph_zoomamount = 2.0;
 user float alph_timerx = 0.5;

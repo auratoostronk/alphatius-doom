@@ -134,7 +134,7 @@ Script "AltFireFail" (void)
 {
 	if(!(ClassifyActor(0) & ACTOR_BOT))
 	{
-		if(CheckInventory("AltFireFailCD") < 1)
+		if(!(GetPlayerInput(-1, INPUT_OLDBUTTONS) & BT_ALTATTACK))
 		{
 			//displayHUDText("Alt-Fire on cooldown.", 0.6, 3.5, 1301);
 			LocalAmbientSound("General/Fail",96);

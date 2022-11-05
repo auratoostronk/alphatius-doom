@@ -6,9 +6,9 @@ Actor NanoArmor : BasicArmorBonus replaces BlueArmor
 	Inventory.PickupMessage "Equipped Nano-Armor."
 	Inventory.PickupSound "Pickups/NanoArmor"
 	Inventory.Icon "ARM3A0"
-	Armor.SavePercent 66.6
+	Armor.SavePercent 50
 	Armor.SaveAmount 50
-	Armor.MaxSaveAmount 75
+	Armor.MaxSaveAmount 50
 	Inventory.RespawnTics 1050 //30 seconds
 	+BRIGHT
 	+SERVERNETID
@@ -18,7 +18,6 @@ Actor NanoArmor : BasicArmorBonus replaces BlueArmor
 		Spawn:
 		ARM3 A 1
 		loop
-		
 	}
 }
 Actor NanoPlate : BasicArmorBonus replaces GreenArmor
@@ -29,9 +28,9 @@ Actor NanoPlate : BasicArmorBonus replaces GreenArmor
 	Inventory.PickupMessage "Equipped a Nano-Plate."
 	Inventory.PickupSound "Pickups/NanoPlate"
 	Inventory.Icon "ARM2A0"
-	Armor.SavePercent 66.6
+	Armor.SavePercent 50
 	Armor.SaveAmount 25
-	Armor.MaxSaveAmount 75
+	Armor.MaxSaveAmount 50
 	Inventory.RespawnTics 1050 //30 seconds
 	Scale 1.5
 	+BRIGHT
@@ -53,12 +52,12 @@ Actor NanoShard : BasicArmorBonus replaces ArmorBonus
 	Inventory.PickupMessage "Equipped a Nano-Shard."
 	Inventory.PickupSound "Pickups/NanoShard"
 	Inventory.Icon "NANSD0"
-	Armor.SavePercent 66.6
+	Armor.SavePercent 50
 	Armor.SaveAmount 5
-	Armor.MaxSaveAmount 75
+	Armor.MaxSaveAmount 50
 	Inventory.RespawnTics 350 //10 seconds
 	+SERVERNETID
-	+INVENTORY.ALWAYSPICKUP
+	-INVENTORY.ALWAYSPICKUP
 	States
 	{
 		Spawn:

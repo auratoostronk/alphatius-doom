@@ -11,6 +11,7 @@ Actor DecoyHologram
 	+THRUACTORS
 	+SLIDESONWALLS
 	-SHOOTABLE
+	+BRIGHT
 	States
 	{
 		Spawn:

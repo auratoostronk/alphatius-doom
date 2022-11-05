@@ -16,7 +16,7 @@ Actor AutoDroneLaser : FastProjectile
 	Scale 1.0
 	Speed 160
 	Decal RailScorchLower
-	Damage (8)
+	Damage (6)
 	Renderstyle Add
 	Obituary "%k > \cgAuto Laser\c- > %o"
 	//SeeSound "Actions/AutoLaser"

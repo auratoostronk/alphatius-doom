@@ -6,7 +6,7 @@ statusbar fullscreen, fullscreenoffsets
 	drawstring SMALLFONT, Green, "Health", 10, -50, 0, alignment(left);
 	drawstring SMALLFONT, Cyan, "Energy", 10, -30, 0, alignment(left);
 	
-	drawBar "REDFULL", "REDEMPTY", armor (75), horizontal, Interpolate(120), 10, -60;
+	drawBar "REDFULL", "REDEMPTY", armor (50), horizontal, Interpolate(120), 10, -60;
 	drawBar "GRNFULL", "GRNEMPTY", health, horizontal, Interpolate(120), 10, -40;
 	drawBar "BLUFULL", "BLUEMPTY", Ammo1, horizontal,Interpolate(120), 10, -20;
 	

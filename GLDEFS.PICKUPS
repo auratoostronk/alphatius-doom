@@ -1,8 +1,8 @@
-Object NewMedikit
+Object HealthLarge
 {
 	Frame MEDI { light MEDILIGHTBIG }
 }
-Object NewStimpack
+Object HealthSmall
 {
 	Frame STIM { light MEDILIGHTSMALL }
 }

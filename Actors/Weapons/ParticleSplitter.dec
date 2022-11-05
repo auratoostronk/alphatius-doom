@@ -1,7 +1,11 @@
 //Shotgun pellet spread multipliers.
-const float spread1 = 0.8;
-const float spread2 = 1.6;
-const float spread3 = 2.4;
+const float spread1 = 1.0;
+const float spread2 = 2.0;
+const float spread3 = 3.0;
+
+//How many pellets are in the rings.
+const int sring_count = 6;
+const int ring_count = 12;
 
 Actor ParticleSplitter : Weapon 10007
 {
@@ -47,19 +51,20 @@ Actor ParticleSplitter : Weapon 10007
         TNT1 A 0 A_FireCustomMissile("SGPellet", 0.0, true, 0.0, -1.0, 0, 0.0)
 		Goto Fire1
 		//FIXED IT WOOT
-		//Fires a ring of 6 inner projectiles.
+		//First set of rings of projectiles
     Fire1:
-        TNT1 A 0 A_FireCustomMissile("SGPellet", spread1*cos(args[0] * 60), false, 3.0, -1.0, 0, spread1*sin(args[0] * 60))
+        TNT1 A 0 A_FireCustomMissile("SGPellet", spread1*cos(args[0] * 360 / sring_count), false, 3.0, -1.0, 0, spread1*sin(args[0] * 360 / sring_count))
         TNT1 A 0 A_SetArg(0, args[0] + 1)
-        TNT1 A 0 A_JumpIf(args[0] < 6, "Fire1")
+        TNT1 A 0 A_JumpIf(args[0] < sring_count, "Fire1")
         TNT1 A 0 A_SetArg(0, 0)
         Goto Fire2
-		//Fires 2 rings of 12 outer projectiles.
+		//Second set of rings
     Fire2:
-        TNT1 A 0 A_FireCustomMissile("SGPellet", spread2*cos(args[0] * 30), false, 3.0, -1.0, 0, spread2*sin(args[0] * 30))
-        TNT1 A 0 A_FireCustomMissile("SGPellet", spread3*cos(args[0] * 30), false, 3.0, -1.0, 0, spread3*sin(args[0] * 30))
+        TNT1 A 0 A_FireCustomMissile("SGPellet", spread2*cos(args[0] * 360 / ring_count), false, 3.0, -1.0, 0, spread2*sin(args[0] * 360 / ring_count))
+        TNT1 A 0 A_FireCustomMissile("SGPellet", spread3*cos(args[0] * 360 / ring_count), false, 3.0, -1.0, 0, spread3*sin(args[0] * 360 / ring_count))
         TNT1 A 0 A_SetArg(0, args[0] + 1)
-        TNT1 A 0 A_JumpIf(args[0] < 12, "Fire2")
+        TNT1 A 0 A_JumpIf(args[0] < ring_count, "Fire2")
+        TNT1 A 0 A_SetArg(0, 0)
         Goto FireAnim
 	AltFire:
 		TNT1 A 0 A_JumpIfInventory("PumpSGAltCD", 1, "AltFail")
@@ -71,19 +76,19 @@ Actor ParticleSplitter : Weapon 10007
 	FireAnim:
 		TNT1 A 0 A_PlaySound("ParticleSplitter/Fire", CHAN_WEAPON)
 		TNT1 A 0 A_Recoil(4.0)
-		PSGF ABC 3
-		PSGR A 6
+		PSGF ABC 4 //12
+		PSGR A 4
 		TNT1 A 0 A_PlaySound("ParticleSplitter/Pump1", CHAN_7)
-		PSGF DEFGHIJKL 1
+		PSGF DEFGHIJKL 1 //9
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		PSGF MMMMMM 1 A_SpawnItemEX("SparkCannonExhaustSpawner", 8.0, 0.0, 32.0, frandom(-1.0, 1.0), frandom(-1.0, 1.0), frandom(-1.0, 1.0))
 		TNT1 A 0 A_PlaySound("ParticleSplitter/Pump2", CHAN_7)
-		PSGF NOPQRSTUV 1
-		PSGR A 5
+		PSGF NOPQRSTUV 1 //9
+		PSGR A 4
 		Goto Ready
 	AltFail:
 		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")
-		PSGR A 3 A_WeaponReady(WRF_NOSECONDARY)
+		PSGR A 1 A_WeaponReady(WRF_NOSECONDARY)
 		Goto Ready
 	}
 }
@@ -92,10 +97,10 @@ Actor SGPellet
 {
 	Projectile
 	RenderStyle add
-	Speed 96
+	Speed 72
 	Radius 2
 	Height 2
-	Damage (4)
+	Damage (5)
 	DamageType "ParticleSplitter"
 	Decal RailScorchLower
 	Scale 0.5
@@ -106,8 +111,7 @@ Actor SGPellet
 	{
 	Spawn:
 		PSPK AAAAAA 2 A_SetScale(scalex * 0.8, scaley * 0.8)
-		//TNT1 AAAAAA 2
-		Goto Death
+		Goto death
 	Death:
 		TNT1 A 1 
 		stop
@@ -150,22 +154,22 @@ Actor SGAltPellet : SGPellet
 	States
 	{
 	Spawn:
-		PSPK A 1 nodelay A_JumpIf(ACS_NamedExecuteWithResult("CheckAltFireReleased") > 0, "Split")
+		PSPK A 1 A_JumpIf(ACS_NamedExecuteWithResult("CheckAltFireReleased") > 0, "Split")
 		loop
 	Split:
 		TNT1 A 0 A_PlaySound("ParticleSplitter/Fire")
         TNT1 A 0 A_SetArg(0, 0)
 		//Fires a ring of 6 inner projectiles
 	Split1:
-		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread1 * cos(args[0] * 60))-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread1 * sin(args[0] * 60))-180)
+		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread1 * cos(args[0] * 360 / sring_count))-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread1 * sin(args[0] * 360 / sring_count))-180)
         TNT1 A 0 A_SetArg(0, args[0] + 1)
         TNT1 A 0 A_JumpIf(args[0] < 6, "Split1")
         TNT1 A 0 A_SetArg(0, 0)
         Goto Split2
 		//Fires 3 rings of 12 outer projectiles
 	Split2:
-		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread2 * cos(args[0] * 30))-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread2 * sin(args[0] * 30))-180)
-		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread3 * cos(args[0] * 30))-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread3 * sin(args[0] * 30))-180)
+		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread2 * cos(args[0] * 360 / ring_count))-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread2 * sin(args[0] * 360 / ring_count))-180)
+		TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread3 * cos(args[0] * 360 / ring_count))-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread3 * sin(args[0] * 360 / ring_count))-180)
 		//TNT1 A 0 A_CustomMissile("SGAltPellet2", 0.0, 0.0, (spread4 * cos(args[0] * 30))-180, CMF_OFFSETPITCH|CMF_TRACKOWNER|CMF_SAVEPITCH,	(spread4 * sin(args[0] * 30))-180)
         TNT1 A 0 A_SetArg(0, args[0] + 1)
         TNT1 A 0 A_JumpIf(args[0] < 12, "Split2")
