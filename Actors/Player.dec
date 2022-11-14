@@ -16,11 +16,6 @@ Actor AlphatiusPlayer : PlayerPawn
 	Player.JumpZ 8.0
 	Player.DamageScreenColor "DarkRed", 1.0
 	Player.StartItem "C14RespawnProtection"
-	//Player.FootstepInterval 12
-	//Player.CrouchScale 1.0
-	//Player.CrouchChangeSpeed 0.5
-	//Player.AirAcceleration 0.2
-	//Player.VelocityCap 30.0
 	Player.CrouchSprite "PLAY"
 	Species "PlayerRelated"
 	+TELESTOMP

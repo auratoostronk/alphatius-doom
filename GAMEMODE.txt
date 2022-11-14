@@ -2,24 +2,36 @@ DEATHMATCH
 {
 	GameSettings
 	{
-		Compat_ExplosionThrust = true;
 		Sv_NoRespawnInvul = true;
 		Sv_NoMedals = true;
 		Sv_ItemRespawn = true;
 		sv_nodrop = true;
 		sv_nocrouch = true;
+		sv_allowcrouch = false;
+		//Q-Zandronum Options
+		sv_disablewallfriction = true;
+		sv_quakethrust = true;
+		sv_accuratecrosshair = true;
+		sv_enableprojectilehitboxfix = true;
+		compat_predictfunctions = true;
 	}
 }
 CTF
 {
 	GameSettings
 	{
-		Compat_ExplosionThrust = true;
 		Sv_NoRespawnInvul = true;
 		Sv_NoMedals = true;
 		Sv_ItemRespawn = true;
 		sv_nodrop = true;
 		sv_nocrouch = true;
+		sv_allowcrouch = false;
+		//Q-Zandronum Options
+		sv_disablewallfriction = true;
+		sv_quakethrust = true;
+		sv_accuratecrosshair = true;
+		sv_enableprojectilehitboxfix = true;
+		compat_predictfunctions = true;
 	}
 }
 TEAMPLAY
@@ -29,12 +41,18 @@ TEAMPLAY
 	addflag DEATHMATCH
 	GameSettings
 	{
-		Compat_ExplosionThrust = true;
 		Sv_NoRespawnInvul = true;
 		Sv_NoMedals = true;
 		Sv_ItemRespawn = true;
 		sv_nodrop = true;
 		sv_nocrouch = true;
+		sv_allowcrouch = false;
+		//Q-Zandronum Options
+		sv_disablewallfriction = true;
+		sv_quakethrust = true;
+		sv_accuratecrosshair = true;
+		sv_enableprojectilehitboxfix = true;
+		compat_predictfunctions = true;
 	}
 }
 DOMINATION
@@ -44,11 +62,17 @@ DOMINATION
 	addflag DEATHMATCH
 	GameSettings
 	{
-		Compat_ExplosionThrust = true;
 		Sv_NoRespawnInvul = true;
 		Sv_NoMedals = true;
 		Sv_ItemRespawn = true;
 		sv_nodrop = true;
 		sv_nocrouch = true;
+		sv_allowcrouch = false;
+		//Q-Zandronum Options
+		sv_disablewallfriction = true;
+		sv_quakethrust = true;
+		sv_accuratecrosshair = true;
+		sv_enableprojectilehitboxfix = true;
+		compat_predictfunctions = true;
 	}
 }

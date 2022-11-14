@@ -7,7 +7,7 @@
 //#libdefine FAST_ACTION_CD 10
 //#libdefine MEDIUM_ACTION_CD 15
 //#libdefine SLOW_ACTION_CD 20
-#define AUTODRONE_SHOTSFIRED 20
+#define AUTODRONE_SHOTSFIRED 40
 
 global int 1:action1Recharge[];
 //global int 2:decoyIDs[];
@@ -253,7 +253,7 @@ Script "SonicShockwave" (void)
 		Thing_Stop(0);
 		SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
 		SpawnSpotFacingForced("SonicShockwaveSpawner", 0, 0);
-		for(int i = 0; i < 15; i++)
+		for(int i = 0; i < 8; i++)
 		{
 			Thing_Stop(0);
 			delay(1);

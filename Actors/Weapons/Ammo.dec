@@ -37,6 +37,6 @@ Actor FlameEnergy : Ammo
 Actor BeamEnergy : Ammo
 {
 	+SERVERNETID 
-	Inventory.MaxAmount 125
-	Ammo.BackpackMaxAmount 150
+	Inventory.MaxAmount 100
+	Ammo.BackpackMaxAmount 120
 }

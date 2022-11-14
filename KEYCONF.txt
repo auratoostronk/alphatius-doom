@@ -1,8 +1,6 @@
-addkeysection "Alphatius Deathmatch" AlphatiusKeysection
-
 alias actionability "pukename ActionAbility1 always"
-defaultbind q actionability
 
+defaultbind q actionability
 defaultbind shift +user1
 
 alias pepega1 "echo \"kindred(?): \"customize loadout\". im not playing this mod. goodbye\""

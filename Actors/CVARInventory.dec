@@ -3,6 +3,8 @@
 //scripts use these inventory items instead of the cvar, so that your travel
 //abilities and such change only after dying.
 
+//EDIT! Unused.
+
 Actor TravelThrusterBoots : Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }

@@ -32,9 +32,9 @@ Script "AlphatiusDamageNumbers" ENTER
 	{
 		//bool hasArmor = false;
 		int brokeArmor = 0;
-		int oldHealth = GetActorProperty(0, APROP_HEALTH);
+		int oldHealth = GetActorProperty(0, APROP_HEALTH) + CheckInventory("Armor");
 		delay(1);
-		int newHealth = GetActorProperty(0, APROP_HEALTH);
+		int newHealth = GetActorProperty(0, APROP_HEALTH) + CheckInventory("Armor");
 		int damage = oldHealth - newHealth;
 		
 		if(damage != 0)
@@ -51,9 +51,9 @@ Script "DummyEnter" (void)
 			spawnThermiteFX();
 		}
 		TakeInventory("ThermiteDebuff", 1);
-		int oldHealth = GetActorProperty(0, APROP_HEALTH);
+		int oldHealth = GetActorProperty(0, APROP_HEALTH) + CheckInventory("Armor");
 		delay(1);
-		int newHealth = GetActorProperty(0, APROP_HEALTH);
+		int newHealth = GetActorProperty(0, APROP_HEALTH) + CheckInventory("Armor");
 		int damage = oldHealth - newHealth;
 		if(damage != 0)
 			ACS_NamedExecuteAlways("AlphatiusPain", 0, damage);

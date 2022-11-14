@@ -1,59 +1,22 @@
 DefaultListMenu
 {
-	Position 70, 68
+	Position 40, 68
+	Selector "M_PICK", -16, 0
 	Font "BIGFONT", "Red", "Red"
 	LineSpacing 20
 	LineSpacing 18
 }
-ListMenu "MainMenu"
-{
-	StaticPatch 40, 30, "ALPHTITL"
-	TextItem "Tutorial", "t", "EpisodeMenu"
-	TextItem "Play Offline", "p", "ZA_SkirmishMenu"
-	TextItem "Mod Options", "m", "ModOptions"
-	TextItem "Options", "o", "OptionsMenu"
-	TextItem "Quit", "q", "QuitMenu"
-}
 
-OptionMenu "ModOptions"
+OptionMenu "LoadoutOptions"
 {
-	Title "Alphatius Options"
+	Title "Loadout Options"
 	StaticText " "
-	StaticText "Keybinds for Alphatius"
-	StaticText " "
-	Control "Alt-Fire", "+altattack"
-	Control "Travel Ability", "+user1"
-	Control "Action Ability", "actionability"
-	Control "Weapon Zoom", "+zoom"
-	StaticText " "
-	StaticText	"Loadout Options"
+	StaticText	"Loadout Setup", 1
 	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
 	Option "Travel Ability", "alph_travel", "TravelAbility"
 	Option "Action Ability", "alph_action", "Action1Ability"
 	Option "Passive Skill", "alph_passive", "PassiveAbility"
 	StaticText  " "
-	StaticText	"Graphical Options"
-	StaticText " "
-	Option "Stretch Fullscreen HUD",	"hud_scale", "OnOff"
-	StaticText "Scales the Heads-Up Display"
-	StaticText " "
-	Slider "ACS HUD Scale", "alph_textscale", 0.5, 2.0, 0.1, 1
-	StaticText "Scales ACS-related HUD Elements"
-	StaticText  " "
-	//Slider "Timer Location X", "alph_timerx", 0.0, 1.0, 0.01, 2
-	//Slider "Timer Location Y", "alph_timery", 0.0, 1.0, 0.01, 2
-	//StaticText  " "
-	StaticText	"Zoom Options"
-	StaticText " "
-	Slider "Zoom Speed", "cl_fovchangespeed", 5.0, 50.0, 1.0, 1
-	StaticText "Speed at which the zoom key zooms in"
-	StaticText " "
-	Slider "Zoom Amount", "alph_zoomamount", 1.0, 5.0, 0.1, 1
-	StaticText "How much the zoom key zooms in"
-	StaticText " "
-	Slider "Zoomed mouse speed scale",	"mouse_zoomedscale", 0.1, 2.5, 0.1, 2
-	StaticText "How much the zoom key affects mouse sensitivity"
-	StaticText " "
 	StaticText "Learn More!"
 	SubMenu "Weapon Info", "I_Weapons"
 	SubMenu "Travel Ability Info", "I_Travels"
@@ -66,31 +29,31 @@ OptionMenu "ModOptions"
 OptionMenu "I_Weapons"
 {
 	Title "Weapon Info"
-	StaticText "PHOTON CARBINE"
+	StaticText "PHOTON CARBINE", 1
 	StaticText "Automatic projectile rifle. Alt-fire"
 	StaticText "for a strong arcing grenade."
 	StaticText " "
-	StaticText "PARTICLE SPLITTER"
+	StaticText "PARTICLE SPLITTER", 1
 	StaticText "Projectile shotgun. Alt-fire launches"
 	StaticText "a single pellet that splits into many."
 	StaticText " "
-	StaticText "TESLA SMG"
+	StaticText "TESLA SMG", 1
 	StaticText "Fires slow projectiles. Alt-fire"
 	StaticText "for a powerful melee attack."
 	StaticText " "
-	StaticText "C14"
+	StaticText "C14", 1
 	StaticText "Explosive auto cannon. Alt-fire"
 	StaticText "shoots a toxic gas canister."
 	StaticText " "
-	StaticText "SPARK CANNON"
+	StaticText "SPARK CANNON", 1
 	StaticText "Long-ranged railgun. Alt-fire"
 	StaticText "for an explosive shootable orb."
 	StaticText " "
-	StaticText "FLAMESPITTER"
+	StaticText "FLAMESPITTER", 1
 	StaticText "Flamethrower. Targets hit by alt-fire"
 	StaticText "explode when killed by this weapon."
 	StaticText " "
-	StaticText "BEAM RIFLE"
+	StaticText "BEAM RIFLE", 1
 	StaticText "Continuous mid-ranged beam. Alt-fire"
 	StaticText "for low-powered rapid-fire hitscans."
 	StaticText " "
@@ -98,54 +61,57 @@ OptionMenu "I_Weapons"
 OptionMenu "I_Travels"
 {
 	Title "Travel Ability Info"
-	StaticText "THRUSTER BOOTS"
+	StaticText "THRUSTER BOOTS", 1
 	StaticText "Dash laterally. Stores up to 2 uses."
 	StaticText " "
-	StaticText "WARP DRIVE"
+	StaticText "WARP DRIVE", 1
 	StaticText "Short teleport towards your crosshair."
 	StaticText " "
-	StaticText "SWIFTFOOT SHOES"
+	StaticText "SWIFTFOOT SHOES", 1
 	StaticText "Run faster and wall jump. Activate for a quick sprint."
 	StaticText " "
-	StaticText "GRAVITY LEAP"
+	StaticText "GRAVITY LEAP", 1
 	StaticText "Leap into the air. Aim upwards for best results."
 	StaticText " "
 }
 OptionMenu "I_Actions"
 {
 	Title "Action Ability Info"
-	StaticText "REGENERATION ZONE"
+	StaticText "REGENERATION ZONE", 1
 	StaticText "Creates a healing zone at your feet. Heals ALL Players."
 	StaticText " "
-	StaticText "AUTO LASER"
+	StaticText "AUTO LASER", 1
 	StaticText "Rapidly fires projectiles alongside your weapon."
 	StaticText " "
-	StaticText "POWER BRACE"
+	StaticText "POWER BRACE", 1
 	StaticText "Briefly reduces incoming damage."
 	StaticText " "
-	StaticText "DECOY HOLOGRAM"
+	StaticText "DECOY HOLOGRAM", 1
 	StaticText "Create a fake hologram of yourself to run forward."
 	StaticText " "
-	StaticText "RICHOCHET BURST"
-	StaticText "Fires 3 discs that bounce once before exploding."
+	StaticText "RICHOCHET BURST", 1
+	StaticText "Fires 5 discs that bounce before exploding."
+	StaticText " "
+	StaticText "SHOCK SLAM", 1
+	StaticText "Creates a damaging shockwave after a short delay."
 	StaticText " "
 }
 OptionMenu "I_Passives"
 {
 	Title "Passive Skill Info"
-	StaticText "SPEED DEMON"
-	StaticText "Grants a Travel Sphere on spawn and on kill."
+	StaticText "SPEED DEMON", 1
+	StaticText "Grants a Travel Sphere on spawn."
 	StaticText " "
-	StaticText "RAPID-ALT TECH"
+	StaticText "RAPID-ALT TECH", 1
 	StaticText "Kills refund some of your Alt-fire cooldown."
 	StaticText " "
-	StaticText "ADRENALINE RUSH"
+	StaticText "ADRENALINE RUSH", 1
 	StaticText "Restore health on kill."
 	StaticText " "
-	StaticText "BANDOLIER"
+	StaticText "BANDOLIER", 1
 	StaticText "Extra energy capacity. Kills restore energy."
 	StaticText " "
-	StaticText "ACTION OVERCLOCK"
+	StaticText "ACTION OVERCLOCK", 1
 	StaticText "Reduced Action Skill cooldown."
 	StaticText " "
 }
@@ -189,76 +155,4 @@ OptionString "PassiveAbility"
 	2, "Adrenaline Rush"
 	3, "Bandolier"
 	4, "Action Overclock"
-}
-
-//ZANDRONUM MENU REPLACEMENTS
-
-OptionMenu ZA_JoinMenu
-{
-	Title		"JOIN GAME"
-
-	StaticText "KEYBINDS"
-	Control "Alt-Fire", "+altattack"
-	Control "Travel Ability", "+user1"
-	Control "Action Ability", "actionability"
-	Control "Weapon Zoom", "+zoom"
-	//Control "Walk", "+crouch"
-	StaticText	" "
-	StaticText	"Loadout Options"
-	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
-	Option "Travel Ability", "alph_travel", "TravelAbility"
-	Option "Action Ability", "alph_action", "Action1Ability"
-	Option "Passive Skill", "alph_passive", "PassiveAbility"
-	StaticText  " "
-	StaticText "JOIN!"
-	Command		"Join game",			"menu_joingame"
-}
-
-OptionMenu ZA_JoinTeamMenu
-{
-	Title		"JOIN TEAM"
-
-	
-	StaticText "KEYBINDS"
-	Control "Alt-Fire", "+altattack"
-	Control "Travel Ability", "+user1"
-	Control "Action Ability", "actionability"
-	Control "Weapon Zoom", "+zoom"
-	//Control "Walk", "+crouch"
-	StaticText	" "
-	StaticText	"Loadout Options"
-	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
-	Option "Travel Ability", "alph_travel", "TravelAbility"
-	Option "Action Ability", "alph_action", "Action1Ability"
-	Option "Passive Skill", "alph_passive", "PassiveAbility"
-	StaticText  " "
-	StaticText "JOIN!"
-	Command		"Auto-select",			"menu_autoselect"
-	StaticText  " "
-	JoinMenuTeamOption
-	Command		"Join game",			"menu_joingame"
-}
-
-OptionMenu ZA_SelectClassMenu
-{
-	Title		"PLAYER CLASS SELECTION"
-
-	
-	StaticText "KEYBINDS"
-	Control "Alt-Fire", "+altattack"
-	Control "Travel Ability", "+user1"
-	Control "Action Ability", "actionability"
-	Control "Weapon Zoom", "+zoom"
-	//Control "Walk", "+crouch"
-	StaticText	" "
-	StaticText	"Loadout Options"
-	Option "Starting Weapon", "alph_startweapon", "StartingWeapon"
-	Option "Travel Ability", "alph_travel", "TravelAbility"
-	Option "Action Ability", "alph_action", "Action1Ability"
-	Option "Passive Skill", "alph_passive", "PassiveAbility"
-	StaticText  " "
-	StaticText "JOIN!"
-	JoinMenuPlayerClassOption
-	StaticText	" "
-	Command		"Join game",			"menu_joingamewithclass"
 }

@@ -222,11 +222,11 @@ skill AlphatiusNoWeapons
 clearepisodes
 episode ALPHTUT1
 {
-	name = "Part 1: Basics"
+	name = "Tutorial"
 	key = "1"
 }
 episode ALPHTUT2
 {
-	name = "Part 2: Firing Range"
+	name = "Firing Range"
 	key = "2"
 }

@@ -128,8 +128,8 @@ $random Footstep { Footstep1 Footstep2 Footstep3 Footstep4 }
 
 $alias player/male/jump1 ManJump
 $alias player/female/jump1 WomanJump
-$alias player/other/jump1  RobotJump
-*/
+$alias player/other/jump1  RobotJump*/
+
 
 //MENU
 menu/activate			MENUUP	

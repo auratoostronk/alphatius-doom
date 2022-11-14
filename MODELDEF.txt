@@ -47,7 +47,7 @@ Model SpaceShipSmall
    Frame 3DOB A 0 "viper"
 }
 
-Model AutoDroneLaser 
+/*Model AutoDroneLaser 
 { 
    Path "Models/Decorations" 
    SKIN 0 "tracer.png"
@@ -56,7 +56,7 @@ Model AutoDroneLaser
    PITCHFROMMOMENTUM
    
    FrameIndex RSPK A 0 0
-}
+}*/
 
 //Taken from OzyMandias's GORE
 //crystals**************************************************

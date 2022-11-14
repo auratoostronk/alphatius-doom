@@ -1,0 +1,10 @@
+IWad
+{
+	Name = "ALPHATIUS"
+	Autoname = "Alphatius"
+	Game = "Doom"
+	Config = "Alphatius"
+	Mapinfo = "mapinfo"
+	MustContain = "ALPHDM01"
+	BannerColors = "a8 00 00", "a8 a8 a8"
+}

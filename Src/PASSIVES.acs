@@ -45,10 +45,10 @@ Script "PassiveDeath" DEATH
 	{
 		bandolier();
 	}
-	if(CheckInventory("PassiveSpeedDemon") > 0)
+	/*if(CheckInventory("PassiveSpeedDemon") > 0)
 	{
 		GiveInventory("ExtraTravelCharge", 1);
-	}
+	}*/
 }
 
 Script "OverclockedTimer" (void)

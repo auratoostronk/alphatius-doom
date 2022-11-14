@@ -1,4 +1,5 @@
 user string alph_startweapon = "PhotonCarbine";
+//Directly modifiable by players.
 user int alph_travel = 0;
 user int alph_action = 1;
 user int alph_passive = 1;
