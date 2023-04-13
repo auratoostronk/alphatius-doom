@@ -3,7 +3,8 @@ Actor HealthLarge : Medikit replaces Medikit
 	//$Category Alphatius Pickups
 	Radius 24
 	Height 16
-	Inventory.Amount 35
+	Inventory.Amount 25
+	Inventory.RespawnTics 280 //8 seconds
 	+SERVERNETID
 	States
 	{
@@ -17,7 +18,8 @@ Actor HealthSmall : Stimpack replaces Stimpack
 	//$Category Alphatius Pickups
 	Radius 16
 	Height 16
-	Inventory.Amount 15
+	Inventory.Amount 10
+	Inventory.RespawnTics 280 //8 seconds
 	+SERVERNETID
 	States
 	{
@@ -25,4 +27,40 @@ Actor HealthSmall : Stimpack replaces Stimpack
 		STIM A 1 Bright
 		loop
 	}
+}/*
+Actor AmmoBoxReplacer replaces ClipBox
+{
+	States
+	{
+		Spawn:
+		TNT1 A 0 nodelay A_DropItem("HealthLarge", 1)
+		goto death
+	}
 }
+Actor ShellBoxReplacer replaces ShellBox
+{
+	States
+	{
+		Spawn:
+		TNT1 A 0 nodelay A_DropItem("HealthLarge", 1)
+		goto death
+	}
+}
+Actor RocketBoxReplacer replaces RocketBox
+{
+	States
+	{
+		Spawn:
+		TNT1 A 0 nodelay A_DropItem("HealthLarge", 1)
+		goto death
+	}
+}
+Actor CellBoxReplacer replaces CellPack
+{
+	States
+	{
+		Spawn:
+		TNT1 A 0 nodelay A_DropItem("HealthLarge", 1)
+		goto death
+	}
+}*/

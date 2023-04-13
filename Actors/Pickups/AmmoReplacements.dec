@@ -1,0 +1,25 @@
+Actor RocketAmmoReplacer : HealthSmall replaces RocketAmmo {
+	//$Category Alphatius Replacements
+	}
+Actor ShellReplacer : HealthSmall replaces Shell {
+	//$Category Alphatius Replacements
+	}
+Actor CellReplacer : HealthSmall replaces Cell {
+	//$Category Alphatius Replacements
+	}
+Actor ClipReplacer : HealthSmall replaces Clip {
+	//$Category Alphatius Replacements
+	}
+
+Actor RocketBoxReplacer : HealthLarge replaces RocketBox {
+	//$Category Alphatius Replacements
+	}
+Actor ShellBoxReplacer : HealthLarge replaces ShellBox {
+	//$Category Alphatius Replacements
+	}
+Actor CellPackReplacer : HealthLarge replaces CellPack {
+	//$Category Alphatius Replacements
+	}
+Actor ClipBoxReplacer : HealthLarge replaces ClipBox {
+	//$Category Alphatius Replacements
+	}

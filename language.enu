@@ -26,3 +26,27 @@ SPREE10 = "%k > 10 Kill Streak";
 SPREE15 = "%k > 15 Kill Streak";
 SPREE20 = "%k > 20 Kill Streak";
 SPREE25 = "%k > 25 Kill Streak";
+
+
+
+QUITMSG = "are you sure you want to quit?";
+TXT_YES = "Yes";
+TXT_NO = "No";
+
+// Quit Doom 1 messages
+QUITMSG1 = "";
+QUITMSG2 = "";
+QUITMSG3 = "";
+QUITMSG4 = "";
+QUITMSG5 = "";
+QUITMSG6 = "";
+QUITMSG7 = "";
+
+// Quit Doom II messages
+QUITMSG8 = "";
+QUITMSG9 = "";
+QUITMSG10 = "";
+QUITMSG11 = "";
+QUITMSG12 = "";
+QUITMSG13 = "";
+QUITMSG14 = "";

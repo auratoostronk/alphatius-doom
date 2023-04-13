@@ -81,13 +81,10 @@ Script "AdrenalineRush" (void)
 {
 	for(int i = 0; i < 20; i++)
 	{
-		GiveInventory("Health", 1);
-		delay(7);
-		
-		if(ClassifyActor(ActivatorTID()) & ACTOR_DEAD)
-		{
+		if(ClassifyActor(0) & ACTOR_DEAD)
 			terminate;
-		}
+		GiveInventory("Health", 1);
+		delay(3);
 	}
 }
 Script "NegaBarrierBubbleFX" (void)

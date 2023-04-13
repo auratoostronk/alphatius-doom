@@ -26,6 +26,20 @@ Script "AlphatiusDamageOpen" OPEN
 	}
 	
 }*/
+/*Script "AlphatiusHealthRegen" ENTER
+{
+	while(true)
+	{
+		delay(4);
+		if(GetCVAR("alph_nohealthregen" == false))
+		{
+			if(CheckInventory("Health") < 100 && CheckInventory("HealthRegenDelay") == 0)
+			{
+				GiveInventory("Health", 1);
+			}
+		}
+	}
+}*/
 Script "AlphatiusDamageNumbers" ENTER
 {
 	while(true)
@@ -38,7 +52,12 @@ Script "AlphatiusDamageNumbers" ENTER
 		int damage = oldHealth - newHealth;
 		
 		if(damage != 0)
+		{
 			ACS_NamedExecuteAlways("AlphatiusPain", 0, damage, brokeArmor);
+			if(damage > 0)
+				GiveInventory("HealthRegenDelay", 140);
+		}
+		TakeInventory("HealthRegenDelay", 1);
 	}
 }
 Script "DummyEnter" (void)

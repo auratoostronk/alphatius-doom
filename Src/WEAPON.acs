@@ -2,7 +2,6 @@
 #include "zcommon.acs"
 #import "ALPHLIB.acs"
 
-/*
 Script "WeaponGlow" (int predicting, int pressed, int released, int buttons)
 {
 	str glowclass = "BlueGlowSpawner";
@@ -24,7 +23,7 @@ Script "WeaponGlowSetup" (void)
 Script "WeaponGlowSetupClient" (void) CLIENTSIDE
 {
 	SetActionScript(0, 0, "WeaponGlow");
-}*/
+}
 Script "BeamOrbDebuffFX" ENTER
 {
 	while(true)

@@ -6,9 +6,13 @@ OptionMenuSettings
 {
 	Linespacing 8
 }
+DefaultListMenu
+{
+	Position 0, 64
+}
 ListMenu "MainMenu"
 {
-	StaticPatch 40, 30, "ALPHTITL"
+	StaticPatch 0, 0, "ALPHTITL"
 	TextItem "Training", "t", "EpisodeMenu"
 	TextItem "Play Offline", "p", "ZA_SkirmishMenu"
 	TextItem "Loadouts", "l", "LoadoutOptions"
@@ -17,7 +21,7 @@ ListMenu "MainMenu"
 }
 ListMenu "EpisodeMenu"
 {
-	StaticTextCentered 160, 40, "Pick a Module"
+	StaticTextCentered 64, 48, "Pick a Module"
 	// items will be filled in by MAPINFO
 }
 
@@ -47,6 +51,8 @@ OptionMenu "InputOptions"
 	Submenu "Mouse", "MouseOptions"
 	Submenu "Keybinds", "CustomizeControls"
 	Submenu "Controller", "JoystickOptions"
+	StaticText 	""
+	Submenu "Weapon Setup", "ZA_WeaponSetup"
 }
 OptionMenu "CustomizeControls"
 {
@@ -116,6 +122,8 @@ OptionMenu "MouseOptions"
 		Option "Mouse input mode",				"in_mouse", "InMouse"
 	}
 	StaticText 	""
+	Option "Menu Cursor",					"vid_cursor", "Cursors"
+	StaticText 	""
 	StaticText 	"Advanced", 1
 	Option "Prescale mouse",	"m_noprescale", "NoYes"
 	Option "Smooth mouse",		"smooth_mouse", "YesNo"
@@ -125,7 +133,20 @@ OptionMenu "MouseOptions"
 	Slider "Vertical multiplier",		"mouse_pitch", 0.1, 4.0, 0.1, 4
 	Slider "Zoomed multiplier",			"mouse_zoomedscale", 0.1, 4.0, 0.1, 4
 }
+OptionMenu ZA_WeaponSetup
+{
+	Indent 153
+	Title		"WEAPON SETUP"
+	Indent 170
 
+	Option		"Switch on pickup",		"switchonpickup",				"ZA_SwitchOnPickup"
+	//Option		"Switch without ammo",	"cl_noammoswitch",				"YesNo"
+	//Option		"Railgun color",		"railcolor",					"ZA_RailgunColors"
+	Slider 		"Weapon bob",			"movebob", 						0.0, 2.0, 0.01, 2
+	Slider 		"Weapon sway",			"movesway", 					0.0, 2.0, 0.01, 2
+
+	Class WeaponSetupMenu
+}
 
 OptionMenu "DisplayOptions"
 {
@@ -198,7 +219,7 @@ ListMenu "PlayerMenu"
 	StaticTextCentered 160, 6, "Profile"
 	Font "SmallFont"
 	Linespacing 14
-	Position 48, 36
+	Position 0, 36
 
 	IfGame (Doom, Strife, Chex)
 	{
@@ -283,6 +304,8 @@ OptionString OutputFormats
 OptionMenu ZA_MultiplayerOptions
 {
 	Title "MULTIPLAYER OPTIONS"
+	StaticText	" "
+	SubMenu		"Network Options",			"ZA_NetworkOptions"
 
 	SubMenu		"Call a vote",				"ZA_CallVote"
 	SubMenu		"Ignore a player",			"ZA_IgnoreMenu"
@@ -296,11 +319,20 @@ OptionMenu ZA_MultiplayerOptions
 }
 OptionValue ZA_Gamemode
 {
+	0, "(NYI) Cooperative"
+	1, "(NYI) Survival Cooperative"
+	2, "(NYI) Invasion"
 	3, "Deathmatch"
 	4, "Team Deathmatch"
 	5, "Duel"
+	6, "(NYI) Terminator"
 	7, "Last Man Standing"
 	8, "Team Last Man Standing"
-	//12, "Capture The Flag"
-	//15, "Domination"
+	9, "(NYI) Possession"
+	10, "(NYI) Team Possession"
+	11, "(NYI) Teamgame (ACS)"
+	12, "Capture The Flag"
+	13, "(NYI) One Flag CTF"
+	14, "(NYI) Skulltag"
+	15, "Domination"
 }

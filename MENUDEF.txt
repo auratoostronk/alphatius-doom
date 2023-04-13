@@ -17,7 +17,7 @@ OptionMenu "LoadoutOptions"
 	Option "Action Ability", "alph_action", "Action1Ability"
 	Option "Passive Skill", "alph_passive", "PassiveAbility"
 	StaticText  " "
-	StaticText "Learn More!"
+	StaticText "Learn More!", 1
 	SubMenu "Weapon Info", "I_Weapons"
 	SubMenu "Travel Ability Info", "I_Travels"
 	SubMenu "Action Ability Info", "I_Actions"
@@ -112,7 +112,7 @@ OptionMenu "I_Passives"
 	StaticText "Extra energy capacity. Kills restore energy."
 	StaticText " "
 	StaticText "ACTION OVERCLOCK", 1
-	StaticText "Reduced Action Skill cooldown."
+	StaticText "Reduced Action Ability cooldown."
 	StaticText " "
 }
 

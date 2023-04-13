@@ -1,5 +1,6 @@
 resolution 640, 400;
 Base none;
+
 statusbar fullscreen, fullscreenoffsets
 {
 	drawstring SMALLFONT, Red, "Armor", 10, -70, 0, alignment(left);
@@ -10,14 +11,13 @@ statusbar fullscreen, fullscreenoffsets
 	drawBar "GRNFULL", "GRNEMPTY", health, horizontal, Interpolate(120), 10, -40;
 	drawBar "BLUFULL", "BLUEMPTY", Ammo1, horizontal,Interpolate(120), 10, -20;
 	
-	drawnumber 10, SMALLFONT, Red, armor, Alignment(left)|drawshadow, 210, -60;
-	drawnumber 10, SMALLFONT, Green, health,  Alignment(left)|drawshadow, 210, -40;
-	drawnumber 10, SMALLFONT, Cyan, Ammo1, Alignment(left)|drawshadow, 210, -20;
+	drawnumber 12, BIGFONT, Red, armor, Alignment(left)|drawshadow, 220, -60;
+	drawnumber 12, BIGFONT, Green, health,  Alignment(left)|drawshadow, 220, -40;
+	drawnumber 12, BIGFONT, Cyan, Ammo1, Alignment(left)|drawshadow, 220, -20;
 	
-	drawstring SMALLFONT, Red, "Alt-Fire Cooldown", -10, -70, 0, alignment(right);
-	drawstring SMALLFONT, Green, "Travel Ability", -10, -50, 0, alignment(right);
-	drawnumber 10, SMALLFONT, Yellow, Ammo ExtraTravelCharge, Alignment(right), -240, -40;
-	drawstring SMALLFONT, Cyan, "Action Cooldown", -10, -30, 0, alignment(right);
+	drawstring SMALLFONT, Red, "Alt-Fire Cooldown", -20, -70, 0, alignment(right);
+	drawstring SMALLFONT, Green, "Travel Ability", -20, -50, 0, alignment(right);
+	drawstring SMALLFONT, Cyan, "Action Cooldown", -20, -30, 0, alignment(right);
 	
 	//ALTFIRE COOLDOWN
 	IsSelected PhotonCarbine
@@ -86,10 +86,11 @@ statusbar fullscreen, fullscreenoffsets
 	}
 	drawstring SMALLFONT, Orange, "Flamespitter", -20, -350, 0;
 	
-	//TRAVEL COOLDOWN
+	
+	drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(right), -270, -40;
 	InInventory TravelThrusterBoots
 	{
-		drawnumber 10, SMALLFONT, Green, Ammo ThrusterBootsCharge, Alignment(right),-220, -40;
+		drawnumber 12, BIGFONT, YELLOW, Ammo ThrusterBootsCharge, Alignment(right), -240, -40;
 		drawBar "GRNFULL", "GRNEMPTY", Ammo TBootsCD, horizontal, Interpolate(20)|reverse, -210, -40;
 	}
 	InInventory TravelWarpDrive
@@ -103,10 +104,6 @@ statusbar fullscreen, fullscreenoffsets
 	InInventory TravelHyperdrive
 	{
 		drawBar "GRNFULL", "GRNEMPTY", Ammo HDriveCD, horizontal, Interpolate(20)|reverse, -210, -40;
-	}
-	InInventory TravelShifterOrb
-	{
-		drawBar "GRNFULL", "GRNEMPTY", Ammo SOrbCD, horizontal, Interpolate(20)|reverse, -210, -40;
 	}
 	
 	//ACTION COOLDOWN
@@ -134,7 +131,7 @@ statusbar fullscreen, fullscreenoffsets
 	{
 		drawBar "BLUFULL", "BLUEMPTY", Ammo ActionCD, horizontal, Interpolate(20)|reverse, -210, -20;
 	}
-}
+}*/
 //New Alt-Hud courtesy of BathySalts
 resolution 640, 400;
 statusbar normal, forcescaled

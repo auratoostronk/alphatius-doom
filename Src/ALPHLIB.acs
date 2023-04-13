@@ -66,6 +66,31 @@ function void displayHUDText(str text, int yLoc, int holdTime, int id)
 		delay(30);
 	}
 }*/
+Script "CheckPowerupCVAR" (void)
+{
+	SetResultValue(GetCVAR("alph_nopowerups"));
+}
+/*
+Script "PowerupSpawn" (void)
+{
+	int spotid = UniqueTID(0, 999);
+	if(Timer() < 35)
+	{
+		SpawnSpotForced("MapSpot", 0, spotid, 0);
+		Thing_Remove(0);
+	}
+	while(true)
+	{
+		delay(2100);
+		SpawnSpotForced("AlphatiusPowerup", spotid, 0, 0);
+		//Don't put two powerups on the map or its gonna bug. This is my lazy fix for now.
+		while(ThingCount("AlphatiusPowerup", 0) > 0)
+		{
+			delay(1);
+		}
+	}
+	
+}*/
 //Holds the script for many timers that occur each tic.
 Script "RechargeTimers" ENTER
 {
@@ -73,10 +98,15 @@ Script "RechargeTimers" ENTER
 	{
 		if(ClassifyActor(ActivatorTID()) & ACTOR_ALIVE)
 		{	
+			int cooldownspeed = 1;
+			if(CheckInventory("PowerChronalDrive") > 0)
+			{
+				cooldownspeed = 4;
+			}
 			for(int i = 0; i < NUM_WEAPS; i++)
 			{
 				//Reduces alt-fire cooldown
-				TakeInventory(WEAP_COOLDOWNNAMES[i], 1);
+				TakeInventory(WEAP_COOLDOWNNAMES[i], cooldownspeed);
 				//If the weapon's cooldown is about to be ready (4 tics) and its the correct weapon, play a sound.
 				if(CheckInventory(WEAP_COOLDOWNNAMES[i]) == 4 && GetWeapon() == WEAP_CLASSNAMES[i])
 				{
@@ -103,9 +133,9 @@ Script "RechargeTimers" ENTER
 			TakeInventory("EnergyRechargeCD",1);
 
 			//Reduce travel ability cooldowns.
-			TakeInventory("WDriveCD",1);
-			TakeInventory("HDriveCD",1);
-			TakeInventory("JThrustCD",1);
+			TakeInventory("WDriveCD", cooldownspeed);
+			TakeInventory("HDriveCD", cooldownspeed);
+			TakeInventory("JThrustCD", cooldownspeed);
 			//TakeInventory("SOrbCD",1);
 			//Thruster boots uses charges, so it uses slightly different code.
 			if(CheckInventory("TravelThrusterBoots"))
@@ -117,12 +147,12 @@ Script "RechargeTimers" ENTER
 					if (CheckInventory("TBootsCD") > 0)
 					{
 						//Reduce cooldown meter.
-						TakeInventory("TBootsCD", 1);
+						TakeInventory("TBootsCD", cooldownspeed);
 					}
 					//If the meter is empty, give a charge and put the meter on cooldown again.
 					else 
 					{
-						GiveInventory("ThrusterBootsCharge", 1);
+						GiveInventory("ThrusterBootsCharge", cooldownspeed);
 						GiveInventory("TBootsCD", GetAmmoCapacity("TBootsCD"));
 					}
 				}				
@@ -157,7 +187,7 @@ Script "RechargeTimers" ENTER
 			if(StrICmp(GetCurrentGameMode(), "Last Man Standing") != 0 && StrICmp(GetCurrentGameMode(), "Team Last Man Standing") != 0)
 			{
 				//Action cooldown recharges
-				TakeInventory("ActionCD", 1);
+				TakeInventory("ActionCD", cooldownspeed);
 			}
 
 			

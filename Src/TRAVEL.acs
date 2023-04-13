@@ -80,6 +80,10 @@ Script "TutorialNoTravel" (int predicting, int pressed, int released, int button
 
 Script "ThrusterBoots" (int predicting, int pressed, int released, int buttons)
 {
+	if(GetCVAR("alph_notravels") == true)
+	{
+		terminate;
+	}
     if(pressed)
     {
         if(predicting == 0)
@@ -174,6 +178,10 @@ Script "ThrusterBoots" (int predicting, int pressed, int released, int buttons)
 }
 Script "JumpThrust" (int predicting, int pressed, int released, int buttons)
 {
+	if(GetCVAR("alph_notravels") == true)
+	{
+		terminate;
+	}
     if(pressed)
     {
         if(predicting == 0)
@@ -206,7 +214,7 @@ Script "JumpThrust" (int predicting, int pressed, int released, int buttons)
 				upordown = 0;
 			else
 				upordown = 1;
-			ThrustThing(angle >> 8, ((cos(abs(pitch))) >> 8) / 8, 1, 0);
+			ThrustThing(angle >> 8, ((cos(abs(pitch))) >> 8) / 16, 1, 0);
 			ThrustThingZ(0, ((sin(abs(pitch))) >> 8) / 2, upordown, 1);
         }
     }
@@ -214,6 +222,10 @@ Script "JumpThrust" (int predicting, int pressed, int released, int buttons)
 
 Script "Hyperdrive" (int predicting, int pressed, int released, int buttons)
 {
+	if(GetCVAR("alph_notravels") == true)
+	{
+		terminate;
+	}
     if(pressed)
     {
 		if(predicting == 0)
@@ -261,7 +273,11 @@ int warpDriveVely[64];
 int warpDriveVelz[64];
 Script "WarpDrive" (int predicting, int pressed, int released, int buttons)
 {
-    if (pressed)
+	if(GetCVAR("alph_notravels") == true)
+	{
+		terminate;
+    }
+	if (pressed)
     {
         if (predicting == 0)
         {

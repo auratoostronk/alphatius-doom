@@ -20,8 +20,8 @@ Actor C14AltCD : Ammo
 Actor SMGAltCD : Ammo
 {
 	+SERVERNETID 
-	Inventory.MaxAmount 140
-	Ammo.BackpackMaxAmount 140
+	Inventory.MaxAmount 105
+	Ammo.BackpackMaxAmount 105
 }
 Actor PumpSGAltCD : Ammo
 {
@@ -121,4 +121,10 @@ Actor NoLowEnergySound : Inventory
 {
 	+SERVERNETID
 	Inventory.MaxAmount 1
+}
+//Health Regen delay (in tics)
+Actor HealthRegenDelay : Inventory
+{
+	+SERVERNETID 
+	Inventory.MaxAmount 140
 }

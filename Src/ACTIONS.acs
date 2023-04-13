@@ -27,6 +27,10 @@ Script "ActionAbility1" (void) net
 	{
 	
 	}
+	else if(GetCVAR("alph_noactions") == true)
+	{
+	
+	}
 	else
 	{
 		if(CheckInventory("ActionRegenZone") > 0)

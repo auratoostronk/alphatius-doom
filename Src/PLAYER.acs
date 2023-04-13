@@ -147,17 +147,30 @@ Script "SetupPlayerMP" (void)
 {
 	if(!(ClassifyActor(0) & ACTOR_BOT))
 	{
+		//Doesnt need a check for alph_noactions as that is handled in the action ability script itself.
 		setAction(GetCVAR("alph_action"));
-		setPassive(GetCVAR("alph_passive")); //Need this before weapon for bandolier check.
-		setStartWeapon(GetCVARString("alph_startweapon"));
+		if(GetCVAR("alph_nopassives") == false)
+		{
+			setPassive(GetCVAR("alph_passive")); //Need this before weapon for bandolier check.
+		}
+		if(GetCVAR("alph_startcarbine") == false)
+		{
+			setStartWeapon(GetCVARString("alph_startweapon"));
+		}
+		else
+		{
+			setStartWeapon("PhotonCarbine");
+		}
 		gamemodeCheck();
 		ACS_NamedExecuteAlways("RestoreActionTimers", 0);
+		//Doesnt need a check for alph_notravels as that is handled in the travel ability script itself.
 		ACS_NamedExecuteAlways("TravelSetup", 0);
 		ACS_NamedExecuteAlways("TravelSetupClient", 0);
+		
 		ACS_NamedExecuteAlways("ZoomSetup", 0);
 		ACS_NamedExecuteAlways("ZoomSetupClient", 0);
-		//ACS_NamedExecuteAlways("WeaponGlowSetup", 0);
-		//ACS_NamedExecuteAlways("WeaponGlowSetupClient", 0);
+		ACS_NamedExecuteAlways("WeaponGlowSetup", 0);
+		ACS_NamedExecuteAlways("WeaponGlowSetupClient", 0);
 	}
 }
 Script "PlayerDeath" DEATH

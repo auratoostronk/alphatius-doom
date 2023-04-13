@@ -1,4 +1,4 @@
-1.13 beta 9 (4/11/2022) (updated it a bit since, but this is still a WIP)
+version alphatius-qz-030 (4/12/2023)
 
 CONCEPT
 Alphatius was only an idea in late 2016, during a dark time in my life where I was placed in a pseudo-boarding school
@@ -32,6 +32,7 @@ SPECIAL THANKS TO THESE BETA TESTERS / FREQUENT PLAYERS
 -BlushBerry
 -geNia
 -Hailst0rm
+-psygib
 -Iko
 -Infernis
 -Kaapeli47
@@ -46,6 +47,7 @@ BACK TO OUR REGULARLY SCHEDULED CREDITS
 
 CODE
 Some of the QZandronum code (specifically the unlagged code) was written by geNia to help me out.
+Damage number code was inspired by StrikerMan780's Damage Numbers mod.
 Alternate HUD was made courtesy of BathySalts.
 All other code has been written by hiimaura.
 
@@ -76,6 +78,7 @@ Regen Zone: Activation sound and loop sound ripped from an old MMO called City o
 Power Brace: Activation sound and hit sound ripped from an old MMO called City of Heroes. If you didn't know, the game is back ;)
 Auto Laser: Sound Taken from Terminator on Realm667.
 Sonic Shockwave: Charge sound unknown source, but modified by aura. Probably from the BFG9000 from Doom 3 or Doom 4 (unsure which). Explosion sound taken from Battlefield 4
+Ricochet Burst: Fire sound from BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ . Bounce sounds taken from an old Rachet and Clank game.
 
 Out of Energy: Sound taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
 Jet Flybys: taken from a youtube video https://www.youtube.com/watch?v=L0G4Hwi88cc
@@ -85,9 +88,10 @@ Teleporter Ambience: Ripped from Diabotical.
 Travel Ready: Made by hiimaura using Ableton.
 Alt Ready: See Particle Splitter pump sound, editted by hiimaura.
 Weapon Ready sound: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ Modified by aura.
+Armor Pickup Sounds: A combonation of Diabotical's Armor sounds mixed with the Thundergun sounds from Call Of Duty Black Ops (?)
 
 SPRITES
-
+NOTE: Weapon Sprites are unused unless in software mode.
 C14 Weapon: Taken from Realm667.com under Pulse Rifle. Credits go to "id software", "JoeyTD", and "ShadesMaster"
 C14 Fire Projectile: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
 C14 Grenade: Taken from Ben2k9's Cyberbaron from Realm667.com . Credits go to him and id software.
@@ -119,13 +123,14 @@ Sonic Shockwave Dots: Taken from Heretic 2. Recolored by hiimaura.
 
 Armor Shards: Taken from Project Brutality. Recolored by hiimaura.
 Nano Armor: Taken from Doom 2. recolored by hiimaura.
-Travel Sphere: Taken from Realm667 under Deflection Sphere. Recolored by hiimaura.
+Nano Plate: Made by hiimaura.
+Travel Sphere: Taken from Realm667 under Deflection Sphere. Recolored by hiimaura. BathySalts also added the Boot sprites to the sphere.
 
 Heal Effects: Made by hiimaura.
 Blood Sprites: Taken from Nashgore.pk3
 Dirt Particles: Taken from Sgt Mark IV's Brutal Doom.
 3D Object Placeholder: Taken from Ozymandias's GORE. 
-Damage Numbers: Doom font. id software.
+Damage Numbers: StrikerMan780s Damage Numbers mod used this font.
 
 GRAPHICS
 
@@ -140,21 +145,7 @@ DBIGFONT Jimmy's Status Report font based on the Doom STBAR. Found on Realm667
 SMALLFNT Jimmy's Status Report SMALL font based on the Doom STBAR. Found on Realm667
 
 MAPS
-ALPH01 Quarry: Created by hiimaura. 
-ALPH02 Sediment: Created by hiimaura.
-ALPH03 Igneous: Created by hiimaura. 
-ALPH04 Stronghold: Created by hiimaura.
-ALPH05 Frostbite: Created by hiimaura.
-ALPH06 Asteroid: Created by hiimaura.
-ALPH07 Torrent: Created by hiimaura.
-ALPH08 Waste: Created by hiimaura.
-ALPH09 Sinkhole: Created by hiimaura.
-
-ALPHDL01 Cagefight: Created by hiimaura.
-ALPHDL02 Outpost: Created by hiimaura.
-ALPHDL03 Deluge: Created by hiimaura.
-ALPHDL04 Cold Sludge: Created by hiimaura.
-ALPHDL05 Sandstone: Created by hiimaura.
+All maps made by aura.
 
 MUSIC:
 SONIC1-SONIC4: Ripped from Quake 3 Arena
@@ -165,22 +156,20 @@ SWALLOWD: Ripped from Quake 3 Arena by Sonic Mayhem
 QUAKE2_1 to QUAKE2_4: Ripped from Quake 2
 
 ONSLAUGHT: made by hiimaura and RandVGM
+ARMSRACE: made by hiimaura
 
 Lighthouse:By RandVGM
 Dreadmaze: By RandVGM
 Subterfuge: By RandVGM
-Chronogaster's RandVGM's soundcloud can be found here: https://soundcloud.com/randvgm
-
-ALPHDL01 Cagefight:  Music taken from Quake 3 Arena.
-ALPHDL02 Outpost: Subterfuge - Composed by Chronogaster. His soundcloud can be found here: https://soundcloud.com/chronogaster
-ALPHDL03 Flood: Music taken from Quake 3 Arena.
-ALPHDL04 High Ground: Dreadmaze - Composed by Chronogaster. His soundcloud can be found here: https://soundcloud.com/chronogaster
-ALPHDL05 Cold Sludge: Music taken from Quake 3 Arena.
+RandVGM's soundcloud can be found here: https://soundcloud.com/randvgm
+COAL: from Linkin Park's Hybrid Theory 20th anniversary disc
 
 BRIGHTMAPS:
+Note: Weapon brightmaps are unused unless in software mode.
 All brightmaps used the original sprites as a base, and were modified by hiimaura to become the brightmaps.
 
 3D MODELS:
+Weapons: All weapon voxels were made by hiimaura.
 Spaceship: Taken from a mod called Stronghold on the edge of Chaos
 Power Brace: Created by hiimaura.
 Auto Laser: Taken from SgtMarkIV's Brutal Doom, recolored by hiimaura.

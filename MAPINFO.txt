@@ -3,17 +3,15 @@ Gameinfo
 	PlayerClasses = "AlphatiusPlayer"
 	TitleMusic = "LITEHOUS"
 	TitleTime = 6
-	TitlePage = "TITLE1"
-	CreditPage = "TITLE2"
-	AddCreditPage = "TITLE3"
-	AddCreditPage = "TITLE4"
+	TitlePage = "TITLEBG"
+	CreditPage = "TITLEBG"
 	IntermissionMusic = "INTERMUS"
-	MenuFontColor_Title = "Gold"
-	MenuFontColor_Action = "Gold"
+	MenuFontColor_Title = "White"
+	MenuFontColor_Action = "Red"
 	MenuFontColor_Label =  "Red"
 	MenuFontColor_Selection = "White"
 	MenuFontColor_Value= "White"
-	MenuFontColor_Header = "Gold"
+	MenuFontColor_Header = "White"
 }
 map ALPHDM01 lookup "Quarry"
 {
@@ -204,21 +202,7 @@ skill AlphatiusDefault
 	Name = "Default"
 	DoubleAmmoFactor = 1.0
 	SpawnFilter = 3
-}/*
-skill AlphatiusNoWeapons
-{
-	Name = "No Weapon Spawns"
-	DoubleAmmoFactor = 1.0
-	SpawnFilter = 0
-	ReplaceActor = "PhotonCarbine", "NoWeapon"
-	ReplaceActor = "C14", "NoWeapon"
-	ReplaceActor = "ParticleSplitter", "NoWeapon"
-	ReplaceActor = "TeslaSMG", "NoWeapon"
-	ReplaceActor = "SparkCannon", "NoWeapon"
-	ReplaceActor = "RocketCannon", "NoWeapon"
-	ReplaceActor = "Flamespitter", "NoWeapon"
-	ReplaceActor = "BeamRifle", "NoWeapon"
-}*/
+}
 clearepisodes
 episode ALPHTUT1
 {

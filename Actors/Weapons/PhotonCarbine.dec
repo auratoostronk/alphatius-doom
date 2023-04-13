@@ -1,6 +1,6 @@
-const float carb_recoil = 0.2;
+const float carb_recoily = 0.2;
 
-ACTOR PhotonCarbine : Weapon 10004
+ACTOR PhotonCarbine : Weapon replaces Pistol
 {
 	//$Category Alphatius Weapons
 	Radius 32
@@ -27,7 +27,8 @@ ACTOR PhotonCarbine : Weapon 10004
 		CARP A 1 bright A_SetAngle(angle + 1.0)
 		Loop
 	Ready:
-		CARR A 1 A_WeaponReady
+		TNT1 A 0 A_SetArg(0, 0)
+		CARR A 1 A_WeaponReady 
 		Loop
 	Deselect:
 		CARR AA 0 A_Lower
@@ -43,9 +44,9 @@ ACTOR PhotonCarbine : Weapon 10004
 		TNT1 A 0 A_SpawnItemEX("BlueLightShoot")
 		TNT1 A 0 A_PlaySound("PhotonCarbine/Fire", CHAN_WEAPON)
 		TNT1 A 0 A_FireCustomMissile("PhotonProjectile", 0.0, true, 6.0, -1.0, 0 , 0.0)
-		CARF A 1 A_SetPitch(pitch - carb_recoil)
-		CARF B 1 A_SetPitch(pitch + carb_recoil * 0.5)
-		CARF C 1 A_SetPitch(pitch + carb_recoil * 0.5)
+		CARF A 1 A_SetPitch(pitch - carb_recoily)
+		CARF B 1 A_SetPitch(pitch + carb_recoily * 0.5)
+		CARF C 1 A_SetPitch(pitch + carb_recoily * 0.5)
 		CARF D 1
 		Goto Ready
 	AltFire:
