@@ -50,10 +50,10 @@ Actor AlphatiusPlayer : PlayerPawn
 		TNT1 A 0 A_GiveInventory("BeamOrbDebuff", 140)
 		Goto Pain*/
 	Death.FlamespitterThermite:
-		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByThermite",0)
+		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByThermite")
 		Goto Death
 	XDeath.FlamespitterThermite:
-		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByThermite",0)
+		TNT1 A 0 ACS_NamedExecuteAlways("PlayerDeathByThermite")
 		Goto XDeath
 	Death.FlamespitterFlames:
 		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "Death.FlamespitterThermite")

@@ -220,14 +220,14 @@ Script "RechargeTimers" ENTER
 			TakeInventory("ThrusterBootsSmokeTics", 1);
 			
 			//Quiet Crouching
-			if(GetPlayerInput(0, INPUT_BUTTONS) & BT_CROUCH)
+			/*if(GetPlayerInput(0, INPUT_BUTTONS) & BT_CROUCH)
 			{
 				SetActorProperty(0, APROP_FOOTSTEPVOLUME, 0.0);
 			}
 			else
 			{
 				SetActorProperty(0, APROP_FOOTSTEPVOLUME, 1.0);
-			}
+			}*/
 		}
 		delay(1);
 	}

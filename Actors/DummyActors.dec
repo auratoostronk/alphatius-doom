@@ -15,3 +15,15 @@ Actor IsHealing : Inventory
 	+SERVERNETID
 	Inventory.MaxAmount 1
 }
+Actor HitmarkerSound : CustomInventory
+{
+	+INVENTORY.ALWAYSPICKUP
+	+SERVERNETID
+	States
+	{
+		Spawn:
+		Pickup:
+		TNT1 A 0 A_PlaySound("General/WeaponHit", CHAN_7|CHAN_UI, 1.0, false)
+		stop
+	}
+}

@@ -6,7 +6,6 @@
 #import "HUD.acs"
 #import "PASSIVES.acs"
 
-int targetdummyid = 900;
 int playeridbase = 1000;
 function void setPassive(int p)
 {
@@ -180,13 +179,4 @@ Script "PlayerDeath" DEATH
 Script "PlayerDisconnect" (int playerwholeft) DISCONNECT
 {
 	Thing_ChangeTID(0, 0);
-}
-Script "TargetDummySpawn" (void)
-{
-	Thing_ChangeTID(0, targetdummyid);
-	targetdummyid++;
-	if(targetdummyid >= playeridbase)
-	{
-		targetdummyid = 900;
-	}
 }

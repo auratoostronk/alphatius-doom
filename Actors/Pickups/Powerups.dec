@@ -41,6 +41,7 @@ Actor AlphatiusPowerup : CustomInventory
 		POWR ABCDCBABCD 4 A_SpawnItemEX("PowerupFX", frandom(-4.0, 4.0), frandom(-4.0, 4.0), 32.0 + frandom(-4.0, 4.0), frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5))
 		loop
 		Pickup:
+		TNT1 A 0 A_GiveInventory("Health", 100)
 		TNT1 A 0 A_GiveInventory("PowerChronalDrive", 1)
 		stop
 		Death:

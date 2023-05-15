@@ -1,5 +1,6 @@
 Actor FireRicochetDisc : CustomInventory
 {
+	+SERVERNETID
 	States
 	{
 		Pickup:

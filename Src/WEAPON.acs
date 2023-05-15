@@ -38,11 +38,11 @@ Script "BeamOrbDebuffFX" ENTER
 //For the Thermite Spitter's alt-fire.
 Script "PlayerDeathByThermite" (void)
 {
-	int initid = ActivatorTID();
-	SetActivator(0, AAPTR_TARGET);
+	int victim = ActivatorTID();
+	SetActivatorToTarget(0); //Set Activator to the killer.
 	int blastid = UniqueTID(1, 0);
 	SpawnProjectile(0, "ThermiteChainReact", 0, 0, 0, 0, blastid);
-	SetActorPosition(blastid, GetActorX(initid), GetActorY(initid), GetActorZ(initid) + 16.0, false);
+	SetActorPosition(blastid, GetActorX(victim), GetActorY(victim), GetActorZ(victim) + 16.0, false);
 }
 //Every weapon should execute this script when fired.
 Script "OnWeaponFired" (void) 

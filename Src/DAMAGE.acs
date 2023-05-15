@@ -2,6 +2,8 @@
 #include "zcommon.acs"
 
 #import "ALPHLIB.acs"
+#import "PLAYER.acs"
+int targetdummyid = 800;
 
 Script "AlphatiusDamageOpen" OPEN
 {
@@ -62,7 +64,12 @@ Script "AlphatiusDamageNumbers" ENTER
 }
 Script "DummyEnter" (void)
 {
-	//Thing_ChangeTID(0, UniqueTID(0, 0));
+	Thing_ChangeTID(0, targetdummyid);
+	targetdummyid++;
+	if(targetdummyid >= playeridbase)
+	{
+		targetdummyid = 800;
+	}
 	while(!(ClassifyActor(0) & ACTOR_NONE))
 	{
 		if(CheckInventory("ThermiteDebuff") > 0)

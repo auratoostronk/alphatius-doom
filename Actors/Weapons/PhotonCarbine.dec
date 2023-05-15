@@ -144,6 +144,7 @@ Actor PhotonGrenade
 	ProjectileKickBack 100
 	RenderStyle Add
 	Obituary "%k > \cvPhoton Carbine (Alt)\c- > %o"
+	+SEEKERMISSILE //used for hitmarkers
 	-NOGRAVITY
 	+BRIGHT
 	States

@@ -205,7 +205,7 @@ OptionMenu "HUDOptions"
 	ColorPicker	"Enemy color",				"cl_enemycolor"
 	StaticText ""
 	StaticText 	"Accessibility", 1
-	//Option "Frag messages",				"cl_showlargefragmessages",	"YesNo" // [TP]
+	Option "Frag messages",				"cl_showlargefragmessages",	"YesNo" // [TP]
 	Slider "Screen blood intensity",	"blood_fade_scalar",   0, 1, 0.05, 2
 	Slider "Pickup flash intensity",	"pickup_blend_scalar", 0, 1, 0.05, 2
 	//Option "Coop Info",					"cl_drawcoopinfo", "YesNo" // [TP]
@@ -305,8 +305,7 @@ OptionMenu ZA_MultiplayerOptions
 {
 	Title "MULTIPLAYER OPTIONS"
 	StaticText	" "
-	SubMenu		"Network Options",			"ZA_NetworkOptions"
-
+	//SubMenu		"Network Options",			"ZA_NetworkOptions"
 	SubMenu		"Call a vote",				"ZA_CallVote"
 	SubMenu		"Ignore a player",			"ZA_IgnoreMenu"
 	Command 	"Spectate", 				"spectate"
@@ -316,6 +315,27 @@ OptionMenu ZA_MultiplayerOptions
 	TextField	"Server password",			"cl_password"
 	TextField	"Server join password",		"cl_joinpassword"
 	StaticText	" "
+}
+OptionMenu ZA_SkirmishMenu
+{
+	Title		"SKIRMISH"
+	StaticText ""
+	Option		"Level",				"menu_skirmishlevel",			"ZA_Levels"
+	Command		"Random Level",			"setskirmishlevel random"
+	Option		"Game Mode",			"menu_skirmishgamemode",		"ZA_Gamemode"
+	StaticText ""
+	NumberField	"Timelimit",			"menu_skirmishtimelimit"
+	NumberField	"Fraglimit",			"menu_skirmishfraglimit"
+	NumberField	"Pointlimit",			"menu_skirmishpointlimit"
+	NumberField	"Duellimit",			"menu_skirmishduellimit"
+	NumberField	"Winlimit",				"menu_skirmishwinlimit"
+	NumberField	"Wavelimit",			"menu_skirmishwavelimit", 0, 10
+	StaticText ""
+	Option		"Bot Skill",			"menu_skirmishbotskill",	ZA_Skill
+	Option		"Bots can talk",		"bot_allowchat",			"YesNo"
+	SubMenu		"Bot Setup",			"ZA_BotSetup"
+	StaticText ""
+	Command		"Start Game!",			"menu_startskirmish"
 }
 OptionValue ZA_Gamemode
 {

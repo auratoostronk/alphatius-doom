@@ -6,7 +6,7 @@
 #import "TRAVEL.acs"
 #import "PASSIVES.acs"
 
-#define BOT_ACTIONFREQ 0.5
+#define BOT_ACTIONFREQ 0.2
 
 function int VLength3d(int x, int y, int z)
 {
@@ -62,10 +62,11 @@ Script "SetupBot" (void)
 	setStartWeapon(WEAP_CLASSNAMES[random(0, NUM_WEAPS - 1)]);
 	setTravel(random(0, 3));
 	setAction(random(0, 5));
-	//setPassive(random(0, 3));
+	setPassive(random(0, 4));
 	gamemodeCheck();
 	SetActorProperty(0, APROP_SPEED, 0.8);
 	ACS_NamedExecuteAlways("StartBotAliveTimer", 0);
+	ACS_NamedExecuteAlways("WeaponGlowSetup", 0);
 }
 Script "StartBotAliveTimer" (void)
 {
@@ -175,6 +176,8 @@ Script "StartBotAliveTimer" (void)
 		delay(1);
 	}
 }
+//This is old (I think....)
+/*
 Script "ActionAbilityBot" (void)
 {
 	if(CheckInventory("ActionRegenZone") > 0)
@@ -202,7 +205,7 @@ Script "ActionAbilityBot" (void)
 			ACS_NamedExecuteAlways("ActionAbility1", 0);
 		}
 	}
-}
+}*/
 //Required for the bots to swap weapons even if they have ammo for their current weapon.
 Script "BotChangeWeapon" (void)
 {

@@ -131,7 +131,7 @@ statusbar fullscreen, fullscreenoffsets
 	{
 		drawBar "BLUFULL", "BLUEMPTY", Ammo ActionCD, horizontal, Interpolate(20)|reverse, -210, -20;
 	}
-}*/
+}
 //New Alt-Hud courtesy of BathySalts
 resolution 640, 400;
 statusbar normal, forcescaled
