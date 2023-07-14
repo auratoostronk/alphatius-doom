@@ -144,17 +144,8 @@ Actor SGPelletClientVisual : SGPellet
 		stop
 	}
 }*/
-Actor SGAltPellet : UnlaggedActor
+Actor SGAltPellet : SGPellet
 {
-	Projectile
-	RenderStyle add
-	Speed 72
-	Radius 2
-	Height 2
-	Damage (5)
-	Decal RailScorchLower
-	+DONTSPLASH
-	+BRIGHT
 	DamageType "ParticleSplitterAlt"
 	Obituary "%k > \ctParticle Splitter (Alt Pre-detonation)\c- > %o"
 	Scale 1.2

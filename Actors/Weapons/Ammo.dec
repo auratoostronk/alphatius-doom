@@ -19,8 +19,8 @@ Actor C14Energy : Ammo
 Actor SMGEnergy : Ammo
 {
 	+SERVERNETID 
-	Inventory.MaxAmount 50
-	Ammo.BackpackMaxAmount 60
+	Inventory.MaxAmount 80
+	Ammo.BackpackMaxAmount 100
 }
 Actor PumpSGEnergy : Ammo
 {

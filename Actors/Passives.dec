@@ -23,3 +23,10 @@ Actor NegaBarrierBubble
 		loop
 	}
 }
+
+Actor PowerAdrenaline : PowerSpeed 
+{ 
+	+SERVERNETID
+	Powerup.Strength 1.1
+	Powerup.Duration -2
+}

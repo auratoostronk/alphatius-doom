@@ -15,16 +15,14 @@ $rolloff TeslaSMG/AltFire 400 1600
 $rolloff TeslaSMG/AltFireHit 400 1600
 
 $rolloff ParticleSplitter/Fire 400 1600
-$rolloff ParticleSplitter/Pump 200 800
-
-$rolloff RocketCannon/Fire 800 1600
+$rolloff ParticleSplitter/Pump1 200 800
+$rolloff ParticleSplitter/Pump2 200 800
 
 $rolloff BeamRifle/Fire 400 1600
 $rolloff BeamRifle/AltFire 800 3200
 
 //WEAPON EFFECTS
 $rolloff GrenadeHit 400 1600
-$rolloff ItemThrow 400 800
 $rolloff GrenadeLaunch 1600 1600
 
 $rolloff DistantExplosion 3200 6400
@@ -60,7 +58,7 @@ $rolloff Ambient/TeleportHum 100 800
 $rolloff Ambient/JumppadHit  400 800
 
 //PLAYER
-$rolloff Footstep 800 1600
+//$rolloff Footstep 800 1600
 
 //VOLUMES
 $volume Actions/AutoLaser 0.7

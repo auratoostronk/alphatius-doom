@@ -79,12 +79,13 @@ Script "SpeedDemonTimer" (void)
 }*/
 Script "AdrenalineRush" (void)
 {
-	for(int i = 0; i < 20; i++)
+	GiveInventory("PowerAdrenaline", 1);
+	for(int i = 0; i < 10; i++)
 	{
 		if(ClassifyActor(0) & ACTOR_DEAD)
 			terminate;
 		GiveInventory("Health", 1);
-		delay(3);
+		delay(7);
 	}
 }
 Script "NegaBarrierBubbleFX" (void)

@@ -1,4 +1,4 @@
-version alphatius-qz-030 (4/12/2023)
+version alphatius-qz-032 (7/4/2023)
 
 CONCEPT
 Alphatius was only an idea in late 2016, during a dark time in my life where I was placed in a pseudo-boarding school
@@ -6,12 +6,12 @@ for "troublemaking children". I had no internet, no electronics, and not much el
 what I wanted to do when I came home. One of these things I thought about was a DOOM mod. It had no name, but the
 initial concept took inspiration from a few different mods and video games. I thought of weapon ideas,
 action abilites, travel abilites, maps, and drew all this stuff out on paper. I started putting it together the moment
-I returned home in the Summer of 2017. Although many of the original concepts for the mod were scrapped (like reloading, weapon voxels, etc.),
+I returned home in the Summer of 2017. Although many of the original concepts for the mod were scrapped (like reloading, some weapon ideas, etc.),
 Alphatius evolved into something unique and special. While it still has work to do, it became one of the first creations
 that I've felt sufficiently proud of myself for making. It helped me regain confidence in myself, and in my game design skills.
-Going nearly five years strong, developing Alphatius has been my favorite passion, (alongside playing it of course),
+Going nearly six years strong, developing Alphatius has been my favorite passion, (alongside playing it of course),
 and something many people also enjoy. 
-	-hiimaura
+	-auratoostronk
 
 SPECIAL THANKS
 -Shoutouts to Henry and Charles from my "pseudo-boarding school" for letting me bounce my ideas off of you. You two are real G's.
@@ -50,7 +50,7 @@ CODE
 Some of the QZandronum code (specifically the unlagged code) was written by geNia to help me out.
 Damage number code was inspired by StrikerMan780's Damage Numbers mod.
 Alternate HUD was made courtesy of BathySalts.
-All other code has been written by hiimaura.
+All other code has been written by auratoostronk.
 
 SOUNDS
 
@@ -83,11 +83,11 @@ Ricochet Burst: Fire sound from BOOM Library Cyber Weapon FX. https://www.boomli
 
 Out of Energy: Sound taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
 Jet Flybys: taken from a youtube video https://www.youtube.com/watch?v=L0G4Hwi88cc
-Water Flow: Recorded and editted by hiimaura. Unused.
+Water Flow: Recorded and editted by auratoostronk. Unused.
 Jump Pad: Ripped from Diabotical
 Teleporter Ambience: Ripped from Diabotical.
-Travel Ready: Made by hiimaura using Ableton.
-Alt Ready: See Particle Splitter pump sound, editted by hiimaura.
+Travel Ready: Made by auratoostronk using Ableton.
+Alt Ready: See Particle Splitter pump sound, editted by auratoostronk.
 Weapon Ready sound: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ Modified by aura.
 Armor Pickup Sounds: A combonation of Diabotical's Armor sounds mixed with the Thundergun sounds from Call Of Duty Black Ops (?)
 
@@ -98,36 +98,36 @@ C14 Fire Projectile: Taken from Project MSX by MagSigmaX https://forum.zdoom.org
 C14 Grenade: Taken from Ben2k9's Cyberbaron from Realm667.com . Credits go to him and id software.
 C14 Gamma Beam Projectile: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
 C14 Gas Sprites: Taken from Sgt. Mark IV's Brutal Doom, and recolored by Seidolon.
-Photon Carbine Weapon: Made by Craneo. Recolored by hiimaura.
-Photon Carbine Projectile: Taken from Heretic 2 and recolored by hiimaura
-Photon Carbine Alt Fires (including trails): Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836 Recolored by hiimaura.
-Tesla SMG Weapon: Made by TypicalSF. hiimaura made some edits to the lightning effects. Credits also go to Hexen as a base resource for the lightning effects.
-Tesla SMG Projectiles: Taken from Strife. Recolored by hiimaura.
-Particle Splitter Weapon: Taken from Realm667.com under UAC Plasmatic Rifle, recolored by hiimaura. Credits for original sprite goes to Fuzzyblade, id software, Freedoom Team, and Infirnex
-Particle Splitter Pickup: Made from scratch by hiimaura.
-Particle Splitter Projectiles: Taken from Heretic 2 and recolored by hiimaura.
-Particle Splitter Slug: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836 Recolored by hiimaura. Unused
-Spark Cannon Weapon: Taken from Realm667.com as Stunner Rifle. Recolored by hiimaura.
+Photon Carbine Weapon: Made by Craneo. Recolored by auratoostronk.
+Photon Carbine Projectile: Taken from Heretic 2 and recolored by auratoostronk
+Photon Carbine Alt Fires (including trails): Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836 Recolored by auratoostronk.
+Tesla SMG Weapon: Made by TypicalSF. auratoostronk made some edits to the lightning effects. Credits also go to Hexen as a base resource for the lightning effects.
+Tesla SMG Projectiles: Taken from Strife. Recolored by auratoostronk.
+Particle Splitter Weapon: Taken from Realm667.com under UAC Plasmatic Rifle, recolored by auratoostronk. Credits for original sprite goes to Fuzzyblade, id software, Freedoom Team, and Infirnex
+Particle Splitter Pickup: Made from scratch by auratoostronk.
+Particle Splitter Projectiles: Taken from Heretic 2 and recolored by auratoostronk.
+Particle Splitter Slug: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836 Recolored by auratoostronk. Unused
+Spark Cannon Weapon: Taken from Realm667.com as Stunner Rifle. Recolored by auratoostronk.
 Spark Cannon Beam Particles: Taken from Heretic 2.
-Spark Cannon Puff: Taken from Strife. Recolored by hiimaura.
+Spark Cannon Puff: Taken from Strife. Recolored by auratoostronk.
 Beam Rifle: Taken from Realm667.com as Karasawa.
-Beam Rifle Particles: Taken from Heretic 2. Recolored by hiimaura.
-Beam Rifle Puff: Taken from Strife. Recolored by hiimaura.
+Beam Rifle Particles: Taken from Heretic 2. Recolored by auratoostronk.
+Beam Rifle Puff: Taken from Strife. Recolored by auratoostronk.
 
 Explosions: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
 Teleport Fog: Taken from Sgt Mark IV's Brutal Doom
-Regeneration Zone: Taken from Hexen, recolored by hiimaura.
-Power Brace: Taken from Hexen, recolored by hiimaura. This is NOT refering to the 3D model. See 3D model section
+Regeneration Zone: Taken from Hexen, recolored by auratoostronk.
+Power Brace: Taken from Hexen, recolored by auratoostronk. This is NOT refering to the 3D model. See 3D model section
 Auto Laser: Taken from Heretic 2. This is NOT refering to the 3D model. See 3D model section
-Sonic Shockwave: Taken from Strife. Recolored by hiimaura.
-Sonic Shockwave Dots: Taken from Heretic 2. Recolored by hiimaura.
+Sonic Shockwave: Taken from Strife. Recolored by auratoostronk.
+Sonic Shockwave Dots: Taken from Heretic 2. Recolored by auratoostronk.
 
-Armor Shards: Taken from Project Brutality. Recolored by hiimaura.
-Nano Armor: Taken from Doom 2. recolored by hiimaura.
-Nano Plate: Made by hiimaura.
-Travel Sphere: Taken from Realm667 under Deflection Sphere. Recolored by hiimaura. BathySalts also added the Boot sprites to the sphere.
+Armor Shards: Taken from Project Brutality. Recolored by auratoostronk.
+Nano Armor: Taken from Doom 2. recolored by auratoostronk.
+Nano Plate: Made by auratoostronk.
+Travel Sphere: Taken from Realm667 under Deflection Sphere. Recolored by auratoostronk. BathySalts also added the Boot sprites to the sphere.
 
-Heal Effects: Made by hiimaura.
+Heal Effects: Made by auratoostronk.
 Blood Sprites: Taken from Nashgore.pk3
 Dirt Particles: Taken from Sgt Mark IV's Brutal Doom.
 3D Object Placeholder: Taken from Ozymandias's GORE. 
@@ -135,17 +135,19 @@ Damage Numbers: StrikerMan780s Damage Numbers mod used this font.
 
 GRAPHICS
 
-Title Pictures: Taken and editted by hiimaura.
-Intermisison picture: Taken and editted by hiimaura.
-Help Pic: Made by hiimaura using id software as base sprite
-End Tutorial pic: Made by hiimaura using id software as base sprite
-Health bar: Taken from Wrath of Chronos. Editted by hiimaura.
-Energy Bars: Taken from Wrath of Chronos. Editted by hiimaura.
-Armor bar: Taken from Wrath of Chronos. Editted by hiimaura.
+Title Pictures: Taken and editted by auratoostronk.
+Intermisison picture: Taken and editted by auratoostronk.
+Help Pic: Made by auratoostronk using id software as base sprite
+End Tutorial pic: Made by auratoostronk using id software as base sprite
+Health bar: Taken from Wrath of Chronos. Editted by auratoostronk.
+Energy Bars: Taken from Wrath of Chronos. Editted by auratoostronk.
+Armor bar: Taken from Wrath of Chronos. Editted by auratoostronk.
 DBIGFONT Jimmy's Status Report font based on the Doom STBAR. Found on Realm667
 SMALLFNT Jimmy's Status Report SMALL font based on the Doom STBAR. Found on Realm667
+Icons: Created by auratoostronk.
 
 MAPS
+
 All maps made by aura.
 
 MUSIC:
@@ -153,12 +155,9 @@ SONIC1-SONIC4: Ripped from Quake 3 Arena
 QUAKE3_1 to QUAKE3_4: Ripped from Quake 3 Arena
 INTERMUSL: Ripped from Quake 3 Arena
 SWALLOWD: Ripped from Quake 3 Arena by Sonic Mayhem
-
 QUAKE2_1 to QUAKE2_4: Ripped from Quake 2
-
-ONSLAUGHT: made by hiimaura and RandVGM
-ARMSRACE: made by hiimaura
-
+ONSLAUGHT: made by auratoostronk and RandVGM
+ARMSRACE: made by auratoostronk
 Lighthouse:By RandVGM
 Dreadmaze: By RandVGM
 Subterfuge: By RandVGM
@@ -167,13 +166,13 @@ COAL: from Linkin Park's Hybrid Theory 20th anniversary disc
 
 BRIGHTMAPS:
 Note: Weapon brightmaps are unused unless in software mode.
-All brightmaps used the original sprites as a base, and were modified by hiimaura to become the brightmaps.
+All brightmaps used the original sprites as a base, and were modified by auratoostronk to become the brightmaps.
 
 3D MODELS:
-Weapons: All weapon voxels were made by hiimaura.
+Weapons: All weapon voxels were made by auratoostronk.
 Spaceship: Taken from a mod called Stronghold on the edge of Chaos
-Power Brace: Created by hiimaura.
-Auto Laser: Taken from SgtMarkIV's Brutal Doom, recolored by hiimaura.
+Power Brace: Created by auratoostronk.
+Auto Laser: Taken from SgtMarkIV's Brutal Doom, recolored by auratoostronk.
 
 TEXTURES:
 Textures are seperated into separate folders based on source. i.e. textures in the UDMX folder came from a mod called UDMX.

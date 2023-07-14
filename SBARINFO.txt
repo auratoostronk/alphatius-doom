@@ -9,47 +9,71 @@ statusbar fullscreen, fullscreenoffsets
 	
 	drawBar "REDFULL", "REDEMPTY", armor (50), horizontal, Interpolate(120), 10, -60;
 	drawBar "GRNFULL", "GRNEMPTY", health, horizontal, Interpolate(120), 10, -40;
-	drawBar "BLUFULL", "BLUEMPTY", Ammo1, horizontal,Interpolate(120), 10, -20;
+	drawBar "BLUFULL", "BLUEMPTY", Ammo1, horizontal, Interpolate(120), 10, -20;
 	
 	drawnumber 12, BIGFONT, Red, armor, Alignment(left)|drawshadow, 220, -60;
 	drawnumber 12, BIGFONT, Green, health,  Alignment(left)|drawshadow, 220, -40;
 	drawnumber 12, BIGFONT, Cyan, Ammo1, Alignment(left)|drawshadow, 220, -20;
 	
-	drawstring SMALLFONT, Red, "Alt-Fire Cooldown", -20, -70, 0, alignment(right);
-	drawstring SMALLFONT, Green, "Travel Ability", -20, -50, 0, alignment(right);
-	drawstring SMALLFONT, Cyan, "Action Cooldown", -20, -30, 0, alignment(right);
+	//drawstring SMALLFONT, Red, "Alt-Fire Cooldown", -10, -30, 0, alignment(right);
+	//drawstring SMALLFONT, Green, "Travel Ability", -20, -50, 0, alignment(right);
+	//drawstring SMALLFONT, Cyan, "Action Cooldown", -20, -30, 0, alignment(right);
+	
 	
 	//ALTFIRE COOLDOWN
 	IsSelected PhotonCarbine
 	{
-		drawBar "REDFULL", "REDEMPTY", Ammo CarbineAltCD, horizontal, Interpolate(20)|reverse, -210, -60;
+		drawBar "C_ALTFIR", "A_ALTFIR", Ammo CarbineAltCD, vertical, Interpolate(20)|reverse, -300, -70;
 	}
 	IsSelected C14
 	{
-		drawBar "REDFULL", "REDEMPTY", Ammo C14AltCD, horizontal, Interpolate(20)|reverse, -210, -60;
+		drawBar "C_ALTFIR", "A_ALTFIR", Ammo C14AltCD, vertical, Interpolate(20)|reverse, -300, -70;
 	}
 	IsSelected ParticleSplitter
 	{
-		drawBar "REDFULL", "REDEMPTY", Ammo PumpSGAltCD, horizontal, Interpolate(20)|reverse, -210, -60;
+		drawBar "C_ALTFIR", "A_ALTFIR", Ammo PumpSGAltCD, vertical, Interpolate(20)|reverse, -300, -70;
 	}
 	IsSelected TeslaSMG
 	{
-		drawBar "REDFULL", "REDEMPTY", Ammo SMGAltCD, horizontal, Interpolate(20)|reverse, -210, -60;
+		drawBar "C_ALTFIR", "A_ALTFIR", Ammo SMGAltCD, vertical, Interpolate(20)|reverse, -300, -70;
 	}
 	IsSelected SparkCannon
 	{
-		drawBar "REDFULL", "REDEMPTY", Ammo SparkAltCD, horizontal, Interpolate(20)|reverse, -210, -60;
+		drawBar "C_ALTFIR", "A_ALTFIR", Ammo SparkAltCD, vertical, Interpolate(20)|reverse, -300, -70;
 	}
 	IsSelected Flamespitter
 	{
-		drawBar "REDFULL", "REDEMPTY", Ammo  FlameAltCD, horizontal, Interpolate(20)|reverse, -210, -60;
+		drawBar "C_ALTFIR", "A_ALTFIR", Ammo FlameAltCD, vertical, Interpolate(20)|reverse, -300, -70;
 	}
 	IsSelected BeamRifle
 	{
-		drawBar "REDFULL", "REDEMPTY", Ammo  BeamAltCD, horizontal, Interpolate(20)|reverse, -210, -60;
+		drawBar "C_ALTFIR", "A_ALTFIR", Ammo BeamAltCD, vertical, Interpolate(20)|reverse, -300, -70;
+	}
+	//PASSIVE ABILITY ICONS
+	InInventory PassiveRapidAlt
+	{
+		drawImage "A_RAPIDA", 260, -70; 
+	}
+	InInventory PassiveOverclocked
+	{
+		drawImage "A_OVERCL", 260, -70; 
+	}
+	InInventory PassiveBandolier
+	{
+		drawImage "A_BANDO", 260, -70; 
+	}
+	InInventory PassiveSpeedDemon
+	{
+		drawImage "A_SPEEDD", 260, -70; 
+	}
+	InInventory PassiveAdrenalineRush
+	{
+		drawImage "A_ADRUSH", 260, -70; 
 	}
 	
 	//WEAPON ICONS
+	
+	/*
 	InInventory TeslaSMG
 	{
 		drawImage "SMGPA0", -60, -80;
@@ -85,9 +109,35 @@ statusbar fullscreen, fullscreenoffsets
 		drawImage "FLMPA0", -60, -320;
 	}
 	drawstring SMALLFONT, Orange, "Flamespitter", -20, -350, 0;
+	*/
 	
+	InInventory TravelThrusterBoots
+	{
+		drawbar "C_TBOOTS", "A_TBOOTS", Ammo TBootsCD, vertical, Interpolate(20)|reverse, 320, -120;
+		InInventory ThrusterBootsCharge, 1
+		{	
+			drawImage "A_TBOOTS", 320, -120;
+		}
+		drawnumber 12, BIGFONT, YELLOW, Ammo ThrusterBootsCharge, Alignment(left), 320, -140;
+		drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(right), 380, -140;
+	}
+	InInventory TravelWarpDrive
+	{
+		drawbar "C_WDRIVE", "A_WDRIVE", Ammo WDriveCD, vertical, Interpolate(20)|reverse, 320, -120;
+		drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(center), 340, -140;
+	}
+	InInventory TravelJumpThrust
+	{
+		drawbar "C_JUMPT", "A_JUMPT", Ammo JThrustCD, vertical, Interpolate(20)|reverse, 320, -120;
+		drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(center), 340, -140;
+	}
+	InInventory TravelHyperdrive
+	{
+		drawbar "C_HYPERD", "A_HYPERD", Ammo HDriveCD, vertical, Interpolate(20)|reverse, 320, -120;
+		drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(center), 340, -140;
+	}
 	
-	drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(right), -270, -40;
+	/*drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(right), -270, -40;
 	InInventory TravelThrusterBoots
 	{
 		drawnumber 12, BIGFONT, YELLOW, Ammo ThrusterBootsCharge, Alignment(right), -240, -40;
@@ -104,9 +154,34 @@ statusbar fullscreen, fullscreenoffsets
 	InInventory TravelHyperdrive
 	{
 		drawBar "GRNFULL", "GRNEMPTY", Ammo HDriveCD, horizontal, Interpolate(20)|reverse, -210, -40;
-	}
+	}*/
 	
+	InInventory ActionRegenZone
+	{
+		drawbar "C_REGENZ", "A_REGENZ", Ammo ActionCD, vertical, Interpolate(20)|reverse, -360, -120;
+	}
+	InInventory ActionPowerBrace
+	{
+		drawbar "C_POWERB", "A_POWERB", Ammo MediumActionCharge, vertical, Interpolate(20)|reverse, -360, -120;
+	}
+	InInventory ActionDecoyHologram
+	{
+		drawbar "C_DECOYH", "A_DECOYH", Ammo FastActionCharge, vertical, Interpolate(20)|reverse, -360, -120;
+	}
+	InInventory ActionAutoDrone
+	{
+		drawbar "C_AUTOL", "A_AUTOL", Ammo ActionCD, vertical, Interpolate(20)|reverse, -360, -120;
+	}
+	InInventory ActionSonicShockwave
+	{
+		drawbar "C_SSLAM", "A_SSLAM", Ammo MediumActionCharge, vertical, Interpolate(20)|reverse, -360, -120;
+	}
+	InInventory ActionRicochetDisc
+	{
+		drawbar "C_RBURST", "A_RBURST", Ammo ActionCD, vertical, Interpolate(20)|reverse, -360, -120;
+	}
 	//ACTION COOLDOWN
+	/*
 	InInventory ActionRegenZone
 	{
 		drawBar "BLUFULL", "BLUEMPTY", Ammo ActionCD, horizontal, Interpolate(20)|reverse, -210, -20;
@@ -130,7 +205,7 @@ statusbar fullscreen, fullscreenoffsets
 	InInventory ActionRicochetDisc
 	{
 		drawBar "BLUFULL", "BLUEMPTY", Ammo ActionCD, horizontal, Interpolate(20)|reverse, -210, -20;
-	}
+	}*/
 }
 //New Alt-Hud courtesy of BathySalts
 resolution 640, 400;

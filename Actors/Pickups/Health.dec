@@ -4,7 +4,7 @@ Actor HealthLarge : Medikit replaces Medikit
 	Radius 24
 	Height 16
 	Inventory.Amount 25
-	Inventory.RespawnTics 280 //8 seconds
+	Inventory.RespawnTics 525 //15 seconds
 	+SERVERNETID
 	States
 	{
@@ -19,7 +19,7 @@ Actor HealthSmall : Stimpack replaces Stimpack
 	Radius 16
 	Height 16
 	Inventory.Amount 10
-	Inventory.RespawnTics 280 //8 seconds
+	Inventory.RespawnTics 525 //15 seconds
 	+SERVERNETID
 	States
 	{

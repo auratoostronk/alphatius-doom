@@ -76,6 +76,14 @@ Script "TravelSetup" (void)
 	}
 }
 
+Script "TutorialTravelSetup" (void)
+{
+	SetActionScript(0, BT_USER1, "TutorialNoTravel");
+}
+Script "TutorialTravelSetupClient" (void) CLIENTSIDE
+{
+	SetActionScript(0, BT_USER1, "TutorialNoTravel");
+}
 Script "TutorialNoTravel" (int predicting, int pressed, int released, int buttons) {}
 
 Script "ThrusterBoots" (int predicting, int pressed, int released, int buttons)

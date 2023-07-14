@@ -13,10 +13,10 @@ DefaultListMenu
 ListMenu "MainMenu"
 {
 	StaticPatch 0, 0, "ALPHTITL"
-	TextItem "Training", "t", "EpisodeMenu"
-	TextItem "Play Offline", "p", "ZA_SkirmishMenu"
+	TextItem "Play", "p", "ZA_SkirmishMenu"
+	TextItem "Tutorial", "t", "EpisodeMenu"
 	TextItem "Loadouts", "l", "LoadoutOptions"
-	TextItem "Options", "o", "OptionsMenu"
+	TextItem "Settings", "o", "OptionsMenu"
 	TextItem "Quit", "q", "QuitMenu"
 }
 ListMenu "EpisodeMenu"
@@ -27,7 +27,7 @@ ListMenu "EpisodeMenu"
 
 OptionMenu "OptionsMenu"
 {
-	Title "OPTIONS"
+	Title "SETTINGS"
 	StaticText " "
 	Submenu "Input",			"InputOptions"
 	Submenu "Graphics",			"DisplayOptions"
@@ -266,10 +266,10 @@ OptionValue "ScreenSize"
 OptionMenu SoundOptions
 {
 	Title "SOUND OPTIONS"
-	Slider "Sounds volume",		"snd_sfxvolume", 0, 1, 0.05
-	Slider "Menu volume",		"snd_menuvolume", 0, 1, 0.05
-	Slider "Music volume",		"snd_musicvolume", 0, 1, 0.05
-	Slider "Announcer volume",	"snd_announcervolume", 0, 1, 0.05 // [TP]
+	Slider "Sounds volume",		"snd_sfxvolume", 0, 0.5, 0.01, 2
+	Slider "Menu volume",		"snd_menuvolume", 0, 0.5, 0.01, 2
+	Slider "Music volume",		"snd_musicvolume", 0, 0.5, 0.01, 2
+	Slider "Announcer volume",	"snd_announcervolume", 0, 0.5, 0.01, 2 // [TP]
 	Option "Announcer",			"cl_announcer", "ZA_Announcers" // [TP]
 	StaticText " "
 	Slider "Sound channels",	"snd_channels", 8, 256, 8, 0
@@ -321,38 +321,41 @@ OptionMenu ZA_SkirmishMenu
 	Title		"SKIRMISH"
 	StaticText ""
 	Option		"Level",				"menu_skirmishlevel",			"ZA_Levels"
-	Command		"Random Level",			"setskirmishlevel random"
-	Option		"Game Mode",			"menu_skirmishgamemode",		"ZA_Gamemode"
+	Option		"Gamemode",			"menu_skirmishgamemode",		"ZA_Gamemode"
 	StaticText ""
-	NumberField	"Timelimit",			"menu_skirmishtimelimit"
-	NumberField	"Fraglimit",			"menu_skirmishfraglimit"
-	NumberField	"Pointlimit",			"menu_skirmishpointlimit"
-	NumberField	"Duellimit",			"menu_skirmishduellimit"
-	NumberField	"Winlimit",				"menu_skirmishwinlimit"
-	NumberField	"Wavelimit",			"menu_skirmishwavelimit", 0, 10
-	StaticText ""
-	Option		"Bot Skill",			"menu_skirmishbotskill",	ZA_Skill
-	Option		"Bots can talk",		"bot_allowchat",			"YesNo"
-	SubMenu		"Bot Setup",			"ZA_BotSetup"
+	SubMenu 	"Game Setup", "GamemodeConfig"
 	StaticText ""
 	Command		"Start Game!",			"menu_startskirmish"
 }
+OptionMenu "GamemodeConfig"
+{
+	Title		"GAME CONFIGURATION"
+	NumberField	"Time Limit",			"menu_skirmishtimelimit"
+	NumberField	"Frag Limit",			"menu_skirmishfraglimit"
+	NumberField	"Score Limit",			"menu_skirmishpointlimit"
+	NumberField	"Duel Win Limit",		"menu_skirmishduellimit"
+	NumberField	"LMS Win Limit",		"menu_skirmishwinlimit"
+	StaticText 	" "
+	Option		"Bot Skill",			"menu_skirmishbotskill",	ZA_Skill
+	SubMenu		"Bot Setup",			"ZA_BotSetup"
+	//NumberField	"Wavelimit",			"menu_skirmishwavelimit", 0, 10
+}
 OptionValue ZA_Gamemode
 {
-	0, "(NYI) Cooperative"
-	1, "(NYI) Survival Cooperative"
-	2, "(NYI) Invasion"
+	//0, "(NYI) Cooperative"
+	//1, "(NYI) Survival Cooperative"
+	//2, "(NYI) Invasion"
 	3, "Deathmatch"
 	4, "Team Deathmatch"
 	5, "Duel"
-	6, "(NYI) Terminator"
+	//6, "(NYI) Terminator"
 	7, "Last Man Standing"
 	8, "Team Last Man Standing"
-	9, "(NYI) Possession"
-	10, "(NYI) Team Possession"
-	11, "(NYI) Teamgame (ACS)"
+	//9, "(NYI) Possession"
+	//10, "(NYI) Team Possession"
+	//11, "(NYI) Teamgame (ACS)"
 	12, "Capture The Flag"
-	13, "(NYI) One Flag CTF"
-	14, "(NYI) Skulltag"
+	//13, "(NYI) One Flag CTF"
+	//14, "(NYI) Skulltag"
 	15, "Domination"
 }

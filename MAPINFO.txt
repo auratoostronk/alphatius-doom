@@ -172,28 +172,30 @@ map ALPHDL06 lookup "Submerged"
 
 //OTHER MAPS
 
-map ALPHFL01 lookup "Damnati"
+/*map ALPHFL01 lookup "Damnati"
 {
 	levelnum = 201
 	sky1 = "SPACESKY", 0
 	music = "ONSLAUGH"
 	next = "ALPHFL01"
 	AllowRespawn
-}
+}*/
 map ALPHTUT1 lookup "Tutorial"
 {
-	levelnum = 0
+	levelnum = 901 //Needed for a script to turn off abilities in the tutorial
 	sky1 = "DUSTSKY", 0
 	music = "SONIC1"
 	next = "ALPHDM01"
+	IsLobby
 	AllowRespawn
 }
 map ALPHTUT2 lookup "Firing Range"
 {
-	levelnum = 0
+	levelnum = 902
 	sky1 = "DUSTSKY", 0
 	music = "SONIC1"
 	next = "ALPHDM01"
+	IsLobby
 	AllowRespawn
 }
 clearskills

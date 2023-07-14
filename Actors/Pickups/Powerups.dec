@@ -9,7 +9,7 @@ Actor ExtraTravelCharge : Ammo 12000
 	Inventory.MaxAmount 1
 	Ammo.BackpackMaxAmount 1
 	Inventory.PickupMessage "Extra Travel Ability usage granted!"
-	Inventory.RespawnTics 525 //15 seconds
+	Inventory.RespawnTics 350 //10 seconds
 	+FLOATBOB
 	+BRIGHT
 	+SERVERNETID
@@ -28,6 +28,7 @@ Actor AlphatiusPowerup : CustomInventory
 	Inventory.RespawnTics 4200 //120 seconds
 	Inventory.Amount 1
 	Inventory.MaxAmount 1
+	Inventory.Icon "POWRA0"
 	Inventory.PickupMessage "Chronal Drive Aquired!"
 	Inventory.PickupSound "Pickups/NanoArmor"
 	+FLOATBOB
@@ -43,6 +44,7 @@ Actor AlphatiusPowerup : CustomInventory
 		Pickup:
 		TNT1 A 0 A_GiveInventory("Health", 100)
 		TNT1 A 0 A_GiveInventory("PowerChronalDrive", 1)
+		TNT1 A 0 ACS_NamedExecuteAlways("PrintPowerupMessage", 0)
 		stop
 		Death:
 		TNT1 A 0 
@@ -57,7 +59,7 @@ Actor SoulsphereReplacer : AlphatiusPowerup replaces Soulsphere {}
 Actor PowerChronalDrive : PowerInfiniteAmmo
 {
 	Powerup.Duration -15
-	Powerup.Color Goldmap 0.5
+	Powerup.Color Goldmap 0.25
 }
 
 Actor PowerupFX

@@ -16,6 +16,24 @@ DEATHMATCH
 		compat_predictfunctions = true;
 	}
 }
+DUEL
+{
+	GameSettings
+	{
+		Sv_NoRespawnInvul = true;
+		Sv_NoMedals = true;
+		Sv_ItemRespawn = true;
+		sv_nodrop = true;
+		sv_nocrouch = true;
+		sv_allowcrouch = false;
+		//Q-Zandronum Options
+		sv_disablewallfriction = true;
+		sv_quakethrust = true;
+		sv_accuratecrosshair = true;
+		sv_enableprojectilehitboxfix = true;
+		compat_predictfunctions = true;
+	}
+}
 CTF
 {
 	GameSettings

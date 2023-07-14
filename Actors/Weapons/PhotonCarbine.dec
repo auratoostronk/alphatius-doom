@@ -73,7 +73,7 @@ Actor PhotonProjectile : FastProjectile
 	Scale 1.5
 	Speed 192
 	Decal RailScorchLower
-	Damage (12)
+	Damage (13)
 	Renderstyle Add
 	Obituary "%k > \cvPhoton Carbine\c- > %o"
 	+BRIGHT
@@ -141,7 +141,7 @@ Actor PhotonGrenade
 	Damage (0)
 	Decal BigScorch
 	Projectile
-	ProjectileKickBack 100
+	ProjectileKickBack 150
 	RenderStyle Add
 	Obituary "%k > \cvPhoton Carbine (Alt)\c- > %o"
 	+SEEKERMISSILE //used for hitmarkers

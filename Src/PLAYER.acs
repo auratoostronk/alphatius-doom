@@ -6,7 +6,9 @@
 #import "HUD.acs"
 #import "PASSIVES.acs"
 
+#define TUTORIAL_LEVELNUM 901
 int playeridbase = 1000;
+
 function void setPassive(int p)
 {
 	switch(p)
@@ -104,7 +106,14 @@ Script "CheckPlayerEnter" ENTER
 	}
 	else
 	{
-		ACS_NamedExecuteAlways("SetupPlayerMP", 0);
+		if(GetLevelInfo(LEVELINFO_LEVELNUM) != TUTORIAL_LEVELNUM)
+		{
+			ACS_NamedExecuteAlways("SetupPlayerMP", 0);
+		}
+		else
+		{
+			ACS_NamedExecuteAlways("SetupPlayerTutorial", 0);
+		}
 	}
 	ACS_NamedExecuteAlways("SBARActionFixer", 0);
 	//ACS_NamedExecuteAlways("DisplayLoadoutHUD", 0);
@@ -171,6 +180,23 @@ Script "SetupPlayerMP" (void)
 		ACS_NamedExecuteAlways("WeaponGlowSetup", 0);
 		ACS_NamedExecuteAlways("WeaponGlowSetupClient", 0);
 	}
+}
+Script "SetupPlayerTutorial" (void)
+{
+	if(!(ClassifyActor(0) & ACTOR_BOT))
+	{
+		setStartWeapon("PhotonCarbine");
+		gamemodeCheck();
+		ACS_NamedExecuteAlways("TutorialTravelSetup", 0);
+		ACS_NamedExecuteAlways("TutorialTravelSetupClient", 0);
+		
+		ACS_NamedExecuteAlways("ZoomSetup", 0);
+		ACS_NamedExecuteAlways("ZoomSetupClient", 0);
+		ACS_NamedExecuteAlways("WeaponGlowSetup", 0);
+		ACS_NamedExecuteAlways("WeaponGlowSetupClient", 0);
+	}
+	SetHudSize(640, 400, TRUE);
+	HUDMessage(s:"Welcome to the Alphatius Tutorial!"; HUDMSG_PLAIN, 100, CR_RED,  320.0, 200.0, 2.5);
 }
 Script "PlayerDeath" DEATH
 {

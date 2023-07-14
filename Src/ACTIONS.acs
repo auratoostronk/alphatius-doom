@@ -7,7 +7,7 @@
 //#libdefine FAST_ACTION_CD 10
 //#libdefine MEDIUM_ACTION_CD 15
 //#libdefine SLOW_ACTION_CD 20
-#define AUTODRONE_SHOTSFIRED 40
+#define AUTODRONE_SHOTSFIRED 20
 
 global int 1:action1Recharge[];
 //global int 2:decoyIDs[];
@@ -193,8 +193,7 @@ Script "DecoyWalk" (void)
 {
 	while(ClassifyActor(0) & ACTOR_ALIVE)
 	{
-		//Using 12 because 80% of default doom walk speed (15.0)
-		SetActorVelocity(0, FixedMul(12.0, cos(GetActorAngle(0))), FixedMul(12.0, sin(GetActorAngle(0))), GetActorVelZ(0), false, false);
+		SetActorVelocity(0, FixedMul(14.0, cos(GetActorAngle(0))), FixedMul(14.0, sin(GetActorAngle(0))), GetActorVelZ(0), false, false);
 		delay(1);
 	}
 }
@@ -223,7 +222,7 @@ Script "AutoDrone" (void)
 				terminate;
 			GiveInventory("FireAutoDrone", 1);
 			PlaySound(0, "Actions/AutoLaser", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
-			delay(3);
+			delay(4);
 			TakeInventory("FireAutoDrone", 1);
 		}
 	}

@@ -59,10 +59,20 @@ Script "SetupBot" (void)
 {
 	Thing_ChangeTID(0, playeridbase + PlayerNumber());
 	//log(i:ActivatorTID());
-	setStartWeapon(WEAP_CLASSNAMES[random(0, NUM_WEAPS - 1)]);
+	if(GetCVAR("alph_startcarbine") == false)
+	{
+		setStartWeapon(WEAP_CLASSNAMES[random(0, NUM_WEAPS - 1)]);
+	}
+	else
+	{
+		setStartWeapon("PhotonCarbine");
+	}
 	setTravel(random(0, 3));
 	setAction(random(0, 5));
-	setPassive(random(0, 4));
+	if(GetCVAR("alph_nopassives") == false)
+	{
+		setPassive(random(0, 4));
+	}
 	gamemodeCheck();
 	SetActorProperty(0, APROP_SPEED, 0.8);
 	ACS_NamedExecuteAlways("StartBotAliveTimer", 0);
