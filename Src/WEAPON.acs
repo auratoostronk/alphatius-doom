@@ -2,6 +2,9 @@
 #include "zcommon.acs"
 #import "ALPHLIB.acs"
 
+#libdefine TESLA_SHOOTSPD 0.2
+
+//Weapon Glow scripts (look down at your feet and cycle weapons to see the color-coded glows)
 Script "WeaponGlow" (int predicting, int pressed, int released, int buttons)
 {
 	str glowclass = "BlueGlowSpawner";
@@ -62,6 +65,7 @@ Script "OnWeaponFired" (void)
 //Handles Alt-Fire cooldowns.
 Script "OnWeaponAltFired" (void) 
 {
+	//Gives the weapon its corresponding alt-fire cooldown item.
 	for(int i = 0; i < NUM_WEAPS; i++)
 	{
 		if(StrIcmp(GetWeapon(), WEAP_CLASSNAMES[i]) == 0 || StrIcmp(GetWeapon(), WEAP_ALTCLASSNAMES[i]) == 0)
@@ -69,11 +73,13 @@ Script "OnWeaponAltFired" (void)
 			GiveInventory(WEAP_COOLDOWNNAMES[i], GetAmmoCapacity(WEAP_COOLDOWNNAMES[i]));
 		}
 	}
+	//Then puts all alt-fires on cooldown for a short period (to prevent Alt-Fire cycling binds)
 	GiveInventory("AltFireDeviceCD", GetAmmoCapacity("AltFireDeviceCD"));
+	//Then puts energy regen on cooldown.
 	ACS_NamedExecuteAlways("OnWeaponFired", 0);
 	
 }
-
+//I don't think this is used anymore...
 Script "CheckAltFirePressed" (void)
 {
 	//Sets the activator to the shooter of the pellet, instead of the pellet itself.
@@ -87,7 +93,7 @@ Script "CheckAltFirePressed" (void)
 		SetResultValue(0);
 	}
 }
-//For use with Particle Splitter Alt-Fire (for unlagging the detonation)
+//For use with Particle Splitter Alt-Fire (for unlagging the detonation) (which doesn't work properly yet)
 Script "CheckAltFireReleased" (void)
 {
 	//Sets the activator to the shooter of the pellet, instead of the pellet itself.
@@ -101,6 +107,7 @@ Script "CheckAltFireReleased" (void)
 		SetResultValue(0);
 	}
 }
+//Zoom scripts for Q-Zandronum
 Script "ZoomSetup" (void)
 {
 	SetActionScript(0, BT_ZOOM, "WeaponZoomControl");

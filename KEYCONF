@@ -1,0 +1,9 @@
+alias actionability "pukename ActionAbility1 always"
+
+defaultbind q actionability
+defaultbind shift +user1
+
+alias pepega1 "echo \"kindred(?): \"customize loadout\". im not playing this mod. goodbye\""
+alias pepega2 "echo \"(unknown): what is this forcefield bs\""
+alias pepega3 "echo \"Player (a.k.a. shadowfox): shit mod\""
+alias pepega4 "echo \"el pene diablos: yay shitty weapons\""

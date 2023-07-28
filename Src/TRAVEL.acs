@@ -7,11 +7,14 @@
 #define HYPERD_DUR 70
 #define HYPERD_WALLJUMP_Z 12.0
 #define HYPERD_WALLJUMP_XY 6.0
-#libdefine HYPERD_PASSIVESPD 0.15
-#libdefine HYPERD_ACTIVESPD 0.25
-#define WARPD_STRENGTH 1.25
+#libdefine HYPERD_PASSIVESPD 0.05
+#libdefine HYPERD_ACTIVESPD 0.15
+#define WARPD_STRENGTH 1.2
 #define WARP_TICKS_TOTAL 8
 #define TBOOTS_STRENGTH 12
+//#define HDRIVE_LATSTRENGTH 12
+//#define HDRIVE_VERTSTRENGTH 12
+
 //#define SHIFTORB_SPEED 16.0
 
 //global int 2:orbIDs[];
@@ -51,12 +54,6 @@ Script "TravelSetup" (void)
 		break;
 		case 2:
 		GiveInventory("TravelHyperdrive", 1);
-		SetActorProperty(0, APROP_SECONDJUMPAMOUNT, 1);
-		SetActorProperty(0, APROP_WALLJUMP, 2);
-		SetActorProperty(0, APROP_SECONDJUMPZ, HYPERD_WALLJUMP_Z);
-		SetActorProperty(0, APROP_SECONDJUMPXY, HYPERD_WALLJUMP_XY);
-		SetActorProperty(0, APROP_SPEED, GetActorProperty(0, APROP_SPEED) + 0.2);
-		SetEffectActor(0, EA_SECOND_JUMP, "HyperdriveWallJumpFX");
 		SetActionScript(0, BT_USER1, "Hyperdrive");
 		break;
 		case 3:
@@ -104,6 +101,8 @@ Script "ThrusterBoots" (int predicting, int pressed, int released, int buttons)
                 SetPredictableValue(0, 0, 1);
 				//Play the sound and 
 				SetNetworkReplicationFlags( NETREP_SKIPOWNER );
+				DropInventory(0, "RedFlag");
+				DropInventory(0, "BlueFlag");
 				TakeInventory("ThrusterBootsSmokeTics", 350);
 				GiveInventory("ThrusterBootsSmokeTics", 18);
 				PlaySound(0, "Travel/ThrusterBoots", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
@@ -168,7 +167,7 @@ Script "ThrusterBoots" (int predicting, int pressed, int released, int buttons)
 					|| (GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD) && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVELEFT)
 					|| (GetPlayerInput(-1, INPUT_BUTTONS) & BT_FORWARD) && (GetPlayerInput(-1, INPUT_BUTTONS) & BT_MOVERIGHT))
 				{
-					thrust = 12;
+					thrust = TBOOTS_STRENGTH * 3 / 4;
 				}
 					
 				if(GetPlayerInput(-1, INPUT_BUTTONS) & BT_BACK)
@@ -200,6 +199,8 @@ Script "JumpThrust" (int predicting, int pressed, int released, int buttons)
             {
 				SetPredictableValue(0, 0, 1);
 				SetNetworkReplicationFlags( NETREP_SKIPOWNER );
+				DropInventory(0, "RedFlag");
+				DropInventory(0, "BlueFlag");
 				PlaySound(0, "Travel/JumpThrust", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
 				SpawnSpotFacingForced("JumpThrustSmokeSpawner", 0, 0);
                 if(hasTravelPickup)
@@ -247,6 +248,8 @@ Script "Hyperdrive" (int predicting, int pressed, int released, int buttons)
 				{
 					SetPredictableValue(0, 0, 1);
 					SetNetworkReplicationFlags( NETREP_SKIPOWNER );
+					DropInventory(0, "RedFlag");
+					DropInventory(0, "BlueFlag");
 					PlaySound(0, "Travel/HyperdriveStart", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
 					GiveInventory("HyperdriveSpeed", 1);
 					SetNetworkReplicationFlags( 0 );
@@ -302,6 +305,8 @@ Script "WarpDrive" (int predicting, int pressed, int released, int buttons)
                 //SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
                 
                 SetNetworkReplicationFlags( NETREP_SKIPOWNER );
+				DropInventory(0, "RedFlag");
+				DropInventory(0, "BlueFlag");
                 PlaySound(0, "Travel/WarpStart", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
                 GiveInventory("PowerWarpInvisibility", 1);
                 GiveInventory("PowerWarpInvulnerability", 1);

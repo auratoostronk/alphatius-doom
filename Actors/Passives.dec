@@ -1,5 +1,7 @@
 //Passive Ability related stuff.
 
+//Nega Barrier no longer used.
+/*
 Actor NegaBarrier : PowerProtection
 {
 	+SERVERNETID
@@ -22,11 +24,12 @@ Actor NegaBarrierBubble
 		BRNG A 1
 		loop
 	}
-}
+}*/
 
-Actor PowerAdrenaline : PowerSpeed 
+Actor PowerAdrenaline : Inventory 
 { 
 	+SERVERNETID
-	Powerup.Strength 1.1
-	Powerup.Duration -2
+	Inventory.MaxAmount 1
+	//Powerup.Strength 1.1
+	//Powerup.Duration -2
 }

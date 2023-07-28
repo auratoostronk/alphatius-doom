@@ -101,18 +101,3 @@ ACTOR BeamRifleAlt : BeamRifle
 		
 	}
 }
-/*
-ACTOR OVR9000Alt : OVR9000
-{
-	Tag "OVR9000 (Alt Fire)"
-	Weapon.AmmoType "OVRAltCharge"
-	States
-	{
-	Fire:
-		TNT1 A 0 
-		Goto AltFire
-	SwapWeapon:
-		TNT1 A 1 ACS_NamedExecuteAlways("BotChangeWeapon", 0)
-		Goto Ready
-	}
-}*/

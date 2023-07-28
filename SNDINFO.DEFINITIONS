@@ -69,6 +69,7 @@ Travel/ThrusterBoots 		JMPBOOST
 Travel/JumpThrust 			RCKTJUMP
 Travel/WarpStart			WARPDRIV
 Travel/WarpDone				WARPDONE
+Travel/HyperdriveActivate	HYPERDRV
 Travel/HyperdriveStart 		HYPERST
 Travel/HyperdriveEnd	 	HYPEREND
 

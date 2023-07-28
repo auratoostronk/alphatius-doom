@@ -117,33 +117,6 @@ Actor SGPellet
 		stop
 	}
 }
-/*Actor SGPelletServerVisual : SGPellet
-{
-	Damage (0)
-	States
-	{
-	Spawn:
-		PSPK AAAAAA 2 A_SetScale(scalex * 0.8, scaley * 0.8)
-		Goto Death
-	Death:
-		TNT1 A 1 
-		stop
-	}
-}
-Actor SGPelletClientVisual : SGPellet
-{
-	+CLIENTSIDEONLY
-	Damage (0)
-	States
-	{
-	Spawn:
-		PSPK AAAAAA 2 A_SetScale(scalex * 0.8, scaley * 0.8)
-		Goto Death
-	Death:
-		TNT1 A 1 
-		stop
-	}
-}*/
 Actor SGAltPellet : SGPellet
 {
 	DamageType "ParticleSplitterAlt"
@@ -153,8 +126,8 @@ Actor SGAltPellet : SGPellet
 	States
 	{
 	Spawn:
-		PSPK A 1 A_JumpIf(ACS_NamedExecuteWithResult("CheckAltFireReleased") > 0, "Split")
-		loop
+		PSPK A 4 //A_JumpIf(ACS_NamedExecuteWithResult("CheckAltFireReleased") > 0, "Split")
+		Goto Split//loop
 	Split:
 		TNT1 A 0 A_PlaySound("ParticleSplitter/Fire")
         TNT1 A 0 A_SetArg(0, 0)

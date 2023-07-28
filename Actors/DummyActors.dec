@@ -15,15 +15,9 @@ Actor IsHealing : Inventory
 	+SERVERNETID
 	Inventory.MaxAmount 1
 }
-Actor HitmarkerSound : CustomInventory
+//Gives the user a speed boost trail for the various stacking speed boosts in the game. See ALPHLIB.acs
+Actor SpeedBoostTrail : PowerSpeed
 {
-	+INVENTORY.ALWAYSPICKUP
-	+SERVERNETID
-	States
-	{
-		Spawn:
-		Pickup:
-		TNT1 A 0 A_PlaySound("General/WeaponHit", CHAN_7|CHAN_UI, 1.0, false)
-		stop
-	}
+	Powerup.Duration 2
+	Powerup.Strength 1.0
 }

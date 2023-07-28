@@ -178,7 +178,7 @@ FreeformMenu "I_Weapons"
 		Font SMALLFNT
 		FontColor White
 		MaxTextWidth 160
-		Text "Projectile-based heavy-hitting shotgun. Alt-fire launches a single pellet that detonates into many more when Alt-fire is released."
+		Text "Projectile-based heavy-hitting shotgun. Alt-fire launches a single pellet that detonates into many more."
 	}
 	//Tesla SMG
 	Label
@@ -389,7 +389,7 @@ FreeFormMenu "I_Travels"
 		Font SMALLFNT
 		FontColor White
 		MaxTextWidth 160
-		Text "Grants the ability to walljump. Activate for a small boost in movement speed."
+		Text "Passively run faster. Activate for a short sprint."
 	}
 }
 //ACTION ABILITY INFO
@@ -558,7 +558,7 @@ FreeFormMenu "I_Passives"
 		Font SMALLFNT
 		FontColor White
 		MaxTextWidth 160
-		Text "Grants an extra use of your Travel Ability on spawn."
+		Text "Grants an extra use of your Travel Ability on spawn. Reduces Travel Ability cooldown slightly."
 	}
 	//Rapid-Alt Tech
 	Label

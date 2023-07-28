@@ -67,6 +67,12 @@ $volume Explosion1 0.7
 $volume Explosion2 0.7
 $volume Explosion3 0.7
 
+
+$volume PhotonCarbine/Fire 0.6
+$volume ParticleSplitter/Fire 0.7
+$volume SparkCannon/Fire 0.7
+$volume SparkCannon/AltFire 0.7
+
 $volume General/WeaponReady 0.3
 $volume General/AltReady 0.3
 $volume General/TravelReady 0.3

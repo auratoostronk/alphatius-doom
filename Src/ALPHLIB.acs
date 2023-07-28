@@ -4,11 +4,13 @@
 #import "ACTIONS.acs"
 #import "TRAVEL.acs"
 #import "HUD.acs"
+#import "WEAPON.acs"
 #import "PASSIVES.acs"
 
 #libdefine MAX_PLAYERS 64
 #libdefine NUM_WEAPS 7
 #libdefine NUM_TRAVELS 4
+
 str WEAP_CLASSNAMES[NUM_WEAPS] = 	{"TeslaSMG", 	"ParticleSplitter", 	"PhotonCarbine", 	"C14", 			"SparkCannon", 		/*"RocketCannon",*/ 	"Flamespitter", 	"BeamRifle"};
 str WEAP_ALTCLASSNAMES[NUM_WEAPS] = {"TeslaSMGAlt", "ParticleSplitterAlt", 	"PhotonCarbineAlt", "C14Alt", 		"SparkCannonAlt", 	/*"RocketCannonAlt",*/ 	"FlamespitterAlt", 	"BeamRifleAlt"};
 str WEAP_ENERGYNAMES[NUM_WEAPS] = 	{"SMGEnergy", 	"PumpSGEnergy", 		"CarbineEnergy", 	"C14Energy", 	"SparkEnergy", 		/*"RocketEnergy",*/  	"FlameEnergy", 		"BeamEnergy"};
@@ -28,16 +30,10 @@ function bool isAirborne(void)
 {
 	return (GetActorZ(0) > GetActorFloorZ(0));
 }
-
 function void spawnThermiteFX(void)
 {
 	int latspread = 12.0;
 	SpawnForced("ThermiteFX", GetActorX(0) + Random(-latspread, latspread), GetActorY(0) + Random(-latspread, latspread), GetActorZ(0) + 24.0, 0, 0);
-}
-function void spawnBeamOrbFX(void)
-{
-	int latspread = 12.0;
-	SpawnForced("BeamOrbDebuffFX", GetActorX(0) + Random(-latspread, latspread), GetActorY(0) + Random(-latspread, latspread), GetActorZ(0) + 24.0, 0, 0);
 }
 //Helpful function for displaying text based on user's scaling settings.
 function void displayHUDText(str text, int yLoc, int holdTime, int id)
@@ -53,7 +49,7 @@ function void displayHUDText(str text, int yLoc, int holdTime, int id)
 	SetFont("SMALLFNT");
 	HUDMessage(s:text;HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP, id, CR_UNTRANSLATED, (textX << 16), (textY << 16), holdTime);
 }
-
+//No longer used. Having more than 50 armor broke weapon balance.
 /*Script "ArmorDecay" ENTER
 {
 	while (true)
@@ -70,27 +66,7 @@ Script "CheckPowerupCVAR" (void)
 {
 	SetResultValue(GetCVAR("alph_nopowerups"));
 }
-/*
-Script "PowerupSpawn" (void)
-{
-	int spotid = UniqueTID(0, 999);
-	if(Timer() < 35)
-	{
-		SpawnSpotForced("MapSpot", 0, spotid, 0);
-		Thing_Remove(0);
-	}
-	while(true)
-	{
-		delay(2100);
-		SpawnSpotForced("AlphatiusPowerup", spotid, 0, 0);
-		//Don't put two powerups on the map or its gonna bug. This is my lazy fix for now.
-		while(ThingCount("AlphatiusPowerup", 0) > 0)
-		{
-			delay(1);
-		}
-	}
-	
-}*/
+
 //Holds the script for many timers that occur each tic.
 Script "RechargeTimers" ENTER
 {
@@ -176,13 +152,6 @@ Script "RechargeTimers" ENTER
 			//Then remove a tic of the debuff.
 			TakeInventory("ThermiteDebuff", 1);
 			
-			//For the Beam Rifle. If the player recently was hit by the alt-fire, spawn electric effects on them.
-			if(CheckInventory("BeamOrbDebuff") > 0)
-			{
-				spawnBeamOrbFX();
-			}
-			//Then remove a tic of the debuff.
-			TakeInventory("BeamOrbDebuff", 1);
 			//If not LMS or TeamLMS
 			if(StrICmp(GetCurrentGameMode(), "Last Man Standing") != 0 && StrICmp(GetCurrentGameMode(), "Team Last Man Standing") != 0)
 			{
@@ -190,13 +159,19 @@ Script "RechargeTimers" ENTER
 				TakeInventory("ActionCD", cooldownspeed);
 			}
 
-			
+			//Movespeed increases
+			//We use SetActorProperty to allow movement speed boosts to stack (PowerSpeed powers cannot).
 			int movespeed = 1.0;
 			//Speed boost from firing Tesla SMG
-			/*if(CheckInventory("TeslaSpeedBoost") >= 1)
+			if(CheckInventory("TeslaSpeedBoost") >= 1)
 			{
-				movespeed += 0.2;
-			}*/
+				movespeed += TESLA_SHOOTSPD;
+			}
+			//Speed boost from Adrenaline Rush
+			if(CheckInventory("PowerAdrenaline") >= 1)
+			{
+				movespeed += ARUSH_KILLSPD;
+			}
 			//Speed boost from having your travel ability be Hyperdrive
 			if(CheckInventory("TravelHyperdrive") >= 1)
 			{
@@ -206,6 +181,11 @@ Script "RechargeTimers" ENTER
 			if(CheckInventory("HyperdriveSpeed") >= 1)
 			{
 				movespeed += HYPERD_ACTIVESPD;
+			}
+			//If the players' movespeed is increased, give the player a speed trail.
+			if(movespeed > 1.0)
+			{
+				GiveInventory("SpeedBoostTrail", 1);
 			}
 			SetActorProperty(0, APROP_SPEED, movespeed);
 			//Telsa SMG speed boost is not permanent (only lasts about 5 tics)

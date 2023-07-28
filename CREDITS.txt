@@ -67,13 +67,13 @@ Spark Cannon Alt-Fire: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com
 Beam Rifle Fire: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ 
 Beam Rifle Alt-Fire: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ 
 
-Grenade Launch: Used for Photon Carbine. from M79 on Realm667. Credits go to "valve"
+Grenade Launch: Used for Photon Carbine/C14. from M79 on Realm667. Credits go to "valve"
 Explosion Sounds: Far Explode taken from Brutal Doom. Closer ones taken from Particle Fire Enhancer mod https://forum.zdoom.org/viewtopic.php?f=19&t=28547
 
 Thruster Boots: Came from Project MSX by MagSigmaX  https://forum.zdoom.org/viewtopic.php?t=25836
 Rocket Jump: Ripped from League of Legends's Lux Ultimate.
 Warp Drive: Ripped from League of Legends's Ezreal.
-Hyperdrive: Ripped from Call of Duty Zombies Thundergun (Black Ops 1)
+Hyperdrive: Ripped from Call of Duty Zombies Thundergun (Black Ops 1).
 
 Regen Zone: Activation sound and loop sound ripped from an old MMO called City of Heroes. If you didn't know, the game is back ;)
 Power Brace: Activation sound and hit sound ripped from an old MMO called City of Heroes. If you didn't know, the game is back ;)
@@ -126,6 +126,7 @@ Armor Shards: Taken from Project Brutality. Recolored by auratoostronk.
 Nano Armor: Taken from Doom 2. recolored by auratoostronk.
 Nano Plate: Made by auratoostronk.
 Travel Sphere: Taken from Realm667 under Deflection Sphere. Recolored by auratoostronk. BathySalts also added the Boot sprites to the sphere.
+Powerup Sphere: Taken from Realm667 under Deflection Sphere. Editted by auratoostronk.
 
 Heal Effects: Made by auratoostronk.
 Blood Sprites: Taken from Nashgore.pk3

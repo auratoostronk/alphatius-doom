@@ -39,7 +39,7 @@ Actor AlphatiusPowerup : CustomInventory
 		Spawn:
 		TNT1 A 0 nodelay A_JumpIf(CallACS("CheckPowerupCVAR", 0), "Death")
 		//TNT1 A 0 ACS_NamedExecuteAlways("PowerupSpawn", 0)
-		POWR ABCDCBABCD 4 A_SpawnItemEX("PowerupFX", frandom(-4.0, 4.0), frandom(-4.0, 4.0), 32.0 + frandom(-4.0, 4.0), frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5))
+		POWR ABCDCBABCD 4 //A_SpawnItemEX("PowerupFX", frandom(-4.0, 4.0), frandom(-4.0, 4.0), 32.0 + frandom(-4.0, 4.0), frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5))
 		loop
 		Pickup:
 		TNT1 A 0 A_GiveInventory("Health", 100)
@@ -59,7 +59,7 @@ Actor SoulsphereReplacer : AlphatiusPowerup replaces Soulsphere {}
 Actor PowerChronalDrive : PowerInfiniteAmmo
 {
 	Powerup.Duration -15
-	Powerup.Color Goldmap 0.25
+	Powerup.Color "40 30 00"
 }
 
 Actor PowerupFX
@@ -81,38 +81,3 @@ Actor PowerupFX
 	}
 	
 }
-//NYI.
-/*
-Actor ActionResetter : Ammo 12001
-{ 
-	//$Category Alphatius Pickups
-	Radius 24
-	Height 48
-	Inventory.Amount 1
-	Inventory.MaxAmount 1
-	Inventory.PickupMessage "Action Ability Reset!"
-	Inventory.RespawnTics 700 //20 seconds
-	+FLOATBOB
-	+BRIGHT
-	States
-	{
-		Spawn:
-		ARES ABCDCBABCD 4
-		loop
-		Pickup:
-		TNT1 A 0 A_GiveInventory("Action1Charge", 20*35)
-		stop
-	}
-}
-
-
-Actor PowerRapidAlt : Inventory
-{
-	Inventory.Amount 1
-	Inventory.MaxAmount 1
-}
-Actor PowerSpeedDemon : Inventory
-{
-	Inventory.Amount 1
-	Inventory.MaxAmount 1
-}*/

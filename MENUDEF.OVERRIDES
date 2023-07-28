@@ -13,7 +13,7 @@ DefaultListMenu
 ListMenu "MainMenu"
 {
 	StaticPatch 0, 0, "ALPHTITL"
-	TextItem "Play", "p", "ZA_SkirmishMenu"
+	TextItem "Play Offline", "p", "ZA_SkirmishMenu"
 	TextItem "Tutorial", "t", "EpisodeMenu"
 	TextItem "Loadouts", "l", "LoadoutOptions"
 	TextItem "Settings", "o", "OptionsMenu"
@@ -99,6 +99,7 @@ OptionMenu "CustomizeControls"
 	Control 	"Show Scoreboard",				"+showscores"
 	Control 	"Chat",							"messagemode"
 	Control 	"Team Chat",					"messagemode2"
+	Control 	"Ready up",						"ready"
 	Control		"Vote yes",						"vote_yes"
 	Control		"Vote no",						"vote_no"
 	Control		"Spectate",						"spectate"
@@ -338,24 +339,14 @@ OptionMenu "GamemodeConfig"
 	StaticText 	" "
 	Option		"Bot Skill",			"menu_skirmishbotskill",	ZA_Skill
 	SubMenu		"Bot Setup",			"ZA_BotSetup"
-	//NumberField	"Wavelimit",			"menu_skirmishwavelimit", 0, 10
 }
 OptionValue ZA_Gamemode
 {
-	//0, "(NYI) Cooperative"
-	//1, "(NYI) Survival Cooperative"
-	//2, "(NYI) Invasion"
 	3, "Deathmatch"
 	4, "Team Deathmatch"
 	5, "Duel"
-	//6, "(NYI) Terminator"
 	7, "Last Man Standing"
 	8, "Team Last Man Standing"
-	//9, "(NYI) Possession"
-	//10, "(NYI) Team Possession"
-	//11, "(NYI) Teamgame (ACS)"
 	12, "Capture The Flag"
-	//13, "(NYI) One Flag CTF"
-	//14, "(NYI) Skulltag"
 	15, "Domination"
 }

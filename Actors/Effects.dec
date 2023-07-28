@@ -12,6 +12,7 @@ Actor HealFX
 		loop
 	}
 }
+//Empty bullet puff
 Actor NoPuff : BulletPuff
 {
 	Projectile
@@ -26,24 +27,5 @@ Actor NoPuff : BulletPuff
 		TNT1 A 0
 		TNT1 A 1  
 		Stop
-	}
-}
-Actor RainDrop
-{
-	RenderStyle ADD
-	Scale 0.1
-	Vspeed -32
-	+CLIENTSIDEONLY
-	+NOINTERACTION
-	+SERVERNETID
-	States
-	{
-		Spawn:
-		TNT1 A 0 nodelay A_JumpIf(z <= floorz, "Death")
-		RAIN A 1
-		loop
-		Death:
-		TNT1 A 1
-		stop
 	}
 }

@@ -1,0 +1,91 @@
+Model SpaceShip
+{ 
+   Path "Models/Decorations" 
+   Model 0 "bviper.md2" 
+   Skin 0 "bviper.png"
+   Scale 1.0 1.0 1.0
+   Offset 0 0 32
+   INHERITACTORPITCH
+   INHERITACTORROLL
+   
+   Frame 3DOB A 0 "viper"
+}
+Model PowerBraceBubble
+{
+   Path "Models/Decorations" 
+	Model 0 "shield.md2"
+	Skin 0 "forcefield2.png"
+	Scale 25.0 25.0 25.0
+	Offset 0 0 16
+	INHERITACTORPITCH
+	INHERITACTORROLL
+	
+	Frame TRNG A 0 "frame01"
+}/*
+Model NegaBarrierBubble
+{
+   Path "Models/Decorations" 
+	Model 0 "shield.md2"
+	Skin 0 "forcefield1.png"
+	Scale 25.0 25.0 25.0
+	Offset 0 0 16
+	INHERITACTORPITCH
+	INHERITACTORROLL
+	
+	Frame BRNG A 0 "frame01"
+}*/
+Model SpaceShipSmall
+{ 
+   Path "Models/Decorations" 
+   Model 0 "bviper.md2" 
+   Skin 0 "bviper.png"
+   Scale 0.2 0.2 0.2
+   Offset 0 0 32
+   INHERITACTORPITCH
+   INHERITACTORROLL
+   
+   Frame 3DOB A 0 "viper"
+}
+
+/*Model AutoDroneLaser 
+{ 
+   Path "Models/Decorations" 
+   SKIN 0 "tracer.png"
+   MODEL 0 "tracer.md3"
+   Scale 0.5 0.5 0.5
+   PITCHFROMMOMENTUM
+   
+   FrameIndex RSPK A 0 0
+}*/
+
+//Taken from OzyMandias's GORE
+//crystals**************************************************
+Model CrystalBlue
+{
+   Path "Models/Decorations" 
+	Model 0 "crystal.md2"
+	Skin 0 "crystal1a.png"
+	Scale 1.0 1.0 1.0
+	ZOffset 48
+	FrameIndex CRYS A 0 0
+}
+
+Model CrystalGreen
+{
+   Path "Models/Decorations" 
+	Model 0 "crystal.md2"
+	Skin 0 "crystal1b.png"
+	Scale 1.0 1.0 1.0
+	ZOffset 48
+	FrameIndex CRYS B 0 0
+}
+
+Model CrystalRed
+{
+   Path "Models/Decorations" 
+	Model 0 "crystal.md2"
+	Skin 0 "crystal1c.png"
+	Scale 1.0 1.0 1.0
+	ZOffset 48
+	FrameIndex CRYS C 0 0
+}

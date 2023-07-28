@@ -19,7 +19,6 @@ object ExtraTravelCharge
 {
 	frame TCHG { light REDORANGELIGHT }
 }
-
 object AlphatiusPowerup
 {
 	frame POWR { light REDORANGELIGHT }

@@ -6,7 +6,7 @@ Actor NanoArmor : BasicArmorBonus replaces BlueArmor
 	Tag "Nano-Armor"
 	Inventory.PickupMessage "Equipped Nano-Armor."
 	Inventory.PickupSound "Pickups/NanoArmor"
-	Inventory.Icon "ARM3A0"
+	//Inventory.Icon "ARM3A0"
 	Armor.SavePercent 50
 	Armor.SaveAmount 50
 	Armor.MaxSaveAmount 50
@@ -29,7 +29,7 @@ Actor NanoPlate : BasicArmorBonus replaces GreenArmor
 	Tag "Nano-Plate"
 	Inventory.PickupMessage "Equipped a Nano-Plate."
 	Inventory.PickupSound "Pickups/NanoPlate"
-	Inventory.Icon "ARMPA0"
+	//Inventory.Icon "ARMPA0"
 	Armor.SavePercent 50
 	Armor.SaveAmount 25
 	Armor.MaxSaveAmount 50
@@ -54,7 +54,7 @@ Actor NanoShard : BasicArmorBonus replaces ArmorBonus
 	Tag "Nano-Shard"
 	Inventory.PickupMessage "Equipped a Nano-Shard."
 	Inventory.PickupSound "Pickups/NanoShard"
-	Inventory.Icon "NANSD0"
+	//Inventory.Icon "NANSD0"
 	Armor.SavePercent 50
 	Armor.SaveAmount 5
 	Armor.MaxSaveAmount 50

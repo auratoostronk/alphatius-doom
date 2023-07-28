@@ -81,7 +81,7 @@ map ALPHDM09 lookup "Sinkhole"
 {
 	levelnum = 9
 	sky1 = "OLOSSKY", 0
-	music = "QUAKE3_1"
+	music = "SONIC3"
 	next = "ALPHDM10"
 	AllowRespawn
 }
@@ -105,7 +105,7 @@ map ALPHDM12 lookup "Maritime"
 {
 	levelnum = 12
 	sky1 = "FLOODSKY", 0
-	music = "QUAKE3_1"
+	music = "SONIC2"
 	next = "ALPHDM13"
 	AllowRespawn
 }
@@ -113,7 +113,7 @@ map ALPHDM13 lookup "Crevice"
 {
 	levelnum = 13
 	sky1 = "SNOWSKY", 0
-	music = "QUAKE3_4"
+	music = "SONIC3"
 	next = "ALPHDM01"
 	AllowRespawn
 }
@@ -148,7 +148,7 @@ map ALPHDL04 lookup "Cold Siege"
 {
 	levelnum = 104
 	sky1 = "SNOWSKY", 0
-	music = "QUAKE2_2"
+	music = "DREADMAZ"
 	next = "ALPHDL05"
 	AllowRespawn
 }

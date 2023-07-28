@@ -34,6 +34,5 @@
 #include Actors/Pickups/Powerups.dec
 #include Actors/Pickups/Health.dec
 #include Actors/Pickups/Armor.dec
-#include Actors/Pickups/ItemTimers.dec
 #include Actors/Pickups/AmmoReplacements.dec
 //#include Actors/Pickups/GrenadeSpheres.dec
