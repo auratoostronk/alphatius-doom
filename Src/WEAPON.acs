@@ -43,7 +43,7 @@ Script "PlayerDeathByThermite" (void)
 {
 	int victim = ActivatorTID();
 	SetActivatorToTarget(0); //Set Activator to the killer.
-	int blastid = UniqueTID(1, 0);
+	int blastid = UniqueTID();
 	SpawnProjectile(0, "ThermiteChainReact", 0, 0, 0, 0, blastid);
 	SetActorPosition(blastid, GetActorX(victim), GetActorY(victim), GetActorZ(victim) + 16.0, false);
 }

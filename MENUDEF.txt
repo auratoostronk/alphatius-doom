@@ -270,7 +270,7 @@ FreeformMenu "I_Weapons"
 		Font SMALLFNT
 		FontColor White
 		MaxTextWidth 160
-		Text "A powerful close-ranged flamethrower. Enemies hit by the Alt-Fire become flammable and explode when killed by this weapon."
+		Text "A powerful close-ranged flamethrower. Enemies hit by the Alt-Fire become Flammable and explode when killed by this weapon, spreading Flammable to nearby enemies."
 	}
 	//Beam Rifle
 	Label
@@ -345,19 +345,19 @@ FreeFormMenu "I_Travels"
 		MaxTextWidth 160
 		Text "Teleport a moderate distance towards your crosshair."
 	}
-	//Leap Pack
+	//Jet Leap
 	Label
 	{
 		Pos 0, 208
 		Font BIGFONT
 		FontColor Red
-		Text "Leap Pack"
+		Text "Jet Leap"
 	}
 	Label
 	{
 		Pos -96, 208
 		Size 128, 80
-		Background "I_JUMPT"
+		Background "I_JLEAP"
 	}
 	Label
 	{
@@ -368,19 +368,19 @@ FreeFormMenu "I_Travels"
 		MaxTextWidth 160
 		Text "Thrusts the user upwards and outwards. Aim upwards for a greater leap."
 	}
-	//Swiftfoot Shoes
+	//Hyper Sprint
 	Label
 	{
 		Pos 0, 304
 		Font BIGFONT
 		FontColor Red
-		Text "Swiftfoot Shoes"
+		Text "Hyper Sprint"
 	}
 	Label
 	{
 		Pos -96, 304
 		Size 128, 80
-		Background "I_HYPERD"
+		Background "I_HYPERS"
 	}
 	Label
 	{
@@ -653,39 +653,20 @@ FreeFormMenu "I_Passives"
 		Text "Reduces Action Ability Cooldown."
 	}
 }
-/*
-OptionMenu "I_Passives"
-{
-	Title "Passive Skill Info"
-	StaticText "SPEED DEMON", 1
-	StaticText "Grants a Travel Sphere on spawn."
-	StaticText " "
-	StaticText "RAPID-ALT TECH", 1
-	StaticText "Kills refund some of your Alt-fire cooldown."
-	StaticText " "
-	StaticText "ADRENALINE RUSH", 1
-	StaticText "Restore health on kill."
-	StaticText " "
-	StaticText "BANDOLIER", 1
-	StaticText "Extra energy capacity. Kills restore energy."
-	StaticText " "
-	StaticText "ACTION OVERCLOCK", 1
-	StaticText "Reduced Action Ability cooldown."
-	StaticText " "
-}*/
 
 //OPTION VALUES 
 
 //START WEAPON
 OptionString "StartingWeapon"
 {
-	"TeslaSMG", 			"Tesla SMG"//"\ckTesla SMG\c-"
-	"ParticleSplitter", 	"Particle Splitter"//"\ctParticle Splitter\c-"
-	"C14", 					"C-14 Energy Blaster"//"\cdC-14 Energy Blaster\c-"
-	"PhotonCarbine",		"Photon Carbine"//"\cvPhoton Carbine\c-"
-	"SparkCannon", 			"Spark Cannon"//"\cgSpark Cannon\c-"
-	"Flamespitter", 		"Flamespitter"//"\ciFlamespitter\c-"
-	"BeamRifle", 			"Beam Rifle"//"\cnBeam Rifle\c-"
+	"TeslaSMG", 			"Tesla SMG"
+	"ParticleSplitter", 	"Particle Splitter"
+	"C14", 					"C-14 Energy Blaster"
+	"PhotonCarbine",		"Photon Carbine"
+	"SparkCannon", 			"Spark Cannon"
+	"Flamespitter", 		"Flamespitter"
+	"BeamRifle", 			"Beam Rifle"
+	"Random", 				"Random"
 }
 OptionString "BGStartingWeapon"
 {
@@ -696,6 +677,7 @@ OptionString "BGStartingWeapon"
 	"SparkCannon", 			"SPKMENU"
 	"Flamespitter",			"FLMMENU"
 	"BeamRifle", 			"BRFMENU"
+	"Random", 				"I_RANDOM"
 }
 
 //TRAVEL ABILITY
@@ -703,15 +685,17 @@ OptionValue "TravelAbility"
 {
 	0, "Thruster Boots"
 	1, "Warp Drive"
-	2, "Swiftfoot Shoes"
-	3, "Leap Pack"
+	2, "Hyper Sprint"
+	3, "Jet Leap"
+	100, "Random"
 }
 OptionValue "BGTravelAbility"
 {
 	0, "I_TBOOTS"
 	1, "I_WDRIVE"
-	2, "I_HYPERD"
-	3, "I_JUMPT"
+	2, "I_HYPERS"
+	3, "I_JLEAP"
+	100, "I_RANDOM"
 }
 
 //ACTION ABILITY
@@ -723,6 +707,7 @@ OptionValue "ActionAbility"
 	3, "Decoy Hologram"
 	4, "Ricochet Burst"
 	5, "Shock Slam"
+	100, "Random"
 }
 OptionValue "BGActionAbility"
 {
@@ -732,8 +717,8 @@ OptionValue "BGActionAbility"
 	3, "I_DECOYH"
 	4, "I_RBURST"
 	5, "I_SSLAM"
+	100, "I_RANDOM"
 }
-
 
 OptionString "PassiveAbility"
 {
@@ -742,6 +727,7 @@ OptionString "PassiveAbility"
 	2, "Adrenaline Rush"
 	3, "Bandolier"
 	4, "Action Overclock"
+	100, "Random"
 }
 
 OptionString "BGPassiveAbility"
@@ -751,4 +737,5 @@ OptionString "BGPassiveAbility"
 	2, "I_ADRUSH"
 	3, "I_BANDO"
 	4, "I_OVERCL"
+	100, "I_RANDOM"
 }

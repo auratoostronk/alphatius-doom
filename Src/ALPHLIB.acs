@@ -110,8 +110,8 @@ Script "RechargeTimers" ENTER
 
 			//Reduce travel ability cooldowns.
 			TakeInventory("WDriveCD", cooldownspeed);
-			TakeInventory("HDriveCD", cooldownspeed);
-			TakeInventory("JThrustCD", cooldownspeed);
+			TakeInventory("HSprintCD", cooldownspeed);
+			TakeInventory("JLeapCD", cooldownspeed);
 			//TakeInventory("SOrbCD",1);
 			//Thruster boots uses charges, so it uses slightly different code.
 			if(CheckInventory("TravelThrusterBoots"))
@@ -136,8 +136,8 @@ Script "RechargeTimers" ENTER
 			//This is how early the TravelReady sound plays in tics before the travel ability is ready.
 			int TRAV_SOUND_DELAY = 7;
 			if(	CheckInventory("WDriveCD") == TRAV_SOUND_DELAY ||
-				CheckInventory("HDriveCD") == TRAV_SOUND_DELAY ||
-				CheckInventory("JThrustCD") == TRAV_SOUND_DELAY ||
+				CheckInventory("HSprintCD") == TRAV_SOUND_DELAY ||
+				CheckInventory("JLeapCD") == TRAV_SOUND_DELAY ||
 				CheckInventory("SOrbCD") == TRAV_SOUND_DELAY ||
 				CheckInventory("TBootsCD") == TRAV_SOUND_DELAY)
 			{
@@ -172,15 +172,15 @@ Script "RechargeTimers" ENTER
 			{
 				movespeed += ARUSH_KILLSPD;
 			}
-			//Speed boost from having your travel ability be Hyperdrive
-			if(CheckInventory("TravelHyperdrive") >= 1)
+			//Speed boost from having your travel ability be HyperSprint
+			if(CheckInventory("TravelHyperSprint") >= 1)
 			{
-				movespeed += HYPERD_PASSIVESPD;
+				movespeed += HSPRINT_PASSIVESPD;
 			}
-			//Speed boost from activating Hyperdrive
-			if(CheckInventory("HyperdriveSpeed") >= 1)
+			//Speed boost from activating HyperSprint
+			if(CheckInventory("HyperSprintSpeed") >= 1)
 			{
-				movespeed += HYPERD_ACTIVESPD;
+				movespeed += HSPRINT_ACTIVESPD;
 			}
 			//If the players' movespeed is increased, give the player a speed trail.
 			if(movespeed > 1.0)

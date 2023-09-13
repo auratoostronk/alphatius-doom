@@ -9,8 +9,19 @@
 #define TUTORIAL_LEVELNUM 901
 int playeridbase = 1000;
 
+//Stored here so changes made mid-game don't stick
+bool forcerandom = false;
+bool startcarbine = false;
+bool notravels = false;
+bool noactions = false;
+bool nopassives = false;
+
 function void setPassive(int p)
 {
+	if(p == 100 || forcerandom == true)
+	{
+		p = random(1, 4);
+	}
 	switch(p)
 	{	
 		case 0:
@@ -46,13 +57,17 @@ function void setPassive(int p)
 }
 function void setAction(int a)
 {
+	if(a == 100 || forcerandom == true)
+	{
+		a = random(1, 5);
+	}
 	switch(a)
 	{
 		case 0:
 		GiveInventory("ActionRegenZone", 1);
 		break;
 		case 1:
-		GiveInventory("ActionAutoDrone", 1);
+		GiveInventory("ActionAutoLaser", 1);
 		break;
 		case 2:
 		GiveInventory("ActionPowerBrace", 1);
@@ -64,7 +79,7 @@ function void setAction(int a)
 		GiveInventory("ActionRicochetDisc", 1);
 		break;
 		case 5:
-		GiveInventory("ActionSonicShockwave", 1);
+		GiveInventory("ActionShockSlam", 1);
 		break;
 		default:
 		GiveInventory("ActionRegenZone", 1);
@@ -73,7 +88,17 @@ function void setAction(int a)
 }
 function void setStartWeapon(str sw)
 {
+	if(GetLevelInfo(LEVELINFO_LEVELNUM) == TUTORIAL_LEVELNUM)
+	{
+		sw = "PhotonCarbine";
+	}
+	else if(sw == "Random" || forcerandom == true)
+	{
+		sw = WEAP_CLASSNAMES[random(0, NUM_WEAPS-1)];
+	}
+	
 	GiveInventory(sw, 1);
+	
 	if(	!CheckInventory("PhotonCarbine") &&
 		!CheckInventory("ParticleSplitter") &&
 		!CheckInventory("TeslaSMG") &&
@@ -95,6 +120,30 @@ function void gamemodeCheck(void)
 	if(StrICmp(GetCurrentGameMode(), "Last Man Standing") == 0 || StrICmp(GetCurrentGameMode(), "Team Last Man Standing") == 0)
 	{
 		GiveInventory("NanoArmor", 2);
+	}
+}
+//Stores the CVARs into seperate variables when the map is loaded, so changes to the CVARs don't affect players mid-game.
+Script "SetWorldVariables" OPEN
+{
+	if(GetCVAR("alph_forcerandom") == true)
+	{
+		forcerandom = true;
+	}
+	if(GetCVAR("alph_startcarbine") == true)
+	{
+		startcarbine = true;
+	}
+	if(GetCVAR("alph_notravels") == true)
+	{
+		notravels = true;
+	}
+	if(GetCVAR("alph_noactions") == true)
+	{
+		noactions = true;
+	}
+	if(GetCVAR("alph_nopassives") == true)
+	{
+		nopassives = true;
 	}
 }
 Script "CheckPlayerEnter" ENTER
@@ -157,13 +206,15 @@ Script "SetupPlayerMP" (void)
 {
 	if(!(ClassifyActor(0) & ACTOR_BOT))
 	{
-		//Doesnt need a check for alph_noactions as that is handled in the action ability script itself.
-		setAction(GetCVAR("alph_action"));
-		if(GetCVAR("alph_nopassives") == false)
+		if(noactions == false)
+		{
+			setAction(GetCVAR("alph_action"));
+		}
+		if(nopassives == false)
 		{
 			setPassive(GetCVAR("alph_passive")); //Need this before weapon for bandolier check.
 		}
-		if(GetCVAR("alph_startcarbine") == false)
+		if(startcarbine == false)
 		{
 			setStartWeapon(GetCVARString("alph_startweapon"));
 		}
@@ -173,14 +224,24 @@ Script "SetupPlayerMP" (void)
 		}
 		gamemodeCheck();
 		ACS_NamedExecuteAlways("RestoreActionTimers", 0);
-		//Doesnt need a check for alph_notravels as that is handled in the travel ability script itself.
-		ACS_NamedExecuteAlways("TravelSetup", 0);
-		ACS_NamedExecuteAlways("TravelSetupClient", 0);
 		
+		if(notravels == false)
+		{
+			int trav = GetCVAR("alph_travel");
+			if (trav == 100 || forcerandom == true)
+			{
+				trav = random(0, 3);
+			}
+			//THESE TWO trav VALUES MUST BE THE SAME
+			ACS_NamedExecuteAlways("TravelSetupServer", 0, trav);
+			ACS_NamedExecuteAlways("TravelSetupClient", 0, trav);
+		}
 		ACS_NamedExecuteAlways("ZoomSetup", 0);
 		ACS_NamedExecuteAlways("ZoomSetupClient", 0);
 		ACS_NamedExecuteAlways("WeaponGlowSetup", 0);
 		ACS_NamedExecuteAlways("WeaponGlowSetupClient", 0);
+		//C14 Gas damage respawn protection
+		GiveInventory("C14RespawnProtection", 1);
 	}
 }
 Script "SetupPlayerTutorial" (void)
@@ -188,7 +249,7 @@ Script "SetupPlayerTutorial" (void)
 	if(!(ClassifyActor(0) & ACTOR_BOT))
 	{
 		setStartWeapon("PhotonCarbine");
-		gamemodeCheck();
+		//gamemodeCheck();
 		ACS_NamedExecuteAlways("TutorialTravelSetup", 0);
 		ACS_NamedExecuteAlways("TutorialTravelSetupClient", 0);
 		

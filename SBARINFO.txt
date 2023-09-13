@@ -71,46 +71,7 @@ statusbar fullscreen, fullscreenoffsets
 		drawImage "A_ADRUSH", 260, -70; 
 	}
 	
-	//WEAPON ICONS
-	
-	/*
-	InInventory TeslaSMG
-	{
-		drawImage "SMGPA0", -60, -80;
-	}
-	drawstring SMALLFONT, Yellow, "Tesla SMG", -20, -110, 0;
-	InInventory PhotonCarbine
-	{
-		drawImage "CARPA0", -60, -120;
-	}
-	drawstring SMALLFONT, Cyan, "Photon Carbine", -20, -150, 0;
-	InInventory ParticleSplitter
-	{
-		drawImage "PSGPA0", -60, -160;
-	}
-	drawstring SMALLFONT, Purple, "Particle Splitter", -20, -190, 0;
-	InInventory BeamRifle
-	{
-		drawImage "BRFPA0", -60, -200;
-	}
-	drawstring SMALLFONT, LightBlue, "Beam Rifle", -20, -230, 0;
-	InInventory SparkCannon
-	{
-		drawImage "SPKPA0", -60, -240;
-	}
-	drawstring SMALLFONT, Red, "Spark Cannon", -20, -270, 0;
-	InInventory C14
-	{
-		drawImage "C14PA0", -60, -280;
-	}
-	drawstring SMALLFONT, Green, "C-14", -20, -310, 0;	
-	InInventory Flamespitter
-	{
-		drawImage "FLMPA0", -60, -320;
-	}
-	drawstring SMALLFONT, Orange, "Flamespitter", -20, -350, 0;
-	*/
-	
+	//TRAVEL ABILITY ICONS
 	InInventory TravelThrusterBoots
 	{
 		drawbar "C_TBOOTS", "A_TBOOTS", Ammo TBootsCD, vertical, Interpolate(20)|reverse, 320, -120;
@@ -126,36 +87,18 @@ statusbar fullscreen, fullscreenoffsets
 		drawbar "C_WDRIVE", "A_WDRIVE", Ammo WDriveCD, vertical, Interpolate(20)|reverse, 320, -120;
 		drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(center), 340, -140;
 	}
-	InInventory TravelJumpThrust
+	InInventory TravelJetLeap
 	{
-		drawbar "C_JUMPT", "A_JUMPT", Ammo JThrustCD, vertical, Interpolate(20)|reverse, 320, -120;
+		drawbar "C_JLEAP", "A_JLEAP", Ammo JLeapCD, vertical, Interpolate(20)|reverse, 320, -120;
 		drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(center), 340, -140;
 	}
-	InInventory TravelHyperdrive
+	InInventory TravelHyperSprint
 	{
-		drawbar "C_HYPERD", "A_HYPERD", Ammo HDriveCD, vertical, Interpolate(20)|reverse, 320, -120;
+		drawbar "C_HYPERS", "A_HYPERS", Ammo HSprintCD, vertical, Interpolate(20)|reverse, 320, -120;
 		drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(center), 340, -140;
 	}
-	
-	/*drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(right), -270, -40;
-	InInventory TravelThrusterBoots
-	{
-		drawnumber 12, BIGFONT, YELLOW, Ammo ThrusterBootsCharge, Alignment(right), -240, -40;
-		drawBar "GRNFULL", "GRNEMPTY", Ammo TBootsCD, horizontal, Interpolate(20)|reverse, -210, -40;
-	}
-	InInventory TravelWarpDrive
-	{
-		drawBar "GRNFULL", "GRNEMPTY", Ammo WDriveCD, horizontal, Interpolate(20)|reverse, -210, -40;
-	}
-	InInventory TravelJumpThrust
-	{
-		drawBar "GRNFULL", "GRNEMPTY", Ammo JThrustCD, horizontal, Interpolate(20)|reverse, -210, -40;
-	}
-	InInventory TravelHyperdrive
-	{
-		drawBar "GRNFULL", "GRNEMPTY", Ammo HDriveCD, horizontal, Interpolate(20)|reverse, -210, -40;
-	}*/
-	
+
+	//ACTION ABILITY ICONS
 	InInventory ActionRegenZone
 	{
 		drawbar "C_REGENZ", "A_REGENZ", Ammo ActionCD, vertical, Interpolate(20)|reverse, -360, -120;
@@ -168,11 +111,11 @@ statusbar fullscreen, fullscreenoffsets
 	{
 		drawbar "C_DECOYH", "A_DECOYH", Ammo FastActionCharge, vertical, Interpolate(20)|reverse, -360, -120;
 	}
-	InInventory ActionAutoDrone
+	InInventory ActionAutoLaser
 	{
 		drawbar "C_AUTOL", "A_AUTOL", Ammo ActionCD, vertical, Interpolate(20)|reverse, -360, -120;
 	}
-	InInventory ActionSonicShockwave
+	InInventory ActionShockSlam
 	{
 		drawbar "C_SSLAM", "A_SSLAM", Ammo MediumActionCharge, vertical, Interpolate(20)|reverse, -360, -120;
 	}
@@ -180,32 +123,6 @@ statusbar fullscreen, fullscreenoffsets
 	{
 		drawbar "C_RBURST", "A_RBURST", Ammo ActionCD, vertical, Interpolate(20)|reverse, -360, -120;
 	}
-	//ACTION COOLDOWN
-	/*
-	InInventory ActionRegenZone
-	{
-		drawBar "BLUFULL", "BLUEMPTY", Ammo ActionCD, horizontal, Interpolate(20)|reverse, -210, -20;
-	}
-	InInventory ActionPowerBrace
-	{
-		drawBar "BLUFULL", "BLUEMPTY", Ammo MediumActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
-	}
-	InInventory ActionDecoyHologram
-	{
-		drawBar "BLUFULL", "BLUEMPTY", Ammo FastActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
-	}
-	InInventory ActionAutoDrone
-	{
-		drawBar "BLUFULL", "BLUEMPTY", Ammo ActionCD, horizontal, Interpolate(20)|reverse, -210, -20;
-	}
-	InInventory ActionSonicShockwave
-	{
-		drawBar "BLUFULL", "BLUEMPTY", Ammo MediumActionCharge, horizontal, Interpolate(20)|reverse, -210, -20;
-	}
-	InInventory ActionRicochetDisc
-	{
-		drawBar "BLUFULL", "BLUEMPTY", Ammo ActionCD, horizontal, Interpolate(20)|reverse, -210, -20;
-	}*/
 }
 //New Alt-Hud courtesy of BathySalts
 resolution 640, 400;
@@ -332,22 +249,22 @@ statusbar normal, forcescaled
 			drawnumber 3, BIGFONT, Green, Ammo WDriveCD, 388, 342;
 		}
 	}
-	InInventory TravelJumpThrust
+	InInventory TravelJetLeap
 	{
-		InInventory JThrustCD, 1
+		InInventory JLeapCD, 1
 		{
 			drawimage "ENUKC0", 416, 360;
-			drawnumber 3, BIGFONT, Green, Ammo JThrustCD, 388, 342;
+			drawnumber 3, BIGFONT, Green, Ammo JLeapCD, 388, 342;
 		}
 	}
 
-	InInventory TravelHyperdrive
+	InInventory TravelHyperSprint
 	{
 		//Added By Bathy
-		InInventory HDriveCD, 1
+		InInventory HSprintCD, 1
 		{
 			drawimage "ENUKC0", 416, 360;
-			drawnumber 3, BIGFONT, Green, Ammo HDriveCD, 388, 342;
+			drawnumber 3, BIGFONT, Green, Ammo HSprintCD, 388, 342;
 		}
 	}
 
@@ -380,7 +297,7 @@ statusbar normal, forcescaled
 		}
 	}
 
-	InInventory ActionAutoDrone
+	InInventory ActionAutoLaser
 	{
 		//Added By Bathy
 		InInventory ActionCD
@@ -390,7 +307,7 @@ statusbar normal, forcescaled
 		}
 	}
 
-	InInventory ActionSonicShockwave
+	InInventory ActionShockSlam
 	{
 		//Added By Bathy
 		InInventory ActionCD

@@ -28,23 +28,15 @@ ACTOR SparkCannon : Weapon replaces Chaingun
 		SPKP A 1 bright A_SetAngle(angle + 1.0)
 		Loop
 	Ready:
-		SPKR AABBCC 1 A_WeaponReady 
+		SPKR A 1 A_WeaponReady 
 		Loop
 	Deselect:
 		TNT1 AA 0 A_Lower
 		SPKR A 1 A_Lower
-		TNT1 AA 0 A_Lower
-		SPKR B 1 A_Lower
-		TNT1 AA 0 A_Lower
-		SPKR C 1 A_Lower
 		Loop
 	Select:
 		TNT1 AA 0 A_Raise
 		SPKR A 1 A_Raise
-		TNT1 AA 0 A_Raise
-		SPKR B 1 A_Raise
-		TNT1 AA 0 A_Raise
-		SPKR C 1 A_Raise
 		Loop
 	Fire:
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
@@ -90,7 +82,7 @@ ACTOR SparkCannonExhaustSpawner
 	{
     Spawn:
         TNT1 A 0 
-		TNT1 AAAA 0 A_CustomMissile("SparkCannonExhaust", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AA 0 A_CustomMissile("SparkCannonExhaust", 0, 0, random (0, 360), 2, random (0, 360))
         Stop
 	}
 }

@@ -1,7 +1,0 @@
-The weapon + pickup sprites were editted by hiimaura. Found on Realm667 as Stunner Rifle
-
-The red spark sprite was taken from Heretic 2
-
-The ZAP and SZP sprites were taken from Strife and recolored by hiimaura.
-
-SPBA sprites taken from Hexen and recolored by hiimaura.

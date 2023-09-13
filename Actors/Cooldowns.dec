@@ -67,17 +67,12 @@ Actor WDriveCD : Ammo
 	+SERVERNETID
 	Inventory.MaxAmount 140
 }
-Actor JThrustCD : Ammo
+Actor JLeapCD : Ammo
 {
 	+SERVERNETID
 	Inventory.MaxAmount 140
 }
-Actor HDriveCD : Ammo
-{
-	+SERVERNETID
-	Inventory.MaxAmount 210
-}
-Actor SOrbCD : Ammo
+Actor HSprintCD : Ammo
 {
 	+SERVERNETID
 	Inventory.MaxAmount 210

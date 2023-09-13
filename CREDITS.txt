@@ -1,4 +1,4 @@
-version alphatius-qz-032 (7/4/2023)
+version alphatius-qz-rc1 (09/12/2023)
 
 CONCEPT
 Alphatius was only an idea in late 2016, during a dark time in my life where I was placed in a pseudo-boarding school
@@ -26,7 +26,7 @@ SPECIAL THANKS
 -Thanks to me, for making this. I honestly couldn't of done it without you. Hehe...
 
 SPECIAL THANKS TO THESE BETA TESTERS / FREQUENT PLAYERS
--Aku (a.k.a CUNT)
+-Aku
 -Aliens
 -Armorum Adamantium
 -Asriel
@@ -39,6 +39,7 @@ SPECIAL THANKS TO THESE BETA TESTERS / FREQUENT PLAYERS
 -Kaapeli47
 -Kaminsky
 -liljeck
+-Ludwig
 -Marcaek
 -Seidolon
 -Xenaero
@@ -46,112 +47,163 @@ SPECIAL THANKS TO THESE BETA TESTERS / FREQUENT PLAYERS
 
 BACK TO OUR REGULARLY SCHEDULED CREDITS
 
+////
 CODE
+////
+
 Some of the QZandronum code (specifically the unlagged code) was written by geNia to help me out.
 Damage number code was inspired by StrikerMan780's Damage Numbers mod.
 Alternate HUD was made courtesy of BathySalts.
 All other code has been written by auratoostronk.
 
+//////
 SOUNDS
+//////
 
+Weapons:
 C14 Fire: Taken from All Out War by jdagenet https://zandronum.com/forum/viewtopic.php?t=8320
+C14 Fire Hit: (?) Taken from All Out War by jdagenet https://zandronum.com/forum/viewtopic.php?t=8320
 C14 Gas Hiss: Taken from this Youtube Video:  https://www.youtube.com/watch?v=WNveatekvd0 
 C14 Grenade Hit: Ripped from Quake 3 Arena (Grenade Launcher)
 Tesla SMG: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ 
 Tesla SMG Alt-Fire: Found a taser sound on Youtube somewhere. Apparently I did not document this, but I think I just found it: https://www.youtube.com/watch?v=8yZpCPtmYJI
+Tesla SMG Alt-Fire Hit: Ripped from Call of Duty Zombies Wunderwaffe (Black Ops 1)
 Particle Splitter Fire/Alt-Fire: Ripped from Call of Duty Zombies Thundergun (Black Ops 1)
 Particle Splitter Pump: Came from this video https://www.youtube.com/watch?v=B2Gz-A-XO8w which apparently was made private since I documented it. What can ya do?
 Photon Carbine Fire: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ 
 Spark Cannon Fire: Came from a mod for XCom called Xcom Files. Link here: https://openxcom.org/forum/index.php?topic=4595.0
 Spark Cannon Alt-Fire: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ 
+Spark Cannon Hiss: Taken from this Youtube Video:  https://www.youtube.com/watch?v=WNveatekvd0 and modified.
 Beam Rifle Fire: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ 
 Beam Rifle Alt-Fire: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ 
+Flamespitter: Ripped from a game called Starbound.
 
-Grenade Launch: Used for Photon Carbine/C14. from M79 on Realm667. Credits go to "valve"
-Explosion Sounds: Far Explode taken from Brutal Doom. Closer ones taken from Particle Fire Enhancer mod https://forum.zdoom.org/viewtopic.php?f=19&t=28547
+Grenade Launch: Used for Photon Carbine/C14/Flamespitter. from M79 on Realm667. Credits go to "valve"
+FAREXPL: taken from Brutal Doom.
+MSLEXPL Sounds: Closer ones taken from Particle Fire Enhancer mod https://forum.zdoom.org/viewtopic.php?f=19&t=28547
+EXPLOS: Ripped from Battlefield 4. Used for Sonic Shockwave.
 
+Abilities:
 Thruster Boots: Came from Project MSX by MagSigmaX  https://forum.zdoom.org/viewtopic.php?t=25836
-Rocket Jump: Ripped from League of Legends's Lux Ultimate.
+Jet Leap: Ripped from League of Legends's Lux Ultimate.
 Warp Drive: Ripped from League of Legends's Ezreal.
-Hyperdrive: Ripped from Call of Duty Zombies Thundergun (Black Ops 1).
-
+Swiftfoot Shoes: Ripped from Call of Duty Zombies Thundergun (Black Ops 1).
 Regen Zone: Activation sound and loop sound ripped from an old MMO called City of Heroes. If you didn't know, the game is back ;)
 Power Brace: Activation sound and hit sound ripped from an old MMO called City of Heroes. If you didn't know, the game is back ;)
 Auto Laser: Sound Taken from Terminator on Realm667.
-Sonic Shockwave: Charge sound unknown source, but modified by aura. Probably from the BFG9000 from Doom 3 or Doom 4 (unsure which). Explosion sound taken from Battlefield 4
-Ricochet Burst: Fire sound from BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ . Bounce sounds taken from an old Rachet and Clank game.
+Sonic Shockwave Charge: Charge sound unknown source, but modified by aura. Probably from the BFG9000 from Doom 3 or Doom 4 (unsure which). 
+Sonic Shockwave Explosion: Explosion sound taken from Battlefield 4
+Ricochet Burst Fire: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ .
+Ricochet Burst Bounce: Taken from an old Rachet and Clank game.
 
-Out of Energy: Sound taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
+Menu:
+Up/Down/Select: from System Shock 2
+The others: from Metal Gear Solid 5
+
+Environment:
 Jet Flybys: taken from a youtube video https://www.youtube.com/watch?v=L0G4Hwi88cc
 Water Flow: Recorded and editted by auratoostronk. Unused.
 Jump Pad: Ripped from Diabotical
 Teleporter Ambience: Ripped from Diabotical.
-Travel Ready: Made by auratoostronk using Ableton.
+
+Player:
+Player sounds taken from FreeDoom.
+
+UI/Other:
+Out of Energy: Sound taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
+Travel Ready: Made by auratoostronk using Ableton. Unused.
 Alt Ready: See Particle Splitter pump sound, editted by auratoostronk.
 Weapon Ready sound: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ Modified by aura.
 Armor Pickup Sounds: A combonation of Diabotical's Armor sounds mixed with the Thundergun sounds from Call Of Duty Black Ops (?)
+Item Pickup: Taken from Quake Champions: Doom Edition. https://qzandronum.com/qcde/
+Weapon Up: Recorded/created by auratoostronk.
+Teleport: BOOM Library Cyber Weapon FX. https://www.boomlibrary.com/sound-effects/cyber-weapons/ .
 
+///////
 SPRITES
+///////
+
+Weapons:
 NOTE: Weapon Sprites are unused unless in software mode.
-C14 Weapon: Taken from Realm667.com under Pulse Rifle. Credits go to "id software", "JoeyTD", and "ShadesMaster"
+All weapon held/pickup sprites made by auratoostronk.
 C14 Fire Projectile: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
 C14 Grenade: Taken from Ben2k9's Cyberbaron from Realm667.com . Credits go to him and id software.
-C14 Gamma Beam Projectile: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
 C14 Gas Sprites: Taken from Sgt. Mark IV's Brutal Doom, and recolored by Seidolon.
-Photon Carbine Weapon: Made by Craneo. Recolored by auratoostronk.
 Photon Carbine Projectile: Taken from Heretic 2 and recolored by auratoostronk
 Photon Carbine Alt Fires (including trails): Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836 Recolored by auratoostronk.
-Tesla SMG Weapon: Made by TypicalSF. auratoostronk made some edits to the lightning effects. Credits also go to Hexen as a base resource for the lightning effects.
 Tesla SMG Projectiles: Taken from Strife. Recolored by auratoostronk.
-Particle Splitter Weapon: Taken from Realm667.com under UAC Plasmatic Rifle, recolored by auratoostronk. Credits for original sprite goes to Fuzzyblade, id software, Freedoom Team, and Infirnex
-Particle Splitter Pickup: Made from scratch by auratoostronk.
 Particle Splitter Projectiles: Taken from Heretic 2 and recolored by auratoostronk.
-Particle Splitter Slug: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836 Recolored by auratoostronk. Unused
-Spark Cannon Weapon: Taken from Realm667.com as Stunner Rifle. Recolored by auratoostronk.
 Spark Cannon Beam Particles: Taken from Heretic 2.
 Spark Cannon Puff: Taken from Strife. Recolored by auratoostronk.
-Beam Rifle: Taken from Realm667.com as Karasawa.
+Spark Cannon Alt-Fire Projectiles: Taken from Hexen and recolored by auratoostronk.
 Beam Rifle Particles: Taken from Heretic 2. Recolored by auratoostronk.
 Beam Rifle Puff: Taken from Strife. Recolored by auratoostronk.
+Flamespitter Flames: Taken from Realm667 Incubus (Credit: Banjo Software (HacX), Daniel)
+Flamespitter Alt-Fire: Taken from Hexen (Credit: Raven Software)
 
+Effects:
 Explosions: Taken from Project MSX by MagSigmaX https://forum.zdoom.org/viewtopic.php?t=25836
 Teleport Fog: Taken from Sgt Mark IV's Brutal Doom
+
+Abilities:
 Regeneration Zone: Taken from Hexen, recolored by auratoostronk.
 Power Brace: Taken from Hexen, recolored by auratoostronk. This is NOT refering to the 3D model. See 3D model section
 Auto Laser: Taken from Heretic 2. This is NOT refering to the 3D model. See 3D model section
 Sonic Shockwave: Taken from Strife. Recolored by auratoostronk.
 Sonic Shockwave Dots: Taken from Heretic 2. Recolored by auratoostronk.
+Ricochet Disc: Projectile Sprite made by zrrion the Insect, id software, and recolored by hiimaura. Projecitle explosion sprites taken from Realm667 under BFG2074. Credits go to Zrrion the Insect, id Software, and Gothic. Editted by auratoostronk. 
 
+Pickups:
 Armor Shards: Taken from Project Brutality. Recolored by auratoostronk.
-Nano Armor: Taken from Doom 2. recolored by auratoostronk.
+Nano Armor: Bathysalt's edit of Ghastly_dragon's Tech Armor sprite From Realm667. Uses parts of https://www.doomworld.com/forum/post/2079595 by Gifty and XLightningStormL
 Nano Plate: Made by auratoostronk.
 Travel Sphere: Taken from Realm667 under Deflection Sphere. Recolored by auratoostronk. BathySalts also added the Boot sprites to the sphere.
 Powerup Sphere: Taken from Realm667 under Deflection Sphere. Editted by auratoostronk.
+Large Health: Taken from Realm667 under Medical Backpack. Credits go to id software, BloodyAcid.
+Small Health: Taken from Realm667 under Stim Bonus. Credits go to id software, BloodyAcid. Editted by auratoostronk.
 
+Effects:
 Heal Effects: Made by auratoostronk.
-Blood Sprites: Taken from Nashgore.pk3
-Dirt Particles: Taken from Sgt Mark IV's Brutal Doom.
 3D Object Placeholder: Taken from Ozymandias's GORE. 
-Damage Numbers: StrikerMan780s Damage Numbers mod used this font.
+Damage Numbers: Jimmy's Status Report SMALL font based on the Doom STBAR. Found on Realm667. Cropped/recolored by auratoostronk.
 
+HUD Sprites:
+Action Charge: by NMN : https://forum.zdoom.org/viewtopic.php?f=37&t=69433
+Magazine: id software (beta version of doom)
+Travel Cooldown: Doom RL
+
+Player Sprites:
+Taken from Realm667. Credits go to Rougue, id, Collin Portratz, RBCSkins, and edit credits go to zirron the insect, TheMightyHeracross, Xim
+
+////////
 GRAPHICS
+////////
 
-Title Pictures: Taken and editted by auratoostronk.
-Intermisison picture: Taken and editted by auratoostronk.
-Help Pic: Made by auratoostronk using id software as base sprite
-End Tutorial pic: Made by auratoostronk using id software as base sprite
 Health bar: Taken from Wrath of Chronos. Editted by auratoostronk.
 Energy Bars: Taken from Wrath of Chronos. Editted by auratoostronk.
 Armor bar: Taken from Wrath of Chronos. Editted by auratoostronk.
+Loadout/HUD Ability Icons: Created by auratoostronk
+Borders: Taken from Freedoom.
+Text Graphics: Uses DBIGFONT Jimmy's Status Report font based on the Doom STBAR. Found on Realm667. Cropped, recolored, and stitched together by auratoosronk.
+Title Pictures: Taken and editted by auratoostronk.
+Intermisison picture: Taken and editted by auratoostronk.
+Help Pic: Made by auratoostronk.
+End Tutorial pic: Made by auratoostronk using id software as base sprite
+Pick Graphic: Made by auratoostronk.
 DBIGFONT Jimmy's Status Report font based on the Doom STBAR. Found on Realm667
 SMALLFNT Jimmy's Status Report SMALL font based on the Doom STBAR. Found on Realm667
-Icons: Created by auratoostronk.
 
+
+////
 MAPS
+////
 
 All maps made by aura.
 
-MUSIC:
+/////
+MUSIC
+/////
+
 SONIC1-SONIC4: Ripped from Quake 3 Arena
 QUAKE3_1 to QUAKE3_4: Ripped from Quake 3 Arena
 INTERMUSL: Ripped from Quake 3 Arena
@@ -165,18 +217,21 @@ Subterfuge: By RandVGM
 RandVGM's soundcloud can be found here: https://soundcloud.com/randvgm
 COAL: from Linkin Park's Hybrid Theory 20th anniversary disc
 
-BRIGHTMAPS:
-Note: Weapon brightmaps are unused unless in software mode.
-All brightmaps used the original sprites as a base, and were modified by auratoostronk to become the brightmaps.
+/////////
+3D MODELS
+/////////
 
-3D MODELS:
 Weapons: All weapon voxels were made by auratoostronk.
 Spaceship: Taken from a mod called Stronghold on the edge of Chaos
 Power Brace: Created by auratoostronk.
 Auto Laser: Taken from SgtMarkIV's Brutal Doom, recolored by auratoostronk.
 
-TEXTURES:
+////////
+TEXTURES
+////////
+
 Textures are seperated into separate folders based on source. i.e. textures in the UDMX folder came from a mod called UDMX.
+These sources include CGTextures, id software edits, Freedoom, Gothic textures, Hexen, Quake 1, Quake 2, Quake 3, and UDMX. 
 Software skies were taken from various sources.
 Skyboxes were taken from this cool website under the name "Kothic Skies" https://www.quaddicted.com/webarchive/kell.quaddicted.com/skyboxes.html
-Please note that many of these textures did not come with credits, so if you see your textures in here and you want credit please see the contact info in the README.txt so I can give you proper credits.
+

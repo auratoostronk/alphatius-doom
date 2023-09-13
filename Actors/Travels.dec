@@ -1,4 +1,4 @@
-Actor HyperdriveSpeed : Inventory
+Actor HyperSprintSpeed : Inventory
 {
 	+SERVERNETID
 	Inventory.MaxAmount 1
@@ -56,7 +56,7 @@ ACTOR ThrusterBootsSmokeTics : Inventory
 	+SERVERNETID
 	Inventory.MaxAmount 35
 }
-ACTOR JumpThrustSmokeSpawner
+ACTOR JetLeapSmokeSpawner
 {
     +NOINTERACTION
 	+CLIENTSIDEONLY
@@ -64,13 +64,13 @@ ACTOR JumpThrustSmokeSpawner
 	States
 	{
 		Spawn:
-		TNT1 AAAAAAAAAAAAAAAA 0 nodelay A_SpawnItemEX("JumpThrustSmoke", frandom(-0.5, 0.5),frandom(-0.5, 0.5),frandom(-0.5, 0.5),frandom(-2.0, 2.0),frandom(-2.0, 2.0),frandom(-2.0, 2.0)) 
+		TNT1 AAAAAAAAAAAAAAAA 0 nodelay A_SpawnItemEX("JetLeapSmoke", frandom(-0.5, 0.5),frandom(-0.5, 0.5),frandom(-0.5, 0.5),frandom(-2.0, 2.0),frandom(-2.0, 2.0),frandom(-2.0, 2.0)) 
 		TNT1 A 1
 		stop
 	}
 }
 
-ACTOR JumpThrustSmoke
+ACTOR JetLeapSmoke
 {
 	Alpha 0.8
 	RenderStyle Add
@@ -90,6 +90,7 @@ ACTOR JumpThrustSmoke
 			
 	}
 }
+/*
 ACTOR HyperdriveWallJumpFX
 {
     +NOINTERACTION
@@ -122,7 +123,7 @@ ACTOR HyperdriveWallJumpSmoke
 		stop
 			
 	}
-}
+}*//*
 ACTOR HyperdriveFootstepFX
 {
     +NOINTERACTION
@@ -131,12 +132,12 @@ ACTOR HyperdriveFootstepFX
 	States
 	{
 		Spawn:
-		TNT1 AAAAAAAA 0 nodelay A_SpawnItemEX("HyperdriveFootstepSmoke", frandom(-0.5, 0.5),frandom(-0.5, 0.5),frandom(-0.5, 0.5),frandom(-2.0, 2.0),frandom(-2.0, 2.0),frandom(-2.0, 2.0)) 
+		TNT1 AAAAAAAA 0 nodelay A_SpawnItemEX("HyperSprintFootstepSmoke", frandom(-0.5, 0.5),frandom(-0.5, 0.5),frandom(-0.5, 0.5),frandom(-2.0, 2.0),frandom(-2.0, 2.0),frandom(-2.0, 2.0)) 
 		TNT1 A 1
 		stop
 	}
 }
-ACTOR HyperdriveFootstepSmoke
+ACTOR HyperSprintFootstepSmoke
 {
 	Alpha 0.8
 	RenderStyle Add
@@ -155,31 +156,4 @@ ACTOR HyperdriveFootstepSmoke
 		stop
 			
 	}
-}
-Actor ShifterOrb 
-{
-	RenderStyle add
-	Speed 64
-	Radius 12
-	Height 24
-	Damage (0)  
-	Scale 1.5
-	Projectile
-	-SOLID
-	+NODAMAGE
-	+CANPASS
-	+THRUACTORS
-	+BRIGHT
-	-SHOOTABLE
-	Decal PlasmaScorchLower
-	States
-	{
-	Spawn:
-		FORB ABC 2
-		loop
-	Death:
-		FORB ABC 2 A_FadeOut(0.05)
-		loop
-		
-	}
-}
+}*/

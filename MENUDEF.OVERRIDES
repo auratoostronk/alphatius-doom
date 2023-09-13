@@ -37,8 +37,8 @@ OptionMenu "OptionsMenu"
 	Submenu "Interface",		"HUDOptions"
 	Submenu "Profile",			"PlayerMenu"
 	Submenu "Multiplayer",		"ZA_MultiplayerOptions"
-	//Submenu "Gameplay",			"GameplayOptions"
-	//Submenu "Compat",			"CompatibilityOptions"
+	StaticText " "
+	Submenu "Gameplay",			"GameplayOptions"
 	StaticText " "
 	SafeCommand "Reset to defaults",	"reset2defaults"
 	SafeCommand	"Reset to last saved",	"reset2saved"
@@ -349,4 +349,46 @@ OptionValue ZA_Gamemode
 	8, "Team Last Man Standing"
 	12, "Capture The Flag"
 	15, "Domination"
+}
+
+/*
+server bool alph_noactions = false;
+server bool alph_notravels = false;
+server bool alph_nopassives = false;
+server bool alph_startcarbine = false;
+server bool alph_healthregen = false;
+server bool alph_nopowerups = false;
+*/
+OptionMenu GameplayOptions
+{
+	Indent 153
+	Title 	"GAMEPLAY OPTIONS"
+	StaticText "General Settings", 1
+	Option "Weapons stay after pickup",		"sv_weaponstay", "YesNo"
+	Option "Spawn far away",				"sv_spawnfarthest", "YesNo"
+	Option "Force respawn",					"sv_forcerespawn", "YesNo"
+	Option "Spawn Powerups",				"alph_nopowerups", "NoYes"
+	Option "Player-on-Player collision",	"sv_unblockplayers", "NoYes"
+	StaticText " "
+	StaticText "Teamgame Settings", 1
+	Slider	"Team damage scalar",			"teamdamage", 0, 1, 0.05
+	Option "Unblock allies",				"sv_unblockallies", "YesNo"
+	Option "CTF Instant flag return", 		"sv_instantreturn", "YesNo"
+	Option "Server picks teams", 			"sv_noteamselect", "YesNo"
+	Option "No team switching",				"sv_noteamswitch", "YesNo"
+	Option "Keep teams between levels", 	"sv_keepteams", "YesNo"
+	StaticText " "
+	StaticText "Fun Settings", 1
+	Option "Infinite ammo",					"sv_infiniteammo", "YesNo"
+	Option "Drop weapon on death",			"sv_weapondrop", "YesNo"
+	Option "Spawn health pickups",			"sv_nohealth", "NoYes"
+	Option "Spawn armor pickups",			"sv_noarmor", "NoYes"
+	Option "Force Photon Carbine spawns",	"alph_startcarbine", "YesNo"
+	Option "Disable Action Abilities",		"alph_noactions", "YesNo"
+	Option "Disable Travel Abilities",		"alph_notravels", "YesNo"
+	Option "Disable Passive Abilities",		"alph_nopassives", "YesNo"
+	Option "Force random Loadouts",			"alph_forcerandom", "YesNo"
+	StaticText " "
+	
+	Class "GameplayMenu"
 }

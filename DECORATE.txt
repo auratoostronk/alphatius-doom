@@ -26,8 +26,8 @@
 #include Actors/Actions/DecoyHologram.dec
 #include Actors/Actions/PowerBrace.dec
 #include Actors/Actions/RegenZone.dec
-#include Actors/Actions/AutoDrone.dec
-#include Actors/Actions/SonicShockwave.dec
+#include Actors/Actions/AutoLaser.dec
+#include Actors/Actions/ShockSlam.dec
 #include Actors/Actions/RicochetDisc.dec
 
 

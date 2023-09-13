@@ -1,2 +1,0 @@
-Rocket Firing sounds came from a BOOM sound library
-Detonation sound (unused) taken from Call of Duty: Black Ops Zombies (thundergun)

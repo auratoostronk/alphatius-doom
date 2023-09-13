@@ -23,21 +23,23 @@ points =
 	"Garage" = {54}
 }
 //Waste
+/*
 [ALPHDM08]
 points =
 {
 	"Outdoors" = {187},
 	"Dump Room" = {188},
 	"Storage" = {189}
-}
+}*/
 //Sinkhole
+/*
 [ALPHDM09]
 points =
 {
 	"Sinkhole" = {117},
 	"Crate Room" = {50},
 	"Cave" = {54}
-}
+}*/
 //Andesite
 [ALPHDM10]
 points =

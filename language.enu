@@ -11,6 +11,7 @@ OB_SLIME = "Nukage > %o";
 OB_LAVA = "Lava > %o";
 OB_BARREL = "Explosive Barrel > %o";
 OB_KILLEDSELF = "Suicide > %o";
+OB_MPTELEFRAG = "%k > Telefrag > %o";
 
 OB_DEFAULT = "Unknown > %o";
 OB_MPDEFAULT = "%k > Unknown > %o";

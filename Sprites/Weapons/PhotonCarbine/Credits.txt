@@ -1,3 +1,0 @@
-Weapon Sprite: Craneo, aura(edits)
-Main Projectile Sprite: Heretic 2, aura(edits)
-Alt Projectile Sprites: MadSigmaX, aura(edits)

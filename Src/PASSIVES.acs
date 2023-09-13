@@ -72,7 +72,7 @@ Script "SpeedDemonTimer" (void)
 		{
 			TakeInventory("WDriveCD", 1);
 			TakeInventory("TBootsCD", 1);
-			TakeInventory("HDriveCD", 1);
+			TakeInventory("SShoesCD", 1);
 			TakeInventory("JThrustCD", 1);
 		}
 		delay(5);

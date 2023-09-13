@@ -25,7 +25,6 @@ ParticleSplitter/Pump1		PSGPUMP1
 ParticleSplitter/Pump2		PSGPUMP2
 
 BeamRifle/Fire			BEAMFIRE
-BeamRifle/AltCharge 	C14CHARG
 BeamRifle/AltFire		BEAMALTF
 BeamRifle/FireStop		NOTHING1
 
@@ -66,12 +65,11 @@ Pickups/NanoShard 			ARMORSML
 
 //TRAVELS
 Travel/ThrusterBoots 		JMPBOOST
-Travel/JumpThrust 			RCKTJUMP
+Travel/JetLeap	 			RCKTJUMP
 Travel/WarpStart			WARPDRIV
 Travel/WarpDone				WARPDONE
-Travel/HyperdriveActivate	HYPERDRV
-Travel/HyperdriveStart 		HYPERST
-Travel/HyperdriveEnd	 	HYPEREND
+Travel/HypersprintStart 	HYPERST
+Travel/HypersprintEnd		 HYPEREND
 
 //ACTIONS
 DBOUNCE1 DBOUNCE1
@@ -86,7 +84,7 @@ Actions/PowerBraceOff		BRACEOFF
 Actions/EnergyZoneStart		DSCRNACT
 Actions/EnergyZoneLoop		DSCRNLOP
 Actions/AutoLaser			AUTOFIRE
-Actions/SonicShockwave		SONICSWA
+Actions/ShockSlam			SHOCKSLM
 Actions/RicochetDiscFire 	DISCFIRE
 $random Actions/RicochetDiscBounce { DBOUNCE1 DBOUNCE2 DBOUNCE3 }
 

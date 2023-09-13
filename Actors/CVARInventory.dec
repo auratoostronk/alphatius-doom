@@ -6,16 +6,13 @@
 Actor TravelThrusterBoots : Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
-Actor TravelJumpThrust : Inventory { 
+Actor TravelJetLeap: Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
 Actor TravelWarpDrive : Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
-Actor TravelHyperdrive : Inventory { 
-	+SERVERNETID 
-	Inventory.MaxAmount 1 }
-Actor TravelShifterOrb : Inventory { 
+Actor TravelHyperSprint: Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
 	
@@ -44,7 +41,7 @@ Actor PassiveAdrenalineRush : Inventory {
 Actor ActionRegenZone : Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
-Actor ActionSonicShockwave : Inventory { 
+Actor ActionShockSlam : Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
 Actor ActionPowerBrace : Inventory { 
@@ -53,7 +50,7 @@ Actor ActionPowerBrace : Inventory {
 Actor ActionDecoyHologram : Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
-Actor ActionAutoDrone : Inventory { 
+Actor ActionAutoLaser : Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
 Actor ActionRicochetDisc : Inventory { 
