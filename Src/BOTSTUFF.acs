@@ -7,8 +7,8 @@
 #import "PASSIVES.acs"
 
 #define BOT_ACTIONFREQ 0.1
-#define BOT_COUNT 11
-str BOT_NAMES[BOT_COUNT] = { "liljeck", "geNia", "Iko", "Kaminsky", "hiimaura", "[CR]yler", "[CR]abio", "ludwig", "Xen", "Kaapeli47", "[NE]Blushberry" };
+//#define BOT_COUNT 11
+//str BOT_NAMES[BOT_COUNT] = { "liljeck", "geNia", "Iko", "Kaminsky", "hiimaura", "[CR]yler", "[CR]abio", "ludwig", "Xen", "Kaapeli47", "[NE]Blushberry" };
 
 function int VLength3d(int x, int y, int z)
 {
@@ -237,7 +237,7 @@ Script "BotChangeToAltWeapon" (void)
 		SetWeapon("BeamRifleAlt");
 	}
 }
-
+/*
 //AUTOBOTS CLONE (EXCEPT DONE DIFFERENTLY, AND CLEANER TO LOOK AT)
 Script "FillbotOpen" OPEN
 {
@@ -245,7 +245,11 @@ Script "FillbotOpen" OPEN
 	{
 		terminate;
 	}
-	if(GetCVAR("alph_autobots") == false)
+	if(GetCVAR("alph_botcount") == 0)
+	{
+		terminate;
+	}
+	if(GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
 	{
 		terminate;
 	}
@@ -259,7 +263,7 @@ Script "FillbotOpen" OPEN
 		}
 		if(cvar > GetCVAR("sv_maxclients"))
 		{
-			cvar = GetCVAR("sv_maxclients");
+			cvar = GetCVAR("sv_maxclients");	
 		}
 		if(players < cvar)
 		{
@@ -272,4 +276,4 @@ Script "FillbotOpen" OPEN
 		delay(35);
 		restart;
 	}
-}
+}*/

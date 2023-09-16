@@ -88,11 +88,7 @@ function void setAction(int a)
 }
 function void setStartWeapon(str sw)
 {
-	if(GetLevelInfo(LEVELINFO_LEVELNUM) == TUTORIAL_LEVELNUM)
-	{
-		sw = "PhotonCarbine";
-	}
-	else if(sw == "Random" || forcerandom == true)
+	if(sw == "Random" || forcerandom == true)
 	{
 		sw = WEAP_CLASSNAMES[random(0, NUM_WEAPS-1)];
 	}

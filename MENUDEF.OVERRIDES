@@ -324,6 +324,8 @@ OptionMenu ZA_SkirmishMenu
 	Option		"Level",				"menu_skirmishlevel",			"ZA_Levels"
 	Option		"Gamemode",			"menu_skirmishgamemode",		"ZA_Gamemode"
 	StaticText ""
+	//Slider	"Bot count",					"alph_botcount", 0, 8, 0, 0
+	//StaticText ""
 	SubMenu 	"Game Setup", "GamemodeConfig"
 	StaticText ""
 	Command		"Start Game!",			"menu_startskirmish"
@@ -364,6 +366,7 @@ OptionMenu GameplayOptions
 	Indent 153
 	Title 	"GAMEPLAY OPTIONS"
 	StaticText "General Settings", 1
+	//Slider	"Bot count",					"alph_botcount", 0, 8, 0, 0
 	Option "Weapons stay after pickup",		"sv_weaponstay", "YesNo"
 	Option "Spawn far away",				"sv_spawnfarthest", "YesNo"
 	Option "Force respawn",					"sv_forcerespawn", "YesNo"

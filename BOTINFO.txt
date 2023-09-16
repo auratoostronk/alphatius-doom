@@ -1,3 +1,5 @@
+ClearBots
+
 // -2 = VERYPOOR
 // -1 = POOR
 // 0 = LOW

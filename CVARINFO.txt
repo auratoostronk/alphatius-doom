@@ -24,7 +24,5 @@ server bool alph_startcarbine = false;
 server bool alph_nopowerups = false;
 //Forces players to spawn with a random loadout
 server bool alph_forcerandom = false;
-//Enables alph_botcount.
-server bool alph_autobots = false;
 //Fills the server with X bots, where X is alph_bots - player count.
-server int alph_botcount = 0;
+//server int alph_botcount = 6;

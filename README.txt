@@ -63,8 +63,6 @@ alph_notravels - Settting this to TRUE in a config file or on the command line D
 alph_nopassives - Settting this to TRUE in a config file or on the command line DISABLES Passive Abilities
 alph_startcarbine - Settting this to TRUE in a config file or on the command line forces players to spawn with the Photon Carbine.
 alph_nopowerups - Settting this to TRUE in a config file or on the command line DISABLES Powerups from spawning
-alph_autobots - Setting this to TRUE will enable alph_botcount to spawn bots.
-alph_botcount - Setting this to A NUMBER when alph_autobots is TRUE will fill the server with bots until the amount of players and bots combined equals said number. Useful for keeping servers filled with bots when players are absent.
 
 DISCORD SERVER:
 Join our discord for special events and updates!
