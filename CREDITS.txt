@@ -1,4 +1,4 @@
-version alphatius-qz-rc1 (09/12/2023)
+version alphatius-qz-release (9/24/23)
 
 CONCEPT
 Alphatius was only an idea in late 2016, during a dark time in my life where I was placed in a pseudo-boarding school
@@ -7,9 +7,9 @@ what I wanted to do when I came home. One of these things I thought about was a 
 initial concept took inspiration from a few different mods and video games. I thought of weapon ideas,
 action abilites, travel abilites, maps, and drew all this stuff out on paper. I started putting it together the moment
 I returned home in the Summer of 2017. Although many of the original concepts for the mod were scrapped (like reloading, some weapon ideas, etc.),
-Alphatius evolved into something unique and special. While it still has work to do, it became one of the first creations
+Alphatius evolved into something unique and special. After many years of work it became one of the first creations
 that I've felt sufficiently proud of myself for making. It helped me regain confidence in myself, and in my game design skills.
-Going nearly six years strong, developing Alphatius has been my favorite passion, (alongside playing it of course),
+Going over six years strong, developing Alphatius has been my favorite passion, (alongside playing it of course),
 and something many people also enjoy. 
 	-auratoostronk
 
@@ -188,6 +188,7 @@ Text Graphics: Uses DBIGFONT Jimmy's Status Report font based on the Doom STBAR.
 Title Pictures: Taken and editted by auratoostronk.
 Intermisison picture: Taken and editted by auratoostronk.
 Help Pic: Made by auratoostronk.
+Credits Pic: Made by auratoostronk.
 End Tutorial pic: Made by auratoostronk using id software as base sprite
 Pick Graphic: Made by auratoostronk.
 DBIGFONT Jimmy's Status Report font based on the Doom STBAR. Found on Realm667

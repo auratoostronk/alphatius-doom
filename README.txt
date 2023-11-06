@@ -1,4 +1,4 @@
-File updated for alphatius-qz-rc1 (09/12/2023)
+File updated for alphatius-qz-release (9/24/2023)
 
   ___   _     ______ _   _   ___ _____ _____ _   _ _____ 
  / _ \ | |    | ___ \ | | | / _ \_   _|_   _| | | /  ___|

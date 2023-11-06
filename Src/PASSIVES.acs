@@ -4,7 +4,7 @@
 #import "ALPHLIB.acs"
 #import "PLAYER.acs"
 
-#libdefine ARUSH_KILLSPD 0.1
+#libdefine ARUSH_KILLSPD 0.2
 
 //#define ADRUSH_DURATION 70.0
 //#define ADRUSH_HEAL 20

@@ -1,6 +1,6 @@
 Actor PowerBrace : PowerProtection
 {
-	DamageFactor "Normal", 0.5
+	DamageFactor "Normal", 0.25
 	Powerup.Duration 350
 	Powerup.Color "00 40 00"
 	//SeeSound "Actions/PowerBraceOn"
