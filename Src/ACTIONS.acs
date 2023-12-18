@@ -251,8 +251,9 @@ Script "ShockSlam" (void)
 		GiveInventory("ActionCD", GetAmmoCapacity("MediumActionCharge"));
 		Thing_Stop(0);
 		SetPlayerProperty(0, 1, PROP_TOTALLYFROZEN);
+		GiveInventory("ShockSlamShield", 1);
 		SpawnSpotFacingForced("ShockSlamSpawner", 0, 0);
-		for(int i = 0; i < 8; i++)
+		for(int i = 0; i < 16; i++)
 		{
 			Thing_Stop(0);
 			delay(1);
@@ -261,6 +262,7 @@ Script "ShockSlam" (void)
 		SpawnProjectile(0, "ShockSlamMissile", 0, 0, 0, 0, 0);
 		//Need this so people don't abuse the damage buff from Assassin's Tactics while not firing their weapon.
 		//ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
+		TakeInventory("ShockSlamShield", 1);
 		SetPlayerProperty(0, 0, PROP_TOTALLYFROZEN);
 	}
 	else

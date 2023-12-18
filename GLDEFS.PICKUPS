@@ -19,7 +19,15 @@ object ExtraTravelCharge
 {
 	frame TCHG { light REDORANGELIGHT }
 }
-object AlphatiusPowerup
+object SpareAmmoPack
+{
+	frame ENRG { light BLUEAMMOLIGHT }
+}
+object PowerCell
 {
 	frame POWR { light REDORANGELIGHT }
+}
+object AlphatiusPowerup
+{
+	frame CRON { light REDORANGELIGHT }
 }

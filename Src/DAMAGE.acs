@@ -28,20 +28,21 @@ Script "AlphatiusDamageOpen" OPEN
 	}
 	
 }*/
-/*Script "AlphatiusHealthRegen" ENTER
+Script "AlphatiusHealthRegen" ENTER
 {
 	while(true)
 	{
 		delay(4);
-		if(GetCVAR("alph_nohealthregen" == false))
+		if(GetCVAR("alph_nohealthregen") == false)
 		{
-			if(CheckInventory("Health") < 100 && CheckInventory("HealthRegenDelay") == 0)
+			if(GetActorProperty(0, APROP_HEALTH) < 100 && CheckInventory("HealthRegenDelay") < 1)
 			{
 				GiveInventory("Health", 1);
 			}
 		}
 	}
-}*/
+}
+
 Script "AlphatiusDamageNumbers" ENTER
 {
 	while(true)
@@ -57,7 +58,7 @@ Script "AlphatiusDamageNumbers" ENTER
 		{
 			ACS_NamedExecuteAlways("AlphatiusPain", 0, damage, brokeArmor);
 			if(damage > 0)
-				GiveInventory("HealthRegenDelay", 140);
+				GiveInventory("HealthRegenDelay", 210);
 		}
 		TakeInventory("HealthRegenDelay", 1);
 	}
@@ -136,7 +137,7 @@ Script "AlphatiusPain" (int damage, int brokeArmor)
 	}
 	if(brokeArmor > 0)
 	{
-		//PlaySound(0, "General/ArmorBreak", CHAN_AUTO, 1.0, false);
+		PlaySound(0, "General/ArmorBreak", CHAN_AUTO, 1.0, false);
 	}
 	delay(1);
 	TakeInventory("NegaBarrier", 1);

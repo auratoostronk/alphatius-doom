@@ -103,7 +103,7 @@ ClearBots
 
 {
 	name = "\cgliljeck"
-	accuracy = 1
+	accuracy = 2
 	intellect = 2
 	evade = 1
 	anticipation = 2
@@ -118,6 +118,22 @@ ClearBots
 	script = "humanbot"
 }
 
+{
+	name = "\ctSummer's \c[g2]Exile"
+	accuracy = 2
+	intellect = 3
+	evade = 1
+	anticipation = 2
+	reactiontime = 1
+	perception = 3
+	favoriteweapon = "PhotonCarbine"
+	color = "88 00 FF"
+	gender = "male"
+	railcolor = purple
+	chatfrequency = 80
+	revealed = true
+	script = "humanbot"
+}
 
 {
 	//Kaminsky

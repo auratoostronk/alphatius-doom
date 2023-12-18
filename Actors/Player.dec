@@ -17,6 +17,7 @@ Actor AlphatiusPlayer : PlayerPawn
 	Player.DamageScreenColor "DarkRed", 1.0
 	Player.StartItem "C14RespawnProtection"
 	Player.CrouchSprite "PLAY"
+	//BloodType "NewBlood"
 	Species "PlayerRelated"
 	+TELESTOMP
 	+BRIGHT
@@ -35,7 +36,7 @@ Actor AlphatiusPlayer : PlayerPawn
 		PLAY EF 3 BRIGHT
 		Goto Missile
 	Pain:
-		//TNT1 AA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
+		TNT1 AAAAAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(-4.0, 4.0)) 
 		PLAY G 1 Bright 
 		PLAY G 2 Bright
 		PLAY G 3 Bright A_Pain
@@ -59,7 +60,7 @@ Actor AlphatiusPlayer : PlayerPawn
 		TNT1 A 0 A_JumpIfInventory("ThermiteDebuff", 1, "XDeath.FlamespitterThermite")
 		Goto XDeath
 	Death:
-		//NT1 AAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(-4.0, 4.0)) 
 		PLAY H 12
 		PLAY I 12 A_PlayerScream
 		PLAY J 12 A_NoBlocking
@@ -67,7 +68,7 @@ Actor AlphatiusPlayer : PlayerPawn
 		PLAY M -1
 		stop
 	XDeath:
-		//TNT1 AAAAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0),frandom(-4.0, 4.0), frandom(-2.0, 4.0)) 
+		TNT1 AAAAAAAAAAAA 0 A_SpawnItemEx("NewBlood", 0.0, 0.0, 32.0, frandom(-4.0, 4.0), frandom(-4.0, 4.0), frandom(-4.0, 4.0)) 
 		PLAY N 5
 		PLAY O 5 A_PlayerScream
 		PLAY P 5 A_NoBlocking
@@ -80,11 +81,12 @@ Actor NewBlood : Blood replaces Blood
 {
 	Scale 0.6
 	Mass 6
-	-ALLOWPARTICLES
+	+NOINTERACTION
+	+CLIENTSIDEONLY
 	States
 	{
 	Spawn:
-		HBLD ABCDEF 3 A_SetTics(random(1, 2))
+		BLUD ABC 3 A_SetTics(random(1, 2))
 		Stop
 	}
 }

@@ -19,7 +19,7 @@ server bool alph_nopassives = false;
 //Forces players to spawn with Photon Carbine
 server bool alph_startcarbine = false;
 //Disables passive health regen
-//server bool alph_nohealthregen = false;
+server bool alph_nohealthregen = false;
 //Disables powerups
 server bool alph_nopowerups = false;
 //Forces players to spawn with a random loadout

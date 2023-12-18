@@ -260,6 +260,8 @@ Script "SetupPlayerTutorial" (void)
 Script "PlayerDeath" DEATH
 {
 	Thing_ChangeTID(0, 0);
+	SetActivator(0, AAPTR_TARGET);
+	LocalAmbientSound("General/Frag", 0.5);
 }
 Script "PlayerDisconnect" (int playerwholeft) DISCONNECT
 {

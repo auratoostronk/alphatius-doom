@@ -176,7 +176,8 @@ OptionMenu "DisplayOptions"
 	StaticText " "
 	StaticText "Field of View", 1
 	Slider "Field of View",				"fov", 60.0, 140.0, 1.0, 2
-	Slider "FoV change speed",			"cl_fovchangespeed", 1.0, 100.0, 0.1
+	Slider "Zoom speed",			"cl_fovchangespeed", 1.0, 100.0, 1.0
+	Slider "Zoom Amount",			"alph_zoomamount", 1.0, 4.0, 0.1
 	Option "True horizontal fov",	"gl_true_fov", "YesNo"
 	StaticText " "
 }

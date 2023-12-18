@@ -1,0 +1,25 @@
+Model SpareAmmoPack
+{
+	Path "Models/Pickups"
+	Skin 0 "ENRGA0.png"
+    Model 0 "ENRGA0.md3"
+    Scale 16.0 16.0 16.0
+	Offset 0.0 0.0 16.0
+	INHERITACTORPITCH
+	INHERITACTORROLL
+
+    FrameIndex ENRG A 0 0
+}
+
+Model PowerCell
+{
+	Path "Models/Pickups"
+	Skin 0 "POWRA0.png"
+    Model 0 "POWRA0.md3"
+    Scale 16.0 16.0 16.0
+	Offset 0.0 0.0 16.0
+	INHERITACTORPITCH
+	INHERITACTORROLL
+
+    FrameIndex POWR A 0 0
+}

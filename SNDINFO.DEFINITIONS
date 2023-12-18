@@ -56,6 +56,7 @@ General/WeaponHit			WEAPNHIT
 General/AltReady			ALTREADY
 General/TravelReady			TRAVREDY	
 General/ArmorBreak			ARMORBRK
+General/Frag				FRAGNEMY
 
 //PICKUPS
 Pickups/NanoArmor 			ARMORBIG

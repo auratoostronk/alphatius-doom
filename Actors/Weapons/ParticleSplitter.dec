@@ -52,6 +52,7 @@ Actor ParticleSplitter : Weapon replaces SuperShotgun
 		Goto Fire1
 		//FIXED IT WOOT
 		//First set of rings of projectiles
+		//The Unit Circle is cool :)
     Fire1:
         TNT1 A 0 A_FireCustomMissile("SGPellet", spread1*cos(args[0] * 360 / sring_count), false, 3.0, -1.0, 0, spread1*sin(args[0] * 360 / sring_count))
         TNT1 A 0 A_SetArg(0, args[0] + 1)
@@ -77,14 +78,14 @@ Actor ParticleSplitter : Weapon replaces SuperShotgun
 		TNT1 A 0 A_PlaySound("ParticleSplitter/Fire", CHAN_WEAPON)
 		TNT1 A 0 A_Recoil(4.0)
 		PSGF ABC 4 //12
-		PSGR A 6
+		PSGR A 4
 		TNT1 A 0 A_PlaySound("ParticleSplitter/Pump1", CHAN_7)
 		PSGF DEFGHIJKL 1 //9
 		TNT1 A 0 ACS_NamedExecuteAlways("OnWeaponFired", 0)
 		PSGF MMMMMM 1 A_SpawnItemEX("SparkCannonExhaustSpawner", 8.0, 0.0, 32.0, frandom(-1.0, 1.0), frandom(-1.0, 1.0), frandom(-1.0, 1.0))
 		TNT1 A 0 A_PlaySound("ParticleSplitter/Pump2", CHAN_7)
 		PSGF NOPQRSTUV 1 //9
-		PSGR A 6
+		PSGR A 4
 		Goto Ready
 	AltFail:
 		TNT1 A 0 ACS_NamedExecuteAlways("AltFireFail")

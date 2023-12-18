@@ -270,7 +270,7 @@ FreeformMenu "I_Weapons"
 		Font SMALLFNT
 		FontColor White
 		MaxTextWidth 160
-		Text "A powerful close-ranged flamethrower. Enemies hit by the Alt-Fire become Flammable and explode when killed by this weapon, spreading Flammable to nearby enemies."
+		Text "A powerful close-ranged flamethrower. Enemies hit by the Alt-Fire become explode when killed by this weapon."
 	}
 	//Beam Rifle
 	Label
@@ -462,7 +462,7 @@ FreeFormMenu "I_Actions"
 		Font SMALLFNT
 		FontColor White
 		MaxTextWidth 160
-		Text "Briefly reduces incoming damage significantly."
+		Text "Briefly grants damage immunity."
 	}
 	//Decoy Hologram
 	Label
@@ -531,7 +531,7 @@ FreeFormMenu "I_Actions"
 		Font SMALLFNT
 		FontColor White
 		MaxTextWidth 160
-		Text "Creates a damaging shockwave after a short delay."
+		Text "Reduces incoming damage briefly before creating a damaging shockwave."
 	}
 }
 //PASSIVE ABILITY INFO

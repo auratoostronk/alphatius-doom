@@ -15,7 +15,7 @@ Actor AutoLaserProjectile : FastProjectile
 	Radius 4
 	Height 4
 	Scale 1.0
-	Speed 160
+	Speed 128
 	Decal RailScorchLower
 	Damage (5)
 	Renderstyle Add

@@ -161,11 +161,13 @@ Travel Sphere: Taken from Realm667 under Deflection Sphere. Recolored by auratoo
 Powerup Sphere: Taken from Realm667 under Deflection Sphere. Editted by auratoostronk.
 Large Health: Taken from Realm667 under Medical Backpack. Credits go to id software, BloodyAcid.
 Small Health: Taken from Realm667 under Stim Bonus. Credits go to id software, BloodyAcid. Editted by auratoostronk.
+Spare Ammo Pack: Taken from Doom 2 by id software. Modified by auratoostronk.
 
 Effects:
 Heal Effects: Made by auratoostronk.
 3D Object Placeholder: Taken from Ozymandias's GORE. 
 Damage Numbers: Jimmy's Status Report SMALL font based on the Doom STBAR. Found on Realm667. Cropped/recolored by auratoostronk.
+Blood Sprites: Ripped from FreeDoom
 
 HUD Sprites:
 Action Charge: by NMN : https://forum.zdoom.org/viewtopic.php?f=37&t=69433
@@ -226,6 +228,7 @@ Weapons: All weapon voxels were made by auratoostronk.
 Spaceship: Taken from a mod called Stronghold on the edge of Chaos
 Power Brace: Created by auratoostronk.
 Auto Laser: Taken from SgtMarkIV's Brutal Doom, recolored by auratoostronk.
+Spare Ammo Pack: Used the sprite version and converted it to a voxel. Voxelwork by auratoostronk.
 
 ////////
 TEXTURES

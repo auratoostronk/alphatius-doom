@@ -110,7 +110,7 @@ Script "ThrusterBoots" (int predicting, int pressed, int released, int buttons)
             }
 			else
 			{	
-				ACS_NamedExecuteAlways("TravelFail", 0);
+				LocalAmbientSound("General/Fail", 96);
 			}
         }
         if (GetPredictableValue(0, 0) == 1)
@@ -203,7 +203,7 @@ Script "JetLeap" (int predicting, int pressed, int released, int buttons)
             }
 			else
 			{	
-				ACS_NamedExecuteAlways("TravelFail", 0);
+				LocalAmbientSound("General/Fail", 96);
 			}
         }
         if (GetPredictableValue(0, 0) == 1)
@@ -245,7 +245,7 @@ Script "HyperSprint" (int predicting, int pressed, int released, int buttons)
 			}
 			else
 			{	
-				ACS_NamedExecuteAlways("TravelFail", 0);
+				LocalAmbientSound("General/Fail", 96);
 			}
 		}
 		if (GetPredictableValue(0, 0) == 1)
@@ -303,7 +303,7 @@ Script "WarpDrive" (int predicting, int pressed, int released, int buttons)
             }
 			else
 			{	
-				ACS_NamedExecuteAlways("TravelFail", 0);
+				LocalAmbientSound("General/Fail", 96);
 			}
         }
     }
@@ -409,7 +409,7 @@ Script "ThrusterBootsBot" (void)
 	bool hasTravelPickup = (CheckInventory("ExtraTravelCharge") > 0);
 	if (CheckInventory("ThrusterBootsCharge") == 0 && !hasTravelPickup)
 	{
-		ACS_NamedExecuteAlways("TravelFail", 0);
+		LocalAmbientSound("General/Fail", 96);
 	}
 	else
 	{
@@ -492,7 +492,7 @@ Script "JetLeapBot" (void)
 	bool hasTravelPickup = (CheckInventory("ExtraTravelCharge") > 0);
 	if (CheckInventory("JLeapCD") > 0 && !hasTravelPickup)
 	{
-		ACS_NamedExecuteAlways("TravelFail", 0);
+		LocalAmbientSound("General/Fail", 96);
 	}
 	else
 	{
@@ -524,7 +524,7 @@ Script "WarpDriveBot" (void)
 	bool hasTravelPickup = (CheckInventory("ExtraTravelCharge") > 0);
 	if (CheckInventory("WDriveCD") > 0 && !hasTravelPickup)
 	{
-		ACS_NamedExecuteAlways("TravelFail", 0);
+		LocalAmbientSound("General/Fail", 96);
 	}
 	else
 	{
@@ -572,7 +572,7 @@ Script "HyperSprintBot" (void)
 	bool hasTravelPickup = (CheckInventory("ExtraTravelCharge") > 0);
 	if ((CheckInventory("HSprintCD") > 0 && !hasTravelPickup) || CheckInventory("HyperSprintSpeed") > 0)
 	{
-		ACS_NamedExecuteAlways("TravelFail", 0);
+		LocalAmbientSound("General/Fail", 96);
 	}
 	else
 	{
@@ -590,10 +590,4 @@ Script "HyperSprintBot" (void)
 			TakeInventory("ExtraTravelCharge", 1);
 		}
 	}
-}
-Script "TravelFail" (void)
-{
-	//displayHUDText("Travel ability on cooldown.", 0.6, 2.0, 1301);
-	LocalAmbientSound("General/Fail",96);
-	terminate;
 }

@@ -9,7 +9,9 @@
 
 #libdefine MAX_PLAYERS 64
 #libdefine NUM_WEAPS 7
-#libdefine NUM_TRAVELS 4
+//#libdefine NUM_TRAVELS 4
+//#libdefine NUM_ACTS 6
+//#libdefine NUM_PASSIVES 6
 
 str WEAP_CLASSNAMES[NUM_WEAPS] = 	{"TeslaSMG", 	"ParticleSplitter", 	"PhotonCarbine", 	"C14", 			"SparkCannon", 		/*"RocketCannon",*/ 	"Flamespitter", 	"BeamRifle"};
 str WEAP_ALTCLASSNAMES[NUM_WEAPS] = {"TeslaSMGAlt", "ParticleSplitterAlt", 	"PhotonCarbineAlt", "C14Alt", 		"SparkCannonAlt", 	/*"RocketCannonAlt",*/ 	"FlamespitterAlt", 	"BeamRifleAlt"};
@@ -17,6 +19,7 @@ str WEAP_ENERGYNAMES[NUM_WEAPS] = 	{"SMGEnergy", 	"PumpSGEnergy", 		"CarbineEner
 str WEAP_COOLDOWNNAMES[NUM_WEAPS] = {"SMGAltCD", 	"PumpSGAltCD", 			"CarbineAltCD",	 	"C14AltCD", 	"SparkAltCD", 		/*"RocketAltCD",*/ 		"FlameAltCD", 		"BeamAltCD"};
 str WEAP_COLORS[NUM_WEAPS] = 		{"Yellow", 		"Purple", 				"Blue", 			"Green", 		"Red", 				/*"Gray",*/ 			"Orange", 			"LightBlue"};
 
+//str ACT_CLASSNAMES[NUM_ACTS] = { "ActionRegenZone", "ActionAutoLaser", "ActionPowerBrace", "ActionDecoyHologram", "ActionRicochetBurst", "ActionShockSlam" };
 
 function int abs (int x)
 {
@@ -88,6 +91,29 @@ Script "RechargeTimers" ENTER
 				{
 					LocalAmbientSound("General/AltReady", 0.5);
 				}
+				//Spare Ammo Pack Check
+				//Check which weapon the player is holding.
+				if(StrCmp(GetWeapon(), WEAP_CLASSNAMES[i]) == 0)
+				{
+					//If the player a. has a spare ammo pack and b. is out of ammo for their equiped weapon
+					if(CheckInventory("SpareAmmoPack") > 0 && CheckInventory(WEAP_ENERGYNAMES[i]) < 1)
+					{
+						//Refill the ammo and use the spare ammo pack
+						GiveInventory(WEAP_ENERGYNAMES[i], GetAmmoCapacity(WEAP_ENERGYNAMES[i]));
+						TakeInventory("SpareAmmoPack", 1);
+						LocalAmbientSound("General/WeaponReady", 0.5);
+					}
+				}
+				//A check to make sure players can't hold the bots' Alt-Fire versions of the weapons.
+				if(ClassifyActor(0) & !ACTOR_BOT)
+				{
+					if(CheckInventory(WEAP_ALTCLASSNAMES[i]) > 0)
+					{
+						TakeInventory(WEAP_ALTCLASSNAMES[i], 1);
+						GiveInventory(WEAP_CLASSNAMES[i], 1);
+					}
+				}
+				
 			}
 			//Reduces global alt-fire cooldown (alt-fire cooldown shared between weapons)
 			TakeInventory("AltFireDeviceCD", 1);
@@ -198,6 +224,7 @@ Script "RechargeTimers" ENTER
 				SpawnSpotFacingForced("ThrusterBootsSmokeSpawner", 0, 0);
 			}
 			TakeInventory("ThrusterBootsSmokeTics", 1);
+			
 			
 			//Quiet Crouching
 			/*if(GetPlayerInput(0, INPUT_BUTTONS) & BT_CROUCH)

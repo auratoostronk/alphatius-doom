@@ -70,7 +70,7 @@ Actor PhotonProjectile : FastProjectile
 	Radius 6
 	Height 6
 	Scale 1.5
-	Speed 192
+	Speed 144
 	Decal RailScorchLower
 	Damage (13)
 	Renderstyle Add
@@ -140,7 +140,7 @@ Actor PhotonGrenade
 	Damage (0)
 	Decal BigScorch
 	Projectile
-	ProjectileKickBack 150
+	ProjectileKickBack 200
 	RenderStyle Add
 	Obituary "%k > \cvPhoton Carbine (Alt)\c- > %o"
 	+SEEKERMISSILE //used for hitmarkers

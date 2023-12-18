@@ -123,6 +123,33 @@ statusbar fullscreen, fullscreenoffsets
 	{
 		drawbar "C_RBURST", "A_RBURST", Ammo ActionCD, vertical, Interpolate(20)|reverse, -360, -120;
 	}
+	
+	//PICKUPS
+	drawstring SMALLFONT, Yellow, "Pickups", 10, -100, 0, alignment(left);
+	InInventory ExtraTravelCharge, 1
+	{
+		drawImage "I_TRAVSP", 10, -90; 
+	}
+	else
+	{
+		drawImage "C_TRAVSP", 10, -90; 
+	}
+	InInventory SpareAmmoPack, 1
+	{
+		drawImage "I_AMMOPA", 30, -90; 
+	}
+	else
+	{
+		drawImage "C_AMMOPA", 30, -90; 
+	}
+	InInventory PowerCellDamageBoost, 1
+	{
+		drawImage "I_POWCEL", 55, -90; 
+	}
+	else
+	{
+		drawImage "C_POWCEL", 55, -90; 
+	}
 }
 //New Alt-Hud courtesy of BathySalts
 resolution 640, 400;

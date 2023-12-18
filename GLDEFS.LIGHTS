@@ -253,7 +253,13 @@ pointlight REDORANGELIGHT
 {
 	color 1.0 0.2 0.0
     offset 0 48 0
-	size 16
+	size 32
+}
+pointlight BLUEAMMOLIGHT
+{
+	color 0.0 0.2 1.0
+    offset 0 48 0
+	size 32
 }
 pointlight GREENLIGHTSMALL
 {

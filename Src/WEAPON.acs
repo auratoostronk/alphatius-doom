@@ -59,6 +59,12 @@ Script "OnWeaponFired" (void)
 			GiveInventory("NoLowEnergySound", 1);
 		}
 	}
+	if(CheckInventory("PowerCell") > 0 || CheckInventory("PowerCellDamageBoost") > 0)
+	{
+		TakeInventory("PowerCell", 1);
+		TakeInventory("PowerCellDamageBoost", 1);
+		GiveInventory("PowerCellDamageBoostExpiring", 1);
+	}
 	//ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
 	
 }

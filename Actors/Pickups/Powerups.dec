@@ -1,4 +1,5 @@
-//This allows players to use their action ability an extra time. See "TRAVEL.acs" for implementation.
+//This allows players to use their action ability an extra time.
+//See "TRAVEL.acs" for implementation.
 Actor ExtraTravelCharge : Ammo 12000
 { 
 	//$Category Alphatius Pickups
@@ -20,6 +21,65 @@ Actor ExtraTravelCharge : Ammo 12000
 		loop
 	}
 }
+//This is consumed to refill a portion of the player's weapon energy supply after the first instance their weapon energy runs out.
+//See ALPHLIB.acs for implementation
+Actor SpareAmmoPack : Ammo 12001
+{
+	//$Category Alphatius Pickups
+	Radius 24
+	Height 40
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+	Ammo.BackpackMaxAmount 1
+	Inventory.PickupMessage "Spare Ammo Pack obtained. Fire away!"
+	Inventory.RespawnTics 700 //20 seconds
+	+FLOATBOB
+	+BRIGHT
+	+SERVERNETID
+	States
+	{
+		Spawn:
+		ENRG A 1 A_SetAngle(angle + 4)
+		loop
+	}
+}
+//Boosts the player's first 0.5 seconds of damage when firing a weapon.
+Actor PowerCell : CustomInventory 12002
+{
+	//$Category Alphatius Pickups
+	Radius 24
+	Height 48
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+	Inventory.PickupMessage "Power Cell obtained. 25% damage until you shoot!"
+	Inventory.RespawnTics 525 //15 seconds
+	+FLOATBOB
+	+BRIGHT
+	+SERVERNETID
+	States
+	{
+		Spawn:
+		POWR A 1 nodelay A_SetAngle(angle + 4)
+		loop
+		Pickup:
+		TNT1 A 0 A_GiveInventory("PowerCellDamageBoost", 1)
+		stop
+	}
+}
+
+Actor PowerCellDamageBoost : PowerDamage
+{
+	Powerup.Duration -3000000
+	DamageFactor "normal", 1.25
+	Powerup.Color "40 10 00"
+}
+Actor PowerCellDamageBoostExpiring : PowerDamage
+{
+	Powerup.Duration -1
+	DamageFactor "normal", 1.25
+	Powerup.Color "40 10 00"
+}
+
 Actor AlphatiusPowerup : CustomInventory
 {
 	//$Category Alphatius Pickups
@@ -28,7 +88,7 @@ Actor AlphatiusPowerup : CustomInventory
 	Inventory.RespawnTics 4200 //120 seconds
 	Inventory.Amount 1
 	Inventory.MaxAmount 1
-	Inventory.Icon "POWRA0"
+	Inventory.Icon "CRONA0"
 	Inventory.PickupMessage "Chronal Drive Aquired!"
 	Inventory.PickupSound "Pickups/NanoArmor"
 	+FLOATBOB
@@ -39,7 +99,7 @@ Actor AlphatiusPowerup : CustomInventory
 		Spawn:
 		TNT1 A 0 nodelay A_JumpIf(CallACS("CheckPowerupCVAR", 0), "Death")
 		//TNT1 A 0 ACS_NamedExecuteAlways("PowerupSpawn", 0)
-		POWR ABCDCBABCD 4 //A_SpawnItemEX("PowerupFX", frandom(-4.0, 4.0), frandom(-4.0, 4.0), 32.0 + frandom(-4.0, 4.0), frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5))
+		CRON ABCDCBABCD 4 //A_SpawnItemEX("PowerupFX", frandom(-4.0, 4.0), frandom(-4.0, 4.0), 32.0 + frandom(-4.0, 4.0), frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5))
 		loop
 		Pickup:
 		TNT1 A 0 A_GiveInventory("Health", 100)
