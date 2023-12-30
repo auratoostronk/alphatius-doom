@@ -65,6 +65,8 @@ Script "OnWeaponFired" (void)
 		TakeInventory("PowerCellDamageBoost", 1);
 		GiveInventory("PowerCellDamageBoostExpiring", 1);
 	}
+	
+	
 	//ACS_NamedExecuteAlways("CheckAssassinTactics", 0);
 	
 }

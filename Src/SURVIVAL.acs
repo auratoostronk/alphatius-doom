@@ -1,0 +1,25 @@
+#library "SURVIVAL"
+#include "zcommon.acs"
+
+#define SPAWNERID 667
+
+#define SPAWNBOUNDS 4096.0
+
+Script "SurvivalOpen" OPEN
+{
+	if(StrICmp(GetCurrentGameMode(), "Survival") == 0)
+	{
+		for(int i = 0; i < 100; i++)
+		{
+			int utid = UniqueTID();
+			while(Spawn("Voidling", random(-SPAWNBOUNDS, SPAWNBOUNDS), random(-SPAWNBOUNDS, SPAWNBOUNDS), random(-128.0, 128.0), utid, random(0, 256.0)) <= 0)
+			{
+				
+			}
+			SetActorPosition(utid, GetActorX(utid), GetActorY(utid), GetActorFloorZ(utid), true);
+			//SpawnSpotFacing("Voidling", SPAWNERID, 0);
+			//delay(18);
+			delay(7);
+		}
+	}
+}

@@ -26,8 +26,8 @@ Actor SMGAltCD : Ammo
 Actor PumpSGAltCD : Ammo
 {
 	+SERVERNETID 
-	Inventory.MaxAmount 140
-	Ammo.BackpackMaxAmount 140
+	Inventory.MaxAmount 70
+	Ammo.BackpackMaxAmount 70
 }
 Actor FlameAltCD : Ammo
 {
@@ -73,6 +73,11 @@ Actor JLeapCD : Ammo
 	Inventory.MaxAmount 140
 }
 Actor HSprintCD : Ammo
+{
+	+SERVERNETID
+	Inventory.MaxAmount 210
+}
+Actor MChargeCD : Ammo
 {
 	+SERVERNETID
 	Inventory.MaxAmount 210

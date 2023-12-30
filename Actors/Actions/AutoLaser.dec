@@ -18,6 +18,7 @@ Actor AutoLaserProjectile : FastProjectile
 	Speed 128
 	Decal RailScorchLower
 	Damage (5)
+	DamageType "Ability"
 	Renderstyle Add
 	Obituary "%k > \cgAuto Laser\c- > %o"
 	//SeeSound "Actions/AutoLaser"

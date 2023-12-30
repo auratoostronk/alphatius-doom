@@ -70,13 +70,15 @@ Actor PowerCell : CustomInventory 12002
 Actor PowerCellDamageBoost : PowerDamage
 {
 	Powerup.Duration -3000000
-	DamageFactor "normal", 1.25
+	DamageFactor "Normal", 1.25
+	DamageFactor "Ability", 1.00
 	Powerup.Color "40 10 00"
 }
 Actor PowerCellDamageBoostExpiring : PowerDamage
 {
-	Powerup.Duration -1
-	DamageFactor "normal", 1.25
+	Powerup.Duration -2
+	DamageFactor "Normal", 1.25
+	DamageFactor "Ability", 1.00
 	Powerup.Color "40 10 00"
 }
 

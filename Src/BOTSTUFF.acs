@@ -52,6 +52,9 @@ function void setTravel(int t)
 		case 3:
 		GiveInventory("TravelJetLeap", 1);
 		break;
+		case 4:
+		GiveInventory("TravelMachCharge", 1);
+		break;
 		default:
 		GiveInventory("TravelThrusterBoots", 1);
 		break;
@@ -70,7 +73,7 @@ Script "SetupBot" (void)
 	}
 	if(notravels == false)
 	{
-		setTravel(random(0, 3));
+		setTravel(random(0, 4));
 	}
 	if(noactions == false)
 	{
@@ -92,7 +95,7 @@ Script "StartBotAliveTimer" (void)
 	int cdrate = 1;
 	while(ClassifyActor(0) & ACTOR_ALIVE)
 	{
-		if(random(1, 70 / cdrate) == 1)
+		if(random(1, 35 / cdrate) == 1)
 		{
 			ACS_NamedExecuteAlways("TravelAbilityBot", 0);
 		}

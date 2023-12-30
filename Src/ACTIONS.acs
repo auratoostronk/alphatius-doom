@@ -91,7 +91,7 @@ Script "PowerBrace" (void)
 		GiveInventory("PowerBrace", 1);
 		ACS_NamedExecuteAlways("PowerBraceBubbleFX", 0);
 		PlaySound(0, "Actions/PowerBraceOn", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
-		delay(35);
+		delay(26); // 3/4'ths of a second
 		TakeInventory("PowerBrace", 1);
 		PlaySound(0, "Actions/PowerBraceOff", CHAN_AUTO, 1.0, false, ATTN_NORM, false);
 	}
@@ -175,9 +175,11 @@ Script "DecoyHologram" (void)
 			{
 				ACS_NamedExecuteAlways("DecoyBarrier", 0, utid);
 			}
-			//GiveInventory("DecoySwapDuration", 96);
-			//displayHUDText("Reactivate to swap.", 0.6, 2.75, 1301);
-			//decoyIDs[PlayerNumber()] = utid;
+			if(CheckInventory("TravelHyperdrive") > 0)
+			{
+				//Uses a dummy boolean to keep track of hyperdrive on the decoy hologram actor
+				SetActorProperty(utid, APROP_FRIGHTENED, TRUE);
+			}
 		}
 		else
 		{
@@ -189,7 +191,13 @@ Script "DecoyWalk" (void)
 {
 	while(ClassifyActor(0) & ACTOR_ALIVE)
 	{
-		SetActorVelocity(0, FixedMul(14.0, cos(GetActorAngle(0))), FixedMul(14.0, sin(GetActorAngle(0))), GetActorVelZ(0), false, false);
+		int movespeed = 14.0;
+		//Uses the dummy boolean to boost speed of the decoy hologram actor
+		if(GetActorProperty(0, APROP_FRIGHTENED) == TRUE)
+		{
+			movespeed = FixedMul(movespeed, HSPRINT_PASSIVESPD);
+		}
+		SetActorVelocity(0, FixedMul(movespeed, cos(GetActorAngle(0))), FixedMul(movespeed, sin(GetActorAngle(0))), GetActorVelZ(0), false, false);
 		delay(1);
 	}
 }

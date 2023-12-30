@@ -25,6 +25,7 @@ ACTOR RicochetDisc
 	+BRIGHT
 	BounceSound "Actions/RicochetDiscBounce"
 	Obituary "%k > \chRicochet Disc\c- > %o"
+	DamageType "Ability"
 	States
 	{
 	Spawn:

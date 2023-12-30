@@ -16,8 +16,8 @@ Actor HealFX
 Actor NoPuff : BulletPuff
 {
 	Projectile
-	Radius 2
-	Height 2
+	//Radius 2
+	//Height 2
 	+NOINTERACTION
 	+CLIENTSIDEONLY
 	+NONETID

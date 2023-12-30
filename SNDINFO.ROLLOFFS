@@ -41,6 +41,8 @@ $rolloff Travel/WarpStart 400 1600
 $rolloff Travel/WarpDone 400 1600
 $rolloff Travel/HypersprintStart 400 1600
 $rolloff Travel/HypersprintEnd 200 1600
+$rolloff Travel/MachChargeStart 400 1600
+$rolloff Travel/MachChargeEnd 400 1600
 
 $rolloff Actions/RegenZoneStart 800 1600
 $rolloff Actions/RegenZoneLoop 400 800

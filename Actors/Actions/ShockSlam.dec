@@ -15,6 +15,7 @@ Actor ShockSlamMissile
 	Projectile
 	ProjectileKickback 20
 	Obituary "%k > \cvShock Slam\c- > %o"
+	DamageType "Ability"
 	States
 	{
 		Spawn:

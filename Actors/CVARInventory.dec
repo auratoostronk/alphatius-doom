@@ -15,6 +15,9 @@ Actor TravelWarpDrive : Inventory {
 Actor TravelHyperSprint: Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
+Actor TravelMachCharge: Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
 	
 Actor PassiveRapidAlt : Inventory { 
 	+SERVERNETID 
@@ -35,6 +38,9 @@ Actor PassiveNegaBarrier: Inventory {
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
 Actor PassiveAdrenalineRush : Inventory { 
+	+SERVERNETID 
+	Inventory.MaxAmount 1 }
+Actor PassiveVigor : Inventory { 
 	+SERVERNETID 
 	Inventory.MaxAmount 1 }
 

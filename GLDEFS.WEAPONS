@@ -36,12 +36,12 @@ Object BeamRifle
 object PhotonProjectile
 {
 	frame BSPK { light BLUELIGHT }
+	frame TNT1 { light BLUELIGHTSHOOT }
 }
 object PhotonGrenade
 {
 	frame BGRN { light BLUELIGHTSHOOT }
 }
-
 object C14Projectile
 {
 	frame CPBL { light GREENLIGHT }

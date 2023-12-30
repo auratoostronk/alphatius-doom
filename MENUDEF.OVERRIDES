@@ -13,10 +13,11 @@ DefaultListMenu
 ListMenu "MainMenu"
 {
 	StaticPatch 0, 0, "ALPHTITL"
-	TextItem "Play Offline", "p", "ZA_SkirmishMenu"
+	TextItem "Play Offline", "p", "ZA_SkirmishMenuNew"
 	TextItem "Tutorial", "t", "EpisodeMenu"
 	TextItem "Loadouts", "l", "LoadoutOptions"
-	TextItem "Settings", "o", "OptionsMenu"
+	TextItem "Settings", "o", "OptionsMenuNew"
+	TextItem "Legacy Settings", "o", "OptionsMenu"
 	TextItem "Quit", "q", "QuitMenu"
 }
 ListMenu "EpisodeMenu"
@@ -25,30 +26,30 @@ ListMenu "EpisodeMenu"
 	// items will be filled in by MAPINFO
 }
 
-OptionMenu "OptionsMenu"
+OptionMenu "OptionsMenuNew"
 {
 	Title "SETTINGS"
 	StaticText " "
-	Submenu "Input",			"InputOptions"
-	Submenu "Graphics",			"DisplayOptions"
+	Submenu "Input",			"InputOptionsNew"
+	Submenu "Graphics",			"DisplayOptionsNew"
 	Submenu "Resolution",		"VideoModeMenu"
-	Submenu "Audio",			"SoundOptions"
+	Submenu "Audio",			"SoundOptionsNew"
 	StaticText " "
-	Submenu "Interface",		"HUDOptions"
-	Submenu "Profile",			"PlayerMenu"
-	Submenu "Multiplayer",		"ZA_MultiplayerOptions"
+	Submenu "Interface",		"HudOptionsNew"
+	Submenu "Profile",			"PlayerMenuNew"
+	Submenu "Multiplayer",		"ZA_MultiplayerOptionsNew"
 	StaticText " "
-	Submenu "Gameplay",			"GameplayOptions"
+	Submenu "Gameplay",			"GameplayOptionsNew"
 	StaticText " "
 	SafeCommand "Reset to defaults",	"reset2defaults"
 	SafeCommand	"Reset to last saved",	"reset2saved"
 	Command "Open Console",			"menuconsole"
 }
 
-OptionMenu "InputOptions"
+OptionMenu "InputOptionsNew"
 {
 	Title "INPUT OPTIONS"
-	Submenu "Mouse", "MouseOptions"
+	Submenu "Mouse", "MouseOptionsNew"
 	Submenu "Keybinds", "CustomizeControls"
 	Submenu "Controller", "JoystickOptions"
 	StaticText 	""
@@ -112,7 +113,7 @@ OptionMenu "CustomizeControls"
 	Control  	"Open console",			"toggleconsole"
 	StaticText 	""
 }
-OptionMenu "MouseOptions"
+OptionMenu "MouseOptionsNew"
 {
 	Title "MOUSE OPTIONS"
 	StaticText 	"Basic", 1
@@ -149,7 +150,7 @@ OptionMenu ZA_WeaponSetup
 	Class WeaponSetupMenu
 }
 
-OptionMenu "DisplayOptions"
+OptionMenu "DisplayOptionsNew"
 {
 	Title "DISPLAY OPTIONS"
 	
@@ -173,6 +174,7 @@ OptionMenu "DisplayOptions"
 	Option "Texture Filtering",			gl_texture_filter,				"FilterModes"
 	Option "Anisotropic filter",		gl_texture_filter_anisotropic,	"Anisotropy"
 	Option "Rendering Quality",			gl_render_precise,				"Precision"
+	Option "Enable Shaders", 			gl_dynlight_shader, 			"YesNo"
 	StaticText " "
 	StaticText "Field of View", 1
 	Slider "Field of View",				"fov", 60.0, 140.0, 1.0, 2
@@ -182,13 +184,14 @@ OptionMenu "DisplayOptions"
 	StaticText " "
 }
 
-OptionMenu "HUDOptions"
+OptionMenu "HUDOptionsNew"
 {
 	Title "Interface Options"
 	StaticText 	"HUD", 1
 	Option "HUD Type",					"screenblocks", "ScreenSize"
 	//Option "Stretch status bar",		"st_scale", "OnOff"
 	Option "Stretch Fullscreen HUD",	"hud_scale", "OnOff"
+	Option "Enable Alt-Fire Cooldown Ring", "alph_altcdonhud", "OnOff"
 	//Option "Fullscreen HUD Type",		"cl_stfullscreenhud", "ZA_FullscreenHUD"
 	//Submenu "Alternate HUD", "AltHudOptions"
 	StaticText ""
@@ -216,7 +219,7 @@ OptionMenu "HUDOptions"
 	//Option "Voting display",			"cl_showfullscreenvote", "ZA_VotingDisplay"
 	StaticText " "
 }
-ListMenu "PlayerMenu"
+ListMenu "PlayerMenuNew"
 {
 	StaticTextCentered 160, 6, "Profile"
 	Font "SmallFont"
@@ -265,7 +268,7 @@ OptionValue "ScreenSize"
 }
 
 
-OptionMenu SoundOptions
+OptionMenu SoundOptionsNew
 {
 	Title "SOUND OPTIONS"
 	Slider "Sounds volume",		"snd_sfxvolume", 0, 0.5, 0.01, 2
@@ -303,7 +306,7 @@ OptionString OutputFormats
 	"PCM-Float",	"32-bit float"
 }
 
-OptionMenu ZA_MultiplayerOptions
+OptionMenu ZA_MultiplayerOptionsNew
 {
 	Title "MULTIPLAYER OPTIONS"
 	StaticText	" "
@@ -318,7 +321,7 @@ OptionMenu ZA_MultiplayerOptions
 	TextField	"Server join password",		"cl_joinpassword"
 	StaticText	" "
 }
-OptionMenu ZA_SkirmishMenu
+OptionMenu ZA_SkirmishMenuNew
 {
 	Title		"SKIRMISH"
 	StaticText ""
@@ -345,6 +348,7 @@ OptionMenu "GamemodeConfig"
 }
 OptionValue ZA_Gamemode
 {
+	//1, "Survival"
 	3, "Deathmatch"
 	4, "Team Deathmatch"
 	5, "Duel"
@@ -362,7 +366,7 @@ server bool alph_startcarbine = false;
 server bool alph_healthregen = false;
 server bool alph_nopowerups = false;
 */
-OptionMenu GameplayOptions
+OptionMenu GameplayOptionsNew
 {
 	Indent 153
 	Title 	"GAMEPLAY OPTIONS"
@@ -371,6 +375,7 @@ OptionMenu GameplayOptions
 	Option "Weapons stay after pickup",		"sv_weaponstay", "YesNo"
 	Option "Spawn far away",				"sv_spawnfarthest", "YesNo"
 	Option "Force respawn",					"sv_forcerespawn", "YesNo"
+	Option "Passive Health Regen",			"alph_nohealthregen", "NoYes"
 	Option "Spawn Powerups",				"alph_nopowerups", "NoYes"
 	Option "Player-on-Player collision",	"sv_unblockplayers", "NoYes"
 	StaticText " "

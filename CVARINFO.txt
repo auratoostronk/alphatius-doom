@@ -2,11 +2,13 @@ user string alph_startweapon = "PhotonCarbine";
 user int alph_travel = 0;
 user int alph_action = 1;
 user int alph_passive = 1;
+user int alph_passive2 = 0;
 
 user float alph_textscale = 1.0;
 user float alph_zoomamount = 2.0;
 user float alph_timerx = 0.5;
 user float alph_timery = 0.1;
+user bool alph_altcdonhud = true;
 
 //Server settings for customization.
 
@@ -19,7 +21,7 @@ server bool alph_nopassives = false;
 //Forces players to spawn with Photon Carbine
 server bool alph_startcarbine = false;
 //Disables passive health regen
-server bool alph_nohealthregen = false;
+server bool alph_nohealthregen = true;
 //Disables powerups
 server bool alph_nopowerups = false;
 //Forces players to spawn with a random loadout

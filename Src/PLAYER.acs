@@ -20,7 +20,7 @@ function void setPassive(int p)
 {
 	if(p == 100 || forcerandom == true)
 	{
-		p = random(1, 4);
+		p = random(0, 2);
 	}
 	switch(p)
 	{	
@@ -34,26 +34,35 @@ function void setPassive(int p)
 		case 2:
 		GiveInventory("PassiveAdrenalineRush", 1);
 		break;
-		case 3:
-		GiveInventory("PassiveBandolier", 1);
-		break;
-		case 4:
-		GiveInventory("PassiveOverclocked", 1);
-		ACS_NamedExecuteAlways("OverclockedTimer", 0);
-		break;
-		default: //0
-		GiveInventory("PassiveAdrenalineRush", 1);
-		break;
 	}
 	if(CheckInventory("PassiveSpeedDemon") > 0)
 	{
 		GiveInventory("ExtraTravelCharge", 1);
 	}
-	/*if(CheckInventory("PassiveNegaBarrier") > 0)
+}
+function void setPassive2(int p)
+{
+	if(p == 100 || forcerandom == true)
 	{
-		GiveInventory("NegaBarrier", 1);
-		ACS_NamedExecuteAlways("NegaBarrierBubbleFX", 0);
-	}*/
+		p = random(0, 2);
+	}
+	switch(p)
+	{	
+		case 0:
+		GiveInventory("PassiveBandolier", 1);
+		break;
+		case 1:
+		GiveInventory("PassiveOverclocked", 1);
+		ACS_NamedExecuteAlways("OverclockedTimer", 0);
+		break;
+		case 2:
+		GiveInventory("PassiveVigor", 1);
+		GiveInventory("BonusHealth", 25);
+		break;
+		default: //0
+		GiveInventory("PassiveBandolier", 1);
+		break;
+	}
 }
 function void setAction(int a)
 {
@@ -209,6 +218,7 @@ Script "SetupPlayerMP" (void)
 		if(nopassives == false)
 		{
 			setPassive(GetCVAR("alph_passive")); //Need this before weapon for bandolier check.
+			setPassive2(GetCVAR("alph_passive2")); //Need this before weapon for bandolier check.
 		}
 		if(startcarbine == false)
 		{

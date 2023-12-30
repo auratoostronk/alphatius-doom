@@ -9,8 +9,8 @@
 
 #libdefine MAX_PLAYERS 64
 #libdefine NUM_WEAPS 7
-//#libdefine NUM_TRAVELS 4
-//#libdefine NUM_ACTS 6
+#libdefine NUM_TRAVS 5
+#libdefine NUM_ACTS 6
 //#libdefine NUM_PASSIVES 6
 
 str WEAP_CLASSNAMES[NUM_WEAPS] = 	{"TeslaSMG", 	"ParticleSplitter", 	"PhotonCarbine", 	"C14", 			"SparkCannon", 		/*"RocketCannon",*/ 	"Flamespitter", 	"BeamRifle"};
@@ -19,7 +19,9 @@ str WEAP_ENERGYNAMES[NUM_WEAPS] = 	{"SMGEnergy", 	"PumpSGEnergy", 		"CarbineEner
 str WEAP_COOLDOWNNAMES[NUM_WEAPS] = {"SMGAltCD", 	"PumpSGAltCD", 			"CarbineAltCD",	 	"C14AltCD", 	"SparkAltCD", 		/*"RocketAltCD",*/ 		"FlameAltCD", 		"BeamAltCD"};
 str WEAP_COLORS[NUM_WEAPS] = 		{"Yellow", 		"Purple", 				"Blue", 			"Green", 		"Red", 				/*"Gray",*/ 			"Orange", 			"LightBlue"};
 
-//str ACT_CLASSNAMES[NUM_ACTS] = { "ActionRegenZone", "ActionAutoLaser", "ActionPowerBrace", "ActionDecoyHologram", "ActionRicochetBurst", "ActionShockSlam" };
+str ACT_CLASSNAMES[NUM_ACTS] = { "ActionRegenZone", "ActionAutoLaser", "ActionPowerBrace", "ActionDecoyHologram", "ActionRicochetBurst", "ActionShockSlam" };
+
+str TRAV_CLASSNAMES[NUM_TRAVS] = { "TravelThrusterBoots", "TravelWarpDrive", "TravelHyperSprint", "TravelJetLeap", "TravelMachCharge" };
 
 function int abs (int x)
 {
@@ -138,6 +140,7 @@ Script "RechargeTimers" ENTER
 			TakeInventory("WDriveCD", cooldownspeed);
 			TakeInventory("HSprintCD", cooldownspeed);
 			TakeInventory("JLeapCD", cooldownspeed);
+			TakeInventory("MChargeCD", cooldownspeed);
 			//TakeInventory("SOrbCD",1);
 			//Thruster boots uses charges, so it uses slightly different code.
 			if(CheckInventory("TravelThrusterBoots"))
@@ -164,7 +167,7 @@ Script "RechargeTimers" ENTER
 			if(	CheckInventory("WDriveCD") == TRAV_SOUND_DELAY ||
 				CheckInventory("HSprintCD") == TRAV_SOUND_DELAY ||
 				CheckInventory("JLeapCD") == TRAV_SOUND_DELAY ||
-				CheckInventory("SOrbCD") == TRAV_SOUND_DELAY ||
+				CheckInventory("MChargeCD") == TRAV_SOUND_DELAY ||
 				CheckInventory("TBootsCD") == TRAV_SOUND_DELAY)
 			{
 				//LocalAmbientSound("General/TravelReady", 0.5);

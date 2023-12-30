@@ -19,9 +19,13 @@ statusbar fullscreen, fullscreenoffsets
 	//drawstring SMALLFONT, Green, "Travel Ability", -20, -50, 0, alignment(right);
 	//drawstring SMALLFONT, Cyan, "Action Cooldown", -20, -30, 0, alignment(right);
 	
+	//InInventory BonusHealth
+	//{	
+		//drawBar "WHTFULL", "WHTEMPTY", health BonusHealth, horizontal, Interpolate(120), 10, -40;
+	//}
 	
 	//ALTFIRE COOLDOWN
-	IsSelected PhotonCarbine
+	/*IsSelected PhotonCarbine
 	{
 		drawBar "C_ALTFIR", "A_ALTFIR", Ammo CarbineAltCD, vertical, Interpolate(20)|reverse, -300, -70;
 	}
@@ -48,19 +52,11 @@ statusbar fullscreen, fullscreenoffsets
 	IsSelected BeamRifle
 	{
 		drawBar "C_ALTFIR", "A_ALTFIR", Ammo BeamAltCD, vertical, Interpolate(20)|reverse, -300, -70;
-	}
+	}*/
 	//PASSIVE ABILITY ICONS
 	InInventory PassiveRapidAlt
 	{
 		drawImage "A_RAPIDA", 260, -70; 
-	}
-	InInventory PassiveOverclocked
-	{
-		drawImage "A_OVERCL", 260, -70; 
-	}
-	InInventory PassiveBandolier
-	{
-		drawImage "A_BANDO", 260, -70; 
 	}
 	InInventory PassiveSpeedDemon
 	{
@@ -69,6 +65,18 @@ statusbar fullscreen, fullscreenoffsets
 	InInventory PassiveAdrenalineRush
 	{
 		drawImage "A_ADRUSH", 260, -70; 
+	}
+	InInventory PassiveOverclocked
+	{
+		drawImage "A_OVERCL", -300, -70; 
+	}
+	InInventory PassiveBandolier
+	{
+		drawImage "A_BANDO", -300, -70; 
+	}
+	InInventory PassiveVigor
+	{
+		drawImage "A_VIGOR", -300, -70; 
 	}
 	
 	//TRAVEL ABILITY ICONS
@@ -95,6 +103,11 @@ statusbar fullscreen, fullscreenoffsets
 	InInventory TravelHyperSprint
 	{
 		drawbar "C_HYPERS", "A_HYPERS", Ammo HSprintCD, vertical, Interpolate(20)|reverse, 320, -120;
+		drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(center), 340, -140;
+	}
+	InInventory TravelMachCharge
+	{
+		drawbar "C_MCHARG", "A_MCHARG", Ammo MChargeCD, vertical, Interpolate(20)|reverse, 320, -120;
 		drawnumber 12, BIGFONT, ORANGE, Ammo ExtraTravelCharge, Alignment(center), 340, -140;
 	}
 

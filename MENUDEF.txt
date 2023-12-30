@@ -12,14 +12,14 @@ FreeformMenu "LoadoutOptions"
 	//WEAPON 
 	Label
 	{
-		Pos -80, 16
+		Pos 0, 16
 		Font BIGFONT
 		FontColor Red
 		Text "Start Weapon"
 	}
 	Option
 	{
-		Pos -80, 32
+		Pos 0, 32
 		Size 128, 80
 		Font SMALLFNT
 		FontColor Red
@@ -31,25 +31,25 @@ FreeformMenu "LoadoutOptions"
 	}
 	Submenu
 	{
-		Pos -80, 128
+		Pos 0, 112
 		Size 128, 16
 		Font SMALLFNT
 		FontColor Red
 		SelectedFontColor White
-		Text "More Info"
+		Text "Weapon Info"
 		Menu I_Weapons
 	}
 	//TRAVEL
 	Label
 	{
-		Pos -80, 144
+		Pos -80, 128
 		Font BIGFONT
 		FontColor Red
 		Text "Travel Skill"
 	}
 	Option
 	{
-		Pos -80, 160
+		Pos -80, 144
 		Size 128, 80
 		Font SMALLFNT
 		FontColor Red
@@ -61,25 +61,25 @@ FreeformMenu "LoadoutOptions"
 	}
 	Submenu
 	{
-		Pos -80, 256
+		Pos -80, 240
 		Size 128, 16
 		Font SMALLFNT
 		FontColor Red
 		SelectedFontColor White
-		Text "More Info"
+		Text "Travel Skill Info"
 		Menu I_Travels
 	}
 	//ACTION
 	Label
 	{
-		Pos 80, 16
+		Pos 80, 128
 		Font BIGFONT
 		FontColor Red
 		Text "Action Skill"
 	}
 	Option
 	{
-		Pos 80, 32
+		Pos 80, 144
 		Size 128, 80
 		Font SMALLFNT
 		FontColor Red
@@ -91,25 +91,25 @@ FreeformMenu "LoadoutOptions"
 	}
 	Submenu
 	{
-		Pos 80, 128
+		Pos 80, 240
 		Size 128, 16
 		Font SMALLFNT
 		FontColor Red
 		SelectedFontColor White
-		Text "More Info"
+		Text "Action Skill Info"
 		Menu I_Actions
 	}
-	//PASSIVE
+	//PASSIVE 1
 	Label
 	{
-		Pos 80, 144
+		Pos -80, 256
 		Font BIGFONT
 		FontColor Red
-		Text "Passive Skill"
+		Text "Passive 1"
 	}
 	Option
 	{
-		Pos 80, 160
+		Pos -80, 272
 		Size 128, 80
 		Font SMALLFNT
 		FontColor Red
@@ -119,16 +119,135 @@ FreeformMenu "LoadoutOptions"
 		Values PassiveAbility
 		BackgroundValues BGPassiveAbility
 	}
-	Submenu
+	
+	//PASSIVE 2
+	Label
 	{
 		Pos 80, 256
+		Font BIGFONT
+		FontColor Red
+		Text "Passive 2"
+	}
+	Option
+	{
+		Pos 80, 272
+		Size 128, 80
+		Font SMALLFNT
+		FontColor Red
+		SelectedFontColor White
+		MaxTextWidth 128
+		CVAR alph_passive2
+		Values PassiveAbility2
+		BackgroundValues BGPassiveAbility2
+	}
+	Submenu
+	{
+		Pos 0, 368
 		Size 128, 16
 		Font SMALLFNT
 		FontColor Red
 		SelectedFontColor White
-		Text "More Info"
+		Text "Passive Skill Info"
 		Menu I_Passives
 	}
+}
+
+//OPTION VALUES 
+
+//START WEAPON
+OptionString "StartingWeapon"
+{
+	"TeslaSMG", 			"Tesla SMG"
+	"ParticleSplitter", 	"Particle Splitter"
+	"C14", 					"C-14 Energy Blaster"
+	"PhotonCarbine",		"Photon Carbine"
+	"SparkCannon", 			"Spark Cannon"
+	"Flamespitter", 		"Flamespitter"
+	"BeamRifle", 			"Beam Rifle"
+	"Random", 				"Random"
+}
+OptionString "BGStartingWeapon"
+{
+	"TeslaSMG", 			"SMGMENU"
+	"ParticleSplitter", 	"PSGMENU"
+	"C14",					"C14MENU"
+	"PhotonCarbine", 		"CARMENU"
+	"SparkCannon", 			"SPKMENU"
+	"Flamespitter",			"FLMMENU"
+	"BeamRifle", 			"BRFMENU"
+	"Random", 				"I_RANDOM"
+}
+
+//TRAVEL ABILITY
+OptionValue "TravelAbility"
+{
+	0, "Thruster Boots"
+	1, "Warp Drive"
+	2, "Hyper Sprint"
+	3, "Jet Leap"
+	4, "Mach Charge"
+	100, "Random"
+}
+OptionValue "BGTravelAbility"
+{
+	0, "I_TBOOTS"
+	1, "I_WDRIVE"
+	2, "I_HYPERS"
+	3, "I_JLEAP"
+	4, "I_MCHARG"
+	100, "I_RANDOM"
+}
+
+//ACTION ABILITY
+OptionValue "ActionAbility"
+{
+	0, "Regeneration Zone"
+	1, "Auto Laser"
+	2, "Power Brace"
+	3, "Decoy Hologram"
+	4, "Ricochet Burst"
+	5, "Shock Slam"
+	100, "Random"
+}
+OptionValue "BGActionAbility"
+{
+	0, "I_REGENZ"
+	1, "I_AUTOL"
+	2, "I_POWERB"
+	3, "I_DECOYH"
+	4, "I_RBURST"
+	5, "I_SSLAM"
+	100, "I_RANDOM"
+}
+
+OptionString "PassiveAbility"
+{
+	0, "Rapid-Alt Tech"
+	1, "Speed Demon"
+	2, "Adrenaline Rush"
+	100, "Random"
+}
+OptionString "PassiveAbility2"
+{
+	0, "Bandolier"
+	1, "Action Overclock"
+	2, "Vigor"
+	100, "Random"
+}
+
+OptionString "BGPassiveAbility"
+{
+	0, "I_RAPIDA"
+	1, "I_SPEEDD"
+	2, "I_ADRUSH"
+	100, "I_RANDOM"
+}
+OptionString "BGPassiveAbility2"
+{
+	0, "I_BANDO"
+	1, "I_OVERCL"
+	2, "I_VIGOR"
+	100, "I_RANDOM"
 }
 
 //WEAPON INFO
@@ -391,6 +510,29 @@ FreeFormMenu "I_Travels"
 		MaxTextWidth 160
 		Text "Passively run faster. Activate for a short sprint."
 	}
+	//Mach Charge
+	Label
+	{
+		Pos 0, 304
+		Font BIGFONT
+		FontColor Red
+		Text "Mach Charge"
+	}
+	Label
+	{
+		Pos -96, 304
+		Size 128, 80
+		Background "I_MCHARG"
+	}
+	Label
+	{
+		Pos 64, 320
+		Size 160, 80
+		Font SMALLFNT
+		FontColor White
+		MaxTextWidth 160
+		Text "Charge towards your crosshair, dealing area damage upon arrival"
+	}
 }
 //ACTION ABILITY INFO
 FreeFormMenu "I_Actions"
@@ -652,90 +794,27 @@ FreeFormMenu "I_Passives"
 		MaxTextWidth 160
 		Text "Reduces Action Ability Cooldown."
 	}
-}
-
-//OPTION VALUES 
-
-//START WEAPON
-OptionString "StartingWeapon"
-{
-	"TeslaSMG", 			"Tesla SMG"
-	"ParticleSplitter", 	"Particle Splitter"
-	"C14", 					"C-14 Energy Blaster"
-	"PhotonCarbine",		"Photon Carbine"
-	"SparkCannon", 			"Spark Cannon"
-	"Flamespitter", 		"Flamespitter"
-	"BeamRifle", 			"Beam Rifle"
-	"Random", 				"Random"
-}
-OptionString "BGStartingWeapon"
-{
-	"TeslaSMG", 			"SMGMENU"
-	"ParticleSplitter", 	"PSGMENU"
-	"C14",					"C14MENU"
-	"PhotonCarbine", 		"CARMENU"
-	"SparkCannon", 			"SPKMENU"
-	"Flamespitter",			"FLMMENU"
-	"BeamRifle", 			"BRFMENU"
-	"Random", 				"I_RANDOM"
-}
-
-//TRAVEL ABILITY
-OptionValue "TravelAbility"
-{
-	0, "Thruster Boots"
-	1, "Warp Drive"
-	2, "Hyper Sprint"
-	3, "Jet Leap"
-	100, "Random"
-}
-OptionValue "BGTravelAbility"
-{
-	0, "I_TBOOTS"
-	1, "I_WDRIVE"
-	2, "I_HYPERS"
-	3, "I_JLEAP"
-	100, "I_RANDOM"
-}
-
-//ACTION ABILITY
-OptionValue "ActionAbility"
-{
-	0, "Regeneration Zone"
-	1, "Auto Laser"
-	2, "Power Brace"
-	3, "Decoy Hologram"
-	4, "Ricochet Burst"
-	5, "Shock Slam"
-	100, "Random"
-}
-OptionValue "BGActionAbility"
-{
-	0, "I_REGENZ"
-	1, "I_AUTOL"
-	2, "I_POWERB"
-	3, "I_DECOYH"
-	4, "I_RBURST"
-	5, "I_SSLAM"
-	100, "I_RANDOM"
-}
-
-OptionString "PassiveAbility"
-{
-	0, "Rapid-Alt Tech"
-	1, "Speed Demon"
-	2, "Adrenaline Rush"
-	3, "Bandolier"
-	4, "Action Overclock"
-	100, "Random"
-}
-
-OptionString "BGPassiveAbility"
-{
-	0, "I_RAPIDA"
-	1, "I_SPEEDD"
-	2, "I_ADRUSH"
-	3, "I_BANDO"
-	4, "I_OVERCL"
-	100, "I_RANDOM"
+	//Vigor
+	Label
+	{
+		Pos 0, 480
+		Font BIGFONT
+		FontColor Red
+		Text "Vigor"
+	}
+	Label
+	{
+		Pos -96, 480
+		Size 128, 80
+		Background "I_VIGOR"
+	}
+	Label
+	{
+		Pos 64, 496
+		Size 160, 80
+		Font SMALLFNT
+		FontColor White
+		MaxTextWidth 160
+		Text "Spawn with 25 Bonus Health"
+	}
 }

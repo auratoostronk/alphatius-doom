@@ -88,6 +88,7 @@ Thruster Boots: Came from Project MSX by MagSigmaX  https://forum.zdoom.org/view
 Jet Leap: Ripped from League of Legends's Lux Ultimate.
 Warp Drive: Ripped from League of Legends's Ezreal.
 Swiftfoot Shoes: Ripped from Call of Duty Zombies Thundergun (Black Ops 1).
+Mach Charge: Combination of Jet Leap and Sonic Shockwave Charge, with modifications by aura.
 Regen Zone: Activation sound and loop sound ripped from an old MMO called City of Heroes. If you didn't know, the game is back ;)
 Power Brace: Activation sound and hit sound ripped from an old MMO called City of Heroes. If you didn't know, the game is back ;)
 Auto Laser: Sound Taken from Terminator on Realm667.
@@ -162,6 +163,7 @@ Powerup Sphere: Taken from Realm667 under Deflection Sphere. Editted by auratoos
 Large Health: Taken from Realm667 under Medical Backpack. Credits go to id software, BloodyAcid.
 Small Health: Taken from Realm667 under Stim Bonus. Credits go to id software, BloodyAcid. Editted by auratoostronk.
 Spare Ammo Pack: Taken from Doom 2 by id software. Modified by auratoostronk.
+Power Cell: Created by auratoostronk.
 
 Effects:
 Heal Effects: Made by auratoostronk.
@@ -195,7 +197,7 @@ End Tutorial pic: Made by auratoostronk using id software as base sprite
 Pick Graphic: Made by auratoostronk.
 DBIGFONT Jimmy's Status Report font based on the Doom STBAR. Found on Realm667
 SMALLFNT Jimmy's Status Report SMALL font based on the Doom STBAR. Found on Realm667
-
+Ability Icons: Made by aura.
 
 ////
 MAPS
@@ -229,6 +231,7 @@ Spaceship: Taken from a mod called Stronghold on the edge of Chaos
 Power Brace: Created by auratoostronk.
 Auto Laser: Taken from SgtMarkIV's Brutal Doom, recolored by auratoostronk.
 Spare Ammo Pack: Used the sprite version and converted it to a voxel. Voxelwork by auratoostronk.
+Power Cell: Created by auratoostronk.
 
 ////////
 TEXTURES

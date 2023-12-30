@@ -18,6 +18,7 @@ Actor IsHealing : Inventory
 //Gives the user a speed boost trail for the various stacking speed boosts in the game. See ALPHLIB.acs
 Actor SpeedBoostTrail : Inventory //PowerSpeed
 {
+	+SERVERNETID
 	//Powerup.Duration 2
 	//Powerup.Strength 0.0
 }

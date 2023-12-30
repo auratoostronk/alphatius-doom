@@ -33,3 +33,10 @@ Actor PowerAdrenaline : Inventory
 	//Powerup.Strength 1.1
 	//Powerup.Duration -2
 }
+
+Actor BonusHealth : Health
+{
+	+SERVERNETID
+	Inventory.Amount 25
+	Inventory.MaxAmount 125
+}

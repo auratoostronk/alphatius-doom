@@ -70,7 +70,9 @@ Travel/JetLeap	 			RCKTJUMP
 Travel/WarpStart			WARPDRIV
 Travel/WarpDone				WARPDONE
 Travel/HypersprintStart 	HYPERST
-Travel/HypersprintEnd		 HYPEREND
+Travel/HypersprintEnd		HYPEREND
+Travel/MachChargeStart 		MCHARGE1
+Travel/MachChargeEnd 		MCHARGE2
 
 //ACTIONS
 DBOUNCE1 DBOUNCE1
